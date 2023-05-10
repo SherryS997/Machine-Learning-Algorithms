@@ -1,0 +1,33 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Machine Learning Algorithms"
+  sidebar:
+    tools:
+    - icon: linkedin
+      href: https://www.linkedin.com/in/sherry-thomassp/
+    - icon: github
+      href: https://github.com/SherryS997/Machine-Learning-Algorithms
+    style: "docked"
+    search: true
+    contents:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - section: "Supervised Learning Algorithms"
+        contents: 
+          - href: pages/lin_reg.qmd
+            text: Linear Regression
+            title: Linear Regression
+
+format:
+  html:
+    theme: 
+      light: lux
+      dark: [darkly, styles.scss]
+    toc: true
+
+
+
