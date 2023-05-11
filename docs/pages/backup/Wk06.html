@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Machine Learning Algorithms - Welcome to Machine Learning Algorithms</title>
+<title>Machine Learning Algorithms - Supervised Learning - Regression - Ridge/LASSO</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./icon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../icon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -62,6 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -74,7 +76,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Home</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Machine Learning Algorithms
+      </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -89,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Machine Learning Algorithms</a> 
+      <a href="../../">Machine Learning Algorithms</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://www.linkedin.com/in/sherry-thomassp/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
     <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
@@ -106,13 +110,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to MLA</span></a>
   </div>
 </li>
@@ -136,13 +140,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/PCA.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/PCA.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Principal component analysis (PCA)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/Kernel_PCA.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/Kernel_PCA.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kernel PCA</span></a>
   </div>
 </li>
@@ -159,13 +163,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/kmeans.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/kmeans.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">K-means clustering</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/kkmeans.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/kkmeans.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kernel K-means clustering</span></a>
   </div>
 </li>
@@ -182,25 +186,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/mle.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/mle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Maximum likelihood estimation (MLE)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/bayes_est.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/bayes_est.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bayesian estimation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/gmm.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/gmm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Gaussian mixture model (GMM)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/em.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/em.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Expectation-maximization (EM) algorithm</span></a>
   </div>
 </li>
@@ -228,31 +232,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/lin_reg.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/lin_reg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Least squares regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/klin_reg.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/klin_reg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kernel Least squares regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/bayes_lin_reg.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/bayes_lin_reg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bayesian view of least squares regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/rid_lin_reg.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/rid_lin_reg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ridge regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/lasso_lin_reg.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/lasso_lin_reg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">LASSO regression</span></a>
   </div>
 </li>
@@ -269,13 +273,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/knn.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/knn.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">K-nearest neighbors (KNN)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/dec_trees.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/dec_trees.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Decision tree</span></a>
   </div>
 </li>
@@ -292,7 +296,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/naive_bayes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/naive_bayes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Naive Bayes</span></a>
   </div>
 </li>
@@ -309,19 +313,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/percp.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/percp.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Perceptron</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/log_reg.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/log_reg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Logistic regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/svm.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/svm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Support vector machines (SVMs)</span></a>
   </div>
 </li>
@@ -338,13 +342,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/bag.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/bag.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bagging</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/boost.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/boost.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Boosting</span></a>
   </div>
 </li>
@@ -352,7 +356,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/ann.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/ann.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Artificial neural networks (ANNs)</span></a>
   </div>
 </li>
@@ -360,7 +364,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./about.html" class="sidebar-item-text sidebar-link">
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About me</span></a>
   </div>
 </li>
@@ -374,8 +378,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#unsupervised-learning" id="toc-unsupervised-learning" class="nav-link active" data-scroll-target="#unsupervised-learning">Unsupervised Learning</a></li>
-  <li><a href="#supervised-learning" id="toc-supervised-learning" class="nav-link" data-scroll-target="#supervised-learning">Supervised Learning</a></li>
+  <li><a href="#goodness-of-maximum-likelihood-estimator-for-linear-regression" id="toc-goodness-of-maximum-likelihood-estimator-for-linear-regression" class="nav-link active" data-scroll-target="#goodness-of-maximum-likelihood-estimator-for-linear-regression">Goodness of Maximum Likelihood Estimator for Linear Regression</a></li>
+  <li><a href="#cross-validation-for-minimizing-mse" id="toc-cross-validation-for-minimizing-mse" class="nav-link" data-scroll-target="#cross-validation-for-minimizing-mse">Cross-Validation for Minimizing MSE</a></li>
+  <li><a href="#bayesian-modeling" id="toc-bayesian-modeling" class="nav-link" data-scroll-target="#bayesian-modeling">Bayesian Modeling</a></li>
+  <li><a href="#ridge-regression" id="toc-ridge-regression" class="nav-link" data-scroll-target="#ridge-regression">Ridge Regression</a></li>
+  <li><a href="#lasso-regression" id="toc-lasso-regression" class="nav-link" data-scroll-target="#lasso-regression">Lasso Regression</a></li>
   <li><a href="#credits" id="toc-credits" class="nav-link" data-scroll-target="#credits">Credits</a></li>
   </ul>
 </nav>
@@ -385,7 +392,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Welcome to Machine Learning Algorithms</h1>
+<h1 class="title">Supervised Learning - Regression - Ridge/LASSO</h1>
 </div>
 
 
@@ -400,76 +407,104 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>This website is a comprehensive resource for machine learning algorithms. Here, you will find explanations of the most popular algorithms, as well as code implementations in Python.</p>
-<p>The website is divided into two main sections: supervised learning and unsupervised learning. Supervised learning algorithms are used to learn from labeled data, while unsupervised learning algorithms are used to learn from unlabeled data.</p>
-<p>Within each section, the algorithms are further divided into regression, classification, and clustering. Regression algorithms are used to predict continuous values, while classification algorithms are used to predict discrete values. Clustering algorithms are used to group data points together.</p>
-<p>Each algorithm page includes the following information:</p>
-<ul>
-<li>A brief overview of the algorithm</li>
-<li>The math behind the algorithm</li>
-<li>A Python implementation of the algorithm</li>
-<li>Examples of how the algorithm can be used</li>
-</ul>
-<p>We hope you find this website to be a valuable resource for learning about machine learning algorithms.</p>
-<p><strong>Here is a more detailed overview of the algorithms covered on this website:</strong></p>
-<section id="unsupervised-learning" class="level3">
-<h3 class="anchored" data-anchor-id="unsupervised-learning">Unsupervised Learning</h3>
-<ul>
-<li>Representation learning
-<ul>
-<li>Principal component analysis (PCA): PCA is a dimensionality reduction algorithm that projects data points onto a lower-dimensional subspace while preserving as much of the variance as possible.</li>
-<li>Kernel PCA: Kernel PCA is a generalization of PCA that can be used to project data points onto a nonlinear subspace.</li>
-</ul></li>
-<li>Clustering
-<ul>
-<li>K-means clustering: K-means clustering is a simple and efficient algorithm for clustering data points into a predefined number of clusters.</li>
-<li>Kernel K-means clustering: Kernel K-means clustering is a generalization of K-means clustering that can be used to cluster data points into nonlinear clusters.</li>
-</ul></li>
-<li>Estimation
-<ul>
-<li>Maximum likelihood estimation (MLE): MLE is a statistical method for estimating the parameters of a probability distribution from data.</li>
-<li>Bayesian estimation: Bayesian estimation is a statistical method for estimating the parameters of a probability distribution using prior knowledge about the parameters.</li>
-<li>Gaussian mixture model (GMM): GMM is a probabilistic model that can be used to represent data that is generated by a mixture of Gaussian distributions.</li>
-<li>Expectation-maximization (EM) algorithm: EM is an iterative algorithm that can be used to fit a GMM to data.</li>
-</ul></li>
-</ul>
+<p>PDF Link: <a href="../notes/Wk06.pdf">notes</a></p>
+<section id="goodness-of-maximum-likelihood-estimator-for-linear-regression" class="level1">
+<h1>Goodness of Maximum Likelihood Estimator for Linear Regression</h1>
+<p>Given a dataset <span class="math inline">\(\{x_1, \ldots, x_n\}\)</span> where <span class="math inline">\(x_i \in \mathbb{R}^d\)</span>, let <span class="math inline">\(\{y_1, \ldots, y_n\}\)</span> be the labels, where <span class="math inline">\(y_i \in \mathbb{R}\)</span>. <span class="math display">\[
+y|X = w^Tx + \epsilon
+\]</span> where <span class="math inline">\(\epsilon \sim \mathcal{N}(0,\sigma^2)\)</span> and <span class="math inline">\(w \in \mathbb{R}^d\)</span>. Let <span class="math inline">\(\hat{w}_{ML}\)</span> signify the maximum likelihood parameter for linear regression. <span class="math display">\[
+\hat{w}_{ML}=w^*=(XX^T)^+Xy
+\]</span> <span class="math inline">\(\therefore\)</span> To measure how good our parameter is, we use the follow: <span class="math display">\[
+\mathbb{E} [|| \hat{w}_{ML} - w ||^2_2]
+\]</span> This is known as the Mean Squared Error (MSE) and turns out to be equal to <span class="math display">\[
+\mathbb{E} [|| \hat{w}_{ML} - w ||^2_2] = \sigma^2 *trace((XX^T)^{-1})
+\]</span></p>
 </section>
-<section id="supervised-learning" class="level3">
-<h3 class="anchored" data-anchor-id="supervised-learning">Supervised Learning</h3>
-<ul>
-<li>Regression
-<ul>
-<li>Least squares regression: Least squares regression is a linear regression model that minimizes the sum of the squares of the errors between the predicted values and the observed values.</li>
-<li>Bayesian view of least squares regression: The Bayesian view of least squares regression provides a probabilistic interpretation of the model.</li>
-<li>Ridge regression: Ridge regression is a linear regression model that penalizes the model coefficients to prevent overfitting.</li>
-<li>LASSO regression: LASSO regression is a linear regression model that shrinks the model coefficients to zero to prevent overfitting.</li>
-</ul></li>
-<li>Classification
-<ul>
-<li>K-nearest neighbors (KNN): KNN is a non-parametric classification algorithm that classifies a new data point by finding the K nearest neighbors of the data point and then assigning the new data point to the class that is most common among its neighbors.</li>
-<li>Decision tree: Decision trees are a type of supervised learning algorithm that can be used for both classification and regression tasks. Decision trees are constructed by recursively partitioning the data space until all of the data points in each leaf node belong to the same class.</li>
-</ul></li>
-<li>Generative models
-<ul>
-<li>Naive Bayes: Naive Bayes is a simple probabilistic classification algorithm that assumes that the features of a data point are independent of each other.</li>
-</ul></li>
-<li>Discriminative models
-<ul>
-<li>Perceptron: The perceptron model is a discriminative model that uses a linear decision boundary to classify data points into different categories.</li>
-<li>Logistic regression: Logistic regression is a probabilistic classification algorithm that is used to model the probability of a binary outcome.</li>
-<li>Support vector machines (SVMs): SVMs are a type of supervised learning algorithm that can be used for both classification and regression tasks. SVMs are constructed by finding a hyperplane that separates the data points into two classes.</li>
-</ul></li>
-<li>Ensemble methods
-<ul>
-<li>Bagging: Bagging is an ensemble method that combines the predictions of multiple models to improve the overall accuracy of the predictions.</li>
-<li>Boosting: Boosting is an ensemble method that trains a sequence of models, each of which is trained to correct the mistakes of the previous models.</li>
-</ul></li>
-<li>Artificial neural networks (ANNs): ANNs are a type of machine learning algorithm that is inspired by the human brain. ANNs are composed of artificial neurons that are connected to each other in a network. Each neuron receives input from other neurons, and it outputs a signal that is determined by a nonlinear function of the input. ANNs can be used to solve a variety of problems, including classification, regression, and time series forecasting.</li>
-</ul>
+<section id="cross-validation-for-minimizing-mse" class="level1">
+<h1>Cross-Validation for Minimizing MSE</h1>
+<p>Let the eigenvalues of <span class="math inline">\(XX^T\)</span> be <span class="math inline">\(\{\lambda_1, \ldots, \lambda_d\}\)</span>. Hence the eigenvalues of <span class="math inline">\((XX^T)^{-1}\)</span> are <span class="math inline">\(\{\frac{1}{\lambda_1}, \ldots, \frac{1}{\lambda_d}\}\)</span>.</p>
+<p><span class="math inline">\(\therefore\)</span> The MSE is, <span class="math display">\[
+\mathbb{E} [|| \hat{w}_{ML} - w ||^2_2] = \sigma^2 \sum_{i=1}^d  \frac{1}{\lambda_i}
+\]</span> Consider the following estimator, <span class="math display">\[
+\hat{w}_{new}=(XX^T + \lambda I)^{-1}Xy
+\]</span> where <span class="math inline">\(\lambda \in \mathbb{R}\)</span> and <span class="math inline">\(I \in \mathbb{R}^{d\times d}\)</span> is the Identity Matrix. Using this we get, <span class="math display">\[
+trace((XX^T + \lambda I)^{-1}) = \sum_{i=1}^d  \frac{1}{\lambda_i + \lambda}
+\]</span> According to the Existence Theorem, <span class="math inline">\(\exists\lambda\)</span> s.t. <span class="math inline">\(\hat{w}_{new}\)</span> has lesser means square error than <span class="math inline">\(\hat{w}_{ML}\)</span>.</p>
+<p>In practice, we find <span class="math inline">\(\lambda\)</span> using <strong>cross validation</strong>.</p>
+<p>Three popular techniques of Cross Validation are:</p>
+<ol type="1">
+<li><strong>Training-Validation Split</strong>: The training set is randomly split into training and validation set, usually in the ratio <span class="math inline">\(80:20\)</span>. From among various <span class="math inline">\(\lambda\)</span>s, we choose the one with gives the least error.</li>
+<li><strong>K-Fold Cross Validation</strong>: It is done by dividing the training set into K equally-sized parts, training the model K times on different (K-1) parts, and evaluating it on the remaining part. From among various <span class="math inline">\(\lambda\)</span>s, we choose the one with gives the least average error.</li>
+<li><strong>Leave One Out Cross Validation</strong>: It is done by training the model on all but one of the samples in the training set and evaluating it on the left-out sample, repeating this process for each sample in the dataset. From among various <span class="math inline">\(\lambda\)</span>s, we choose the one with gives the least average error.</li>
+</ol>
 </section>
-<section id="credits" class="level2">
-<h2 class="anchored" data-anchor-id="credits">Credits</h2>
-<p>I would like to express my gratitude to Professor Arun Rajkumar for his valuable content and notations, which have greatly influenced my understanding. Additionally, I would like to acknowledge the contribution of IIT Madras, where I had the opportunity to learn from Professor Arun Rajkumar in the Machine Learning Techniques Course.</p>
+<section id="bayesian-modeling" class="level1">
+<h1>Bayesian Modeling</h1>
+<p>An alternate way to understand <span class="math inline">\(\hat{w}_{ML}\)</span> is through Bayesian Modeling.</p>
+<p>Let <span class="math inline">\(P(y|X)\sim \mathcal{N}(w^Tx,I)\)</span>. We use <span class="math inline">\(I\)</span>, the identity matrix, instead of <span class="math inline">\(\sigma^2\)</span> for simplicity.</p>
+<p>A good choice of prior for <span class="math inline">\(w\)</span> is <span class="math inline">\(\mathcal{N}(0,\gamma^2I)\)</span>, where <span class="math inline">\(\gamma\in\mathbb{R}^d\)</span>.</p>
+<p>Therefore, we get, <span class="math display">\[\begin{align*}
+P(w|\{(x_1, y_1), \ldots, (x_n,y_n)\})&amp;\propto P(\{(x_1, y_1), \ldots, (x_n,y_n)\}|w)*P(w)\\
+&amp;\propto \left ( \prod _{i=1} ^n e^{\frac{-(y_i - w^Tx_i)^2}{2}}  \right ) * \left ( \prod _{i=1} ^d  e^{\frac{-(w_i - 0)^2}{2\gamma^2}} \right )\\
+&amp;\propto \left ( \prod _{i=1} ^n e^{\frac{-(y_i - w^Tx_i)^2}{2}}  \right ) * \left ( e^{-\sum _{i=1} ^d\frac{w_i^2}{2\gamma^2}} \right ) \\
+&amp;\propto \left ( \prod _{i=1} ^n e^{\frac{-(y_i - w^Tx_i)^2}{2}}  \right ) * e^{\frac{-||w||^2}{2\gamma^2}} \\
+\log(P(w|\{(x_1, y_1), \ldots, (x_n,y_n)\}))&amp;\propto \frac{-(y_i - w^Tx_i)^2}{2}-\frac{||w||^2}{2\gamma^2}
+\end{align*}\]</span> <span class="math display">\[
+\text{Taking the gradient, we get}
+\]</span> <span class="math display">\[\begin{align*}
+\nabla \log(P(w|\{(x_1, y_1), \ldots, (x_n,y_n)\}))&amp;\propto  (XX^T)\hat{w}_{MAP} - Xy + \frac{\hat{w}_{MAP}}{\gamma^2} \\
+\therefore \hat{w}_{MAP}&amp;=(XX^T + \frac{1}{\gamma^2} I)^{-1}Xy
+\end{align*}\]</span> where <span class="math inline">\(\hat{w}_{MAP}\)</span> is the Maximum a posteriori Estimate. In practice, the value for <span class="math inline">\(\frac{1}{\gamma^2}\)</span> is acquired using cross validation.</p>
+<p>Hence, Maximum a posteriori Estimation for linear regression with a Gaussian Prior <span class="math inline">\(\mathcal{N}(0,\gamma^2I)\)</span> for <span class="math inline">\(w\)</span> is equivalent to the “new” estimator we used previously.</p>
+</section>
+<section id="ridge-regression" class="level1">
+<h1>Ridge Regression</h1>
+<p>Ridge regression is a type of linear regression that adds a penalty term to the ordinary least squares method to mitigate multicollinearity and overfitting.</p>
+<p>Its objective function is given by, <span class="math display">\[
+\min_{w\in \mathbb{R}^d} \sum^n_{i=1}(w^Tx_i-y_i)^2 + \lambda||w||_2^2
+\]</span> where <span class="math inline">\(\lambda||w||_2^2\)</span> is the regularizer, and <span class="math inline">\(||w||_2^2\)</span> is the squared L2 Norm of <span class="math inline">\(w\)</span>. Let this equation be given by <span class="math inline">\(f(w)\)</span>.</p>
+<p>Subsequently, this is also equivalent to, <span class="math display">\[
+\min_{w\in \mathbb{R}^d} \sum^n_{i=1}(w^Tx_i-y_i)^2 \hspace{1em}\text{s.t.}||w||_2^2\le\theta
+\]</span> where <span class="math inline">\(\theta\)</span> is dependent on <span class="math inline">\(\lambda\)</span>.</p>
+<p>In conclusion, for every choice of <span class="math inline">\(\lambda&gt;0\)</span>, <span class="math inline">\(\exists \theta\)</span> s.t. there are optimal solutions to our objective function.</p>
+<p>The loss function of the linear regression of <span class="math inline">\(w_{ML}\)</span> is given by, <span class="math display">\[
+f(w_{ML}) = \sum^n_{i=1}(w_{ML}^Tx_i-y_i)^2
+\]</span> Consider the set of all <span class="math inline">\(w\)</span> s.t. <span class="math inline">\(f(w_{ML}) = f(w) + c\)</span> where <span class="math inline">\(c&gt;0\)</span>. This set is given by, <span class="math display">\[
+S_c = \left \{w: f(w_{ML}) = f(w) + c \right \}
+\]</span> i.e.&nbsp;every <span class="math inline">\(w \in S_c\)</span> satisfies, <span class="math display">\[
+||X^Tw-y||^2=||X^Tw_{ML}-y||^2 + c
+\]</span> <span class="math display">\[
+\text{On Simplification, we get}
+\]</span> <span class="math display">\[
+(w-w_{ML})^T(XX^T)(w-w_{ML}) = c'
+\]</span> where <span class="math inline">\(c'\)</span> depends on <span class="math inline">\(c,XX^T,\)</span> and <span class="math inline">\(w_{ML}\)</span>, but <strong>not on</strong> <span class="math inline">\(w\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/ridge_regression.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Pictoral Representation of what Ridge Regression does.</figcaption>
+</figure>
+</div>
+<p><strong>Conclusion</strong>: Ridge Regression pushes feature values to zero but not necessarily zero.</p>
+</section>
+<section id="lasso-regression" class="level1">
+<h1>Lasso Regression</h1>
+<p><strong>Lasso (Least Absolute Shrinkage and Selection Operator)</strong> regression is a type of linear regression that uses a regularization technique to shrink the coefficients of the less important features to zero, effectively performing feature selection and preventing overfitting.</p>
+<p>Its objective function is given by, <span class="math display">\[
+\min_{w\in \mathbb{R}^d} \sum^n_{i=1}(w^Tx_i-y_i)^2 + \lambda||w||_1^2
+\]</span></p>
+<p>As you can see, it is almost the same as Ridge Regression. The only difference is that it uses <span class="math inline">\(||w||_1^2\)</span>, instead of <span class="math inline">\(||w||_2^2\)</span>, which is the squared L1 norm of <span class="math inline">\(w\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/lasso_regression.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Pictoral Representation of what Lasso Regression does.</figcaption>
+</figure>
+</div>
+<p>Lasso Regression does not have a closed form solution and is often solved using Sub-gradients. For further info on sub-gradients, see <a href="https://see.stanford.edu/materials/lsocoee364b/01-subgradients_notes.pdf">here</a>.</p>
+<p><strong>Conclusion</strong>: Lasso Regression pushes less important features to zero.</p>
+</section>
+<section id="credits" class="level1">
+<h1>Credits</h1>
+<p>Professor Arun Rajkumar: The content as well as the notations are from his slides and lecture.</p>
 
 
 </section>

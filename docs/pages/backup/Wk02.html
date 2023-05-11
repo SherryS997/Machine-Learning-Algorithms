@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Machine Learning Algorithms - Welcome to Machine Learning Algorithms</title>
+<title>Machine Learning Algorithms - Unsupervised Learning - Representation learning - Kernel PCA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./icon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../icon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -62,6 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -74,7 +76,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Home</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Machine Learning Algorithms
+      </li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -89,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Machine Learning Algorithms</a> 
+      <a href="../../">Machine Learning Algorithms</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://www.linkedin.com/in/sherry-thomassp/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
     <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
@@ -106,13 +110,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to MLA</span></a>
   </div>
 </li>
@@ -136,13 +140,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/PCA.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/PCA.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Principal component analysis (PCA)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/Kernel_PCA.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/Kernel_PCA.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kernel PCA</span></a>
   </div>
 </li>
@@ -159,13 +163,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/kmeans.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/kmeans.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">K-means clustering</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/kkmeans.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/kkmeans.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kernel K-means clustering</span></a>
   </div>
 </li>
@@ -182,25 +186,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/mle.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/mle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Maximum likelihood estimation (MLE)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/bayes_est.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/bayes_est.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bayesian estimation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/gmm.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/gmm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Gaussian mixture model (GMM)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/em.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/em.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Expectation-maximization (EM) algorithm</span></a>
   </div>
 </li>
@@ -228,31 +232,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/lin_reg.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/lin_reg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Least squares regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/klin_reg.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/klin_reg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kernel Least squares regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/bayes_lin_reg.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/bayes_lin_reg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bayesian view of least squares regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/rid_lin_reg.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/rid_lin_reg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ridge regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/lasso_lin_reg.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/lasso_lin_reg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">LASSO regression</span></a>
   </div>
 </li>
@@ -269,13 +273,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/knn.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/knn.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">K-nearest neighbors (KNN)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/dec_trees.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/dec_trees.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Decision tree</span></a>
   </div>
 </li>
@@ -292,7 +296,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/naive_bayes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/naive_bayes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Naive Bayes</span></a>
   </div>
 </li>
@@ -309,19 +313,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/percp.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/percp.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Perceptron</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/log_reg.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/log_reg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Logistic regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/svm.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/svm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Support vector machines (SVMs)</span></a>
   </div>
 </li>
@@ -338,13 +342,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/bag.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/bag.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bagging</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/boost.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/boost.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Boosting</span></a>
   </div>
 </li>
@@ -352,7 +356,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/ann.html" class="sidebar-item-text sidebar-link">
+  <a href="../../pages/ann.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Artificial neural networks (ANNs)</span></a>
   </div>
 </li>
@@ -360,7 +364,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./about.html" class="sidebar-item-text sidebar-link">
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About me</span></a>
   </div>
 </li>
@@ -374,8 +378,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#unsupervised-learning" id="toc-unsupervised-learning" class="nav-link active" data-scroll-target="#unsupervised-learning">Unsupervised Learning</a></li>
-  <li><a href="#supervised-learning" id="toc-supervised-learning" class="nav-link" data-scroll-target="#supervised-learning">Supervised Learning</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#reducing-the-time-complexity-to-find-eigenvalues-and-eigenvectors" id="toc-reducing-the-time-complexity-to-find-eigenvalues-and-eigenvectors" class="nav-link" data-scroll-target="#reducing-the-time-complexity-to-find-eigenvalues-and-eigenvectors">Reducing the Time Complexity to find Eigenvalues and Eigenvectors</a></li>
+  <li><a href="#finding-pca-for-non-linear-relationships" id="toc-finding-pca-for-non-linear-relationships" class="nav-link" data-scroll-target="#finding-pca-for-non-linear-relationships">Finding PCA for Non-Linear Relationships</a>
+  <ul class="collapse">
+  <li><a href="#transforming-features" id="toc-transforming-features" class="nav-link" data-scroll-target="#transforming-features">Transforming Features</a></li>
+  <li><a href="#kernel-functions" id="toc-kernel-functions" class="nav-link" data-scroll-target="#kernel-functions">Kernel Functions</a></li>
+  </ul></li>
+  <li><a href="#kernel-pca" id="toc-kernel-pca" class="nav-link" data-scroll-target="#kernel-pca">Kernel PCA</a></li>
   <li><a href="#credits" id="toc-credits" class="nav-link" data-scroll-target="#credits">Credits</a></li>
   </ul>
 </nav>
@@ -385,7 +395,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Welcome to Machine Learning Algorithms</h1>
+<h1 class="title">Unsupervised Learning - Representation learning - Kernel PCA</h1>
 </div>
 
 
@@ -400,76 +410,121 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>This website is a comprehensive resource for machine learning algorithms. Here, you will find explanations of the most popular algorithms, as well as code implementations in Python.</p>
-<p>The website is divided into two main sections: supervised learning and unsupervised learning. Supervised learning algorithms are used to learn from labeled data, while unsupervised learning algorithms are used to learn from unlabeled data.</p>
-<p>Within each section, the algorithms are further divided into regression, classification, and clustering. Regression algorithms are used to predict continuous values, while classification algorithms are used to predict discrete values. Clustering algorithms are used to group data points together.</p>
-<p>Each algorithm page includes the following information:</p>
+<p>PDF Link: <a href="../notes/Wk02.pdf">notes</a></p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>For a given dataset <span class="math inline">\(D \in \mathbb{R} ^{d \times n}\)</span>, the covariance matrix is <span class="math inline">\(C \in \mathbb{R} ^{d \times d}\)</span>. PCA for this dataset can have the following two problems:</p>
 <ul>
-<li>A brief overview of the algorithm</li>
-<li>The math behind the algorithm</li>
-<li>A Python implementation of the algorithm</li>
-<li>Examples of how the algorithm can be used</li>
-</ul>
-<p>We hope you find this website to be a valuable resource for learning about machine learning algorithms.</p>
-<p><strong>Here is a more detailed overview of the algorithms covered on this website:</strong></p>
-<section id="unsupervised-learning" class="level3">
-<h3 class="anchored" data-anchor-id="unsupervised-learning">Unsupervised Learning</h3>
-<ul>
-<li>Representation learning
-<ul>
-<li>Principal component analysis (PCA): PCA is a dimensionality reduction algorithm that projects data points onto a lower-dimensional subspace while preserving as much of the variance as possible.</li>
-<li>Kernel PCA: Kernel PCA is a generalization of PCA that can be used to project data points onto a nonlinear subspace.</li>
-</ul></li>
-<li>Clustering
-<ul>
-<li>K-means clustering: K-means clustering is a simple and efficient algorithm for clustering data points into a predefined number of clusters.</li>
-<li>Kernel K-means clustering: Kernel K-means clustering is a generalization of K-means clustering that can be used to cluster data points into nonlinear clusters.</li>
-</ul></li>
-<li>Estimation
-<ul>
-<li>Maximum likelihood estimation (MLE): MLE is a statistical method for estimating the parameters of a probability distribution from data.</li>
-<li>Bayesian estimation: Bayesian estimation is a statistical method for estimating the parameters of a probability distribution using prior knowledge about the parameters.</li>
-<li>Gaussian mixture model (GMM): GMM is a probabilistic model that can be used to represent data that is generated by a mixture of Gaussian distributions.</li>
-<li>Expectation-maximization (EM) algorithm: EM is an iterative algorithm that can be used to fit a GMM to data.</li>
-</ul></li>
+<li>Time Complexity: The algorithimic complexity of finding the eigenvalues and eigenvectors of <span class="math inline">\(C\)</span> is <span class="math inline">\(O(d ^3)\)</span>. Hence, as <span class="math inline">\(d\)</span> grows, the time taken becomes very large.</li>
+<li>Non-Linear Dataset: The dataset may lie in a non-linear subspace. As PCA tries to get linear combination of Principal Components, non-linear datasets may result in non-optimal outputs.</li>
 </ul>
 </section>
-<section id="supervised-learning" class="level3">
-<h3 class="anchored" data-anchor-id="supervised-learning">Supervised Learning</h3>
+<section id="reducing-the-time-complexity-to-find-eigenvalues-and-eigenvectors" class="level1">
+<h1>Reducing the Time Complexity to find Eigenvalues and Eigenvectors</h1>
+<p>Let’s take a dataset <span class="math inline">\(X\)</span> with a large number of features(<span class="math inline">\(d\)</span>) i.e.&nbsp;<span class="math inline">\([d &gt;&gt; n]\)</span> where</p>
 <ul>
-<li>Regression
+<li><span class="math inline">\(d\)</span>: no. of features</li>
+<li><span class="math inline">\(n\)</span>: no. of datapoints</li>
+</ul>
+<p><span class="math display">\[
+X=\left [
+\begin{array}{ccccc}
+    | &amp; | &amp; | &amp; &amp; | \\
+    x_1 &amp; x_2 &amp; x_3 &amp; \ldots &amp; x_n \\
+    | &amp; | &amp; | &amp; &amp; |
+\end{array}
+\right ]
+X \in \mathbb{R} ^{d \times n}
+\]</span> The covariance matrix <span class="math inline">\(C\)</span> of <span class="math inline">\(X\)</span> is given by, <span class="math display">\[
+C=\frac{1}{n}(X  X ^T) \text{\hspace{2em}where } C \in \mathbb{R}^{d \times d} \hspace{2em} \ldots[1]
+\]</span> Let <span class="math inline">\(w_k\)</span> be the the eigenvector corresponding to the <span class="math inline">\(k ^{th}\)</span> largest eigenvalue <span class="math inline">\(\lambda _k\)</span> of <span class="math inline">\(C\)</span>.</p>
+<p>We know <span class="math display">\[
+Cw_k=\lambda _k w_k
+\]</span> Substituting <span class="math inline">\(C\)</span> from <span class="math inline">\([1]\)</span> in the above equation, and solving for <span class="math inline">\(w_k\)</span>, we get <span class="math display">\[
+w_k = \sum _{i=1} ^n (\frac{x_i ^T w_k}{n \lambda _k})\cdot{x_i}
+\]</span> <span class="math inline">\(\therefore\)</span> <span class="math inline">\(w_k\)</span> is a linear combination of datapoints! Hence, we can say <span class="math display">\[
+w_k= X \alpha _k \text{\hspace{2em} for some } \alpha _k \hspace{2em} \ldots [2]
+\]</span> Let <span class="math inline">\(X ^T X = K\)</span> where <span class="math inline">\(K \in \mathbb{R} ^{n \times n}\)</span>. We shall use this to solve for <span class="math inline">\(\alpha _k\)</span>. After some algebra (Refer to lectures), we get: <span class="math display">\[
+K \alpha _k = (n \lambda _k) \alpha _k
+\]</span> We know that the non-zero eigenvalues of <span class="math inline">\(XX^T\)</span> and <span class="math inline">\(X^T X\)</span> are the same according to the Spectral Theorm.</p>
+<p><strong>Explanation for the above</strong>: If <span class="math inline">\(\lambda \ne 0\)</span> is an eigenvalue of <span class="math inline">\(XX^T\)</span> with eigenvector <span class="math inline">\(w\)</span>, then <span class="math inline">\(XX^Tw=\lambda w\)</span>.</p>
+<p>Multiply both sides by <span class="math inline">\(X^T\)</span> to get <span class="math display">\[X^TX(X^Tw)=\lambda X^Tw\]</span> But then we see that <span class="math inline">\(\lambda\)</span> is still an eigenvalue for <span class="math inline">\(X^TX\)</span> and the corresponding eigenvector is simply <span class="math inline">\(X^Tw\)</span>.</p>
+<p>Let <span class="math inline">\(\beta _k\)</span> be the the eigenvector corresponding to the <span class="math inline">\(k ^{th}\)</span> largest eigenvalue <span class="math inline">\(n \lambda _k\)</span> of <span class="math inline">\(K\)</span>.</p>
+<p>On solving the eigen equation for <span class="math inline">\(K\)</span>, we get <span class="math display">\[
+\alpha _k= \frac{\beta _k}{\sqrt{n \lambda _k}} \hspace{2em} \ldots [3]
+\]</span> Using equations [2] and [3], we can get the eigenvalues and eigenvectors of <span class="math inline">\(C\)</span> using <span class="math inline">\(K\)</span> and hence, bringing the time complexity from <span class="math inline">\(O(d ^3)\)</span> to <span class="math inline">\(O(n^3)\)</span>.</p>
+</section>
+<section id="finding-pca-for-non-linear-relationships" class="level1">
+<h1>Finding PCA for Non-Linear Relationships</h1>
+<section id="transforming-features" class="level2">
+<h2 class="anchored" data-anchor-id="transforming-features">Transforming Features</h2>
+<p>We solve the problem of non-linear relationships by mapping them to higher dimensions. <span class="math display">\[
+x \to \phi(x) \hspace{2em} \mathbb{R} ^d \to \mathbb{R} ^D \hspace{2em} \text{where } [D &gt;&gt; d]
+\]</span> To compute <span class="math inline">\(D\)</span>:</p>
+<p>Let <span class="math inline">\(x=\left [ \begin{array} {cc}  f_1 &amp; f_2 \end{array} \right ]\)</span> be features of a dataset containing datapoints lying on a curve of degree two in a two-dimensional space.</p>
+<p>To make it linear from quadratic, we map the features to <span class="math inline">\(\phi(x)=\left [ \begin{array} {cccccc}  1 &amp; f_1^2 &amp; f_2^2 &amp; f_1f_2 &amp; f_1 &amp; f_2 \end{array} \right ]\)</span></p>
+<p>Mapping <span class="math inline">\(d\)</span> features to the polygonial power <span class="math inline">\(p\)</span> gives <span class="math inline">\(^{d+p} C_d\)</span> new features.</p>
+<p><strong>Issue</strong>: Finding <span class="math inline">\(\phi(x)\)</span> may be very hard.</p>
+<p>Solution for this issue is in the next point.</p>
+</section>
+<section id="kernel-functions" class="level2">
+<h2 class="anchored" data-anchor-id="kernel-functions">Kernel Functions</h2>
+<p>A function that maps <span class="math inline">\(k: \mathbb{R}^d \times \mathbb{R}^d \to \mathbb{R}\)</span>, and is a “valid”, is called a Kernel Function.</p>
+<p>Proof of a “Valid” Kernel:</p>
 <ul>
-<li>Least squares regression: Least squares regression is a linear regression model that minimizes the sum of the squares of the errors between the predicted values and the observed values.</li>
-<li>Bayesian view of least squares regression: The Bayesian view of least squares regression provides a probabilistic interpretation of the model.</li>
-<li>Ridge regression: Ridge regression is a linear regression model that penalizes the model coefficients to prevent overfitting.</li>
-<li>LASSO regression: LASSO regression is a linear regression model that shrinks the model coefficients to zero to prevent overfitting.</li>
+<li>Method 1: Exhibit the map to <span class="math inline">\(\phi\)</span> explicitly. [may be hard]</li>
+<li>Method 2: Using Mercer’s Theorem:
+<ul>
+<li><span class="math inline">\(k: \mathbb{R}^d \times \mathbb{R}^d \to \mathbb{R}\)</span> is a “valid” kernel if and only if:
+<ul>
+<li><span class="math inline">\(k\)</span> is symmetric i.e <span class="math inline">\(k(x,x') = k(x',x)\)</span></li>
+<li>For any dataset <span class="math inline">\(\{x_1,x_2,\ldots,x_n \}\)</span>, the matrix <span class="math inline">\(K \in \mathbb{R}^{n \times n}\)</span>, where <span class="math inline">\(K_{ij} = k(i,j)\)</span>, is Positive Semi-Definite.</li>
 </ul></li>
-<li>Classification
-<ul>
-<li>K-nearest neighbors (KNN): KNN is a non-parametric classification algorithm that classifies a new data point by finding the K nearest neighbors of the data point and then assigning the new data point to the class that is most common among its neighbors.</li>
-<li>Decision tree: Decision trees are a type of supervised learning algorithm that can be used for both classification and regression tasks. Decision trees are constructed by recursively partitioning the data space until all of the data points in each leaf node belong to the same class.</li>
 </ul></li>
-<li>Generative models
+</ul>
+<p>Two Popular Kernel Functions:</p>
 <ul>
-<li>Naive Bayes: Naive Bayes is a simple probabilistic classification algorithm that assumes that the features of a data point are independent of each other.</li>
-</ul></li>
-<li>Discriminative models
-<ul>
-<li>Perceptron: The perceptron model is a discriminative model that uses a linear decision boundary to classify data points into different categories.</li>
-<li>Logistic regression: Logistic regression is a probabilistic classification algorithm that is used to model the probability of a binary outcome.</li>
-<li>Support vector machines (SVMs): SVMs are a type of supervised learning algorithm that can be used for both classification and regression tasks. SVMs are constructed by finding a hyperplane that separates the data points into two classes.</li>
-</ul></li>
-<li>Ensemble methods
-<ul>
-<li>Bagging: Bagging is an ensemble method that combines the predictions of multiple models to improve the overall accuracy of the predictions.</li>
-<li>Boosting: Boosting is an ensemble method that trains a sequence of models, each of which is trained to correct the mistakes of the previous models.</li>
-</ul></li>
-<li>Artificial neural networks (ANNs): ANNs are a type of machine learning algorithm that is inspired by the human brain. ANNs are composed of artificial neurons that are connected to each other in a network. Each neuron receives input from other neurons, and it outputs a signal that is determined by a nonlinear function of the input. ANNs can be used to solve a variety of problems, including classification, regression, and time series forecasting.</li>
+<li><strong>Polynomial Kernel</strong>: <span class="math inline">\(k(x,x') = (x^Tx + 1)^p\)</span></li>
+<li><strong>Radial Basis Function Kernel</strong> or <strong>Gaussian Kernel</strong>: <span class="math inline">\(exp(-\frac{||x-x'||^2}{2\sigma^2})\)</span></li>
 </ul>
 </section>
-<section id="credits" class="level2">
-<h2 class="anchored" data-anchor-id="credits">Credits</h2>
-<p>I would like to express my gratitude to Professor Arun Rajkumar for his valuable content and notations, which have greatly influenced my understanding. Additionally, I would like to acknowledge the contribution of IIT Madras, where I had the opportunity to learn from Professor Arun Rajkumar in the Machine Learning Techniques Course.</p>
+</section>
+<section id="kernel-pca" class="level1">
+<h1>Kernel PCA</h1>
+<p>Let’s take a dataset <span class="math inline">\(X\)</span> with a large number of features(<span class="math inline">\(d\)</span>) i.e.&nbsp;<span class="math inline">\([d &gt;&gt; n]\)</span> where</p>
+<ul>
+<li><p><span class="math inline">\(d\)</span>: no. of features</p></li>
+<li><p><span class="math inline">\(n\)</span>: no. of datapoints <span class="math display">\[
+X=\left [
+\begin{array}{ccccc}
+  | &amp; | &amp; | &amp; &amp; | \\
+  x_1 &amp; x_2 &amp; x_3 &amp; \ldots &amp; x_4 \\
+  | &amp; | &amp; | &amp; &amp; |
+\end{array}
+\right ]
+\]</span></p></li>
+<li><p>Step 1: Calculate <span class="math inline">\(K \in \mathbb{R}^{n \times n}\)</span> using a kernel function where <span class="math inline">\(K_{ij}=k(x_i,x_j)\)</span>.</p></li>
+<li><p>Step 2: Center the kernel using the following formula. <span class="math display">\[
+  K^C=K-IK-KI+IKI
+  \]</span> where <span class="math inline">\(K^C\)</span> is the centered kernel, and <span class="math inline">\(I \in \mathbb{R}^{n \times n}\)</span> where all the elements are <span class="math inline">\(\frac{1}{n}\)</span>.</p></li>
+<li><p>Step 3: Compute the eigenvalues <span class="math inline">\(\{\beta _1, \beta _2, \ldots, \beta _l\}\)</span> and eigenvectors <span class="math inline">\(\{n\lambda _1, n\lambda _2, \ldots, n\lambda _l\}\)</span> of <span class="math inline">\(K^C\)</span> and normalize to get <span class="math display">\[
+  \forall u \hspace{2em} \alpha _u = \frac{\beta _u}{\sqrt{n \lambda _u}}
+  \]</span></p></li>
+<li><p>Step 4: Compute <span class="math inline">\(\sum _{j=1} ^{n} \alpha _{kj} K^C_{ij} \hspace{1em} \forall k\)</span> <span class="math display">\[
+  x_i \in \mathbb{R}^{d} \to
+  \left [
+\begin{array}{cccc}
+  \sum _{j=1} ^{n} \alpha _{1j} K^C_{ij} &amp; \sum _{j=1} ^{n} \alpha _{2j} K^C_{ij} &amp; \ldots &amp; \sum _{j=1} ^{n} \alpha _{dj} K^C_{ij}
+\end{array}
+\right ]
+  \]</span></p></li>
+</ul>
+</section>
+<section id="credits" class="level1">
+<h1>Credits</h1>
+<ul>
+<li>Professor Arun Rajkumar: The content as well as the notations are from his slides and lecture.</li>
+</ul>
 
 
 </section>

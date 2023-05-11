@@ -1,5 +1,11 @@
 ---
-title: "About"
+title: "About Me"
 ---
 
-About this site
+Hi there, I'm Sherry Thomas, and I'm passionate about making a difference in the field of data science. I have a Bachelor's degree in Philosophy from Christ University, Bengaluru and I'm currently pursuing a Bachelor's degree in Data Science and Applications at IIT-Madras.
+
+I have a diverse academic background that includes philosophy, programming, computer science, and statistics. My philosophy studies have helped me develop critical thinking and problem-solving skills, while my data science coursework has provided me with the technical expertise needed to tackle complex challenges.
+
+I believe in taking a holistic approach to data analysis and decision-making, considering the ethical and societal implications of technology and data. My goal is to use my knowledge and skills to make a positive impact in the field of data science.
+
+I'm constantly learning and growing, and I'm committed to expanding my knowledge base and contributing to the ever-evolving world of technology and data.
