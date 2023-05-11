@@ -36,23 +36,23 @@ I hope you find this website to be a valuable resource for learning about machin
 ### Supervised Learning
 
 * Regression
-    * [Least squares regression](http://localhost:6300/pages/lin_reg.html): Least squares regression is a linear regression model that minimizes the sum of the squares of the errors between the predicted values and the observed values.
-    * [Bayesian view of least squares regression](http://localhost:6300/pages/klin_reg.html): The Bayesian view of least squares regression provides a probabilistic interpretation of the model.
-    * [Ridge regression](http://localhost:6300/pages/bayes_lin_reg.html): Ridge regression is a linear regression model that penalizes the model coefficients to prevent overfitting.
-    * [LASSO regression](http://localhost:6300/pages/lasso_lin_reg.html): LASSO regression is a linear regression model that shrinks the model coefficients to zero to prevent overfitting.
+    * [Least squares regression](/pages/lin_reg.html): Least squares regression is a linear regression model that minimizes the sum of the squares of the errors between the predicted values and the observed values.
+    * [Bayesian view of least squares regression](/pages/klin_reg.html): The Bayesian view of least squares regression provides a probabilistic interpretation of the model.
+    * [Ridge regression](/pages/bayes_lin_reg.html): Ridge regression is a linear regression model that penalizes the model coefficients to prevent overfitting.
+    * [LASSO regression](/pages/lasso_lin_reg.html): LASSO regression is a linear regression model that shrinks the model coefficients to zero to prevent overfitting.
 * Classification
-    * [K-nearest neighbors (KNN)](http://localhost:6300/pages/knn.html): KNN is a non-parametric classification algorithm that classifies a new data point by finding the K nearest neighbors of the data point and then assigning the new data point to the class that is most common among its neighbors.
-    * [Decision tree](http://localhost:6300/pages/dec_trees.html): Decision trees are a type of supervised learning algorithm that can be used for both classification and regression tasks. Decision trees are constructed by recursively partitioning the data space until all of the data points in each leaf node belong to the same class.
+    * [K-nearest neighbors (KNN)](/pages/knn.html): KNN is a non-parametric classification algorithm that classifies a new data point by finding the K nearest neighbors of the data point and then assigning the new data point to the class that is most common among its neighbors.
+    * [Decision tree](/pages/dec_trees.html): Decision trees are a type of supervised learning algorithm that can be used for both classification and regression tasks. Decision trees are constructed by recursively partitioning the data space until all of the data points in each leaf node belong to the same class.
 * Generative models
-    * [Naive Bayes](http://localhost:6300/pages/naive_bayes.html): Naive Bayes is a simple probabilistic classification algorithm that assumes that the features of a data point are independent of each other.
+    * [Naive Bayes](/pages/naive_bayes.html): Naive Bayes is a simple probabilistic classification algorithm that assumes that the features of a data point are independent of each other.
 * Discriminative models
-    * [Perceptron](http://localhost:6300/pages/percp.html): The perceptron model is a discriminative model that uses a linear decision boundary to classify data points into different categories.
-    * [Logistic regression](http://localhost:6300/pages/log_reg.html): Logistic regression is a probabilistic classification algorithm that is used to model the probability of a binary outcome.
-    * [Support vector machines (SVMs)](http://localhost:6300/pages/svm.html): SVMs are a type of supervised learning algorithm that can be used for both classification and regression tasks. SVMs are constructed by finding a hyperplane that separates the data points into two classes.
+    * [Perceptron](/pages/percp.html): The perceptron model is a discriminative model that uses a linear decision boundary to classify data points into different categories.
+    * [Logistic regression](/pages/log_reg.html): Logistic regression is a probabilistic classification algorithm that is used to model the probability of a binary outcome.
+    * [Support vector machines (SVMs)](/pages/svm.html): SVMs are a type of supervised learning algorithm that can be used for both classification and regression tasks. SVMs are constructed by finding a hyperplane that separates the data points into two classes.
 * Ensemble methods
-    * [Bagging](http://localhost:6300/pages/bag.html): Bagging is an ensemble method that combines the predictions of multiple models to improve the overall accuracy of the predictions.
-    * [Boosting](http://localhost:6300/pages/boost.html): Boosting is an ensemble method that trains a sequence of models, each of which is trained to correct the mistakes of the previous models.
-* [Artificial neural networks (ANNs)](http://localhost:6300/pages/ann.html): ANNs are a type of machine learning algorithm that is inspired by the human brain. ANNs are composed of artificial neurons that are connected to each other in a network. Each neuron receives input from other neurons, and it outputs a signal that is determined by a nonlinear function of the input. ANNs can be used to solve a variety of problems, including classification, regression, and time series forecasting.
+    * [Bagging](/pages/bag.html): Bagging is an ensemble method that combines the predictions of multiple models to improve the overall accuracy of the predictions.
+    * [Boosting](/pages/boost.html): Boosting is an ensemble method that trains a sequence of models, each of which is trained to correct the mistakes of the previous models.
+* [Artificial neural networks (ANNs)](/pages/ann.html): ANNs are a type of machine learning algorithm that is inspired by the human brain. ANNs are composed of artificial neurons that are connected to each other in a network. Each neuron receives input from other neurons, and it outputs a signal that is determined by a nonlinear function of the input. ANNs can be used to solve a variety of problems, including classification, regression, and time series forecasting.
 
 ## Credits
 
