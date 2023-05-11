@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Machine Learning Algorithms – percp</title>
+<title>Machine Learning Algorithms - Perceptron</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -62,6 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -370,15 +372,121 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#analysis-of-the-update-rule" id="toc-analysis-of-the-update-rule" class="nav-link active" data-scroll-target="#analysis-of-the-update-rule">Analysis of the Update Rule</a></li>
+  <li><a href="#further-assumptions" id="toc-further-assumptions" class="nav-link" data-scroll-target="#further-assumptions">Further Assumptions</a></li>
+  <li><a href="#proof-of-convergence-of-perceptron-algorithm" id="toc-proof-of-convergence-of-perceptron-algorithm" class="nav-link" data-scroll-target="#proof-of-convergence-of-perceptron-algorithm">Proof of Convergence of Perceptron Algorithm</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Perceptron</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>The <strong>Perceptron Learning Algorithm</strong> is a type of supervised learning algorithm used for binary classification tasks. It involves iteratively adjusting the weights of a linear combination of input features until a decision boundary that separates the two classes is found. The algorithm is a type of discriminative classification as it directly models the boundary between classes rather than modeling the underlying probability distribution of each class.</p>
+<p>Let <span class="math inline">\(D=\{(x_1, y_1), \ldots, (x_n,y_n)\}\)</span> be the dataset, where <span class="math inline">\(x_i \in \mathbb{R}^d\)</span> and <span class="math inline">\(y_i \in \{0, 1\}\)</span>.</p>
+<p>Assumptions made in the algorithm:</p>
+<ol type="1">
+<li><span class="math inline">\(P(y=1|x) = 1\)</span> if <span class="math inline">\(w^Tx\ge0\)</span>, <span class="math inline">\(0\)</span> otherwise.</li>
+<li><strong>Linear Separability Assumption</strong>: The Linear Separability Assumption is the assumption made in some machine learning algorithms, including the Perceptron Learning Algorithm, that the classes to be classified can be separated by a linear decision boundary. This means that there exists a hyperplane in the feature space that can separate the data points of the two classes.</li>
+</ol>
+<p>The objective function is given by, <span class="math display">\[
+\min _{h \in \mathcal{H}} \sum _{i=1} ^n \mathbb{1}\left ( h(x_i) \ne y_i \right )
+\]</span> In general, this is an NP-Hard Problem even if <span class="math inline">\(\mathcal{H}\)</span> only accounts for the Linear Hypotheses.</p>
+<p>Under the Linear Separability Assumption, let <span class="math inline">\(\exists w \in \mathbb{R}^d\)</span> s.t. <span class="math inline">\(\text{sign}(w^Tx_i)=y_i\)</span> <span class="math inline">\(\forall i \in [n]\)</span>.</p>
+<p>We solve this problem of convergence using an iterative algorithm. The algorithm is as follows:</p>
+<ul>
+<li>Assign <span class="math inline">\(w^0 = 0 \in \mathbb{R}^d\)</span></li>
+<li>Until Convergence:
+<ul>
+<li>Pick <span class="math inline">\((x_i, y_i)\)</span> pair from the dataset</li>
+<li>if <span class="math inline">\(\text{sign}(w^Tx_i)==y_i\)</span>
+<ul>
+<li>do nothing</li>
+</ul></li>
+<li>else
+<ul>
+<li><span class="math inline">\(w^{(t+1)} = w^t + x_iy_i \hspace{2em} \leftarrow\)</span> update rule.</li>
+</ul></li>
+<li>end</li>
+</ul></li>
+</ul>
+<section id="analysis-of-the-update-rule" class="level2">
+<h2 class="anchored" data-anchor-id="analysis-of-the-update-rule">Analysis of the Update Rule</h2>
+<p>For a training example <span class="math inline">\((x, y)\)</span>, where <span class="math inline">\(x\)</span> is the input and <span class="math inline">\(y\)</span> is the correct output (either <span class="math inline">\(1\)</span> or <span class="math inline">\(-1\)</span>), the perceptron algorithm updates its weight vector <span class="math inline">\(w\)</span> as follows:</p>
+<ul>
+<li>If the prediction of the perceptron on <span class="math inline">\(x\)</span> is correct (i.e., <span class="math inline">\(\text{sign}(w^Tx_i)==y_i\)</span>), then no update is performed.</li>
+<li>If the prediction of the perceptron on <span class="math inline">\(x\)</span> is incorrect (i.e., <span class="math inline">\(\text{sign}(w^Tx_i)\ne y_i\)</span>), then the weights are updated by adding the product of the input vector and the correct output to the current weight vector: <span class="math inline">\(w^{(t+1)} = w^t + x_iy_i\)</span>.</li>
+</ul>
+<p>This update rule effectively moves the decision boundary in the direction of the correct classification for the misclassified example. It is guaranteed to converge to a linearly separable solution if the data is linearly separable. However, if the data is not linearly separable, the perceptron algorithm may not converge to a solution.</p>
+</section>
+<section id="further-assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="further-assumptions">Further Assumptions</h2>
+<p>We make three further assumptions:</p>
+<ol type="1">
+<li><strong>Linear Separability with <span class="math inline">\(\gamma\)</span>-Margin</strong>: A dataset <span class="math inline">\(D=\{(x_1, y_1), \ldots, (x_n,y_n)\}\)</span> is linearly separable with <span class="math inline">\(\gamma\)</span>-margin if <span class="math inline">\(\exists w^* \in \mathbb{R}^d\)</span> s.t. <span class="math inline">\((w^{*T}x_i)y_i\ge\gamma\)</span> <span class="math inline">\(\forall i\)</span> for some <span class="math inline">\(\gamma&gt;0\)</span>.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/Linear Separability with gamma-Margin.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Linear Separability with <span class="math inline">\(\gamma\)</span>-Margin</figcaption>
+</figure>
+</div>
+<ol start="2" type="1">
+<li><strong>Radius Assumption</strong>: Let some <span class="math inline">\(R&gt;0 \in \mathbb{R}\)</span>, <span class="math inline">\(\forall i \in D\)</span> <span class="math inline">\(||x_i||\le R\)</span>. In short, let <span class="math inline">\(R\)</span> be the length of the datapoint furthest from the center.</li>
+<li><strong>Normal Length for <span class="math inline">\(w^*\)</span></strong>: Let <span class="math inline">\(w^*\)</span> be of unit length.</li>
+</ol>
+</section>
+<section id="proof-of-convergence-of-perceptron-algorithm" class="level1">
+<h1>Proof of Convergence of Perceptron Algorithm</h1>
+<p>Let <span class="math inline">\(l\)</span> denote the current mistake number. Using everything upto now, we can see, <span class="math display">\[\begin{align*}
+w^{l+1} &amp;= w^l + xy \\
+||w^{l+1}||^2&amp;=||w^l + xy||^2 \\
+&amp;=(w^l + xy)^T(w^l + xy) \\
+&amp;=||w^l||^2 + 2(w^{lT}x)y+ ||x||^2y^2 \\
+\therefore ||w^{l+1}||^2&amp;\le ||w^l||^2 + R^2 \\
+&amp;\le (||w^{l-1}||^2 + R^2)  + R^2 \\
+&amp;\le ||w^0||^2 + lR^2 \\
+\therefore ||w^{l+1}||^2&amp;\le lR^2 \hspace{6em} \ldots[1]
+\end{align*}\]</span> We can also see, <span class="math display">\[\begin{align*}
+w^{l+1} &amp;= w^l + xy \\
+(w^{l+1})^Tw^* &amp;= (w^l + xy)^Tw^* \\
+&amp;= w^{lT}w^* + (w^{*T}x)y \\
+\therefore (w^{l+1})^Tw^* &amp;\ge w^{lT}w^* + \gamma \\
+&amp;\ge (w^{l-1T}w^* + \gamma) + \gamma \\
+&amp;\ge w^{0T}w^* + l\gamma \\
+\therefore (w^{l+1})^Tw^* &amp;\ge l\gamma \\
+((w^{l+1})^Tw^*)^2 &amp;\ge l^2\gamma^2 \\
+||w^{l+1}||^2||w^*||^2 &amp;\ge l^2\gamma^2 \hspace{0.5em}\ldots\text{Using Cauchy-Schwartz}\\
+\therefore ||w^{l+1}||^2 &amp;\ge l^2\gamma^2 \hspace{6em} \ldots[2]
+\end{align*}\]</span> Therefore, from <span class="math inline">\([1]\)</span> and <span class="math inline">\([2]\)</span>, we get, <span class="math display">\[\begin{align*}
+l^2\gamma^2 &amp;\le ||w^{l+1}||^2 \le lR^2 \\
+l^2\gamma^2 &amp;\le  lR^2 \\
+\therefore l &amp;\le \frac{R^2}{\gamma^2}
+\end{align*}\]</span> Hence, from the above equation, we can conclude that for a dataset that follows Linear Separability with <span class="math inline">\(\gamma\)</span>-Margin, and has a finite Radius <span class="math inline">\(R\)</span>, the perceptron algorithm has an upper bound for the number of mistakes.</p>
+<p>Therefore, perceptron converges.</p>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -1,0 +1,44 @@
+---
+title: "Maximum likelihood estimation (MLE)"
+---
+
+# Introduction to Estimation
+Estimators in machine learning are algorithms or models used to estimate unknown parameters or predict outcomes based on data. The aim of the method is to find/predict the unknow parameters describing the distribution of the data.
+
+Let $\{x_1, x_2, \ldots, x_n\}$ be a dataset where $x_i \in \{0,1\}$. We assume that the datapoints are independent and identically distributed.
+
+Independence means $P(x_i|x_j) = P(x_i)$.
+Identically distributed means $P(x_i)=P(x_j)=p$.
+
+# Maximum Likelihood Estimation
+## Fisher's Principle of Maximum Likelihood
+Fisher's principle of maximum likelihood is a statistical method used to estimate the parameters of a statistical model by choosing the parameter values that maximize the likelihood function, which measures how well the model fits the observed data.
+
+Applying the likelihood function on the above dataset, we get
+\begin{align*}
+\mathcal{L}(p;\{x_1, x_2, \ldots, x_n\}) &= P(x_1, x_2, \ldots, x_n;p)\\
+&=p(x_1;p)p(x_2;p)\ldots p(x_n;p) \\
+&=\prod _{i=1} ^n {p^{x_i}(1-p)^{1-x_i}}
+\end{align*}
+\begin{align*}
+\therefore \log(\mathcal{L}(p;\{x_1, x_2, \ldots, x_n\})) &=\underset{p} {\arg \max}\log \left ( \prod _{i=1} ^n {p^{x_i}(1-p)^{1-x_i}} \right ) \\
+\text{Differentiating wrt $p$, we get}\\
+\therefore \hat{p}_{ML} &= \frac{1}{n}\sum _{i=1} ^n x_i
+\end{align*}
+
+## Likelihood Estimation on Gaussian Distributions
+Let $\{x_1, x_2, \ldots, x_n\}$ be a dataset where $x_i \sim \mathcal{N}(\mu,\sigma^2)$. We assume that the datapoints are independent and identically distributed.
+
+\begin{align*}
+\mathcal{L}(\mu, \sigma^2;\{x_1, x_2, \ldots, x_n\}) &= f_{x_1, x_2, \ldots, x_n}(x_1, x_2, \ldots, x_n;\mu, \sigma^2) \\
+&=\prod _{i=1} ^n  f_{x_i}(x_i;\mu, \sigma^2) \\
+&=\prod _{i=1} ^n \left [ \frac{1}{\sqrt{2\pi}\sigma} e^{\frac{-(x_i-\mu)^2}{2\sigma^2}} \right ] \\
+\therefore \log(\mathcal{L}(p;\{x_1, x_2, \ldots, x_n\})) &= \sum _{i=1} ^n \left[ \log \left (\frac{1}{\sqrt{2\pi}\sigma}  \right ) - \frac{(x_i-\mu)^2}{2\sigma^2} \right] \\
+\end{align*}
+$$
+\text{Differentiating wrt $\mu$ and $\sigma$, we get}
+$$
+\begin{align*}
+\hat{\mu}_{ML} &= \frac{1}{n}\sum _{i=1} ^n x_i \\
+\hat{\sigma^2}_{ML} &= \frac{1}{n}\sum _{i=1} ^n (x_i-\mu)^2
+\end{align*}

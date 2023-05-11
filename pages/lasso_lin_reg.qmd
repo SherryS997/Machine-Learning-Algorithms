@@ -1,0 +1,18 @@
+---
+title: "Lasso Regression"
+---
+
+**Lasso (Least Absolute Shrinkage and Selection Operator)** regression is a type of linear regression that uses a regularization technique to shrink the coefficients of the less important features to zero, effectively performing feature selection and preventing overfitting.
+
+Its objective function is given by,
+$$
+\min_{w\in \mathbb{R}^d} \sum^n_{i=1}(w^Tx_i-y_i)^2 + \lambda||w||_1^2
+$$
+
+As you can see, it is almost the same as Ridge Regression. The only difference is that it uses $||w||_1^2$, instead of $||w||_2^2$, which is the squared L1 norm of $w$.
+
+![Pictoral Representation of what Lasso Regression does.](../images/lasso_regression.png)
+
+Lasso Regression does not have a closed form solution and is often solved using Sub-gradients. For further info on sub-gradients, see [here](https://see.stanford.edu/materials/lsocoee364b/01-subgradients_notes.pdf).
+
+**Conclusion**: Lasso Regression pushes less important features to zero.

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Machine Learning Algorithms – bayes_est</title>
+<title>Machine Learning Algorithms - Bayesian estimation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -62,6 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -375,8 +377,46 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Bayesian estimation</h1>
+</div>
 
 
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Bayesian estimation is a statistical method that updates the estimates of model parameters by combining prior knowledge or beliefs with observed data to calculate the posterior probability distribution of the parameters.</p>
+<p>Let <span class="math inline">\(\{x_1, x_2, \ldots, x_n\}\)</span> be a dataset where <span class="math inline">\(x_i\)</span> belongs to a distribution with parameters <span class="math inline">\(\theta\)</span>. We assume that the datapoints are independent and identically distributed. We also assume that <span class="math inline">\(\theta\)</span> is also from a probability distribution.</p>
+<p>Our goal is to update the parameters using the data.</p>
+<p>ie. <span class="math display">\[
+P(\theta)=&gt;P(\theta|\{x_1, x_2, \ldots, x_n\})
+\]</span> where, using Bayes Law, we get <span class="math display">\[
+P(\theta|\{x_1, x_2, \ldots, x_n\})=\left ( \frac{P(\{x_1, x_2, \ldots, x_n\}|\theta)}{P(\{x_1, x_2, \ldots, x_n\})} \right )*P(\theta)
+\]</span></p>
+<p>Let <span class="math inline">\(\{x_1, x_2, \ldots, x_n\}\)</span> be a dataset where <span class="math inline">\(x_i \in \{0,1\}\)</span> with parameter <span class="math inline">\(\theta\)</span>. What distribution can be suited for <span class="math inline">\(P(\theta)\)</span>.</p>
+<p>A commonly used distributions for priors is the Beta Distribution. <span class="math display">\[
+f(p;\alpha,\beta) = \frac{p^{\alpha-1}(1-p)^{\beta-1}}{z} \hspace{2em} \forall p \in [0,1]
+\]</span> <span class="math display">\[
+\text{where $z$ is a normalizing factor}
+\]</span></p>
+<p>Hence, using the Beta Distribution as the Prior, we get, <span class="math display">\[\begin{align*}
+P(\theta|\{x_1, x_2, \ldots, x_n\}) &amp;\propto P(\theta|\{x_1, x_2, \ldots, x_n\})*P(\theta) \\
+f_{\theta|\{x_1, x_2, \ldots, x_n\}}(p) &amp;\propto \left [ \prod _{i=1} ^n {p^{x_i}(1-p)^{1-x_i}} \right ]*\left [ p^{\alpha-1}(1-p)^{\beta-1} \right ] \\
+f_{\theta|\{x_1, x_2, \ldots, x_n\}}(p) &amp;\propto p^{\sum _{i=1} ^n x_i + \alpha - 1}(1-p)^{\sum _{i=1} ^n(1-x_i) + \beta - 1}
+\end{align*}\]</span> i.e.&nbsp;we get, <span class="math display">\[
+\text{BETA PRIOR }(\alpha, \beta) \xrightarrow[Bernoulli]{\{x_1, x_2, \ldots, x_n\}} \text{BETA POSTERIOR }(\alpha + n_h, \beta + n_t)
+\]</span> <span class="math display">\[
+\therefore \hat{p_{ML}} = \mathbb{E}[Posterior]=\mathbb{E}[Beta(\alpha +n_h, \beta + n_t)]= \frac{\alpha + n_h}{\alpha + n_h + \beta + n_t}
+\]</span></p>
 
 
 

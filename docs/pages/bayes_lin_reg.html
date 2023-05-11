@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Machine Learning Algorithms – bayes_lin_reg</title>
+<title>Machine Learning Algorithms - Bayesian view of least squares regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -62,6 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -370,15 +372,110 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#probabilistic-view-of-linear-regression" id="toc-probabilistic-view-of-linear-regression" class="nav-link active" data-scroll-target="#probabilistic-view-of-linear-regression">Probabilistic View of Linear Regression</a></li>
+  <li><a href="#goodness-of-maximum-likelihood-estimator-for-linear-regression" id="toc-goodness-of-maximum-likelihood-estimator-for-linear-regression" class="nav-link" data-scroll-target="#goodness-of-maximum-likelihood-estimator-for-linear-regression">Goodness of Maximum Likelihood Estimator for Linear Regression</a></li>
+  <li><a href="#cross-validation-for-minimizing-mse" id="toc-cross-validation-for-minimizing-mse" class="nav-link" data-scroll-target="#cross-validation-for-minimizing-mse">Cross-Validation for Minimizing MSE</a></li>
+  <li><a href="#bayesian-modeling" id="toc-bayesian-modeling" class="nav-link" data-scroll-target="#bayesian-modeling">Bayesian Modeling</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Bayesian view of least squares regression</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="probabilistic-view-of-linear-regression" class="level1">
+<h1>Probabilistic View of Linear Regression</h1>
+<p>Given a dataset <span class="math inline">\(\{x_1, \ldots, x_n\}\)</span> where <span class="math inline">\(x_i \in \mathbb{R}^d\)</span>, let <span class="math inline">\(\{y_1, \ldots, y_n\}\)</span> be the labels, where <span class="math inline">\(y_i \in \mathbb{R}\)</span>. The probability of <span class="math inline">\(y_i\)</span> given <span class="math inline">\(x_i\)</span> is given by, <span class="math display">\[
+P(y|X) \sim w^TX + \epsilon
+\]</span> where <span class="math inline">\(w \in R^d\)</span> is an unknown but fixed value and <span class="math inline">\(\epsilon\)</span> is the noise corresponding to distribution <span class="math inline">\(\mathcal{N}(0, \sigma^2)\)</span>.</p>
+<p>Because of the probabilistic nature of this problem, this can be viewed as an estimation problem and the best solution can be approached using Maximum Likelihood. This is given by, <span class="math display">\[\begin{align*}
+\mathcal{L}\left(w; \hspace{0.5em} \begin{array}{cccc}
+x_1, x_2, \ldots, x_n \\
+y_1, y_2, \ldots, y_n\\
+\end{array} \right )
+&amp;= \prod _{i=1} ^n \left [ \frac{1}{\sqrt{2\pi}\sigma}  e^{\frac{-(w^Tx_i - y_i)^2}{2\sigma^2}} \right ] \\
+\log\mathcal{L}\left(w; \hspace{0.5em} \begin{array}{cccc}
+x_1, x_2, \ldots, x_n \\
+y_1, y_2, \ldots, y_n\\
+\end{array} \right )
+&amp;= \sum _{i=1} ^n \left [ \frac{-(w^Tx_i - y_i)^2}{2\sigma^2} + \log \left ( \frac{1}{\sqrt{2\pi}\sigma} \right ) \right ]
+\end{align*}\]</span> <span class="math display">\[
+\text{Taking gradients w.r.t. } w \text{ on both sides}
+\]</span> <span class="math display">\[
+\hat{w}_{ML} = w^* = (XX^T)^+Xy
+\]</span> Therefore, Maximum Likelihood Estimator assuming Zero mean Gaussian Noise is the same as linear regression with square error.</p>
+</section>
+<section id="goodness-of-maximum-likelihood-estimator-for-linear-regression" class="level1">
+<h1>Goodness of Maximum Likelihood Estimator for Linear Regression</h1>
+<p>Given a dataset <span class="math inline">\(\{x_1, \ldots, x_n\}\)</span> where <span class="math inline">\(x_i \in \mathbb{R}^d\)</span>, let <span class="math inline">\(\{y_1, \ldots, y_n\}\)</span> be the labels, where <span class="math inline">\(y_i \in \mathbb{R}\)</span>. <span class="math display">\[
+y|X = w^Tx + \epsilon
+\]</span> where <span class="math inline">\(\epsilon \sim \mathcal{N}(0,\sigma^2)\)</span> and <span class="math inline">\(w \in \mathbb{R}^d\)</span>. Let <span class="math inline">\(\hat{w}_{ML}\)</span> signify the maximum likelihood parameter for linear regression. <span class="math display">\[
+\hat{w}_{ML}=w^*=(XX^T)^+Xy
+\]</span> <span class="math inline">\(\therefore\)</span> To measure how good our parameter is, we use the follow: <span class="math display">\[
+\mathbb{E} [|| \hat{w}_{ML} - w ||^2_2]
+\]</span> This is known as the Mean Squared Error (MSE) and turns out to be equal to <span class="math display">\[
+\mathbb{E} [|| \hat{w}_{ML} - w ||^2_2] = \sigma^2 *trace((XX^T)^{-1})
+\]</span></p>
+</section>
+<section id="cross-validation-for-minimizing-mse" class="level1">
+<h1>Cross-Validation for Minimizing MSE</h1>
+<p>Let the eigenvalues of <span class="math inline">\(XX^T\)</span> be <span class="math inline">\(\{\lambda_1, \ldots, \lambda_d\}\)</span>. Hence the eigenvalues of <span class="math inline">\((XX^T)^{-1}\)</span> are <span class="math inline">\(\{\frac{1}{\lambda_1}, \ldots, \frac{1}{\lambda_d}\}\)</span>.</p>
+<p><span class="math inline">\(\therefore\)</span> The MSE is, <span class="math display">\[
+\mathbb{E} [|| \hat{w}_{ML} - w ||^2_2] = \sigma^2 \sum_{i=1}^d  \frac{1}{\lambda_i}
+\]</span> Consider the following estimator, <span class="math display">\[
+\hat{w}_{new}=(XX^T + \lambda I)^{-1}Xy
+\]</span> where <span class="math inline">\(\lambda \in \mathbb{R}\)</span> and <span class="math inline">\(I \in \mathbb{R}^{d\times d}\)</span> is the Identity Matrix. Using this we get, <span class="math display">\[
+trace((XX^T + \lambda I)^{-1}) = \sum_{i=1}^d  \frac{1}{\lambda_i + \lambda}
+\]</span> According to the Existence Theorem, <span class="math inline">\(\exists\lambda\)</span> s.t. <span class="math inline">\(\hat{w}_{new}\)</span> has lesser means square error than <span class="math inline">\(\hat{w}_{ML}\)</span>.</p>
+<p>In practice, we find <span class="math inline">\(\lambda\)</span> using <strong>cross validation</strong>.</p>
+<p>Three popular techniques of Cross Validation are:</p>
+<ol type="1">
+<li><strong>Training-Validation Split</strong>: The training set is randomly split into training and validation set, usually in the ratio <span class="math inline">\(80:20\)</span>. From among various <span class="math inline">\(\lambda\)</span>s, we choose the one with gives the least error.</li>
+<li><strong>K-Fold Cross Validation</strong>: It is done by dividing the training set into K equally-sized parts, training the model K times on different (K-1) parts, and evaluating it on the remaining part. From among various <span class="math inline">\(\lambda\)</span>s, we choose the one with gives the least average error.</li>
+<li><strong>Leave One Out Cross Validation</strong>: It is done by training the model on all but one of the samples in the training set and evaluating it on the left-out sample, repeating this process for each sample in the dataset. From among various <span class="math inline">\(\lambda\)</span>s, we choose the one with gives the least average error.</li>
+</ol>
+</section>
+<section id="bayesian-modeling" class="level1">
+<h1>Bayesian Modeling</h1>
+<p>An alternate way to understand <span class="math inline">\(\hat{w}_{ML}\)</span> is through Bayesian Modeling.</p>
+<p>Let <span class="math inline">\(P(y|X)\sim \mathcal{N}(w^Tx,I)\)</span>. We use <span class="math inline">\(I\)</span>, the identity matrix, instead of <span class="math inline">\(\sigma^2\)</span> for simplicity.</p>
+<p>A good choice of prior for <span class="math inline">\(w\)</span> is <span class="math inline">\(\mathcal{N}(0,\gamma^2I)\)</span>, where <span class="math inline">\(\gamma\in\mathbb{R}^d\)</span>.</p>
+<p>Therefore, we get, <span class="math display">\[\begin{align*}
+P(w|\{(x_1, y_1), \ldots, (x_n,y_n)\})&amp;\propto P(\{(x_1, y_1), \ldots, (x_n,y_n)\}|w)*P(w)\\
+&amp;\propto \left ( \prod _{i=1} ^n e^{\frac{-(y_i - w^Tx_i)^2}{2}}  \right ) * \left ( \prod _{i=1} ^d  e^{\frac{-(w_i - 0)^2}{2\gamma^2}} \right )\\
+&amp;\propto \left ( \prod _{i=1} ^n e^{\frac{-(y_i - w^Tx_i)^2}{2}}  \right ) * \left ( e^{-\sum _{i=1} ^d\frac{w_i^2}{2\gamma^2}} \right ) \\
+&amp;\propto \left ( \prod _{i=1} ^n e^{\frac{-(y_i - w^Tx_i)^2}{2}}  \right ) * e^{\frac{-||w||^2}{2\gamma^2}} \\
+\log(P(w|\{(x_1, y_1), \ldots, (x_n,y_n)\}))&amp;\propto \frac{-(y_i - w^Tx_i)^2}{2}-\frac{||w||^2}{2\gamma^2}
+\end{align*}\]</span> <span class="math display">\[
+\text{Taking the gradient, we get}
+\]</span> <span class="math display">\[\begin{align*}
+\nabla \log(P(w|\{(x_1, y_1), \ldots, (x_n,y_n)\}))&amp;\propto  (XX^T)\hat{w}_{MAP} - Xy + \frac{\hat{w}_{MAP}}{\gamma^2} \\
+\therefore \hat{w}_{MAP}&amp;=(XX^T + \frac{1}{\gamma^2} I)^{-1}Xy
+\end{align*}\]</span> where <span class="math inline">\(\hat{w}_{MAP}\)</span> is the Maximum a posteriori Estimate. In practice, the value for <span class="math inline">\(\frac{1}{\gamma^2}\)</span> is acquired using cross validation.</p>
+<p>Hence, Maximum a posteriori Estimation for linear regression with a Gaussian Prior <span class="math inline">\(\mathcal{N}(0,\gamma^2I)\)</span> for <span class="math inline">\(w\)</span> is equivalent to the “new” estimator we used previously.</p>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

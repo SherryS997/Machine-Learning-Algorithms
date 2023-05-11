@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Machine Learning Algorithms – mle</title>
+<title>Machine Learning Algorithms - Maximum likelihood estimation (MLE)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -62,6 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -370,15 +372,78 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-estimation" id="toc-introduction-to-estimation" class="nav-link active" data-scroll-target="#introduction-to-estimation">Introduction to Estimation</a></li>
+  <li><a href="#maximum-likelihood-estimation" id="toc-maximum-likelihood-estimation" class="nav-link" data-scroll-target="#maximum-likelihood-estimation">Maximum Likelihood Estimation</a>
+  <ul class="collapse">
+  <li><a href="#fishers-principle-of-maximum-likelihood" id="toc-fishers-principle-of-maximum-likelihood" class="nav-link" data-scroll-target="#fishers-principle-of-maximum-likelihood">Fisher’s Principle of Maximum Likelihood</a></li>
+  <li><a href="#likelihood-estimation-on-gaussian-distributions" id="toc-likelihood-estimation-on-gaussian-distributions" class="nav-link" data-scroll-target="#likelihood-estimation-on-gaussian-distributions">Likelihood Estimation on Gaussian Distributions</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Maximum likelihood estimation (MLE)</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction-to-estimation" class="level1">
+<h1>Introduction to Estimation</h1>
+<p>Estimators in machine learning are algorithms or models used to estimate unknown parameters or predict outcomes based on data. The aim of the method is to find/predict the unknow parameters describing the distribution of the data.</p>
+<p>Let <span class="math inline">\(\{x_1, x_2, \ldots, x_n\}\)</span> be a dataset where <span class="math inline">\(x_i \in \{0,1\}\)</span>. We assume that the datapoints are independent and identically distributed.</p>
+<p>Independence means <span class="math inline">\(P(x_i|x_j) = P(x_i)\)</span>. Identically distributed means <span class="math inline">\(P(x_i)=P(x_j)=p\)</span>.</p>
+</section>
+<section id="maximum-likelihood-estimation" class="level1">
+<h1>Maximum Likelihood Estimation</h1>
+<section id="fishers-principle-of-maximum-likelihood" class="level2">
+<h2 class="anchored" data-anchor-id="fishers-principle-of-maximum-likelihood">Fisher’s Principle of Maximum Likelihood</h2>
+<p>Fisher’s principle of maximum likelihood is a statistical method used to estimate the parameters of a statistical model by choosing the parameter values that maximize the likelihood function, which measures how well the model fits the observed data.</p>
+<p>Applying the likelihood function on the above dataset, we get <span class="math display">\[\begin{align*}
+\mathcal{L}(p;\{x_1, x_2, \ldots, x_n\}) &amp;= P(x_1, x_2, \ldots, x_n;p)\\
+&amp;=p(x_1;p)p(x_2;p)\ldots p(x_n;p) \\
+&amp;=\prod _{i=1} ^n {p^{x_i}(1-p)^{1-x_i}}
+\end{align*}\]</span> <span class="math display">\[\begin{align*}
+\therefore \log(\mathcal{L}(p;\{x_1, x_2, \ldots, x_n\})) &amp;=\underset{p} {\arg \max}\log \left ( \prod _{i=1} ^n {p^{x_i}(1-p)^{1-x_i}} \right ) \\
+\text{Differentiating wrt $p$, we get}\\
+\therefore \hat{p}_{ML} &amp;= \frac{1}{n}\sum _{i=1} ^n x_i
+\end{align*}\]</span></p>
+</section>
+<section id="likelihood-estimation-on-gaussian-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="likelihood-estimation-on-gaussian-distributions">Likelihood Estimation on Gaussian Distributions</h2>
+<p>Let <span class="math inline">\(\{x_1, x_2, \ldots, x_n\}\)</span> be a dataset where <span class="math inline">\(x_i \sim \mathcal{N}(\mu,\sigma^2)\)</span>. We assume that the datapoints are independent and identically distributed.</p>
+<p><span class="math display">\[\begin{align*}
+\mathcal{L}(\mu, \sigma^2;\{x_1, x_2, \ldots, x_n\}) &amp;= f_{x_1, x_2, \ldots, x_n}(x_1, x_2, \ldots, x_n;\mu, \sigma^2) \\
+&amp;=\prod _{i=1} ^n  f_{x_i}(x_i;\mu, \sigma^2) \\
+&amp;=\prod _{i=1} ^n \left [ \frac{1}{\sqrt{2\pi}\sigma} e^{\frac{-(x_i-\mu)^2}{2\sigma^2}} \right ] \\
+\therefore \log(\mathcal{L}(p;\{x_1, x_2, \ldots, x_n\})) &amp;= \sum _{i=1} ^n \left[ \log \left (\frac{1}{\sqrt{2\pi}\sigma}  \right ) - \frac{(x_i-\mu)^2}{2\sigma^2} \right] \\
+\end{align*}\]</span> <span class="math display">\[
+\text{Differentiating wrt $\mu$ and $\sigma$, we get}
+\]</span> <span class="math display">\[\begin{align*}
+\hat{\mu}_{ML} &amp;= \frac{1}{n}\sum _{i=1} ^n x_i \\
+\hat{\sigma^2}_{ML} &amp;= \frac{1}{n}\sum _{i=1} ^n (x_i-\mu)^2
+\end{align*}\]</span></p>
+
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

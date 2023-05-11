@@ -1,0 +1,32 @@
+---
+title: "Gaussian mixture model (GMM)"
+---
+
+Gaussian Mixture Models are a type of probabilistic model used to represent complex data distributions by combining multiple Gaussian distributions.
+
+The procedure is as follows:
+
+* Step 1: Generate a mixture component among $\{1, 2, \ldots, K\}$ where $z_i \in \{1, 2, \ldots, K\}$. We get,
+$$
+P(z_i=k) = \pi_k \hspace{2em} \left [ \sum _{i=1} ^K \pi_i = 1 \hspace{1em} 0 \le \pi_i \le 1 \hspace{1em} \forall i \right ]
+$$
+* Step 2: Generate $x_i \sim \mathcal{N}(\mu_{z_i}, \sigma^2_{z_i})$
+
+Hence, there are $3K$ parameters. Let these parameters be represented by $\theta$.
+
+# Likelihood of GMM's
+\begin{align*}
+\mathcal{L}\left( \begin{array}{cccc}
+\mu_1, \mu_2, \ldots, \mu_K \\
+\sigma^2_1, \sigma^2_2, \ldots, \sigma^2_K\\
+\pi_1, \pi_2, \ldots, \pi_K
+\end{array}; x_1, x_2, \ldots, x_n \right )
+&= \prod _{i=1} ^n f_{mix} \left( x_i; \begin{array}{cccc}
+\mu_1, \mu_2, \ldots, \mu_K \\
+\sigma^2_1, \sigma^2_2, \ldots, \sigma^2_K\\
+\pi_1, \pi_2, \ldots, \pi_K
+\end{array} \right ) \\
+&= \prod _{i=1} ^n \left [ \sum _{k=1} ^K \pi_k * f_{mix}(x_i; \mu_k, \sigma_k) \right ] \\
+\therefore \log\mathcal{L}(\theta) &= \sum _{i=1} ^n \log \left [ \sum _{k=1} ^K \pi_k * \frac{1}{\sqrt{2\pi}\sigma_k} e^{\frac{-(x_i-\mu_k)^2}{2\sigma^2_k}} \right ] \\
+\end{align*}
+To solve the above equation, we need to understand convexity.

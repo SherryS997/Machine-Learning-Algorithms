@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Machine Learning Algorithms – pca</title>
+<title>Machine Learning Algorithms - Principal Component Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -62,6 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -370,15 +372,118 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#representation-learning" id="toc-representation-learning" class="nav-link active" data-scroll-target="#representation-learning">Representation Learning</a>
+  <ul class="collapse">
+  <li><a href="#potential-algorithm" id="toc-potential-algorithm" class="nav-link" data-scroll-target="#potential-algorithm">Potential Algorithm</a></li>
+  </ul></li>
+  <li><a href="#principal-component-analysis" id="toc-principal-component-analysis" class="nav-link" data-scroll-target="#principal-component-analysis">Principal Component Analysis</a>
+  <ul class="collapse">
+  <li><a href="#approximate-representation" id="toc-approximate-representation" class="nav-link" data-scroll-target="#approximate-representation">Approximate Representation</a></li>
+  <li><a href="#p.c.a.-algorithm" id="toc-p.c.a.-algorithm" class="nav-link" data-scroll-target="#p.c.a.-algorithm">P.C.A. Algorithm</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Principal Component Analysis</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="representation-learning" class="level1">
+<h1>Representation Learning</h1>
+<p>Representation learning is a sub-field of machine learning that focuses on learning meaningful and compact representations of complex data for tasks such as dimensionality reduction, clustering, and classification.</p>
+<p>Given a dataset <span class="math inline">\(\{x_1, x_2, \ldots, x_n\}\)</span> where <span class="math inline">\(x_i \in \mathbb{R}^{d}\)</span>, we need to find a representation for it with the minimum reconstruction error.</p>
+<p>Let <span class="math inline">\(w\)</span>, where <span class="math inline">\(||w||=1\)</span>, be the best linear representation of the dataset.</p>
+<p>The representation is given by, <span class="math display">\[\begin{align*}
+    \frac{(x_i^Tw)}{w^Tw}&amp;w \\
+    \text{But }||w||&amp;=1\\
+    \therefore \text{ Projection } &amp;= (x_i^Tw)w
+\end{align*}\]</span> The reconstruction error is given by, <span class="math display">\[
+\text{Reconstruction Error}(f(w)) = \frac{1}{n} \sum _{i=1} ^{n} || x_i - (x_i^Tw)w || ^ 2
+\]</span> where <span class="math inline">\(x_i - (x_i^Tw)w\)</span> is the residue and can be given by <span class="math inline">\(x'\)</span>.</p>
+<p>Our objective is to minimize the reconstruction error. Minimizing it, we get, <span class="math display">\[\begin{align*}
+    \min _{w \in ||w|| = 1} f(w) &amp;= \frac{1}{n} \sum _{i=1} ^{n} -(x_i^Tw)^2 \\
+    \therefore \max _{w \in ||w|| = 1} f(w) &amp;= \frac{1}{n} \sum _{i=1} ^{n} (x_i^Tw)^2 \\
+    &amp;= w^T(\frac{1}{n} \sum _{i=1} ^{n} x_ix_i^T)w \\
+    \max _{w \in ||w|| = 1} f(w) &amp;= w^TCw
+\end{align*}\]</span> where <span class="math inline">\(C=\displaystyle \frac{1}{n} \displaystyle \sum _{i=1} ^{n} x_ix_i^T\)</span> is the Covariance Matrix and <span class="math inline">\(C \in \mathbb{R}^{d \times d}\)</span>.</p>
+<p>From the above equation we find that <span class="math inline">\(w\)</span> is the eigenvector corresponding to the largest eigenvalue <span class="math inline">\(\lambda\)</span> of <span class="math inline">\(C\)</span>.</p>
+<p><span class="math inline">\(w\)</span> is also called the First Principal Component of the dataset.</p>
+<section id="potential-algorithm" class="level2">
+<h2 class="anchored" data-anchor-id="potential-algorithm">Potential Algorithm</h2>
+<p>With this information, we can give the following algorithm:</p>
+<p>Given a dataset <span class="math inline">\(\{x_1, x_2, \ldots, x_n\}\)</span> where <span class="math inline">\(x_i \in \mathbb{R}^{d}\)</span>,</p>
+<ul>
+<li>Center the dataset <span class="math display">\[
+\mu = \frac{1}{n} \sum _{i=1} ^{n} x_i
+\]</span> <span class="math display">\[
+x_i = x_i - \mu  \hspace{2em} \forall i
+\]</span></li>
+<li>Find the best representation <span class="math inline">\(w \in \mathbb{R}^d\)</span> and <span class="math inline">\(||w|| = 1\)</span>.</li>
+<li>Replace <span class="math inline">\(x_i = x_i - (x_i^Tw)w \hspace{1em} \forall i\)</span></li>
+<li>Repeat the first three steps until residues become zero and we obtain <span class="math inline">\(w_2, w_3, \ldots, w_d\)</span>.</li>
+</ul>
+<p>But is this the best way? How many <span class="math inline">\(w\)</span> do we need for optimal compression?</p>
+</section>
+</section>
+<section id="principal-component-analysis" class="level1">
+<h1>Principal Component Analysis</h1>
+<p>Principal Component Analysis (PCA) is a technique used to reduce the dimensionality of a dataset by identifying the most important features, or principal components, that explain the maximum amount of variance in the data. PCA accomplishes this by transforming the original dataset into a new set of variables that are uncorrelated and ordered by their importance in explaining the variance in the data. This can be helpful for visualizing high-dimensional data or for preprocessing data before performing machine learning tasks.</p>
+<p>Following the potential algorithm from above, using the <span class="math inline">\(\{w_1, w_2, \ldots, w_d\}\)</span>, we get, <span class="math display">\[
+\forall i \hspace{1em} x_i - ((x_i^Tw_1)w_1 + (x_i^Tw_2)w_2 + \ldots +(x_i^Tw_d)w_d) = 0
+\]</span> <span class="math display">\[
+\therefore x_i = (x_i^Tw_1)w_1 + (x_i^Tw_2)w_2 + \ldots +(x_i^Tw_d)w_d
+\]</span> From the above equation, we can say that we can represent the data using <span class="math inline">\(\{x_i^Tw_1, x_i^Tw_2, \ldots, x_i^Tw_d\}\)</span>, which are constants, and <span class="math inline">\(\{w_1, w_2, \ldots, w_d\}\)</span> which are vectors.</p>
+<p>Therefore, data which was initially <span class="math inline">\(d \times n\)</span> can now be represented with <span class="math inline">\(d (d + n)\)</span> elements which doesn’t seem great at first.</p>
+<p>But if the data lies in a lower sub-space, the residues can be zero without the need for <span class="math inline">\(d\)</span> principal components.</p>
+<p>If the data can be represented using only <span class="math inline">\(k\)</span> principal components, where <span class="math inline">\(k &lt;&lt; d\)</span>, the data now can be compressed from <span class="math inline">\(d \times n\)</span> to <span class="math inline">\(k(d + n)\)</span>.</p>
+<section id="approximate-representation" class="level2">
+<h2 class="anchored" data-anchor-id="approximate-representation">Approximate Representation</h2>
+<p>If the data can be approximately represented by a lower sub-space, is it enough that we use only those <span class="math inline">\(k\)</span> projections? How much variance should be covered?</p>
+<p>Given a centered dataset <span class="math inline">\(\{x_1, x_2, \ldots, x_n\}\)</span> where <span class="math inline">\(x_i \in \mathbb{R}^{d}\)</span>, let <span class="math inline">\(C\)</span> be its covariance matrix, and let <span class="math inline">\(\{\lambda_1, \lambda_2, \ldots, \lambda_d \}\)</span> be its eigenvalues, which are non-negative because the covariance matrix is a positive semi-definite matrix, placed in descending order, and let <span class="math inline">\(\{w_1, w_2, \ldots, w_d \}\)</span> be its corresponding eigenvectors of unit length.</p>
+<p>The eigen equation for the covariance matrix can be given by, <span class="math display">\[\begin{align*}
+    Cw &amp;= \lambda w \\
+    w^TCw &amp;= w^T\lambda w\\
+    \therefore \lambda &amp;= w^TCw \hspace{2em} \{w^Tw = 1\} \\
+    \lambda &amp;= \frac{1}{n} \sum _{i=1} ^{n} (x_i^Tw)^2 \\
+\end{align*}\]</span> Therefore, as the mean is zero, <span class="math inline">\(\lambda\)</span> gives the variance captured by the eigenvector <span class="math inline">\(w\)</span>.</p>
+<p>A good rule of thumb is that the variance captured by P.C.A. should be at least 95%. If the first <span class="math inline">\(K\)</span> eigenvectors capture the required variance, this is given by, <span class="math display">\[
+\frac{\displaystyle \sum _{k=1} ^{K} \lambda_k}{\displaystyle \sum _{i=1} ^{d} \lambda_i} \ge 0.95
+\]</span> Hence, the higher the variance captured, the lower is the error obtained.</p>
+</section>
+<section id="p.c.a.-algorithm" class="level2">
+<h2 class="anchored" data-anchor-id="p.c.a.-algorithm">P.C.A. Algorithm</h2>
+<p>Given a centered dataset <span class="math inline">\(\{x_1, x_2, \ldots, x_n\}\)</span> where <span class="math inline">\(x_i \in \mathbb{R}^{d}\)</span>, let <span class="math inline">\(C\)</span> be its covariance matrix.</p>
+<p>The algorithm is as follows:</p>
+<ul>
+<li>Step 1: Find the eigenvalues and eigenvectors of <span class="math inline">\(C\)</span>. Let <span class="math inline">\(\{\lambda_1, \lambda_2, \ldots, \lambda_d \}\)</span> be its eigenvalues placed in the descending order, and let <span class="math inline">\(\{w_1, w_2, \ldots, w_d \}\)</span> be its corresponding eigenvectors of unit length.</li>
+<li>Step 2: Calculate <span class="math inline">\(K\)</span>, where <span class="math inline">\(K\)</span> is the number of required top eigenvalues and eigenvectors, according to the required variance that needs to be covered.</li>
+<li>Step 3: Project the data onto the eigenvectors, and obtain the required representation as a linear combination of those projections.</li>
+</ul>
+<p>In short, we can say that P.C.A. is a dimensionality reduction technique that finds combination of features that are de-correlated (independent of each other).</p>
+
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

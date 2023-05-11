@@ -13,7 +13,7 @@ Each algorithm page includes the following information:
 * A Python implementation of the algorithm
 * Examples of how the algorithm can be used
 
-We hope you find this website to be a valuable resource for learning about machine learning algorithms.
+I hope you find this website to be a valuable resource for learning about machine learning algorithms.
 
 **Here is a more detailed overview of the algorithms covered on this website:**
 
