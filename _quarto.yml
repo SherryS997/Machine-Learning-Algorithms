@@ -5,6 +5,7 @@ project:
 website:
   favicon: icon.png
   title: "Machine Learning Algorithms"
+  page-navigation: true
   sidebar:
     tools:
     - icon: linkedin
