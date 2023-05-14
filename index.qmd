@@ -2,6 +2,10 @@
 title: "Welcome to Machine Learning Algorithms"
 ---
 
+:::{.callout-warning}
+The site is not complete and is still under development.
+:::
+
 This website is a comprehensive resource for machine learning algorithms. Here, you will find explanations of the most popular algorithms, as well as code implementations in Python.
 
 The website is divided into two main sections: supervised learning and unsupervised learning. Supervised learning algorithms are used to learn from labeled data, while unsupervised learning algorithms are used to learn from unlabeled data.
