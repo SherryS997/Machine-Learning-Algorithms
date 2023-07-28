@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -60,7 +60,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -81,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Supervised Learning</li><li class="breadcrumb-item"><a href="../pages/lin_reg.html">Regression</a></li><li class="breadcrumb-item"><a href="../pages/rid_lin_reg.html">Ridge regression</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -95,8 +96,8 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Machine Learning Algorithms</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://www.linkedin.com/in/sherry-thomassp/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
-    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/sherry-thomassp/" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -396,32 +397,41 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Ridge regression is a type of linear regression that adds a penalty term to the ordinary least squares method to mitigate multicollinearity and overfitting.</p>
-<p>Its objective function is given by, <span class="math display">\[
-\min_{w\in \mathbb{R}^d} \sum^n_{i=1}(w^Tx_i-y_i)^2 + \lambda||w||_2^2
-\]</span> where <span class="math inline">\(\lambda||w||_2^2\)</span> is the regularizer, and <span class="math inline">\(||w||_2^2\)</span> is the squared L2 Norm of <span class="math inline">\(w\)</span>. Let this equation be given by <span class="math inline">\(f(w)\)</span>.</p>
-<p>Subsequently, this is also equivalent to, <span class="math display">\[
-\min_{w\in \mathbb{R}^d} \sum^n_{i=1}(w^Tx_i-y_i)^2 \hspace{1em}\text{s.t.}||w||_2^2\le\theta
-\]</span> where <span class="math inline">\(\theta\)</span> is dependent on <span class="math inline">\(\lambda\)</span>.</p>
-<p>In conclusion, for every choice of <span class="math inline">\(\lambda&gt;0\)</span>, <span class="math inline">\(\exists \theta\)</span> s.t. there are optimal solutions to our objective function.</p>
-<p>The loss function of the linear regression of <span class="math inline">\(w_{ML}\)</span> is given by, <span class="math display">\[
-f(w_{ML}) = \sum^n_{i=1}(w_{ML}^Tx_i-y_i)^2
-\]</span> Consider the set of all <span class="math inline">\(w\)</span> s.t. <span class="math inline">\(f(w_{ML}) = f(w) + c\)</span> where <span class="math inline">\(c&gt;0\)</span>. This set is given by, <span class="math display">\[
-S_c = \left \{w: f(w_{ML}) = f(w) + c \right \}
-\]</span> i.e.&nbsp;every <span class="math inline">\(w \in S_c\)</span> satisfies, <span class="math display">\[
-||X^Tw-y||^2=||X^Tw_{ML}-y||^2 + c
-\]</span> <span class="math display">\[
-\text{On Simplification, we get}
-\]</span> <span class="math display">\[
-(w-w_{ML})^T(XX^T)(w-w_{ML}) = c'
-\]</span> where <span class="math inline">\(c'\)</span> depends on <span class="math inline">\(c,XX^T,\)</span> and <span class="math inline">\(w_{ML}\)</span>, but <strong>not on</strong> <span class="math inline">\(w\)</span>.</p>
+<p>Ridge regression is a linear regression technique that addresses multicollinearity and overfitting by adding a penalty term to the ordinary least squares method.</p>
+<p>The objective function of ridge regression is given by:</p>
+<p><span class="math display">\[
+\min_{\mathbf{w} \in \mathbb{R}^d} \sum^n_{i=1}(\mathbf{w}^T\mathbf{x}_i-y_i)^2 + \lambda||\mathbf{w}||_2^2
+\]</span></p>
+<p>Here, <span class="math inline">\(\lambda||\mathbf{w}||_2^2\)</span> serves as the regularization term, and <span class="math inline">\(||\mathbf{w}||_2^2\)</span> represents the squared L2 norm of <span class="math inline">\(\mathbf{w}\)</span>. Let us denote this equation as <span class="math inline">\(f(\mathbf{w})\)</span>.</p>
+<p>Alternatively, we can express ridge regression as:</p>
+<p><span class="math display">\[
+\min_{\mathbf{w} \in \mathbb{R}^d} \sum^n_{i=1}(\mathbf{w}^T\mathbf{x}_i-y_i)^2 \hspace{1em}\text{s.t.}\hspace{1em}||\mathbf{w}||_2^2\leq\theta
+\]</span></p>
+<p>Here, the value of <span class="math inline">\(\theta\)</span> depends on <span class="math inline">\(\lambda\)</span>. We can conclude that for any choice of <span class="math inline">\(\lambda&gt;0\)</span>, there exists a corresponding <span class="math inline">\(\theta\)</span> such that optimal solutions to our objective function exist.</p>
+<p>The loss function for linear regression with the maximum likelihood estimator <span class="math inline">\(\mathbf{w}_{\text{ML}}\)</span> is defined as:</p>
+<p><span class="math display">\[
+f(\mathbf{w}_{\text{ML}}) = \sum^n_{i=1}(\mathbf{w}_{\text{ML}}^T\mathbf{x}_i-y_i)^2
+\]</span></p>
+<p>Consider the set of all <span class="math inline">\(\mathbf{w}\)</span> such that <span class="math inline">\(f(\mathbf{w}_{\text{ML}}) = f(\mathbf{w}) + c\)</span>, where <span class="math inline">\(c&gt;0\)</span>. This set can be represented as:</p>
+<p><span class="math display">\[
+S_c = \left \{\mathbf{w}: f(\mathbf{w}_{\text{ML}}) = f(\mathbf{w}) + c \right \}
+\]</span></p>
+<p>In other words, every <span class="math inline">\(\mathbf{w} \in S_c\)</span> satisfies the equation:</p>
+<p><span class="math display">\[
+||\mathbf{X}^T\mathbf{w}-\mathbf{y}||^2 = ||\mathbf{X}^T\mathbf{w}_{\text{ML}}-\mathbf{y}||^2 + c
+\]</span></p>
+<p>Simplifying the equation yields:</p>
+<p><span class="math display">\[
+(\mathbf{w}-\mathbf{w}_{\text{ML}})^T(\mathbf{X}\mathbf{X}^T)(\mathbf{w}-\mathbf{w}_{\text{ML}}) = c'
+\]</span></p>
+<p>The value of <span class="math inline">\(c'\)</span> depends on <span class="math inline">\(c\)</span>, <span class="math inline">\(\mathbf{X}\mathbf{X}^T\)</span>, and <span class="math inline">\(\mathbf{w}_{\text{ML}}\)</span>, but it does not depend on <span class="math inline">\(\mathbf{w}\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/ridge_regression.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Pictoral Representation of what Ridge Regression does.</figcaption>
 </figure>
 </div>
-<p><strong>Conclusion</strong>: Ridge Regression pushes feature values to zero but not necessarily zero.</p>
+<p>In summary, ridge regression regularizes the feature values, pushing them towards zero, but not necessarily to zero.</p>
 
 
 

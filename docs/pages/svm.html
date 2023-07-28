@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -60,7 +60,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -81,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Supervised Learning</li><li class="breadcrumb-item"><a href="../pages/percp.html">Discriminative models</a></li><li class="breadcrumb-item"><a href="../pages/svm.html">Support vector machines (SVMs)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -95,8 +96,8 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Machine Learning Algorithms</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://www.linkedin.com/in/sherry-thomassp/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
-    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/sherry-thomassp/" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -389,6 +390,10 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#hard-margin-svm-algorithm" id="toc-hard-margin-svm-algorithm" class="nav-link" data-scroll-target="#hard-margin-svm-algorithm">Hard-Margin SVM Algorithm</a></li>
   </ul></li>
   <li><a href="#soft-margin-svm" id="toc-soft-margin-svm" class="nav-link" data-scroll-target="#soft-margin-svm">Soft-Margin SVM</a></li>
+  <li><a href="#dual-formulation-for-soft-margin-svm" id="toc-dual-formulation-for-soft-margin-svm" class="nav-link" data-scroll-target="#dual-formulation-for-soft-margin-svm">Dual Formulation for Soft-Margin SVM</a>
+  <ul class="collapse">
+  <li><a href="#dual-formulation" id="toc-dual-formulation" class="nav-link" data-scroll-target="#dual-formulation">Dual Formulation</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -579,8 +584,60 @@ f(w^*) \le f(w^*) + \alpha^* g(w^*)
 <p>The primal formulation for this is given by, <span class="math display">\[
 \min_{w, \epsilon}  \frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i \quad s.t. \quad (w^Tx_i)y_i + \epsilon_i \ge 1;\quad \epsilon_i \ge 0\quad \forall i
 \]</span> where <span class="math inline">\(C\)</span> is the hyperparameter that is used to balance the trade-off between maximizing the margin and minimizing the number of misclassifications, and <span class="math inline">\(\epsilon_i\)</span> is the additional value required to satisy the constraints.</p>
+</section>
+<section id="dual-formulation-for-soft-margin-svm" class="level1">
+<h1>Dual Formulation for Soft-Margin SVM</h1>
+<p>The primal formulation for Soft-Margin SVM is given by, <span class="math display">\[
+\min_{w, \epsilon}  \frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i \quad s.t. \quad (w^Tx_i)y_i + \epsilon_i \ge 1;\quad \epsilon_i \ge 0\quad \forall i
+\]</span> where <span class="math inline">\(C\)</span> is the hyperparameter that is used to balance the trade-off between maximizing the margin and minimizing the number of misclassifications, and <span class="math inline">\(\epsilon_i\)</span> is the additional value required to satisy the constraints.</p>
+<p>The Lagrangian function <span class="math inline">\(\mathcal{L}(w, \epsilon, \alpha, \beta)\)</span> for our above function is defined as follows: <span class="math display">\[
+\mathcal{L}(w, \epsilon, \alpha, \beta) = \frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i(1-(w^Tx_i)y_i - \epsilon_i) + \sum _{i=1} ^n \beta(-\epsilon_i)
+\]</span> where <span class="math inline">\(\alpha_i \ge 0\)</span> and <span class="math inline">\(\beta_i \ge 0\)</span> <span class="math inline">\(\forall i\)</span>.</p>
+<section id="dual-formulation" class="level2">
+<h2 class="anchored" data-anchor-id="dual-formulation">Dual Formulation</h2>
+<p>Maximizing the Lagrangian function w.r.t. <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, and minimizing it w.r.t. <span class="math inline">\(w\)</span> and <span class="math inline">\(\epsilon\)</span>, we get,</p>
+<p><span class="math display">\[
+\min _{w, \epsilon}\left [\max _{\alpha \ge 0; \beta \ge 0}\frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i(1-(w^Tx_i)y_i - \epsilon_i) + \sum _{i=1} ^n \beta(-\epsilon_i) \right ]
+\]</span></p>
+<p>The dual of this is given by,</p>
+<p><span class="math display">\[
+\max _{\alpha \ge 0; \beta \ge 0}\left [\min _{w, \epsilon}\frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i(1-(w^Tx_i)y_i - \epsilon_i) + \sum _{i=1} ^n \beta(-\epsilon_i) \right ]
+\]</span></p>
+<p><span class="math display">\[
+\max _{\alpha \ge 0; \beta \ge 0}\left [\min _{w, \epsilon}\mathcal{L}(w, \epsilon, \alpha, \beta) \right ] \quad \ldots[1]
+\]</span></p>
+<p>Differentiating the above function<span class="math inline">\([1]\)</span> w.r.t. <span class="math inline">\(w\)</span> while fixing <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, we get, <span class="math display">\[
+\frac{d\mathcal{L}}{dw}  = 0
+\]</span> <span class="math display">\[
+\frac{d}{dw} \frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i(1-(w^Tx_i)y_i - \epsilon_i) + \sum _{i=1} ^n \beta(-\epsilon_i) = 0\\
+\]</span> <span class="math display">\[
+w_{\alpha, \beta}^* - \alpha_ix_iy_i = 0
+\]</span> <span class="math display">\[
+\therefore w_{\alpha, \beta}^* = \alpha_ix_iy_i \quad \ldots [2]
+\]</span></p>
+<p>Differentiating the above function<span class="math inline">\([1]\)</span> w.r.t. <span class="math inline">\(\epsilon_i \forall i\)</span> while fixing <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, we get,</p>
+<p><span class="math display">\[
+\frac{\partial\mathcal{L}}{\partial\epsilon_i}  = 0
+\]</span> <span class="math display">\[
+\frac{\partial}{\partial\epsilon_i} \frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i(1-(w^Tx_i)y_i - \epsilon_i) + \sum _{i=1} ^n \beta(-\epsilon_i) = 0
+\]</span> <span class="math display">\[
+C - \alpha_i -\beta_i = 0
+\]</span> <span class="math display">\[
+\therefore C = \alpha_i + \beta_i \quad \ldots [3]
+\]</span></p>
+<p>Substituting the values of <span class="math inline">\(w\)</span> and <span class="math inline">\(\beta\)</span> from <span class="math inline">\([2]\)</span> and <span class="math inline">\([3]\)</span> in <span class="math inline">\([1]\)</span>, we get,</p>
+<p><span class="math display">\[
+\max _{\alpha \ge 0; \beta \ge 0; C = \alpha_i + \beta_i}\left [\frac{1}{2}||\alpha_ix_iy_i||^2_2 + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i(1-((\alpha_ix_iy_i)^Tx_i)y_i - \epsilon_i) + \sum _{i=1} ^n (C-\alpha_i)(-\epsilon_i) \right ]
+\]</span> <span class="math display">\[
+\max _{\alpha \ge 0; \beta \ge 0; C = \alpha_i + \beta_i}\left [\frac{1}{2}\alpha_i^Tx_i^Ty_i^Ty_ix_i\alpha_i + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i-\alpha_i^Tx_i^Ty_i^Ty_ix_i\alpha_i - \sum _{i=1} ^n \alpha_i\epsilon_i - C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i\epsilon_i \right ]
+\]</span> <span class="math display">\[
+\max _{\alpha \ge 0; \beta \ge 0; C = \alpha_i + \beta_i}\left [\sum _{i=1} ^n \alpha_i - \frac{1}{2}\alpha_i^Tx_i^Ty_i^Ty_ix_i\alpha_i\right ]
+\]</span> <span class="math display">\[
+\therefore \max _{0 \le \alpha \le C}\left [\sum _{i=1} ^n \alpha_i - \frac{1}{2}\alpha_i^Tx_i^Ty_i^Ty_ix_i\alpha_i\right ]
+\]</span></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

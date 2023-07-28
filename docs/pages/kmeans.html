@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -60,7 +60,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -81,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Unsupervised Learning</li><li class="breadcrumb-item"><a href="../pages/kmeans.html">Clustering</a></li><li class="breadcrumb-item"><a href="../pages/kmeans.html">K-means clustering</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -95,8 +96,8 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Machine Learning Algorithms</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://www.linkedin.com/in/sherry-thomassp/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
-    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/sherry-thomassp/" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -382,7 +383,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#k-means-clustering-lloyds-algorithm" id="toc-k-means-clustering-lloyds-algorithm" class="nav-link" data-scroll-target="#k-means-clustering-lloyds-algorithm">K-means Clustering (Lloyd’s Algorithm)</a>
   <ul class="collapse">
   <li><a href="#the-algorithm" id="toc-the-algorithm" class="nav-link" data-scroll-target="#the-algorithm">The Algorithm</a></li>
-  <li><a href="#fact-regarding-lloyds-algorithm" id="toc-fact-regarding-lloyds-algorithm" class="nav-link" data-scroll-target="#fact-regarding-lloyds-algorithm">Fact regarding Lloyd’s Algorithm</a></li>
   </ul></li>
   <li><a href="#convergence-of-k-means-algorithm" id="toc-convergence-of-k-means-algorithm" class="nav-link" data-scroll-target="#convergence-of-k-means-algorithm">Convergence of K-means Algorithm</a></li>
   <li><a href="#nature-of-clusters-produced-by-k-means" id="toc-nature-of-clusters-produced-by-k-means" class="nav-link" data-scroll-target="#nature-of-clusters-produced-by-k-means">Nature of Clusters Produced by K-means</a></li>
@@ -411,60 +411,71 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction-to-clustering" class="level1">
 <h1>Introduction to Clustering</h1>
-<p>Clustering is a method of unsupervised machine learning that groups similar objects into clusters, discovering structure in data for exploratory analysis or as a pre-processing step for other algorithms.</p>
-<p>Our objective is to group <span class="math inline">\(n\)</span> datapoints into <span class="math inline">\(k\)</span> clusters.</p>
+<p>Clustering represents an essential method in unsupervised machine learning aimed at grouping similar objects into clusters, thereby revealing inherent structures within the data for exploratory analysis or serving as a preprocessing step for subsequent algorithms.</p>
+<p>Our primary objective is to partition a set of <span class="math inline">\(n\)</span> datapoints into <span class="math inline">\(k\)</span> clusters.</p>
 <p>Notation: <span class="math display">\[
-\{x_1, x_2, \dots, x_n \} \hspace{6em} x_i \in \mathbb{R}^d
+\mathbf{X}=\{\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_n \} \quad \mathbf{x}_i \in \mathbb{R}^d
 \]</span> <span class="math display">\[
-\{z_1, z_2, \dots, z_n\} \hspace{2em} z_i \in \{1, 2, \dots, k\}
-\]</span> <strong>Objective Function</strong>: <span class="math display">\[
-F(z_1, z_2, \dots, z_n) = \sum _{i=1} ^{n} {|| x_i - \mu _{z_i} ||}_2 ^2
-\]</span> where <span class="math display">\[
-\mu _k = \frac{\displaystyle \sum _{i = 1} ^{n} {x_i \cdot \mathbf{1}(z_i=k)}}{\displaystyle \sum _{i = 1} ^{n} {\mathbf{1}(z_i=k)}}
-\]</span> <strong>Goal</strong>: <span class="math display">\[
-\min _{\{z_1, z_2, \ldots, z_n\}} \sum _{i=1} ^{n} {|| x_i - \mu _{z_i} ||}^2
-\]</span> Unfortunately, finding a solution manually is an NP-Hard problem due to the existence of <span class="math inline">\(k^n\)</span> possibilities. As a result, alternative approaches must be considered to address this challenge.</p>
+S = \{\mathbf{z} \quad \forall \mathbf{z} \in \{1, 2, \ldots k\}^n \}
+\]</span> <span class="math display">\[
+\boldsymbol{\mu} _k = \frac{\displaystyle \sum _{i = 1} ^{n} {\mathbf{x}_i \cdot \mathbb{1}(z_i=k)}}{\displaystyle \sum _{i = 1} ^{n} {\mathbb{1}(z_i=k)}}
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(\mathbf{x}_i\)</span> denotes the <span class="math inline">\(i^{th}\)</span> datapoint.</li>
+<li><span class="math inline">\(z_i\)</span> denotes the cluster indicator of <span class="math inline">\(\mathbf{x}_i\)</span>.</li>
+<li><span class="math inline">\(\boldsymbol{\mu}_{z_i}\)</span> denotes the mean of the cluster with indicator <span class="math inline">\(z_i\)</span>.</li>
+<li><span class="math inline">\(S\)</span> represents the set of all possible cluster assignments. It is important to note that <span class="math inline">\(S\)</span> is <strong>finite</strong> (<span class="math inline">\(k^n\)</span>).</li>
+</ul>
+<p><strong>Goal</strong>: <span class="math display">\[
+\min _{\mathbf{z} \in S} \sum _{i=1} ^{n} {|| \mathbf{x}_i - \boldsymbol{\mu} _{z_i} ||}^2
+\]</span></p>
+<p>However, the manual solution to this optimization problem is classified as an <a href="https://en.wikipedia.org/wiki/NP-hardness">NP-Hard</a> problem, which necessitates considering alternative approaches to approximate its solution due to computational constraints.</p>
 </section>
 <section id="k-means-clustering-lloyds-algorithm" class="level1">
 <h1>K-means Clustering (Lloyd’s Algorithm)</h1>
-<p>Lloyd’s Algorithm, also known as the k-means algorithm, is a widely used and straightforward method for clustering that divides a dataset into <span class="math inline">\(K\)</span> pre-determined clusters by iteratively computing the mean distance between the points and their cluster centroids.</p>
+<p>Lloyd’s Algorithm, popularly known as the k-means algorithm, offers a widely utilized and straightforward clustering method that segregates a dataset into <span class="math inline">\(K\)</span> predetermined clusters by iteratively computing the mean distance between the points and their cluster centroids.</p>
 <section id="the-algorithm" class="level2">
 <h2 class="anchored" data-anchor-id="the-algorithm">The Algorithm</h2>
-<p>The algorithm is as follows:</p>
-<p><strong>Step 1: Initialization</strong>: Assign <span class="math inline">\(z_1^0, z_2^0, \ldots, z_n^0\)</span> where <span class="math inline">\(z_i^0 \in \{1, 2, \ldots, k\}\)</span>. The approach on how to initialize them is discussed later.</p>
-<p><strong>Step 2: Compute Means</strong>: <span class="math display">\[
-\mu _k ^t = \frac{\displaystyle \sum _{i = 1} ^{n} {x_i \cdot \mathbf{1}(z_i^t=k)}}{\displaystyle \sum _{i = 1} ^{n} {\mathbf{1}(z_i^t=k)}} \hspace{2em} \forall k
+<p>The algorithm proceeds as follows:</p>
+<p><strong>Step 1: Initialization</strong>: Randomly assign datapoints from the dataset as the initial cluster centers.</p>
+<p><strong>Step 2: Reassignment Step</strong>: <span class="math display">\[
+z _i ^{t} = \underset{k}{\arg \min} {|| \mathbf{x}_i - \boldsymbol{\mu} _{k} ^t ||}_2 ^2 \hspace{2em} \forall i
 \]</span></p>
-<p><strong>Step 3: Reassignment Step</strong>: <span class="math display">\[
-z _i ^{t+1} = \underset{k}{\arg \min} {|| x_i - \mu _{k} ^t ||}_2 ^2 \hspace{2em} \forall i
+<p><strong>Step 3: Compute Means</strong>: <span class="math display">\[
+\boldsymbol{\mu} _k ^{t+1} = \frac{\displaystyle \sum _{i = 1} ^{n} {\mathbf{x}_i \cdot \mathbb{1}(z_i^t=k)}}{\displaystyle \sum _{i = 1} ^{n} {\mathbb{1}(z_i^t=k)}} \hspace{2em} \forall k
 \]</span></p>
-<p><strong>Step 4: Loop until Convergence</strong>: Repeat steps 2 and 3 until convergence for <span class="math inline">\(t\)</span> iterations.</p>
-</section>
-<section id="fact-regarding-lloyds-algorithm" class="level2">
-<h2 class="anchored" data-anchor-id="fact-regarding-lloyds-algorithm">Fact regarding Lloyd’s Algorithm</h2>
-<p>Lloyd’s Algorithm, also known as K-means, is guaranteed to converge to a solution. While the converged solution may not be the optimal one, it has been observed to produce acceptable clustering results in practice.</p>
+<p><strong>Step 4: Loop until Convergence</strong>: Repeat steps 2 and 3 until the cluster assignments do not change.</p>
 </section>
 </section>
 <section id="convergence-of-k-means-algorithm" class="level1">
 <h1>Convergence of K-means Algorithm</h1>
-<p>The objective function strictly reduces after each reassignment. <span class="math display">\[
-F(z_1^{t+1}, z_2^{t+1}, \ldots, z_n^{t+1}) \le F(z_1^{t}, z_2^{t}, \ldots, z_n^{t})
-\]</span> And as there are only finite number of reassignments possible, the algorithm must converge.</p>
-<p><strong>Alternate Explanation</strong>: K-means algorithm converges because it is an iterative procedure that minimizes the sum of squared distances between points and their cluster centroids, which is a convex function with a global minimum. The algorithm will reach the convergence point, guaranteed to exist, under mild assumptions on the initial cluster means, making it a reliable tool for clustering.</p>
+<p>The convergence of K-means algorithm with respect to the objective is established by considering the following points:</p>
+<ul>
+<li>The set of all possible cluster assignments <span class="math inline">\(S\)</span> is <strong>finite</strong>.</li>
+<li>The objective function value strictly decreases after each iteration of Lloyd’s Algorithm. <span class="math display">\[
+F(z_1^{t+1}, z_2^{t+1}, \ldots, z_n^{t+1}) &lt; F(z_1^{t}, z_2^{t}, \ldots, z_n^{t})
+\]</span></li>
+</ul>
+<p>Moreover, a smarter initialization of K-means can improve the likelihood of converging to a good cluster assignment with a reduced number of iterations. Although the final assignment may not necessarily represent the global optima of the objective function, it is practically satisfactory as the objective function strictly decreases with each reassignment.</p>
+<p>Considering the finiteness of the number of possible assignments (<span class="math inline">\(k^n\)</span>), convergence of the algorithm is guaranteed.</p>
+<p><strong>Alternate Explanation</strong>: The convergence of the K-means algorithm is ascertained by its iterative nature, which minimizes the sum of squared distances between points and their cluster centroids—a convex function possessing a global minimum. The algorithm, under mild assumptions regarding the initial cluster means, reaches its convergence point, making it a dependable tool for clustering.</p>
 </section>
 <section id="nature-of-clusters-produced-by-k-means" class="level1">
 <h1>Nature of Clusters Produced by K-means</h1>
-<p>Let <span class="math inline">\(\mu _1\)</span> and <span class="math inline">\(\mu _2\)</span> be the centroids of the clusters <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> respectively.</p>
-<p>For <span class="math inline">\(C_1\)</span>, <span class="math display">\[\begin{gather*}
-    {|| x - \mu _{1} ||}^2 \le {|| x - \mu _{2} ||}^2 \\
-    \therefore x^T(\mu _2 - \mu _1) \le \frac{||\mu _2||^2 - ||\mu _1||^2}{2} \hspace{2em} \forall x
-\end{gather*}\]</span> The cluster regions are known as half-spaces or Voronoi regions.</p>
+<p>Let <span class="math inline">\(\boldsymbol{\mu}_1\)</span> and <span class="math inline">\(\boldsymbol{\mu}_2\)</span> denote the centroids of the clusters <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>, respectively.</p>
+<p>For <span class="math inline">\(C_1\)</span>, <span class="math display">\[\begin{align*}
+    {|| \mathbf{x} - \boldsymbol{\mu} _{1} ||}^2 &amp;\le {|| \mathbf{x} - \boldsymbol{\mu} _{2} ||}^2 \\
+    \therefore \mathbf{x}^T(\boldsymbol{\mu} _2 - \boldsymbol{\mu} _1) &amp;\le \frac{||\boldsymbol{\mu} _2||^2 - ||\boldsymbol{\mu} _1||^2}{2} \hspace{2em} \forall \mathbf{x}
+\end{align*}\]</span></p>
+<p>The above equation takes the form of <span class="math inline">\(\mathbf{x}^T(w)&lt;c\)</span>, indicating a linear separator or half-space. As a result, our resulting partition of the region represents an intersection of multiple half-spaces, commonly known as a Voronoi Partition.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/clustering.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Voronoi regions for three clusters</figcaption>
+<figcaption class="figure-caption">Voronoi Partition</figcaption>
 </figure>
 </div>
+<p>However, the standard k-means algorithm may not perform effectively when the underlying clusters in the dataset possess a non-linear structure. In such cases, alternative methods like Kernel K-means or Spectral Clustering can be employed to enhance clustering accuracy. Nonetheless, a detailed exploration of these methods is beyond the scope of this course.</p>
 
 
 </section>

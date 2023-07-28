@@ -226,3 +226,79 @@ $$
 \min_{w, \epsilon}  \frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i \quad s.t. \quad (w^Tx_i)y_i + \epsilon_i \ge 1;\quad \epsilon_i \ge 0\quad \forall i
 $$
 where $C$ is the hyperparameter that is used to balance the trade-off between maximizing the margin and minimizing the number of misclassifications, and $\epsilon_i$ is the additional value required to satisy the constraints.
+
+# Dual Formulation for Soft-Margin SVM
+
+The primal formulation for Soft-Margin SVM is given by,
+$$
+\min_{w, \epsilon}  \frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i \quad s.t. \quad (w^Tx_i)y_i + \epsilon_i \ge 1;\quad \epsilon_i \ge 0\quad \forall i
+$$
+where $C$ is the hyperparameter that is used to balance the trade-off between maximizing the margin and minimizing the number of misclassifications, and $\epsilon_i$ is the additional value required to satisy the constraints.
+
+The Lagrangian function $\mathcal{L}(w, \epsilon, \alpha, \beta)$ for our above function is defined as follows:
+$$
+\mathcal{L}(w, \epsilon, \alpha, \beta) = \frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i(1-(w^Tx_i)y_i - \epsilon_i) + \sum _{i=1} ^n \beta(-\epsilon_i)
+$$
+where $\alpha_i \ge 0$ and $\beta_i \ge 0$ $\forall i$.
+
+## Dual Formulation
+
+Maximizing the Lagrangian function w.r.t. $\alpha$ and $\beta$, and minimizing it w.r.t. $w$ and $\epsilon$, we get,
+
+$$
+\min _{w, \epsilon}\left [\max _{\alpha \ge 0; \beta \ge 0}\frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i(1-(w^Tx_i)y_i - \epsilon_i) + \sum _{i=1} ^n \beta(-\epsilon_i) \right ]
+$$
+
+The dual of this is given by,
+
+$$
+\max _{\alpha \ge 0; \beta \ge 0}\left [\min _{w, \epsilon}\frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i(1-(w^Tx_i)y_i - \epsilon_i) + \sum _{i=1} ^n \beta(-\epsilon_i) \right ]
+$$
+
+$$
+\max _{\alpha \ge 0; \beta \ge 0}\left [\min _{w, \epsilon}\mathcal{L}(w, \epsilon, \alpha, \beta) \right ] \quad \ldots[1]
+$$
+
+Differentiating the above function$[1]$ w.r.t. $w$ while fixing $\alpha$ and $\beta$, we get,
+$$
+\frac{d\mathcal{L}}{dw}  = 0 
+$$
+$$
+\frac{d}{dw} \frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i(1-(w^Tx_i)y_i - \epsilon_i) + \sum _{i=1} ^n \beta(-\epsilon_i) = 0\\
+$$
+$$
+w_{\alpha, \beta}^* - \alpha_ix_iy_i = 0
+$$
+$$
+\therefore w_{\alpha, \beta}^* = \alpha_ix_iy_i \quad \ldots [2]
+$$
+
+Differentiating the above function$[1]$ w.r.t. $\epsilon_i \forall i$ while fixing $\alpha$ and $\beta$, we get,
+
+$$
+\frac{\partial\mathcal{L}}{\partial\epsilon_i}  = 0 
+$$
+$$
+\frac{\partial}{\partial\epsilon_i} \frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i(1-(w^Tx_i)y_i - \epsilon_i) + \sum _{i=1} ^n \beta(-\epsilon_i) = 0 
+$$
+$$
+C - \alpha_i -\beta_i = 0
+$$
+$$
+\therefore C = \alpha_i + \beta_i \quad \ldots [3]
+$$
+
+Substituting the values of $w$ and $\beta$ from $[2]$ and $[3]$ in $[1]$, we get,
+
+$$
+\max _{\alpha \ge 0; \beta \ge 0; C = \alpha_i + \beta_i}\left [\frac{1}{2}||\alpha_ix_iy_i||^2_2 + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i(1-((\alpha_ix_iy_i)^Tx_i)y_i - \epsilon_i) + \sum _{i=1} ^n (C-\alpha_i)(-\epsilon_i) \right ]
+$$
+$$
+\max _{\alpha \ge 0; \beta \ge 0; C = \alpha_i + \beta_i}\left [\frac{1}{2}\alpha_i^Tx_i^Ty_i^Ty_ix_i\alpha_i + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i-\alpha_i^Tx_i^Ty_i^Ty_ix_i\alpha_i - \sum _{i=1} ^n \alpha_i\epsilon_i - C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i\epsilon_i \right ]
+$$
+$$
+\max _{\alpha \ge 0; \beta \ge 0; C = \alpha_i + \beta_i}\left [\sum _{i=1} ^n \alpha_i - \frac{1}{2}\alpha_i^Tx_i^Ty_i^Ty_ix_i\alpha_i\right ]
+$$
+$$
+\therefore \max _{0 \le \alpha \le C}\left [\sum _{i=1} ^n \alpha_i - \frac{1}{2}\alpha_i^Tx_i^Ty_i^Ty_ix_i\alpha_i\right ]
+$$

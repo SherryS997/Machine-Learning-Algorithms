@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -60,7 +60,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -81,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Unsupervised Learning</li><li class="breadcrumb-item"><a href="../pages/mle.html">Estimation</a></li><li class="breadcrumb-item"><a href="../pages/gmm.html">Gaussian mixture model (GMM)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -95,8 +96,8 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Machine Learning Algorithms</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://www.linkedin.com/in/sherry-thomassp/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
-    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/sherry-thomassp/" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -405,27 +406,27 @@ ul.task-list li input[type="checkbox"] {
 <p>Gaussian Mixture Models are a type of probabilistic model used to represent complex data distributions by combining multiple Gaussian distributions.</p>
 <p>The procedure is as follows:</p>
 <ul>
-<li>Step 1: Generate a mixture component among <span class="math inline">\(\{1, 2, \ldots, K\}\)</span> where <span class="math inline">\(z_i \in \{1, 2, \ldots, K\}\)</span>. We get, <span class="math display">\[
+<li>Step 1: Generate a mixture component among <span class="math inline">\(\{1, 2, \ldots, K\}\)</span> where <span class="math inline">\(z_i \in \{1, 2, \ldots, K\}\)</span>. We obtain, <span class="math display">\[
 P(z_i=k) = \pi_k \hspace{2em} \left [ \sum _{i=1} ^K \pi_i = 1 \hspace{1em} 0 \le \pi_i \le 1 \hspace{1em} \forall i \right ]
 \]</span></li>
-<li>Step 2: Generate <span class="math inline">\(x_i \sim \mathcal{N}(\mu_{z_i}, \sigma^2_{z_i})\)</span></li>
+<li>Step 2: Generate <span class="math inline">\(\mathbf{x}_i \sim \mathcal{N}(\boldsymbol{\mu}_{z_i}, \boldsymbol{\sigma}^2_{z_i})\)</span></li>
 </ul>
-<p>Hence, there are <span class="math inline">\(3K\)</span> parameters. Let these parameters be represented by <span class="math inline">\(\theta\)</span>.</p>
+<p>Hence, there are <span class="math inline">\(3K\)</span> parameters. However, since <span class="math inline">\(\displaystyle \sum _{i=1} ^K \pi_i = 1\)</span>, the number of parameters to be estimated becomes <span class="math inline">\(3K-1\)</span> for a GMM with <span class="math inline">\(K\)</span> components.</p>
 <section id="likelihood-of-gmms" class="level1">
 <h1>Likelihood of GMM’s</h1>
 <p><span class="math display">\[\begin{align*}
 \mathcal{L}\left( \begin{array}{cccc}
-\mu_1, \mu_2, \ldots, \mu_K \\
-\sigma^2_1, \sigma^2_2, \ldots, \sigma^2_K\\
+\boldsymbol{\mu}_1, \boldsymbol{\mu}_2, \ldots, \boldsymbol{\mu}_K \\
+\boldsymbol{\sigma}^2_1, \boldsymbol{\sigma}^2_2, \ldots, \boldsymbol{\sigma}^2_K\\
 \pi_1, \pi_2, \ldots, \pi_K
-\end{array}; x_1, x_2, \ldots, x_n \right )
-&amp;= \prod _{i=1} ^n f_{mix} \left( x_i; \begin{array}{cccc}
-\mu_1, \mu_2, \ldots, \mu_K \\
-\sigma^2_1, \sigma^2_2, \ldots, \sigma^2_K\\
+\end{array}; \mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n \right )
+&amp;= \prod _{i=1} ^n f_{\text{mix}} \left( \mathbf{x}_i; \begin{array}{cccc}
+\boldsymbol{\mu}_1, \boldsymbol{\mu}_2, \ldots, \boldsymbol{\mu}_K \\
+\boldsymbol{\sigma}^2_1, \boldsymbol{\sigma}^2_2, \ldots, \boldsymbol{\sigma}^2_K\\
 \pi_1, \pi_2, \ldots, \pi_K
 \end{array} \right ) \\
-&amp;= \prod _{i=1} ^n \left [ \sum _{k=1} ^K \pi_k * f_{mix}(x_i; \mu_k, \sigma_k) \right ] \\
-\therefore \log\mathcal{L}(\theta) &amp;= \sum _{i=1} ^n \log \left [ \sum _{k=1} ^K \pi_k * \frac{1}{\sqrt{2\pi}\sigma_k} e^{\frac{-(x_i-\mu_k)^2}{2\sigma^2_k}} \right ] \\
+&amp;= \prod _{i=1} ^n \left [ \sum _{k=1} ^K \pi_k * f_{\text{mix}}(\mathbf{x}_i; \boldsymbol{\mu}_k, \boldsymbol{\sigma}_k) \right ] \\
+\therefore \log\mathcal{L}(\boldsymbol{\theta}) &amp;= \sum _{i=1} ^n \log \left [ \sum _{k=1} ^K \pi_k * \frac{1}{\sqrt{2\pi}\boldsymbol{\sigma}_k} e^{\frac{-(\mathbf{x}_i-\boldsymbol{\mu}_k)^2}{2\boldsymbol{\sigma}^2_k}} \right ] \\
 \end{align*}\]</span> To solve the above equation, we need to understand convexity.</p>
 
 

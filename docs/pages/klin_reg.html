@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -60,7 +60,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -81,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Supervised Learning</li><li class="breadcrumb-item"><a href="../pages/lin_reg.html">Regression</a></li><li class="breadcrumb-item"><a href="../pages/klin_reg.html">Kernel Least squares regression</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -95,8 +96,8 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Machine Learning Algorithms</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://www.linkedin.com/in/sherry-thomassp/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
-    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/sherry-thomassp/" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -396,20 +397,23 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>What if the data points lie in a non-linear sub-space? Just like in the case of clustering non-linear data, we will use kernel functions here too.</p>
-<p>Let <span class="math inline">\(w^* = X\alpha^*\)</span> for some <span class="math inline">\(\alpha^* \in \mathbb{R}^d\)</span>. <span class="math display">\[\begin{align*}
-X\alpha^*&amp;=w^*\\
-\therefore X\alpha^* &amp;=(XX^T)^+Xy \\
-(XX^T)X\alpha^* &amp;=(XX^T)(XX^T)^+Xy \\
-(XX^T)X\alpha^* &amp;=Xy \\
-X^T(XX^T)X\alpha^* &amp;=X^TXy \\
-(X^TX)^2\alpha^* &amp;=X^TXy \\
-K^2\alpha^* &amp;=Ky \\
-\therefore \alpha^* &amp;=K^{-1}y
-\end{align*}\]</span> where <span class="math inline">\(K \in \mathbb{R}^{n \times n}\)</span> and <span class="math inline">\(K\)</span> can be obtained using a kernel function like the Polynomial Kernel or RBF Kernel.</p>
-<p>How to predict using alpha and the kernel function? Let <span class="math inline">\(X_{test} \in R^{d \times m}\)</span> be the test dataset. We predict by, <span class="math display">\[\begin{align*}
-w^*\phi(X_{test}) &amp;=  \sum _{i=1} ^n \alpha_i^* k(x_i, x_{test_i})
-\end{align*}\]</span> where <span class="math inline">\(\alpha_i^*\)</span> gives the importance of the <span class="math inline">\(i^{th}\)</span> datapoint towards <span class="math inline">\(w^*\)</span> and <span class="math inline">\(k(x_i, x_{test_i})\)</span> shows how similar <span class="math inline">\(x_{test_i}\)</span> is to <span class="math inline">\(x_i\)</span>.</p>
+<p>What if the data points reside in a non-linear subspace? Similar to dealing with non-linear data clustering, kernel functions are employed in this scenario as well.</p>
+<p>Let <span class="math inline">\(\mathbf{w}^* = \mathbf{X}\boldsymbol{\alpha}^*\)</span>, where <span class="math inline">\(\boldsymbol{\alpha}^* \in \mathbb{R}^n\)</span>. <span class="math display">\[\begin{align*}
+\mathbf{X}\boldsymbol{\alpha}^* &amp;= \mathbf{w}^* \\
+\therefore \mathbf{X}\boldsymbol{\alpha}^* &amp;= (\mathbf{X}\mathbf{X}^T)^+\mathbf{X}\mathbf{y} \\
+(\mathbf{X}\mathbf{X}^T)\mathbf{X}\boldsymbol{\alpha}^* &amp;= (\mathbf{X}\mathbf{X}^T)(\mathbf{X}\mathbf{X}^T)^+\mathbf{X}\mathbf{y} \\
+(\mathbf{X}\mathbf{X}^T)\mathbf{X}\boldsymbol{\alpha}^* &amp;= \mathbf{X}\mathbf{y} \\
+\mathbf{X}^T(\mathbf{X}\mathbf{X}^T)\mathbf{X}\boldsymbol{\alpha}^* &amp;= \mathbf{X}^T\mathbf{X}\mathbf{y} \\
+(\mathbf{X}^T\mathbf{X})^2\boldsymbol{\alpha}^* &amp;= \mathbf{X}^T\mathbf{X}\mathbf{y} \\
+\mathbf{K}^2\boldsymbol{\alpha}^* &amp;= \mathbf{K}\mathbf{y} \\
+\therefore \boldsymbol{\alpha}^* &amp;= \mathbf{K}^{-1}\mathbf{y}
+\end{align*}\]</span></p>
+<p>Here, <span class="math inline">\(\mathbf{K} \in \mathbb{R}^{n \times n}\)</span>, and it can be obtained using a kernel function such as the Polynomial Kernel or RBF Kernel.</p>
+<p>To predict using <span class="math inline">\(\boldsymbol{\alpha}\)</span> and the kernel function, let <span class="math inline">\(\mathbf{X}_{\text{test}} \in \mathbb{R}^{d \times m}\)</span> represent the test dataset. The prediction is made as follows:</p>
+<p><span class="math display">\[\begin{align*}
+\mathbf{w}^*\phi(\mathbf{X}_{\text{test}}) &amp;= \sum_{i=1}^n \alpha_i^* k(\mathbf{x}_i, \mathbf{x}_{\text{test}_i})
+\end{align*}\]</span></p>
+<p>Here, <span class="math inline">\(\alpha_i^*\)</span> denotes the importance of the <span class="math inline">\(i\)</span>-th data point in relation to <span class="math inline">\(\mathbf{w}^*\)</span>, and <span class="math inline">\(k(\mathbf{x}_i, \mathbf{x}_{\text{test}_i})\)</span> signifies the similarity between <span class="math inline">\(\mathbf{x}_{\text{test}_i}\)</span> and <span class="math inline">\(\mathbf{x}_i\)</span>.</p>
 
 
 

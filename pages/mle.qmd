@@ -2,43 +2,45 @@
 title: "Maximum likelihood estimation (MLE)"
 ---
 
-# Introduction to Estimation
-Estimators in machine learning are algorithms or models used to estimate unknown parameters or predict outcomes based on data. The aim of the method is to find/predict the unknow parameters describing the distribution of the data.
+# Introduction to Estimation in Machine Learning
+Estimation in machine learning involves inferring unknown parameters or predicting outcomes from observed data. Estimators, often algorithms or models, are used for these tasks and to characterize the data's underlying distribution.
 
-Let $\{x_1, x_2, \ldots, x_n\}$ be a dataset where $x_i \in \{0,1\}$. We assume that the datapoints are independent and identically distributed.
+Let $\{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n\}$ represent a dataset, where each data point $\mathbf{x}_i$ is in the $d$-dimensional binary space $\{0,1\}^d$. It is assumed that the data points are independent and identically distributed (i.i.d).
 
-Independence means $P(x_i|x_j) = P(x_i)$.
-Identically distributed means $P(x_i)=P(x_j)=p$.
+Independence is denoted as $P(\mathbf{x}_i|\mathbf{x}_j) = P(\mathbf{x}_i)$.
+Identically distributed means $P(\mathbf{x}_i)=P(\mathbf{x}_j)=p$.
 
 # Maximum Likelihood Estimation
 ## Fisher's Principle of Maximum Likelihood
-Fisher's principle of maximum likelihood is a statistical method used to estimate the parameters of a statistical model by choosing the parameter values that maximize the likelihood function, which measures how well the model fits the observed data.
+Fisher's principle of maximum likelihood is a statistical method used to estimate parameters of a statistical model by selecting values that maximize the likelihood function. This function quantifies how well the model fits the observed data.
 
-Applying the likelihood function on the above dataset, we get
+## Likelihood Estimation for Bernoulli Distributions
+Applying the likelihood function on the aforementioned dataset, we obtain:
 \begin{align*}
-\mathcal{L}(p;\{x_1, x_2, \ldots, x_n\}) &= P(x_1, x_2, \ldots, x_n;p)\\
-&=p(x_1;p)p(x_2;p)\ldots p(x_n;p) \\
-&=\prod _{i=1} ^n {p^{x_i}(1-p)^{1-x_i}}
+\mathcal{L}(p;\{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n\}) &= P(\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n;p)\\
+&= p(\mathbf{x}_1;p)p(\mathbf{x}_2;p)\ldots p(\mathbf{x}_n;p) \\
+&=\prod _{i=1} ^n {p^{\mathbf{x}_i}(1-p)^{1-\mathbf{x}_i}}
 \end{align*}
 \begin{align*}
-\therefore \log(\mathcal{L}(p;\{x_1, x_2, \ldots, x_n\})) &=\underset{p} {\arg \max}\log \left ( \prod _{i=1} ^n {p^{x_i}(1-p)^{1-x_i}} \right ) \\
+\therefore \log(\mathcal{L}(p;\{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n\})) &=\underset{p} {\arg \max}\log \left ( \prod _{i=1} ^n {p^{\mathbf{x}_i}(1-p)^{1-\mathbf{x}_i}} \right ) \\
 \text{Differentiating wrt $p$, we get}\\
-\therefore \hat{p}_{ML} &= \frac{1}{n}\sum _{i=1} ^n x_i
+\therefore \hat{p}_{\text{ML}} &= \frac{1}{n}\sum _{i=1} ^n \mathbf{x}_i
 \end{align*}
 
-## Likelihood Estimation on Gaussian Distributions
-Let $\{x_1, x_2, \ldots, x_n\}$ be a dataset where $x_i \sim \mathcal{N}(\mu,\sigma^2)$. We assume that the datapoints are independent and identically distributed.
+## Likelihood Estimation for Gaussian Distributions
+Let $\{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n\}$ be a dataset where $\mathbf{x}_i \sim \mathcal{N}(\boldsymbol{\mu},\boldsymbol{\sigma}^2)$. We assume that the data points are independent and identically distributed.
 
 \begin{align*}
-\mathcal{L}(\mu, \sigma^2;\{x_1, x_2, \ldots, x_n\}) &= f_{x_1, x_2, \ldots, x_n}(x_1, x_2, \ldots, x_n;\mu, \sigma^2) \\
-&=\prod _{i=1} ^n  f_{x_i}(x_i;\mu, \sigma^2) \\
-&=\prod _{i=1} ^n \left [ \frac{1}{\sqrt{2\pi}\sigma} e^{\frac{-(x_i-\mu)^2}{2\sigma^2}} \right ] \\
-\therefore \log(\mathcal{L}(p;\{x_1, x_2, \ldots, x_n\})) &= \sum _{i=1} ^n \left[ \log \left (\frac{1}{\sqrt{2\pi}\sigma}  \right ) - \frac{(x_i-\mu)^2}{2\sigma^2} \right] \\
+\mathcal{L}(\boldsymbol{\mu}, \boldsymbol{\sigma}^2;\{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n\}) &= f_{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n}(\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n;\boldsymbol{\mu}, \boldsymbol{\sigma}^2) \\
+&=\prod _{i=1} ^n  f_{\mathbf{x}_i}(\mathbf{x}_i;\boldsymbol{\mu}, \boldsymbol{\sigma}^2) \\
+&=\prod _{i=1} ^n \left [ \frac{1}{\sqrt{2\pi}\boldsymbol{\sigma}} e^{\frac{-(\mathbf{x}_i-\boldsymbol{\mu})^2}{2\boldsymbol{\sigma}^2}} \right ] \\
+\therefore \log(\mathcal{L}(p;\{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n\})) &= \sum _{i=1} ^n \left[ \log \left (\frac{1}{\sqrt{2\pi}\boldsymbol{\sigma}}  \right ) - \frac{(\mathbf{x}_i-\boldsymbol{\mu})^2}{2\boldsymbol{\sigma}^2} \right] \\
 \end{align*}
 $$
-\text{Differentiating wrt $\mu$ and $\sigma$, we get}
+\text{By differentiating with respect to $\boldsymbol{\mu}$ and $\boldsymbol{\sigma}$, we get}
 $$
 \begin{align*}
-\hat{\mu}_{ML} &= \frac{1}{n}\sum _{i=1} ^n x_i \\
-\hat{\sigma^2}_{ML} &= \frac{1}{n}\sum _{i=1} ^n (x_i-\mu)^2
+\hat{\boldsymbol{\mu}}_{\text{ML}} &= \frac{1}{n}\sum _{i=1} ^n \mathbf{x}_i \\
+\hat{\boldsymbol{\sigma}^2}_{\text{ML}} &= \frac{1}{n}\sum _{i=1} ^n (\mathbf{x}_i-\boldsymbol{\mu})^T(\mathbf{x}_i-\boldsymbol{\mu})
 \end{align*}
+

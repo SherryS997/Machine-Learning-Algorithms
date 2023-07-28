@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -94,7 +94,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -115,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Supervised Learning</li><li class="breadcrumb-item"><a href="../pages/lin_reg.html">Regression</a></li><li class="breadcrumb-item"><a href="../pages/lin_reg.html">Least squares regression</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -129,8 +130,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Machine Learning Algorithms</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://www.linkedin.com/in/sherry-thomassp/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
-    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/sherry-thomassp/" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -440,34 +441,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Linear regression is a supervised learning algorithm used to predict a continuous output variable based on one or more input features, assuming a linear relationship between the input and output variables. The goal of linear regression is to find the line of best fit that minimizes the sum of squared errors between the predicted and actual output values.</p>
-<p>Given a dataset <span class="math inline">\(\{x_1, \ldots, x_n\}\)</span> where <span class="math inline">\(x_i \in \mathbb{R}^d\)</span>, let <span class="math inline">\(\{y_1, \ldots, y_n\}\)</span> be the labels, where <span class="math inline">\(y_i \in \mathbb{R}\)</span>.</p>
-<p>The goal of linear regression is to find the mapping between input and output variables. i.e. <span class="math display">\[
+<p>Linear regression is a supervised learning algorithm employed to predict a continuous output variable based on one or more input features, assuming a linear relationship between the input and output variables. The primary objective of linear regression is to determine the line of best fit that minimizes the sum of squared errors between the predicted and actual output values.</p>
+<p>Given a dataset <span class="math inline">\(\mathbf{x}_1, \ldots, \mathbf{x}_n\)</span> where each <span class="math inline">\(\mathbf{x}_i\)</span> belongs to <span class="math inline">\(\mathbb{R}^d\)</span>, and the corresponding labels <span class="math inline">\(\mathbf{y}_1, \ldots, \mathbf{y}_n\)</span> belong to <span class="math inline">\(\mathbb{R}\)</span>, the goal of linear regression is to find a mapping between the input and output variables, represented as follows:</p>
+<p><span class="math display">\[
 h: \mathbb{R}^d \rightarrow \mathbb{R}
-\]</span> The error for the above mapping function is given by, <span class="math display">\[
-\text{error}(h) = \sum _{i=1} ^n (h(x_i) - y_i) ^2)
-\]</span> This error can be as small as zero, and this is achieved when <span class="math inline">\(h(x_i)=y_i \hspace{0.5em} \forall i\)</span>. But this may not be the desired output as it may represent nothing more than memorizing the data and its outputs.</p>
-<p>The memorization problem can be mitigated by introducing a structure to the mapping. The simplest structure being of the linear kind, we shall use it as the underlying structure for our data.</p>
-<p>Let <span class="math inline">\(\mathcal{H}_{\text{linear}}\)</span> represent the solution space for the mapping in the linear space. <span class="math display">\[
-\mathcal{H}_{\text{linear}}=\Biggr \lbrace{h_w: \mathbb{R}^d \rightarrow \mathbb{R} \hspace{0.5em} s.t. \hspace{0.5em} h_w(x)=w^Tx \hspace{0.5em} \forall w \in \mathbb{R}^d } \Biggr \rbrace
-\]</span> Therefore, our goal is, <span class="math display">\[\begin{align*}
-\min _{h \in \mathcal{H}_{\text{linear}}} \sum _{i=1} ^n (h(x_i) - y_i) ^2 \\
-\text{Equivalently} \\
-\min _{w \in \mathbb{R}^d} \sum _{i=1} ^n (w^Tx_i - y_i) ^2
-\end{align*}\]</span> Optimizing the above is the entire point of the linear regression algorithm.</p>
+\]</span></p>
+<p>The error for this mapping function can be quantified as:</p>
+<p><span class="math display">\[
+\text{error}(h) = \sum_{i=1}^n (h(\mathbf{x}_i) - \mathbf{y}_i)^2
+\]</span></p>
+<p>Ideally, this error should be minimized, which occurs when <span class="math inline">\(h(\mathbf{x}_i) = \mathbf{y}_i\)</span> for all <span class="math inline">\(i\)</span>. However, achieving this may only result in memorizing the data and its outputs, which is not a desired outcome.</p>
+<p>To mitigate the memorization problem, introducing a structure to the mapping becomes necessary. The simplest and commonly used structure is linear, which we will adopt as the underlying structure for our data.</p>
+<p>Let <span class="math inline">\(\mathcal{H}_{\text{linear}}\)</span> denote the solution space for the mapping in the linear domain:</p>
+<p><span class="math display">\[
+\mathcal{H}_{\text{linear}} = \left\lbrace h_w: \mathbb{R}^d \rightarrow \mathbb{R} \ \text{s.t.} \ h_w(\mathbf{x}) = \mathbf{w}^T\mathbf{x} \ \forall \mathbf{w} \in \mathbb{R}^d \right\rbrace
+\]</span></p>
+<p>Thus, our objective is to minimize:</p>
+<p><span class="math display">\[\begin{align*}
+\min_{h \in \mathcal{H}_{\text{linear}}} \sum_{i=1}^n (h(\mathbf{x}_i) - \mathbf{y}_i)^2 \\
+\text{Equivalently,} \\
+\min_{\mathbf{w} \in \mathbb{R}^d} \sum_{i=1}^n (\mathbf{w}^T\mathbf{x}_i - \mathbf{y}_i)^2
+\end{align*}\]</span></p>
+<p>Optimizing the above objective is the main aim of the linear regression algorithm.</p>
 <section id="optimizing-the-error-function" class="level1">
 <h1>Optimizing the Error Function</h1>
-<p>The minimization equation can be rewritten in the vectorized form as, <span class="math display">\[
-\min _{w \in \mathbb{R}^d} || X^Tw - y || ^2 _2
-\]</span> Let this be a function of <span class="math inline">\(w\)</span> and as follows: <span class="math display">\[\begin{align*}
-f(w) &amp;= \min _{w \in \mathbb{R}^d} || X^Tw - y || ^2 _2 \\
-f(w) &amp;= (X^Tw - y)^T(X^Tw - y) \\
-\therefore\bigtriangledown f(w) &amp;= 2(XX^T)w - 2(Xy) \\
-\end{align*}\]</span> Setting the above equation to zero, we get <span class="math display">\[\begin{align*}
-(XX^T)w^* &amp;= Xy \\
-\therefore w^* &amp;= (XX^T)^+Xy
-\end{align*}\]</span> where <span class="math inline">\((XX^T)^+\)</span> is the pseudo-inverse of <span class="math inline">\(XX^T\)</span>.</p>
-<p>On further analysis of the above equation, we can say that <span class="math inline">\(X^Tw\)</span> is the projection of the labels onto the subspace spanned by the features.</p>
+<p>The minimization equation can be expressed in vectorized form as:</p>
+<p><span class="math display">\[
+\min_{\mathbf{w} \in \mathbb{R}^d} \|\mathbf{X}^T\mathbf{w} - \mathbf{y}\|_2^2
+\]</span></p>
+<p>Defining a function <span class="math inline">\(f(\mathbf{w})\)</span> that captures this minimization problem, we have:</p>
+<p><span class="math display">\[\begin{align*}
+f(\mathbf{w}) &amp;= \min_{\mathbf{w} \in \mathbb{R}^d} \|\mathbf{X}^T\mathbf{w} - \mathbf{y}\|_2^2 \\
+f(\mathbf{w}) &amp;= (\mathbf{X}^T\mathbf{w} - \mathbf{y})^T(\mathbf{X}^T\mathbf{w} - \mathbf{y}) \\
+\therefore \nabla f(\mathbf{w}) &amp;= 2(\mathbf{X}\mathbf{X}^T)\mathbf{w} - 2(\mathbf{X}\mathbf{y})
+\end{align*}\]</span></p>
+<p>Setting the gradient equation to zero, we obtain:</p>
+<p><span class="math display">\[\begin{align*}
+(\mathbf{X}\mathbf{X}^T)\mathbf{w}^* &amp;= \mathbf{X}\mathbf{y} \\
+\therefore \mathbf{w}^* &amp;= (\mathbf{X}\mathbf{X}^T)^+\mathbf{X}\mathbf{y}
+\end{align*}\]</span></p>
+<p>Here, <span class="math inline">\((\mathbf{X}\mathbf{X}^T)^+\)</span> represents the pseudo-inverse of <span class="math inline">\(\mathbf{X}\mathbf{X}^T\)</span>.</p>
+<p>Further analysis reveals that <span class="math inline">\(\mathbf{X}^T\mathbf{w}\)</span> corresponds to the projection of the labels onto the subspace spanned by the features.</p>
 <section id="implementing-linear-regression-algorithm-closed-form-in-python" class="level4">
 <h4 class="anchored" data-anchor-id="implementing-linear-regression-algorithm-closed-form-in-python">Implementing Linear Regression Algorithm (Closed Form) in Python</h4>
 <p>We will be using the <code>FuelConsumption.csv</code> dataset.</p>
@@ -670,11 +684,13 @@ Output
 </section>
 <section id="gradient-descent" class="level1">
 <h1>Gradient Descent</h1>
-<p>The normal equation for linear regression, as seen before, needs the calculation of <span class="math inline">\((XX^T)^+\)</span> which can computationally be of <span class="math inline">\(O(d^3)\)</span> complexity.</p>
-<p>As we know <span class="math inline">\(w^*\)</span> is the solution of an unconstrained optimization problem, we can solve it using gradient descent. It is given by, <span class="math display">\[\begin{align*}
-w^{t+1} &amp;= w^t - \eta^t \bigtriangledown f(w^t) \\
-\therefore w^{t+1} &amp;= w^t - \eta^t \left [ 2(XX^T)w^t - 2(Xy) \right ]
-\end{align*}\]</span> where <span class="math inline">\(\eta\)</span> is a scalar used to control the step-size of the descent and <span class="math inline">\(t\)</span> is the current iteration.</p>
+<p>The normal equation for linear regression, as shown above, involves calculating <span class="math inline">\((\mathbf{X}\mathbf{X}^T)^+\)</span>, which can be computationally expensive with a complexity of <span class="math inline">\(O(d^3)\)</span>.</p>
+<p>Since <span class="math inline">\(\mathbf{w}^*\)</span> represents the solution of an unconstrained optimization problem, it can be solved using gradient descent. The iterative formula for gradient descent is:</p>
+<p><span class="math display">\[\begin{align*}
+\mathbf{w}^{t+1} &amp;= \mathbf{w}^t - \eta^t \nabla f(\mathbf{w}^t) \\
+\therefore \mathbf{w}^{t+1} &amp;= \mathbf{w}^t - \eta^t \left [ 2(\mathbf{X}\mathbf{X}^T)\mathbf{w}^t - 2(\mathbf{X}\mathbf{y}) \right ]
+\end{align*}\]</span></p>
+<p>Here, <span class="math inline">\(\eta\)</span> is a scalar that controls the step-size of the descent, and <span class="math inline">\(t\)</span> represents the current iteration.</p>
 <section id="implementing-gradient-descent-in-python" class="level4">
 <h4 class="anchored" data-anchor-id="implementing-gradient-descent-in-python">Implementing Gradient Descent in Python</h4>
 <p>Let compute the <span class="math inline">\(w\)</span> vector using Gradient Descent and print the coefficients and intercept.</p>
@@ -699,15 +715,17 @@ w^{t+1} &amp;= w^t - \eta^t \bigtriangledown f(w^t) \\
 </div>
 </div>
 </div>
-<p>Even in the above equation, the calculation of <span class="math inline">\(XX^T\)</span> is needed which is a computational expensive task. Is there a way to adapt this further?</p>
+<p>Even in the above equation, the calculation of <span class="math inline">\(\mathbf{X}\mathbf{X}^T\)</span> is required, which remains computationally expensive. Is there a way to further enhance this process?</p>
 </section>
 <section id="stochastic-gradient-descent" class="level2">
 <h2 class="anchored" data-anchor-id="stochastic-gradient-descent">Stochastic Gradient Descent</h2>
-<p>Stochastic gradient descent (SGD) is an optimization algorithm used in machine learning for finding the parameters that minimize the loss function of a model. In contrast to traditional gradient descent, which updates the model parameters based on the entire dataset, SGD updates the parameters based on a randomly selected subset of the data, known as a batch. This results in faster training times and makes SGD particularly useful for large datasets.</p>
-<p>For every step <span class="math inline">\(t\)</span>, rather than updating <span class="math inline">\(w\)</span> using the entire dataset, we use a small randomly selected (<span class="math inline">\(k\)</span>) data points to update <span class="math inline">\(w\)</span>. Therefore, the new gradient is <span class="math inline">\(2(\tilde{X}\tilde{X}^Tw^t - \tilde{X}\tilde{y})\)</span> where <span class="math inline">\(\tilde{X}\)</span> and <span class="math inline">\(\tilde{y}\)</span> is the small sample randomly selected from the dataset. This is manageable because <span class="math inline">\(\tilde{X} \in \mathbb{R}^{d \times k}\)</span> which is considerably smaller than <span class="math inline">\(X\)</span>.</p>
-<p>After T rounds, we use, <span class="math display">\[
-w ^T _{SGD} = \frac{1}{T}  \sum _{i=1} ^T w^i
-\]</span> This has a certain guarantee to have optimal convergence partly because of the randomness involved in it.</p>
+<p>Stochastic gradient descent (SGD) is an optimization algorithm widely employed in machine learning to minimize the loss function of a model by determining the optimal parameters. Unlike traditional gradient descent, which updates the model parameters based on the entire dataset, SGD updates the parameters using a randomly selected subset of the data, known as a batch. This approach leads to faster training times and makes SGD particularly suitable for handling large datasets.</p>
+<p>Instead of updating <span class="math inline">\(\mathbf{w}\)</span> using the entire dataset at each step <span class="math inline">\(t\)</span>, SGD leverages a small randomly selected subset of <span class="math inline">\(k\)</span> data points to update <span class="math inline">\(\mathbf{w}\)</span>. Consequently, the new gradient becomes <span class="math inline">\(2(\tilde{\mathbf{X}}\tilde{\mathbf{X}}^T\mathbf{w}^t - \tilde{\mathbf{X}}\tilde{\mathbf{y}})\)</span>, where <span class="math inline">\(\tilde{\mathbf{X}}\)</span> and <span class="math inline">\(\tilde{\mathbf{y}}\)</span> represent small samples randomly chosen from the dataset. This strategy is feasible since <span class="math inline">\(\tilde{\mathbf{X}} \in \mathbb{R}^{d \times k}\)</span>, which is considerably smaller compared to <span class="math inline">\(\mathbf{X}\)</span>.</p>
+<p>After <span class="math inline">\(T\)</span> rounds of training, the final estimate is obtained as follows:</p>
+<p><span class="math display">\[
+\mathbf{w}_{\text{SGD}}^T = \frac{1}{T} \sum_{i=1}^T \mathbf{w}^i
+\]</span></p>
+<p>The stochastic nature of SGD contributes to optimal convergence to a certain extent.</p>
 <section id="implementing-stochastic-gradient-descent-in-python" class="level4">
 <h4 class="anchored" data-anchor-id="implementing-stochastic-gradient-descent-in-python">Implementing Stochastic Gradient Descent in Python</h4>
 <p>Let compute the <span class="math inline">\(w\)</span> vector using Stochastic Gradient Descent and print the coefficients and intercept.</p>

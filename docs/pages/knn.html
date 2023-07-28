@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -60,7 +60,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -81,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Supervised Learning</li><li class="breadcrumb-item"><a href="../pages/knn.html">Classification</a></li><li class="breadcrumb-item"><a href="../pages/knn.html">K-nearest neighbors (KNN)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -95,8 +96,8 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Machine Learning Algorithms</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://www.linkedin.com/in/sherry-thomassp/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
-    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/sherry-thomassp/" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -380,7 +381,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#introduction-to-binary-classification" id="toc-introduction-to-binary-classification" class="nav-link active" data-scroll-target="#introduction-to-binary-classification">Introduction to Binary Classification</a></li>
   <li><a href="#linear-classifier" id="toc-linear-classifier" class="nav-link" data-scroll-target="#linear-classifier">Linear Classifier</a></li>
-  <li><a href="#k-nearest-neighbours-algorithm" id="toc-k-nearest-neighbours-algorithm" class="nav-link" data-scroll-target="#k-nearest-neighbours-algorithm">K-Nearest Neighbours Algorithm</a>
+  <li><a href="#k-nearest-neighbors-algorithm" id="toc-k-nearest-neighbors-algorithm" class="nav-link" data-scroll-target="#k-nearest-neighbors-algorithm">K-Nearest Neighbors Algorithm</a>
   <ul class="collapse">
   <li><a href="#issues-with-k-nn" id="toc-issues-with-k-nn" class="nav-link" data-scroll-target="#issues-with-k-nn">Issues with K-NN</a></li>
   </ul></li>
@@ -409,54 +410,57 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction-to-binary-classification" class="level1">
 <h1>Introduction to Binary Classification</h1>
-<p>Binary classification is a machine learning task where the goal is to classify objects into one of two categories. It is a fundamental problem in various fields, including computer vision, natural language processing, and bioinformatics.</p>
-<p>Given a dataset <span class="math inline">\(\{x_1, \ldots, x_n\}\)</span> where <span class="math inline">\(x_i \in \mathbb{R}^d\)</span>, let <span class="math inline">\(\{y_1, \ldots, y_n\}\)</span> be the labels, where <span class="math inline">\(y_i \in \{0, 1\}\)</span>. The goal is given by <span class="math inline">\(h: \mathbb{R}^d \rightarrow \{0, 1\}\)</span>.</p>
-<p>The loss for this function is given by, <span class="math display">\[
-loss(h)=\frac{1}{n}\sum ^n _{i=1}\mathbb{1}\left ( h(x_i) \ne y_i \right )
-\]</span> Let <span class="math inline">\(\mathcal{H}_{\text{linear}}\)</span> represent the solution space for the mapping in the linear space. <span class="math display">\[
-\mathcal{H}_{\text{linear}}=\Biggr \lbrace{h_w: \mathbb{R}^d \rightarrow \{1, 0\} \hspace{0.5em} s.t. \hspace{0.5em} h_w(x)=sign(w^Tx) \hspace{0.5em} \forall w \in \mathbb{R}^d } \Biggr \rbrace
-\]</span> Therefore, the objective function is given by, <span class="math display">\[
-\min _{h \in \mathcal{H}_{\text{linear}}} \sum _{i=1} ^n \mathbb{1}\left ( h(x_i) \ne y_i \right )
-\]</span> This objective function presents an NP-Hard Problem, indicating the challenge in arriving at optimal and sufficient parameters. Therefore, improved implementations are necessary to address this complexity and achieve satisfactory results.</p>
+<p>Binary classification is a fundamental task in machine learning, commonly employed in various domains such as computer vision, natural language processing, and bioinformatics. Its objective is to assign objects into one of two categories based on their features.</p>
+<p>Consider a dataset <span class="math inline">\(\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}\)</span>, where <span class="math inline">\(\mathbf{x}_i \in \mathbb{R}^d\)</span>, and let <span class="math inline">\(\{y_1, \ldots, y_n\}\)</span> be the corresponding labels, where <span class="math inline">\(y_i \in \{0, 1\}\)</span>. The goal is to find a function <span class="math inline">\(h: \mathbb{R}^d \rightarrow \{0, 1\}\)</span> that accurately predicts the labels.</p>
+<p>To assess the performance of the classification function, a loss measure is employed. The loss function is defined as follows:</p>
+<p><span class="math display">\[
+\text{loss}(h) = \frac{1}{n} \sum ^n _{i=1}\mathbb{1}\left ( h(\mathbf{x}_i) \ne y_i \right )
+\]</span></p>
+<p>Let <span class="math inline">\(\mathcal{H}_{\text{linear}}\)</span> denote the solution space for the linear mapping:</p>
+<p><span class="math display">\[
+\mathcal{H}_{\text{linear}}=\left\{\mathbf{h}_w: \mathbb{R}^d \rightarrow \{1, 0\} \hspace{0.5em} \text{s.t.} \hspace{0.5em} \mathbf{h}_w(\mathbf{x}) = \text{sign}(\mathbf{w}^T\mathbf{x}) \hspace{0.5em} \forall \mathbf{w} \in \mathbb{R}^d \right\}
+\]</span></p>
+<p>Hence, the objective function can be expressed as:</p>
+<p><span class="math display">\[
+\min_{h \in \mathcal{H}_{\text{linear}}} \sum_{i=1}^n \mathbb{1}\left ( h(\mathbf{x}_i) \ne y_i \right )
+\]</span></p>
+<p>However, it is important to note that this objective function presents an NP-Hard problem, making it challenging to find optimal and sufficient parameters. Therefore, improved implementations are required to address this complexity and achieve satisfactory results.</p>
 </section>
 <section id="linear-classifier" class="level1">
 <h1>Linear Classifier</h1>
-<p>Can we use linear regression to solve this classification problem?</p>
-<p>The proposed algorithm would be as follows: <span class="math display">\[
-\{(x_1, y_1), \ldots, (x_n,y_n)\} \xrightarrow[Regression]{Linear} w \in \mathbb{R}^d\rightarrow h_w: \mathbb{R}^d \rightarrow \{1, 0\}
-\]</span> But this poses an issue in classification. Look at the diagram below:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/lin_class.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Linear classification and the problem due to outliers</figcaption>
-</figure>
-</div>
-<p>Upon a detailed examination of the above diagram, it is evident that classification based on Linear Regression not only partitions the two categories of data based on their respective sides but also their positions. Consequently, this approach may cause the classification boundary to shift w.r.t. the outliers in the dataset. Therefore, this approach is not feasible.</p>
+<p>Can linear regression be used to solve the binary classification problem? Let’s examine the proposed algorithm:</p>
+<p><span class="math display">\[
+\{(\mathbf{x}_1, y_1), \ldots, (\mathbf{x}_n,y_n)\} \xrightarrow[Regression]{Linear} \mathbf{w} \in \mathbb{R}^d \rightarrow \mathbf{h}_\mathbf{w}: \mathbb{R}^d \rightarrow \{1, 0\}
+\]</span></p>
+<p>However, employing linear regression for classification poses an issue. Consider the following diagram:</p>
+<p><img src="../images/lin_class.png" class="img-fluid"></p>
+<p>Upon closer examination, it becomes evident that linear regression-based classification not only separates the two categories based on their respective sides but also considers their positions. As a consequence, the classification boundary may shift with respect to the outliers in the dataset. Hence, this approach is not suitable for binary classification.</p>
 </section>
-<section id="k-nearest-neighbours-algorithm" class="level1">
-<h1>K-Nearest Neighbours Algorithm</h1>
-<p>The K-Nearest Neighbor (K-NN) algorithm is a popular non-parametric method used for classification and regression tasks in machine learning. It operates by identifying the K-nearest data points to the target object, classifying or regressing the target object based on the majority of its nearest neighbors.</p>
-<p>The algorithm is as follows:</p>
-<ul>
-<li>Given <span class="math inline">\(x_{test}\)</span> find the <span class="math inline">\(k\)</span>-closest points in the training set - <span class="math inline">\(\{x_1^*, x_2^*, \ldots, x_k^*\}\)</span>.</li>
-<li>Predict <span class="math inline">\(y_{test} = \text{majority}(y_1^*, y_2^*, \ldots, y_k^*)\)</span></li>
-</ul>
-<p>Look at the following diagrams to the see the effect of the value of <span class="math inline">\(k\)</span> on the classification:</p>
-<p><img src="../images/k1.png" class="img-fluid" alt="k=1"> <span class="math display">\[
-\text{When }k=1\text{, the classification is too sensitive to the outliers.}
-\]</span> <img src="../images/kn.png" class="img-fluid" alt="k=1"> <span class="math display">\[
-\text{When }k=n\text{, the classification is too smooth.}
-\]</span> <img src="../images/k*.png" class="img-fluid" alt="k=k^*"> <span class="math display">\[
-\text{When }k=k^*\text{, the classification is just right.}
-\]</span> The choice of <span class="math inline">\(k\)</span> is usually done by cross-validation, where <span class="math inline">\(k\)</span> is treated as a hyper-parameter. The smaller <span class="math inline">\(k\)</span> is, the more complex the classification will be.</p>
+<section id="k-nearest-neighbors-algorithm" class="level1">
+<h1>K-Nearest Neighbors Algorithm</h1>
+<p>The K-Nearest Neighbors (K-NN) algorithm is a widely-used non-parametric method utilized for both classification and regression tasks in machine learning. It operates by identifying the K-nearest data points to the target object and classifying or regressing the target object based on the majority of its nearest neighbors.</p>
+<p>The algorithm follows these steps:</p>
+<ol type="1">
+<li>Given a test sample <span class="math inline">\(\mathbf{x}_{\text{test}}\)</span>, find the <span class="math inline">\(k\)</span> closest points in the training set, denoted as <span class="math inline">\(\{\mathbf{x}_1^*, \mathbf{x}_2^*, \ldots, \mathbf{x}_k^*\}\)</span>.</li>
+<li>Predict the label of the test sample as <span class="math inline">\(y_{\text{test}} = \text{majority}(y_1^*, y_2^*, \ldots, y_k^*)\)</span>.</li>
+</ol>
+<p>The following diagrams illustrate the impact of the value of <span class="math inline">\(k\)</span> on the classification:</p>
+<p><img src="../images/k1.png" class="img-fluid"> <span class="math display">\[
+\text{When }k=1\text{, the classification is highly sensitive to outliers.}
+\]</span> <img src="../images/kn.png" class="img-fluid"> <span class="math display">\[
+\text{When }k=n\text{, the classification becomes overly smooth.}
+\]</span> <img src="../images/k*.png" class="img-fluid"> <span class="math display">\[
+\text{When }k=k^*\text{, the classification achieves a balanced result.}
+\]</span></p>
+<p>The choice of <span class="math inline">\(k\)</span> is typically determined through cross-validation, treating <span class="math inline">\(k\)</span> as a hyperparameter. Smaller values of <span class="math inline">\(k\)</span> lead to more complex classifications.</p>
 <section id="issues-with-k-nn" class="level2">
 <h2 class="anchored" data-anchor-id="issues-with-k-nn">Issues with K-NN</h2>
-<p>Following are the issues with the algorithm:</p>
-<ul>
-<li>The choice of distance function itself can give different results. The Euclidean distance might not always be the best fit!</li>
-<li>It can be computationally demanding. When making a prediction for a single test datapoint, the distances between that datapoint and all training points must be calculated and sorted. As a result, the algorithm has a complexity of <span class="math inline">\(O(nlog(n))\)</span>, where <span class="math inline">\(n\)</span> represents the size of the dataset.</li>
-<li>No model is learned by this algorithm. It always needs the training dataset to make proper predictions.</li>
-</ul>
+<p>The K-NN algorithm suffers from several limitations:</p>
+<ol type="1">
+<li>The choice of distance function can yield different results. The Euclidean distance, commonly used, might not always be the best fit for all scenarios.</li>
+<li>Computationally, the algorithm can be demanding. When making predictions for a single test data point, the distances between that data point and all training points must be calculated and sorted. Consequently, the algorithm has a complexity of <span class="math inline">\(O(n \log(n))\)</span>, where <span class="math inline">\(n\)</span> represents the size of the dataset.</li>
+<li>The algorithm does not learn a model but instead relies on the training dataset for making predictions.</li>
+</ol>
 
 
 </section>

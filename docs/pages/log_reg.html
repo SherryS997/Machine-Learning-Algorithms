@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -60,7 +60,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -81,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Supervised Learning</li><li class="breadcrumb-item"><a href="../pages/percp.html">Discriminative models</a></li><li class="breadcrumb-item"><a href="../pages/log_reg.html">Logistic regression</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -95,8 +96,8 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Machine Learning Algorithms</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://www.linkedin.com/in/sherry-thomassp/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
-    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/sherry-thomassp/" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -379,10 +380,8 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#sigmoid-function" id="toc-sigmoid-function" class="nav-link active" data-scroll-target="#sigmoid-function">Sigmoid Function</a></li>
-  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link" data-scroll-target="#logistic-regression">Logistic Regression</a>
-  <ul class="collapse">
+  <li><a href="#logistic-regression" id="toc-logistic-regression" class="nav-link" data-scroll-target="#logistic-regression">Logistic Regression</a></li>
   <li><a href="#kernel-and-regularized-versions" id="toc-kernel-and-regularized-versions" class="nav-link" data-scroll-target="#kernel-and-regularized-versions">Kernel and Regularized Versions</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -408,8 +407,9 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="sigmoid-function" class="level2">
 <h2 class="anchored" data-anchor-id="sigmoid-function">Sigmoid Function</h2>
-<p>Until now, we used the <span class="math inline">\(\text{sign}\)</span> function to get the class for the output. But can we also provide the probabilities for these outputs?</p>
-<p>Let <span class="math inline">\(z=w^Tx\)</span> and <span class="math inline">\(z \in \mathbb{R}\)</span>. How can we map <span class="math inline">\([-\infty, \infty]\rightarrow[0,1]\)</span>? For this, we use the <strong>Sigmoid Function</strong>. It is given by, <span class="math display">\[
+<p>Until now, we have utilized the <span class="math inline">\(\text{sign}\)</span> function to determine the class for the output. However, what if we also wish to obtain the probabilities associated with these outputs?</p>
+<p>Let <span class="math inline">\(z=\mathbf{w}^\mathbf{T}\mathbf{x}\)</span>, where <span class="math inline">\(z \in \mathbb{R}\)</span>. How can we map <span class="math inline">\([-\infty, \infty]\rightarrow[0,1]\)</span>? To address this, we introduce the <strong>Sigmoid Function</strong>, defined as follows:</p>
+<p><span class="math display">\[
 g(z) = \frac{1}{1+e^{-z}}
 \]</span></p>
 <div class="quarto-figure quarto-figure-center">
@@ -418,43 +418,54 @@ g(z) = \frac{1}{1+e^{-z}}
 <figcaption class="figure-caption">Sigmoid Function</figcaption>
 </figure>
 </div>
-<p>The sigmoid function is often used in machine learning as an activation function for neural networks. It has a characteristic S-shaped curve, which makes it useful for modeling processes that have a threshold or saturation point, such as logistic growth or binary classification problems.</p>
-<p>When the input value is large and positive, the sigmoid function output approaches 1, and when the input value is large and negative, the sigmoid function output approaches 0. When the input value is 0, the sigmoid function output is exactly 0.5.</p>
-<p>The term “sigmoid” comes from the Greek word “sigmoides,” which means “shaped like the letter sigma” (<span class="math inline">\(\Sigma\)</span>). The letter sigma has a similar shape to the sigmoid function’s characteristic S-shaped curve, which is likely the reason for the function’s name.</p>
+<p>The sigmoid function is commonly employed in machine learning as an activation function for neural networks. It exhibits an S-shaped curve, making it well-suited for modeling processes with a threshold or saturation point, such as logistic growth or binary classification problems.</p>
+<p>For large positive input values, the sigmoid function approaches 1, while for large negative input values, it approaches 0. When the input value is 0, the sigmoid function output is exactly 0.5.</p>
+<p>The term “sigmoid” is derived from the Greek word “sigmoides,” meaning “shaped like the letter sigma” (<span class="math inline">\(\Sigma\)</span>). The sigmoid function’s characteristic S-shaped curve resembles the shape of the letter sigma, which likely influenced the function’s name.</p>
 </section>
 <section id="logistic-regression" class="level2">
 <h2 class="anchored" data-anchor-id="logistic-regression">Logistic Regression</h2>
-<p>Logistic regression is a statistical method used to analyze and model the relationship between a binary (two-valued) dependent variable and one or more independent variables, which can be either continuous or categorical. The goal of logistic regression is to estimate the probability that the dependent variable is one of the two possible values, given the values of the independent variables.</p>
-<p>In logistic regression, the dependent variable is modeled as a function of the independent variables using a logistic(sigmoid) function, which produces an S-shaped curve that ranges between 0 and 1. The logistic function transforms the output of a linear combination of the independent variables into a probability estimate, which can then be used to classify new observations.</p>
-<p>Let <span class="math inline">\(D=\{(x_1, y_1), \ldots, (x_n,y_n)\}\)</span> be the dataset, where <span class="math inline">\(x_i \in \mathbb{R}^d\)</span> and <span class="math inline">\(y_i \in \{0, 1\}\)</span>.</p>
-<p>We know, <span class="math display">\[
-P(y=1|x) = g(w^Tx_i) = \frac{1}{1+e^{-w^Tx}}
-\]</span> Using Maximum Likelihood, we get <span class="math display">\[\begin{align*}
-\mathcal{L}(w;\text{Data}) &amp;= \prod _{i=1} ^{n} (g(w^Tx_i))^{y_i}(1- g(w^Tx_i))^{1-y_i} \\
-\log(\mathcal{L}(w;\text{Data})) &amp;= \sum _{i=1} ^{n} y_i\log(g(w^Tx_i))+(1-y_i)\log(1- g(w^Tx_i)) \\
-&amp;= \sum _{i=1} ^{n} y_i\log\left(\frac{1}{1+e^{-w^Tx_i}}\right)+(1-y_i)\log\left(\frac{e^{-w^Tx_i}}{1+e^{-w^Tx_i}}\right) \\
-&amp;= \sum _{i=1} ^{n} \left [ (1-y_i)(-w^Tx_i) - \log(1+e^{-w^Tx_i}) \right ]
-\end{align*}\]</span> Therefore, our objective, which is maximizing the log-likelihood function, is given by, <span class="math display">\[
-\max _{w}\sum _{i=1} ^{n} \left [ (1-y_i)(-w^Tx_i) - \log(1+e^{-w^Tx_i}) \right ]
-\]</span> But, there is no closed form solution for this. And hence, we use gradient descent for convergence.</p>
-<p>The gradient is given by, <span class="math display">\[\begin{align*}
-\nabla \log(\mathcal{L}(w;\text{Data})) &amp;= \sum _{i=1} ^{n} \left [ (1-y_i)(-x_i) - \left( \frac{e^{-w^Tx_i}}{1+e^{-w^Tx_i}} \right ) (-x_i) \right ] \\
-&amp;= \sum _{i=1} ^{n} \left [ -x_i + x_iy_i + x_i \left( \frac{e^{-w^Tx_i}}{1+e^{-w^Tx_i}} \right ) \right ] \\
-&amp;= \sum _{i=1} ^{n} \left [ x_iy_i - x_i \left( \frac{1}{1+e^{-w^Tx_i}} \right ) \right ] \\
-\nabla \log(\mathcal{L}(w;\text{Data})) &amp;= \sum _{i=1} ^{n} \left [ x_i \left(y_i - \frac{1}{1+e^{-w^Tx_i}} \right ) \right ]
-\end{align*}\]</span> Using the Gradient Descent update rule, we get, <span class="math display">\[\begin{align*}
-w_{t+1} &amp;= w_t + \eta_t\nabla \log(\mathcal{L}(w;\text{Data})) \\
-&amp;= w_t + \eta_t  \left ( \sum _{i=1} ^{n} x_i \left(y_i - \frac{1}{1+e^{-w^Tx_i}} \right ) \right )
+<p>Logistic regression is a statistical method used to analyze and model the relationship between a binary (two-valued) dependent variable and one or more independent variables. The independent variables can be either continuous or categorical. The main objective of logistic regression is to estimate the probability that the dependent variable belongs to one of the two possible values, given the independent variable values.</p>
+<p>In logistic regression, the dependent variable is modeled as a function of the independent variables using a logistic (sigmoid) function. This function generates an S-shaped curve ranging between 0 and 1. By transforming the output of a linear combination of the independent variables using the logistic function, logistic regression provides a probability estimate that can be used for classifying new observations.</p>
+<p>Let <span class="math inline">\(D=\{(\mathbf{x}_1, y_1), \ldots, (\mathbf{x}_n,y_n)\}\)</span> denote the dataset, where <span class="math inline">\(\mathbf{x}_i \in \mathbb{R}^d\)</span> and <span class="math inline">\(y_i \in \{0, 1\}\)</span>.</p>
+<p>We know that:</p>
+<p><span class="math display">\[
+P(y=1|\mathbf{x}) = g(\mathbf{w}^\mathbf{T}\mathbf{x}_i) = \frac{1}{1+e^{-\mathbf{w}^\mathbf{T}\mathbf{x}}}
+\]</span></p>
+<p>Using the maximum likelihood approach, we can derive the following expression:</p>
+<p><span class="math display">\[\begin{align*}
+\mathcal{L}(\mathbf{w};\text{Data}) &amp;= \prod _{i=1} ^{n} (g(\mathbf{w}^\mathbf{T}\mathbf{x}_i))^{y_i}(1- g(\mathbf{w}^\mathbf{T}\mathbf{x}_i))^{1-y_i} \\
+\log(\mathcal{L}(\mathbf{w};\text{Data})) &amp;= \sum _{i=1} ^{n} y_i\log(g(\mathbf{w}^\mathbf{T}\mathbf{x}_i))+(1-y_i)\log(1- g(\mathbf{w}^\mathbf{T}\mathbf{x}_i)) \\
+&amp;= \sum _{i=1} ^{n} y_i\log\left(\frac{1}{1+e^{-\mathbf{w}^\mathbf{T}\mathbf{x}_i}}\right)+(1-y_i)\log\left(\frac{e^{-\mathbf{w}^\mathbf{T}\mathbf{x}_i}}{1+e^{-\mathbf{w}^\mathbf{T}\mathbf{x}_i}}\right) \\
+&amp;= \sum _{i=1} ^{n} \left [ (1-y_i)(-\mathbf{w}^\mathbf{T}\mathbf{x}_i) - \log(1+e^{-\mathbf{w}^\mathbf{T}\mathbf{x}_i}) \right ]
 \end{align*}\]</span></p>
-<section id="kernel-and-regularized-versions" class="level3">
-<h3 class="anchored" data-anchor-id="kernel-and-regularized-versions">Kernel and Regularized Versions</h3>
-<p>We can argue that <span class="math inline">\(w^*=\displaystyle\sum _{i=1} ^{n}\alpha_ix_i\)</span>, and therefore, can be Kernelized. For further details, refer to this <a href="https://cs229.stanford.edu/extra-notes/representer-function.pdf#section.2">link.</a></p>
-<p>The regularized version is given by, <span class="math display">\[
-\min _{w}\sum _{i=1} ^{n} \left [ \log(1+e^{-w^Tx_i}) + w^Tx_i(1-y_i) \right ] + \frac{\lambda}{2}||w||^2
-\]</span> where <span class="math inline">\(\frac{\lambda}{2}||w||^2\)</span> is the regualizer and <span class="math inline">\(\lambda\)</span> is found using cross-validation.</p>
-
-
+<p>Therefore, our objective, which involves maximizing the log-likelihood function, can be formulated as follows:</p>
+<p><span class="math display">\[
+\max _{\mathbf{w}}\sum _{i=1} ^{n} \left [ (1-y_i)(-\mathbf{w}^\mathbf{T}\mathbf{x}_i) - \log(1+e^{-\mathbf{w}^\mathbf{T}\mathbf{x}_i}) \right ]
+\]</span></p>
+<p>However, a closed-form solution for this problem does not exist. Therefore, we resort to using gradient descent for convergence.</p>
+<p>The gradient of the log-likelihood function is computed as follows:</p>
+<p><span class="math display">\[\begin{align*}
+\nabla \log(\mathcal{L}(\mathbf{w};\text{Data})) &amp;= \sum _{i=1} ^{n} \left [ (1-y_i)(-\mathbf{x}_i) - \left( \frac{e^{-\mathbf{w}^\mathbf{T}\mathbf{x}_i}}{1+e^{-\mathbf{w}^\mathbf{T}\mathbf{x}_i}} \right ) (-\mathbf{x}_i) \right ] \\
+&amp;= \sum _{i=1} ^{n} \left [ -\mathbf{x}_i + \mathbf{x}_iy_i + \mathbf{x}_i \left( \frac{e^{-\mathbf{w}^\mathbf{T}\mathbf{x}_i}}{1+e^{-\mathbf{w}^\mathbf{T}\mathbf{x}_i}} \right ) \right ] \\
+&amp;= \sum _{i=1} ^{n} \left [ \mathbf{x}_iy_i - \mathbf{x}_i \left( \frac{1}{1+e^{-\mathbf{w}^\mathbf{T}\mathbf{x}_i}} \right ) \right ] \\
+\nabla \log(\mathcal{L}(\mathbf{w};\text{Data})) &amp;= \sum _{i=1} ^{n} \left [ \mathbf{x}_i \left(y_i - \frac{1}{1+e^{-\mathbf{w}^\mathbf{T}\mathbf{x}_i}} \right ) \right ]
+\end{align*}\]</span></p>
+<p>Utilizing the gradient descent update rule, we obtain:</p>
+<p><span class="math display">\[\begin{align*}
+\mathbf{w}_{t+1} &amp;= \mathbf{w}_t + \eta_t\nabla \log(\mathcal{L}(\mathbf{w};\text{Data})) \\
+&amp;= \mathbf{w}_t + \eta_t  \left ( \sum _{i=1} ^{n} \mathbf{x}_i \left(y_i - \frac{1}{1+e^{-\mathbf{w}^\mathbf{T}\mathbf{x}_i}} \right ) \right )
+\end{align*}\]</span></p>
 </section>
+<section id="kernel-and-regularized-versions" class="level2">
+<h2 class="anchored" data-anchor-id="kernel-and-regularized-versions">Kernel and Regularized Versions</h2>
+<p>It is possible to argue that <span class="math inline">\(\mathbf{w}^*=\displaystyle\sum _{i=1} ^{n}\alpha_i\mathbf{x}_i\)</span>, thereby allowing for kernelization. For additional information, please refer to this <a href="https://cs229.stanford.edu/extra-notes/representer-function.pdf#section.2">link</a>.</p>
+<p>The regularized version of logistic regression can be expressed as follows:</p>
+<p><span class="math display">\[
+\min _{\mathbf{w}}\sum _{i=1} ^{n} \left [ \log(1+e^{-\mathbf{w}^\mathbf{T}\mathbf{x}_i}) + \mathbf{w}^\mathbf{T}\mathbf{x}_i(1-y_i) \right ] + \frac{\lambda}{2}||\mathbf{w}||^2
+\]</span></p>
+<p>Here, <span class="math inline">\(\frac{\lambda}{2}||\mathbf{w}||^2\)</span> serves as the regularizer, and <span class="math inline">\(\lambda\)</span> is determined through cross-validation.</p>
+
+
 </section>
 
 </main> <!-- /main -->

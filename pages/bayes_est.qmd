@@ -2,42 +2,42 @@
 title: "Bayesian estimation"
 ---
 
+Bayesian estimation is a statistical method that updates parameter estimates by incorporating prior knowledge or beliefs along with observed data to calculate the posterior probability distribution of the parameters.
 
-Bayesian estimation is a statistical method that updates the estimates of model parameters by combining prior knowledge or beliefs with observed data to calculate the posterior probability distribution of the parameters.
+Let $\{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n\}$ be a dataset where $\mathbf{x}_i$ follows a distribution with parameters $\boldsymbol{\theta}$. We assume that the data points are independent and identically distributed, and we also consider $\boldsymbol{\theta}$ as a random variable with its own probability distribution.
 
-Let $\{x_1, x_2, \ldots, x_n\}$ be a dataset where $x_i$ belongs to a distribution with parameters $\theta$. We assume that the datapoints are independent and identically distributed. We also assume that $\theta$ is also from a probability distribution.
+Our objective is to update the parameters using the available data.
 
-Our goal is to update the parameters using the data.
-
-ie.
+i.e.
 $$
-P(\theta)=>P(\theta|\{x_1, x_2, \ldots, x_n\})
+P(\boldsymbol{\theta})\Rightarrow P(\boldsymbol{\theta}|\{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n\})
 $$
-where, using Bayes Law, we get
+where, employing Bayes' Law, we find
 $$
-P(\theta|\{x_1, x_2, \ldots, x_n\})=\left ( \frac{P(\{x_1, x_2, \ldots, x_n\}|\theta)}{P(\{x_1, x_2, \ldots, x_n\})} \right )*P(\theta)
+P(\boldsymbol{\theta}|\{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n\})=\left ( \frac{P(\{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n\}|\boldsymbol{\theta})}{P(\{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n\})} \right )*P(\boldsymbol{\theta})
 $$
 
-Let $\{x_1, x_2, \ldots, x_n\}$ be a dataset where $x_i \in \{0,1\}$ with parameter $\theta$. What distribution can be suited for $P(\theta)$. 
+## Bayesian Estimation for a Bernoulli Distribution
+Let $\{x_1, x_2, \ldots, x_n\}$ be a dataset where $x_i \in \{0,1\}$ with parameter $\theta$. What distribution can be suitable for $P(\theta)$?
 
-A commonly used distributions for priors is the Beta Distribution.
+A commonly used distribution for priors is the Beta Distribution.
 $$
-f(p;\alpha,\beta) = \frac{p^{\alpha-1}(1-p)^{\beta-1}}{z} \hspace{2em} \forall p \in [0,1]
+f(p;\alpha,\beta) = \frac{p^{\alpha-1}(1-p)^{\beta-1}}{z} \hspace{2em} \forall p \in [0,1] \\
 $$
 $$
 \text{where $z$ is a normalizing factor}
 $$
 
-Hence, using the Beta Distribution as the Prior, we get,
+Hence, utilizing the Beta Distribution as the Prior, we obtain,
 \begin{align*}
 P(\theta|\{x_1, x_2, \ldots, x_n\}) &\propto P(\theta|\{x_1, x_2, \ldots, x_n\})*P(\theta) \\
 f_{\theta|\{x_1, x_2, \ldots, x_n\}}(p) &\propto \left [ \prod _{i=1} ^n {p^{x_i}(1-p)^{1-x_i}} \right ]*\left [ p^{\alpha-1}(1-p)^{\beta-1} \right ] \\
 f_{\theta|\{x_1, x_2, \ldots, x_n\}}(p) &\propto p^{\sum _{i=1} ^n x_i + \alpha - 1}(1-p)^{\sum _{i=1} ^n(1-x_i) + \beta - 1}
 \end{align*}
-i.e. we get,
+i.e. we obtain,
 $$
 \text{BETA PRIOR }(\alpha, \beta) \xrightarrow[Bernoulli]{\{x_1, x_2, \ldots, x_n\}} \text{BETA POSTERIOR }(\alpha + n_h, \beta + n_t)
 $$
 $$
-\therefore \hat{p_{ML}} = \mathbb{E}[Posterior]=\mathbb{E}[Beta(\alpha +n_h, \beta + n_t)]= \frac{\alpha + n_h}{\alpha + n_h + \beta + n_t}
+\therefore \hat{p_{\text{ML}}} = \mathbb{E}[\text{Posterior}]=\mathbb{E}[\text{Beta}(\alpha +n_h, \beta + n_t)]= \frac{\alpha + n_h}{\alpha + n_h + \beta + n_t}
 $$

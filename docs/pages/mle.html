@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -60,7 +60,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -81,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Unsupervised Learning</li><li class="breadcrumb-item"><a href="../pages/mle.html">Estimation</a></li><li class="breadcrumb-item"><a href="../pages/mle.html">Maximum likelihood estimation (MLE)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -95,8 +96,8 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Machine Learning Algorithms</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://www.linkedin.com/in/sherry-thomassp/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
-    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/sherry-thomassp/" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -378,11 +379,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction-to-estimation" id="toc-introduction-to-estimation" class="nav-link active" data-scroll-target="#introduction-to-estimation">Introduction to Estimation</a></li>
+  <li><a href="#introduction-to-estimation-in-machine-learning" id="toc-introduction-to-estimation-in-machine-learning" class="nav-link active" data-scroll-target="#introduction-to-estimation-in-machine-learning">Introduction to Estimation in Machine Learning</a></li>
   <li><a href="#maximum-likelihood-estimation" id="toc-maximum-likelihood-estimation" class="nav-link" data-scroll-target="#maximum-likelihood-estimation">Maximum Likelihood Estimation</a>
   <ul class="collapse">
   <li><a href="#fishers-principle-of-maximum-likelihood" id="toc-fishers-principle-of-maximum-likelihood" class="nav-link" data-scroll-target="#fishers-principle-of-maximum-likelihood">Fisher’s Principle of Maximum Likelihood</a></li>
-  <li><a href="#likelihood-estimation-on-gaussian-distributions" id="toc-likelihood-estimation-on-gaussian-distributions" class="nav-link" data-scroll-target="#likelihood-estimation-on-gaussian-distributions">Likelihood Estimation on Gaussian Distributions</a></li>
+  <li><a href="#likelihood-estimation-for-bernoulli-distributions" id="toc-likelihood-estimation-for-bernoulli-distributions" class="nav-link" data-scroll-target="#likelihood-estimation-for-bernoulli-distributions">Likelihood Estimation for Bernoulli Distributions</a></li>
+  <li><a href="#likelihood-estimation-for-gaussian-distributions" id="toc-likelihood-estimation-for-gaussian-distributions" class="nav-link" data-scroll-target="#likelihood-estimation-for-gaussian-distributions">Likelihood Estimation for Gaussian Distributions</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -407,40 +409,43 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="introduction-to-estimation" class="level1">
-<h1>Introduction to Estimation</h1>
-<p>Estimators in machine learning are algorithms or models used to estimate unknown parameters or predict outcomes based on data. The aim of the method is to find/predict the unknow parameters describing the distribution of the data.</p>
-<p>Let <span class="math inline">\(\{x_1, x_2, \ldots, x_n\}\)</span> be a dataset where <span class="math inline">\(x_i \in \{0,1\}\)</span>. We assume that the datapoints are independent and identically distributed.</p>
-<p>Independence means <span class="math inline">\(P(x_i|x_j) = P(x_i)\)</span>. Identically distributed means <span class="math inline">\(P(x_i)=P(x_j)=p\)</span>.</p>
+<section id="introduction-to-estimation-in-machine-learning" class="level1">
+<h1>Introduction to Estimation in Machine Learning</h1>
+<p>Estimation in machine learning involves inferring unknown parameters or predicting outcomes from observed data. Estimators, often algorithms or models, are used for these tasks and to characterize the data’s underlying distribution.</p>
+<p>Let <span class="math inline">\(\{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n\}\)</span> represent a dataset, where each data point <span class="math inline">\(\mathbf{x}_i\)</span> is in the <span class="math inline">\(d\)</span>-dimensional binary space <span class="math inline">\(\{0,1\}^d\)</span>. It is assumed that the data points are independent and identically distributed (i.i.d).</p>
+<p>Independence is denoted as <span class="math inline">\(P(\mathbf{x}_i|\mathbf{x}_j) = P(\mathbf{x}_i)\)</span>. Identically distributed means <span class="math inline">\(P(\mathbf{x}_i)=P(\mathbf{x}_j)=p\)</span>.</p>
 </section>
 <section id="maximum-likelihood-estimation" class="level1">
 <h1>Maximum Likelihood Estimation</h1>
 <section id="fishers-principle-of-maximum-likelihood" class="level2">
 <h2 class="anchored" data-anchor-id="fishers-principle-of-maximum-likelihood">Fisher’s Principle of Maximum Likelihood</h2>
-<p>Fisher’s principle of maximum likelihood is a statistical method used to estimate the parameters of a statistical model by choosing the parameter values that maximize the likelihood function, which measures how well the model fits the observed data.</p>
-<p>Applying the likelihood function on the above dataset, we get <span class="math display">\[\begin{align*}
-\mathcal{L}(p;\{x_1, x_2, \ldots, x_n\}) &amp;= P(x_1, x_2, \ldots, x_n;p)\\
-&amp;=p(x_1;p)p(x_2;p)\ldots p(x_n;p) \\
-&amp;=\prod _{i=1} ^n {p^{x_i}(1-p)^{1-x_i}}
+<p>Fisher’s principle of maximum likelihood is a statistical method used to estimate parameters of a statistical model by selecting values that maximize the likelihood function. This function quantifies how well the model fits the observed data.</p>
+</section>
+<section id="likelihood-estimation-for-bernoulli-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="likelihood-estimation-for-bernoulli-distributions">Likelihood Estimation for Bernoulli Distributions</h2>
+<p>Applying the likelihood function on the aforementioned dataset, we obtain: <span class="math display">\[\begin{align*}
+\mathcal{L}(p;\{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n\}) &amp;= P(\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n;p)\\
+&amp;= p(\mathbf{x}_1;p)p(\mathbf{x}_2;p)\ldots p(\mathbf{x}_n;p) \\
+&amp;=\prod _{i=1} ^n {p^{\mathbf{x}_i}(1-p)^{1-\mathbf{x}_i}}
 \end{align*}\]</span> <span class="math display">\[\begin{align*}
-\therefore \log(\mathcal{L}(p;\{x_1, x_2, \ldots, x_n\})) &amp;=\underset{p} {\arg \max}\log \left ( \prod _{i=1} ^n {p^{x_i}(1-p)^{1-x_i}} \right ) \\
+\therefore \log(\mathcal{L}(p;\{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n\})) &amp;=\underset{p} {\arg \max}\log \left ( \prod _{i=1} ^n {p^{\mathbf{x}_i}(1-p)^{1-\mathbf{x}_i}} \right ) \\
 \text{Differentiating wrt $p$, we get}\\
-\therefore \hat{p}_{ML} &amp;= \frac{1}{n}\sum _{i=1} ^n x_i
+\therefore \hat{p}_{\text{ML}} &amp;= \frac{1}{n}\sum _{i=1} ^n \mathbf{x}_i
 \end{align*}\]</span></p>
 </section>
-<section id="likelihood-estimation-on-gaussian-distributions" class="level2">
-<h2 class="anchored" data-anchor-id="likelihood-estimation-on-gaussian-distributions">Likelihood Estimation on Gaussian Distributions</h2>
-<p>Let <span class="math inline">\(\{x_1, x_2, \ldots, x_n\}\)</span> be a dataset where <span class="math inline">\(x_i \sim \mathcal{N}(\mu,\sigma^2)\)</span>. We assume that the datapoints are independent and identically distributed.</p>
+<section id="likelihood-estimation-for-gaussian-distributions" class="level2">
+<h2 class="anchored" data-anchor-id="likelihood-estimation-for-gaussian-distributions">Likelihood Estimation for Gaussian Distributions</h2>
+<p>Let <span class="math inline">\(\{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n\}\)</span> be a dataset where <span class="math inline">\(\mathbf{x}_i \sim \mathcal{N}(\boldsymbol{\mu},\boldsymbol{\sigma}^2)\)</span>. We assume that the data points are independent and identically distributed.</p>
 <p><span class="math display">\[\begin{align*}
-\mathcal{L}(\mu, \sigma^2;\{x_1, x_2, \ldots, x_n\}) &amp;= f_{x_1, x_2, \ldots, x_n}(x_1, x_2, \ldots, x_n;\mu, \sigma^2) \\
-&amp;=\prod _{i=1} ^n  f_{x_i}(x_i;\mu, \sigma^2) \\
-&amp;=\prod _{i=1} ^n \left [ \frac{1}{\sqrt{2\pi}\sigma} e^{\frac{-(x_i-\mu)^2}{2\sigma^2}} \right ] \\
-\therefore \log(\mathcal{L}(p;\{x_1, x_2, \ldots, x_n\})) &amp;= \sum _{i=1} ^n \left[ \log \left (\frac{1}{\sqrt{2\pi}\sigma}  \right ) - \frac{(x_i-\mu)^2}{2\sigma^2} \right] \\
+\mathcal{L}(\boldsymbol{\mu}, \boldsymbol{\sigma}^2;\{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n\}) &amp;= f_{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n}(\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n;\boldsymbol{\mu}, \boldsymbol{\sigma}^2) \\
+&amp;=\prod _{i=1} ^n  f_{\mathbf{x}_i}(\mathbf{x}_i;\boldsymbol{\mu}, \boldsymbol{\sigma}^2) \\
+&amp;=\prod _{i=1} ^n \left [ \frac{1}{\sqrt{2\pi}\boldsymbol{\sigma}} e^{\frac{-(\mathbf{x}_i-\boldsymbol{\mu})^2}{2\boldsymbol{\sigma}^2}} \right ] \\
+\therefore \log(\mathcal{L}(p;\{\mathbf{x}_1, \mathbf{x}_2, \ldots, \mathbf{x}_n\})) &amp;= \sum _{i=1} ^n \left[ \log \left (\frac{1}{\sqrt{2\pi}\boldsymbol{\sigma}}  \right ) - \frac{(\mathbf{x}_i-\boldsymbol{\mu})^2}{2\boldsymbol{\sigma}^2} \right] \\
 \end{align*}\]</span> <span class="math display">\[
-\text{Differentiating wrt $\mu$ and $\sigma$, we get}
+\text{By differentiating with respect to $\boldsymbol{\mu}$ and $\boldsymbol{\sigma}$, we get}
 \]</span> <span class="math display">\[\begin{align*}
-\hat{\mu}_{ML} &amp;= \frac{1}{n}\sum _{i=1} ^n x_i \\
-\hat{\sigma^2}_{ML} &amp;= \frac{1}{n}\sum _{i=1} ^n (x_i-\mu)^2
+\hat{\boldsymbol{\mu}}_{\text{ML}} &amp;= \frac{1}{n}\sum _{i=1} ^n \mathbf{x}_i \\
+\hat{\boldsymbol{\sigma}^2}_{\text{ML}} &amp;= \frac{1}{n}\sum _{i=1} ^n (\mathbf{x}_i-\boldsymbol{\mu})^T(\mathbf{x}_i-\boldsymbol{\mu})
 \end{align*}\]</span></p>
 
 

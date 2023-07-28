@@ -2,57 +2,64 @@
 title: "Decision tree"
 ---
 
-# Introduction to Decision Trees
-Decision trees are a popular machine learning algorithm that operates by recursively splitting the data based on the most informative features until a stopping criterion is met. They are widely used for classification and regression tasks and can be visualized as a tree-like structure.
+# Introduction
 
-Given a dataset $\{x_1, \ldots, x_n\}$ where $x_i \in \mathbb{R}^d$, let $\{y_1, \ldots, y_n\}$ be the labels where $y_i \in \{0, 1\}$. The output of the algorithm will be a decision tree.
+Decision trees are widely used in machine learning for classification and regression tasks. They operate by recursively partitioning the data based on the most informative features until a stopping criterion is met. Decision trees can be visualized as tree-like structures.
 
-Prediction: Given $x_{test}$, traverse through the tree to reach a leaf node. $y_{test} = \text{value in the leaf node}$.
+Consider a dataset $\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}$, where $\mathbf{x}_i \in \mathbb{R}^d$, and let $\{y_1, \ldots, y_n\}$ be the corresponding labels, where $y_i \in \{0, 1\}$. The output of the decision tree algorithm is a constructed decision tree.
 
-Pictorial depiction of the decision tree:
+Prediction: Given a test sample $\mathbf{x}_{\text{test}}$, we traverse the decision tree to reach a leaf node, and the label assigned to the leaf node is considered as $y_{\text{test}}$.
 
-![Decision Tree](../images/decision_tree.png)
+The following diagram depicts a decision tree:
 
-where a **question** is a (feature, value) pair. Example: $height\le180cm$?
+![](../images/decision_tree.png)
+
+Here, a **question** refers to a (feature, value) pair. For example, $height \le 180\text{cm}$?
 
 ## Goodness of a Question
-Let $D=\{(x_1, y_1), \ldots, (x_n,y_n)\}$ be the dataset. We partition it using a question into $D_{yes}$ and $D_{no}$.
 
-What we need is a measure of "Impurity" for a set of labels $\{y_1, \ldots, y_n\}$. This measure can be given by various ways, but we will use the **Entropy** Function.
+To evaluate the quality of a question, we need a measure of "impurity" for a set of labels $\{y_1, \ldots, y_n\}$. Various measures can be employed, but we will use the **Entropy** function.
 
-The Entropy function is given by,
+The Entropy function is defined as:
+
 $$
-Entropy(\{y_1, \ldots, y_n\}) = Entropy(p) = -\left( p\log(p)+(1-p)\log(1-p) \right )
+\text{Entropy}(\{y_1, \ldots, y_n\}) = \text{Entropy}(p) = -\left( p\log(p)+(1-p)\log(1-p) \right )
 $$
-where conventionally $\log(0)$ is treated as $0$.
 
-Pictorial Representation of the Entropy function:
+Here, $\log(0)$ is conventionally treated as $0$.
 
-![Entropy Function](../images/entropy.png)
+Pictorial representation of the Entropy function:
 
-Then, we use Information Gain to measure the goodness of the split. 
+![](../images/entropy.png)
 
-**Information gain** is a commonly used criterion in decision tree algorithms that measures the reduction in entropy or impurity of a dataset after splitting based on a given feature. By selecting features with high information gain, decision trees can effectively differentiate between the different classes of data and make accurate predictions.
+Information Gain is then utilized to measure the quality of a split in the decision tree algorithm.
 
-Information gain is given by,
+**Information gain** is a commonly used criterion in decision tree algorithms that quantifies the reduction in entropy or impurity of a dataset after splitting based on a given feature. High information gain signifies features that effectively differentiate between the different classes of data and lead to accurate predictions.
+
+Information gain is calculated as:
+
 $$
-\text{Information Gain}(feature,value)=Entropy(D) - \left [ \gamma Entropy(D_{yes})+(1-\gamma)Entropy(D_{no}) \right ]
+\text{Information Gain}(\text{feature}, \text{value}) = \text{Entropy}(D) - \left[\gamma \cdot \text{Entropy}(D_{\text{yes}}) + (1-\gamma) \cdot \text{Entropy}(D_{\text{no}}) \right]
 $$
-where $\gamma$ is given by,
+
+where $\gamma$ is defined as:
+
 $$
-\gamma=\frac{|D_{yes}|}{|D|}
+\gamma = \frac{|D_{\text{yes}}|}{|D|}
 $$
 
 ## Decision Tree Algorithm
-The algorithm is as follows:
 
-* Discretize each feature in [min,max] range.
-* Pick the question that has the largest information gain.
-* Repeat the procedure for $D_{yes}$ and $D_{no}$.
-* Stop growing the tree if a node becomes sufficiently "pure".
+The decision tree algorithm follows these steps:
 
-The goodness of a question can also be measured using different methods like the Gini Index, etc.
+1. Discretize each feature within the range [min, max].
+2. Select the question that provides the highest information gain.
+3. Repeat the procedure for subsets $D_{\text{yes}}$ and $D_{\text{no}}$.
+4. Stop growing the tree when a node becomes sufficiently "pure" according to a predefined criterion.
 
-Pictorial Depiction of decision boundary and its decision tree:
+Different measures, such as the Gini Index, can also be employed to evaluate the quality of a question.
 
-![Decision Boundary](../images/decision_bound.png)
+Pictorial depiction of the decision boundary and its decision tree:
+
+![](../images/decision_bound.png)
+

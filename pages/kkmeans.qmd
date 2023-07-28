@@ -2,46 +2,41 @@
 title: "Kernel K-means"
 ---
 
-# Initialization of Centroids and K-means++
+# Smart Initialization - K-means++
 
-What if the dataset is as follow:
+The concept of K-means++ involves selecting centroids that are maximally distant from each other.
 
-![](../images/ccircles.png)
-
-The standard k-means algorithm may not perform well when the underlying clusters in the dataset have a non-linear structure. In such cases, alternative methods such as Kernel K-means or Spectral Clustering can be employed to improve clustering accuracy. However, the intricacies of these methods will not be covered in this session.
-
-One possible way to initialize the centroids is to randomly assign datapoints from the dataset as centroids.
-
-The other method is K-means++.
-
-## K-means++
-The premise is to select centroids that are as far as possible from each other.
-
-* Step 1: Choose $\mu _1 ^0$ randomly from the dataset.
-* Step 2: For $l \in \{2, 3, \ldots, k\}$, choose $\mu _l ^0$ probablistically proportional to score($S$) where $S$ is,
+* Step 1: Randomly select $\boldsymbol{\mu} _1 ^0$ from the dataset.
+* Step 2: For $l \in \{2, 3, \ldots, k\}$, choose $\boldsymbol{\mu} _l ^0$ probabilistically proportional to the score($S$), where $S$ is defined as follows:
 $$
-    S(x) = \min _{\{j=1, 2, \ldots, l-1\}} {|| x - \mu _{j} ^0 ||}^2 \hspace{2em} \forall x
+    S(\mathbf{x}_i) = \min _{\{j=1, 2, \ldots, l-1\}} {|| \mathbf{x}_i - \boldsymbol{\mu} _{j} ^0 ||}^2 \quad \forall \mathbf{x}_i \in \mathbf{X}
 $$
-    The probabilistic aspect of the algorithm provides an expected guarantee of optimal convergence in K-means. The guarantee is given by,
+    The probabilistic aspect of the algorithm provides an expected guarantee of optimal convergence in K-means. The guarantee is given by:
 $$
-    \mathbb{E} \left[ \sum _{i=1} ^{n} {|| x_i - \mu _{z_i} ||}^2 \right ]
-    \le O(\log k) \left [ \min _{\{z_1, z_2, \ldots, z_n\}} \sum _{i=1} ^{n} {|| x_i - \mu _{z_i} ||}^2 \right ]
+    \mathbb{E} \left[ \sum _{i=1} ^{n} {|| \mathbf{x}_i - \boldsymbol{\mu} _{z_i} ||}^2 \right ]
+    \le O(\log k) \left [ \min _{\{z_1, z_2, \ldots, z_n\}} \sum _{i=1} ^{n} {|| \mathbf{x}_i - \boldsymbol{\mu} _{z_i} ||}^2 \right ]
 $$
     where $O(\log k)$ is a constant of order $\log k$.
-* Step 3: Once the centroids are determined, we proceed with Lloyd's Algorithm.
 
+* Step 3: Once the centroids are determined, we proceed with our usual Lloyd's Algorithm.
+
+\pagebreak
 # Choice of K
-A pre-requisite of K-means is $k$ or the number of clusters. But what if $k$ is unknown? If $k$ is choosen to be equal to $n$,
-$$
-F(z_1, z_2, \dots, z_n) = \sum _{i=1} ^{n} {|| x_i - \mu _{z_i} ||} ^2 = 0
-$$
-But we don't want as many clusters as datapoints. Therefore, $k$ needs to be as small as possible. We do this by penalizing large values of k.
-$$
-\underset{k}{\arg \min} \left [ \sum _{i=1} ^{n} {|| x_i - \mu _{z_i} ||} ^2 + \text{Penalty}(k) \right ]
-$$
-Two common criteria for making the above argument:
 
-* Akaike Information Criterion: $\left [ 2K - 2\ln(\hat{\mathcal{L}}(\theta ^*)) \right ]$
-* Bayesian Information Criterion: $\left [ K\ln(n) - 2\ln(\hat{\mathcal{L}}(\theta ^*)) \right ]$
+A prerequisite for K-means is determining the number of clusters, denoted as $k$. However, what if the value of $k$ is unknown?
 
-Details for the same will be discussed in future lectures.
+If we were to choose $k$ to be equal to $n$:
+$$
+F(z_1, z_2, \dots, z_n) = \sum _{i=1} ^{n} {|| \mathbf{x}_i - \boldsymbol{\mu} _{z_i} ||} ^2 = 0
+$$
+However, as having as many clusters as datapoints is undesirable, we aim to minimize $k$ while penalizing large values of $k$.
+$$
+\underset{k}{\arg \min} \left [ \sum _{i=1} ^{n} {|| \mathbf{x}_i - \boldsymbol{\mu} _{z_i} ||} ^2 + \text{Penalty}(k) \right ]
+$$
+Two common criteria for making the above argument are:
+
+* [$\text{\textcolor{blue}{Akaike Information Criterion}}$](https://en.wikipedia.org/wiki/Akaike_information_criterion): $\left [ 2K - 2\ln(\hat{\mathcal{L}}(\theta ^*)) \right ]$
+* [$\text{\textcolor{blue}{Bayesian Information Criterion}}$](https://en.wikipedia.org/wiki/Bayesian_information_criterion): $\left [ K\ln(n) - 2\ln(\hat{\mathcal{L}}(\theta ^*)) \right ]$
+
+However, detailed elaboration of these criteria is not discussed here.
+

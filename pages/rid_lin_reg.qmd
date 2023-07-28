@@ -2,42 +2,50 @@
 title: "Ridge regression"
 ---
 
-Ridge regression is a type of linear regression that adds a penalty term to the ordinary least squares method to mitigate multicollinearity and overfitting.
+Ridge regression is a linear regression technique that addresses multicollinearity and overfitting by adding a penalty term to the ordinary least squares method.
 
-Its objective function is given by,
-$$
-\min_{w\in \mathbb{R}^d} \sum^n_{i=1}(w^Tx_i-y_i)^2 + \lambda||w||_2^2
-$$
-where $\lambda||w||_2^2$ is the regularizer, and $||w||_2^2$ is the squared L2 Norm of $w$. Let this equation be given by $f(w)$.
+The objective function of ridge regression is given by:
 
-Subsequently, this is also equivalent to,
 $$
-\min_{w\in \mathbb{R}^d} \sum^n_{i=1}(w^Tx_i-y_i)^2 \hspace{1em}\text{s.t.}||w||_2^2\le\theta
+\min_{\mathbf{w} \in \mathbb{R}^d} \sum^n_{i=1}(\mathbf{w}^T\mathbf{x}_i-y_i)^2 + \lambda||\mathbf{w}||_2^2
 $$
-where $\theta$ is dependent on $\lambda$.
 
-In conclusion, for every choice of $\lambda>0$, $\exists \theta$ s.t. there are optimal solutions to our objective function.
+Here, $\lambda||\mathbf{w}||_2^2$ serves as the regularization term, and $||\mathbf{w}||_2^2$ represents the squared L2 norm of $\mathbf{w}$. Let us denote this equation as $f(\mathbf{w})$.
 
-The loss function of the linear regression of $w_{ML}$ is given by,
+Alternatively, we can express ridge regression as:
+
 $$
-f(w_{ML}) = \sum^n_{i=1}(w_{ML}^Tx_i-y_i)^2
+\min_{\mathbf{w} \in \mathbb{R}^d} \sum^n_{i=1}(\mathbf{w}^T\mathbf{x}_i-y_i)^2 \hspace{1em}\text{s.t.}\hspace{1em}||\mathbf{w}||_2^2\leq\theta
 $$
-Consider the set of all $w$ s.t. $f(w_{ML}) = f(w) + c$ where $c>0$. This set is given by,
+
+Here, the value of $\theta$ depends on $\lambda$. We can conclude that for any choice of $\lambda>0$, there exists a corresponding $\theta$ such that optimal solutions to our objective function exist.
+
+The loss function for linear regression with the maximum likelihood estimator $\mathbf{w}_{\text{ML}}$ is defined as:
+
 $$
-S_c = \left \{w: f(w_{ML}) = f(w) + c \right \} 
+f(\mathbf{w}_{\text{ML}}) = \sum^n_{i=1}(\mathbf{w}_{\text{ML}}^T\mathbf{x}_i-y_i)^2
 $$
-i.e. every $w \in S_c$ satisfies,
+
+Consider the set of all $\mathbf{w}$ such that $f(\mathbf{w}_{\text{ML}}) = f(\mathbf{w}) + c$, where $c>0$. This set can be represented as:
+
 $$
-||X^Tw-y||^2=||X^Tw_{ML}-y||^2 + c
+S_c = \left \{\mathbf{w}: f(\mathbf{w}_{\text{ML}}) = f(\mathbf{w}) + c \right \}
 $$
+
+In other words, every $\mathbf{w} \in S_c$ satisfies the equation:
+
 $$
-\text{On Simplification, we get}
+||\mathbf{X}^T\mathbf{w}-\mathbf{y}||^2 = ||\mathbf{X}^T\mathbf{w}_{\text{ML}}-\mathbf{y}||^2 + c
 $$
+
+Simplifying the equation yields:
+
 $$
-(w-w_{ML})^T(XX^T)(w-w_{ML}) = c'
+(\mathbf{w}-\mathbf{w}_{\text{ML}})^T(\mathbf{X}\mathbf{X}^T)(\mathbf{w}-\mathbf{w}_{\text{ML}}) = c'
 $$
-where $c'$ depends on $c,XX^T,$ and $w_{ML}$, but **not on** $w$.
+
+The value of $c'$ depends on $c$, $\mathbf{X}\mathbf{X}^T$, and $\mathbf{w}_{\text{ML}}$, but it does not depend on $\mathbf{w}$.
 
 ![Pictoral Representation of what Ridge Regression does.](../images/ridge_regression.png)
 
-**Conclusion**: Ridge Regression pushes feature values to zero but not necessarily zero.
+In summary, ridge regression regularizes the feature values, pushing them towards zero, but not necessarily to zero.

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -60,7 +60,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -81,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Supervised Learning</li><li class="breadcrumb-item"><a href="../pages/knn.html">Classification</a></li><li class="breadcrumb-item"><a href="../pages/dec_trees.html">Decision tree</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -95,8 +96,8 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Machine Learning Algorithms</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://www.linkedin.com/in/sherry-thomassp/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
-    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/sherry-thomassp/" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -378,7 +379,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction-to-decision-trees" id="toc-introduction-to-decision-trees" class="nav-link active" data-scroll-target="#introduction-to-decision-trees">Introduction to Decision Trees</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
   <li><a href="#goodness-of-a-question" id="toc-goodness-of-a-question" class="nav-link" data-scroll-target="#goodness-of-a-question">Goodness of a Question</a></li>
   <li><a href="#decision-tree-algorithm" id="toc-decision-tree-algorithm" class="nav-link" data-scroll-target="#decision-tree-algorithm">Decision Tree Algorithm</a></li>
@@ -406,58 +407,47 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="introduction-to-decision-trees" class="level1">
-<h1>Introduction to Decision Trees</h1>
-<p>Decision trees are a popular machine learning algorithm that operates by recursively splitting the data based on the most informative features until a stopping criterion is met. They are widely used for classification and regression tasks and can be visualized as a tree-like structure.</p>
-<p>Given a dataset <span class="math inline">\(\{x_1, \ldots, x_n\}\)</span> where <span class="math inline">\(x_i \in \mathbb{R}^d\)</span>, let <span class="math inline">\(\{y_1, \ldots, y_n\}\)</span> be the labels where <span class="math inline">\(y_i \in \{0, 1\}\)</span>. The output of the algorithm will be a decision tree.</p>
-<p>Prediction: Given <span class="math inline">\(x_{test}\)</span>, traverse through the tree to reach a leaf node. <span class="math inline">\(y_{test} = \text{value in the leaf node}\)</span>.</p>
-<p>Pictorial depiction of the decision tree:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/decision_tree.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Decision Tree</figcaption>
-</figure>
-</div>
-<p>where a <strong>question</strong> is a (feature, value) pair. Example: <span class="math inline">\(height\le180cm\)</span>?</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>Decision trees are widely used in machine learning for classification and regression tasks. They operate by recursively partitioning the data based on the most informative features until a stopping criterion is met. Decision trees can be visualized as tree-like structures.</p>
+<p>Consider a dataset <span class="math inline">\(\{\mathbf{x}_1, \ldots, \mathbf{x}_n\}\)</span>, where <span class="math inline">\(\mathbf{x}_i \in \mathbb{R}^d\)</span>, and let <span class="math inline">\(\{y_1, \ldots, y_n\}\)</span> be the corresponding labels, where <span class="math inline">\(y_i \in \{0, 1\}\)</span>. The output of the decision tree algorithm is a constructed decision tree.</p>
+<p>Prediction: Given a test sample <span class="math inline">\(\mathbf{x}_{\text{test}}\)</span>, we traverse the decision tree to reach a leaf node, and the label assigned to the leaf node is considered as <span class="math inline">\(y_{\text{test}}\)</span>.</p>
+<p>The following diagram depicts a decision tree:</p>
+<p><img src="../images/decision_tree.png" class="img-fluid"></p>
+<p>Here, a <strong>question</strong> refers to a (feature, value) pair. For example, <span class="math inline">\(height \le 180\text{cm}\)</span>?</p>
 <section id="goodness-of-a-question" class="level2">
 <h2 class="anchored" data-anchor-id="goodness-of-a-question">Goodness of a Question</h2>
-<p>Let <span class="math inline">\(D=\{(x_1, y_1), \ldots, (x_n,y_n)\}\)</span> be the dataset. We partition it using a question into <span class="math inline">\(D_{yes}\)</span> and <span class="math inline">\(D_{no}\)</span>.</p>
-<p>What we need is a measure of “Impurity” for a set of labels <span class="math inline">\(\{y_1, \ldots, y_n\}\)</span>. This measure can be given by various ways, but we will use the <strong>Entropy</strong> Function.</p>
-<p>The Entropy function is given by, <span class="math display">\[
-Entropy(\{y_1, \ldots, y_n\}) = Entropy(p) = -\left( p\log(p)+(1-p)\log(1-p) \right )
-\]</span> where conventionally <span class="math inline">\(\log(0)\)</span> is treated as <span class="math inline">\(0\)</span>.</p>
-<p>Pictorial Representation of the Entropy function:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/entropy.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Entropy Function</figcaption>
-</figure>
-</div>
-<p>Then, we use Information Gain to measure the goodness of the split.</p>
-<p><strong>Information gain</strong> is a commonly used criterion in decision tree algorithms that measures the reduction in entropy or impurity of a dataset after splitting based on a given feature. By selecting features with high information gain, decision trees can effectively differentiate between the different classes of data and make accurate predictions.</p>
-<p>Information gain is given by, <span class="math display">\[
-\text{Information Gain}(feature,value)=Entropy(D) - \left [ \gamma Entropy(D_{yes})+(1-\gamma)Entropy(D_{no}) \right ]
-\]</span> where <span class="math inline">\(\gamma\)</span> is given by, <span class="math display">\[
-\gamma=\frac{|D_{yes}|}{|D|}
+<p>To evaluate the quality of a question, we need a measure of “impurity” for a set of labels <span class="math inline">\(\{y_1, \ldots, y_n\}\)</span>. Various measures can be employed, but we will use the <strong>Entropy</strong> function.</p>
+<p>The Entropy function is defined as:</p>
+<p><span class="math display">\[
+\text{Entropy}(\{y_1, \ldots, y_n\}) = \text{Entropy}(p) = -\left( p\log(p)+(1-p)\log(1-p) \right )
+\]</span></p>
+<p>Here, <span class="math inline">\(\log(0)\)</span> is conventionally treated as <span class="math inline">\(0\)</span>.</p>
+<p>Pictorial representation of the Entropy function:</p>
+<p><img src="../images/entropy.png" class="img-fluid"></p>
+<p>Information Gain is then utilized to measure the quality of a split in the decision tree algorithm.</p>
+<p><strong>Information gain</strong> is a commonly used criterion in decision tree algorithms that quantifies the reduction in entropy or impurity of a dataset after splitting based on a given feature. High information gain signifies features that effectively differentiate between the different classes of data and lead to accurate predictions.</p>
+<p>Information gain is calculated as:</p>
+<p><span class="math display">\[
+\text{Information Gain}(\text{feature}, \text{value}) = \text{Entropy}(D) - \left[\gamma \cdot \text{Entropy}(D_{\text{yes}}) + (1-\gamma) \cdot \text{Entropy}(D_{\text{no}}) \right]
+\]</span></p>
+<p>where <span class="math inline">\(\gamma\)</span> is defined as:</p>
+<p><span class="math display">\[
+\gamma = \frac{|D_{\text{yes}}|}{|D|}
 \]</span></p>
 </section>
 <section id="decision-tree-algorithm" class="level2">
 <h2 class="anchored" data-anchor-id="decision-tree-algorithm">Decision Tree Algorithm</h2>
-<p>The algorithm is as follows:</p>
-<ul>
-<li>Discretize each feature in [min,max] range.</li>
-<li>Pick the question that has the largest information gain.</li>
-<li>Repeat the procedure for <span class="math inline">\(D_{yes}\)</span> and <span class="math inline">\(D_{no}\)</span>.</li>
-<li>Stop growing the tree if a node becomes sufficiently “pure”.</li>
-</ul>
-<p>The goodness of a question can also be measured using different methods like the Gini Index, etc.</p>
-<p>Pictorial Depiction of decision boundary and its decision tree:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/decision_bound.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Decision Boundary</figcaption>
-</figure>
-</div>
+<p>The decision tree algorithm follows these steps:</p>
+<ol type="1">
+<li>Discretize each feature within the range [min, max].</li>
+<li>Select the question that provides the highest information gain.</li>
+<li>Repeat the procedure for subsets <span class="math inline">\(D_{\text{yes}}\)</span> and <span class="math inline">\(D_{\text{no}}\)</span>.</li>
+<li>Stop growing the tree when a node becomes sufficiently “pure” according to a predefined criterion.</li>
+</ol>
+<p>Different measures, such as the Gini Index, can also be employed to evaluate the quality of a question.</p>
+<p>Pictorial depiction of the decision boundary and its decision tree:</p>
+<p><img src="../images/decision_bound.png" class="img-fluid"></p>
 
 
 </section>

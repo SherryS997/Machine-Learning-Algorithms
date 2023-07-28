@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -60,7 +60,8 @@ ul.task-list li input[type="checkbox"] {
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -81,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Unsupervised Learning</li><li class="breadcrumb-item"><a href="../pages/mle.html">Estimation</a></li><li class="breadcrumb-item"><a href="../pages/em.html">Expectation-maximization (EM) algorithm</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -95,8 +96,8 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="../">Machine Learning Algorithms</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://www.linkedin.com/in/sherry-thomassp/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
-    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/sherry-thomassp/" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -416,39 +417,32 @@ a_k \text{ are points of the function}
 </section>
 <section id="estimating-the-parameters" class="level1">
 <h1>Estimating the Parameters</h1>
-<p>As log is a concave function, using the above equation, we can also approximate the likelihood function for GMM’s as follows, <span class="math display">\[
-\log\mathcal{L}(\theta) = \sum _{i=1} ^n \log \left [ \sum _{k=1} ^K \pi_k * \frac{1}{\sqrt{2\pi}\sigma_k} e^{\frac{-(x_i-\mu_k)^2}{2\sigma^2_k}} \right ]
-\]</span> Introduce for data point <span class="math inline">\(x_i\)</span>, the parameters <span class="math inline">\(\{\lambda_1^i, \lambda_2^i, \ldots, \lambda_k^i\}\)</span> s.t. <span class="math inline">\(\forall i,k \displaystyle \sum _{k=1} ^K \lambda _k^i = 1; 0 \le \lambda _k^i \le 1\)</span>. <span class="math display">\[
-\log\mathcal{L}(\theta) = \sum _{i=1} ^n \log \left [ \sum _{k=1} ^K \lambda _k ^i \left ( \pi_k * \frac{1}{\lambda _k ^i\sqrt{2\pi}\sigma_k} e^{\frac{-(x_i-\mu_k)^2}{2\sigma^2_k}} \right ) \right ]
-\]</span> <span class="math display">\[ \text{Using Jensen's Inequality, we get} \]</span> <span class="math display">\[
-\log\mathcal{L}(\theta) \ge \text{modified\_log}\mathcal{L}(\theta)
+<p>Since log is a concave function, we can approximate the likelihood function for GMM’s as follows, <span class="math display">\[
+\log\mathcal{L}(\boldsymbol{\theta}) = \sum _{i=1} ^n \log \left [ \sum _{k=1} ^K \pi_k * \frac{1}{\sqrt{2\pi}\boldsymbol{\sigma}_k} e^{\frac{-(\mathbf{x}_i-\boldsymbol{\mu}_k)^2}{2\boldsymbol{\sigma}^2_k}} \right ]
+\]</span> By introducing parameters <span class="math inline">\(\{\lambda_1^i, \lambda_2^i, \ldots, \lambda_k^i\}\)</span> for data point <span class="math inline">\(\mathbf{x}_i\)</span> such that <span class="math inline">\(\forall i,k \displaystyle \sum _{k=1} ^K \lambda _k ^i = 1; 0 \le \lambda _k ^i \le 1\)</span>, we obtain: <span class="math display">\[
+\log\mathcal{L}(\boldsymbol{\theta}) = \sum _{i=1} ^n \log \left [ \sum _{k=1} ^K \lambda _k ^i \left ( \pi_k * \frac{1}{\lambda _k ^i\sqrt{2\pi}\boldsymbol{\sigma}_k} e^{\frac{-(\mathbf{x}_i-\boldsymbol{\mu}_k)^2}{2\boldsymbol{\sigma}^2_k}} \right ) \right ]
+\]</span> Using Jensen’s Inequality, we get: <span class="math display">\[
+\log\mathcal{L}(\boldsymbol{\theta}) \ge \text{modified\_log}\mathcal{L}(\boldsymbol{\theta})
 \]</span> <span class="math display">\[\begin{align}
-\therefore \text{modified\_log}\mathcal{L}(\theta)
-&amp;= \sum _{i=1} ^n \sum _{i=k} ^K \lambda _k ^i \log \left ( \pi_k * \frac{1}{\lambda _k ^i\sqrt{2\pi}\sigma_k} e^{\frac{-(x_i-\mu_k)^2}{2\sigma^2_k}} \right )
-\end{align}\]</span> Note that the modified-log likelihood function gives a lower bound for the true log likelihood function at <span class="math inline">\(\theta\)</span>. Finally, to get the parameters, we do the following,</p>
+\therefore \text{modified\_log}\mathcal{L}(\boldsymbol{\theta})
+&amp;= \sum _{i=1} ^n \sum _{i=k} ^K \lambda _k ^i \log \left ( \pi_k * \frac{1}{\lambda _k ^i\sqrt{2\pi}\boldsymbol{\sigma}_k} e^{\frac{-(\mathbf{x}_i-\boldsymbol{\mu}_k)^2}{2\boldsymbol{\sigma}^2_k}} \right )
+\end{align}\]</span> Note that the modified-log likelihood function gives a lower bound for the true log likelihood function at <span class="math inline">\(\boldsymbol{\theta}\)</span>. Finally, to get the parameters, we do the following:</p>
 <ul>
-<li>To get <span class="math inline">\(\theta\)</span>: Fix <span class="math inline">\(\lambda\)</span> and maximize over <span class="math inline">\(\theta\)</span>. <span class="math display">\[
-\underset{\theta} {\max} \sum _{i=1} ^n \sum _{i=k} ^K \lambda _k ^i \log \left ( \pi_k * \frac{1}{\lambda _k ^i\sqrt{2\pi}\sigma_k} e^{\frac{-(x_i-\mu_k)^2}{2\sigma^2_k}} \right )
+<li>To get <span class="math inline">\(\boldsymbol{\theta}\)</span>: Fix <span class="math inline">\(\lambda\)</span> and maximize over <span class="math inline">\(\boldsymbol{\theta}\)</span>. <span class="math display">\[
+\underset{\boldsymbol{\theta}} {\max} \sum _{i=1} ^n \sum _{i=k} ^K \lambda _k ^i \log \left ( \pi_k * \frac{1}{\lambda _k ^i\sqrt{2\pi}\boldsymbol{\sigma}_k} e^{\frac{-(\mathbf{x}_i-\boldsymbol{\mu}_k)^2}{2\boldsymbol{\sigma}^2_k}} \right )
 \]</span> <span class="math display">\[
-\text{Differentiate w.r.t. }\mu,\sigma^2,\text{ and }\pi \text{ to get the following}
+\text{Differentiate w.r.t. }\boldsymbol{\mu},\boldsymbol{\sigma}^2,\text{ and }\pi \text{ to get the following}
 \]</span> <span class="math display">\[\begin{align*}
-\hat{\mu_k^{\scriptsize{MML}}} &amp;= \frac{\displaystyle\sum _{i=1} ^n \lambda_k^i x_i}{\displaystyle\sum _{i=1} ^n \lambda_k^i} \\
-\hat{\sigma_k^{2^{\scriptsize{MML}}}} &amp;= \frac{\displaystyle\sum _{i=1} ^n \lambda_k^i (x_i-\hat{\mu_k^{\scriptsize{MML}}})^2}{\displaystyle\sum _{i=1} ^n \lambda_k^i} \\
-\hat{\pi_k^{\scriptsize{MML}}} &amp;= \frac{\displaystyle\sum _{i=1} ^n \lambda_k^i}{n} \\
+\hat{\boldsymbol{\mu}}_k^{\text{MML}} &amp;= \frac{\displaystyle \sum _{i=1} ^n \lambda_k^i \mathbf{x}_i}{\displaystyle \sum _{i=1} ^n \lambda_k^i} \\
+\hat{\boldsymbol{\sigma}}_k^{2^{\text{MML}}} &amp;= \frac{\displaystyle \sum _{i=1} ^n \lambda_k^i (\mathbf{x}_i-\hat{\boldsymbol{\mu}}_k^{\text{MML}})^2}{\displaystyle \sum _{i=1} ^n \lambda_k^i} \\
+\hat{\pi}_k^{\text{MML}} &amp;= \frac{\displaystyle \sum _{i=1} ^n \lambda_k^i}{n} \\
 \end{align*}\]</span></li>
-<li>To get <span class="math inline">\(\lambda\)</span>: Fix <span class="math inline">\(\theta\)</span> and maximize over <span class="math inline">\(\lambda\)</span>. For any <span class="math inline">\(i\)</span>: <span class="math display">\[
+<li>To get <span class="math inline">\(\lambda\)</span>: Fix <span class="math inline">\(\boldsymbol{\theta}\)</span> and maximize over <span class="math inline">\(\lambda\)</span>. For any <span class="math inline">\(i\)</span>: <span class="math display">\[
 \underset{\lambda_1^i, \lambda_2^i, \ldots, \lambda_k^i} {\max}
-\sum _{k=1} ^K \left [ \lambda _k ^i \log \left ( \pi_k * \frac{1}{\sqrt{2\pi}\sigma_k} e^{\frac{-(x_i-\mu_k)^2}{2\sigma^2_k}} \right ) -  \lambda _k ^i \log( \lambda _k ^i) \right ] \hspace{1em} s.t. \hspace{1em} \sum _{k=1} ^K \lambda _k ^i = 1;  0 \le \lambda _k ^i \le 1
-\]</span> <span class="math display">\[
-\text{Solving the above constrained optimization problem analytically, we get}
-\]</span> <span class="math display">\[\begin{align*}
-\hat{\lambda_k^{i^{\scriptsize{MML}}}}
-&amp;= \frac{\left ( \frac{1}{\sqrt{2\pi}\sigma_k} e^{\frac{-(x_i-\mu_k)^2}{2\sigma^2_k}} \right ) * \pi_k}{ \displaystyle \sum _{k=1} ^K \left ( \frac{1}{\sqrt{2\pi}\sigma_k} e^{\frac{-(x_i-\mu_k)^2}{2\sigma^2_k}} * \pi_k \right )} \\
-\text{i.e. }\hat{\lambda_k^{i^{\scriptsize{MML}}}}
-&amp;= \frac{f(x_i|z_i=k)*P(z_i=k)}{P(x_i)} \\
-\hat{\lambda_k^{i^{\scriptsize{MML}}}}
-&amp;= \frac{f(x_i|z_i=k)*P(z_i=k)}{\displaystyle \sum _{k=1} ^K f(x_i|z_i=k)*P(z_i=k)} \\
-\end{align*}\]</span></li>
+\sum _{k=1} ^K \left [ \lambda _k ^i \log \left ( \pi_k * \frac{1}{\sqrt{2\pi}\boldsymbol{\sigma}_k} e^{\frac{-(\mathbf{x}_i-\boldsymbol{\mu}_k)^2}{2\boldsymbol{\sigma}^2_k}} \right ) -  \lambda _k ^i \log( \lambda _k ^i) \right ] \hspace{1em} s.t. \hspace{1em} \sum _{k=1} ^K \lambda _k ^i = 1;  0 \le \lambda _k ^i \le 1
+\]</span> Solving the above constrained optimization problem analytically, we get: <span class="math display">\[
+\hat{\lambda}_k^{i^{\text{MML}}} = \frac{\left ( \frac{1}{\sqrt{2\pi}\boldsymbol{\sigma}_k} e^{\frac{-(\mathbf{x}_i-\boldsymbol{\mu}_k)^2}{2\boldsymbol{\sigma}^2_k}} \right ) * \pi_k}{\displaystyle \sum _{k=1} ^K \left ( \frac{1}{\sqrt{2\pi}\boldsymbol{\sigma}_k} e^{\frac{-(\mathbf{x}_i-\boldsymbol{\mu}_k)^2}{2\boldsymbol{\sigma}^2_k}} \right ) * \pi_k}
+\]</span></li>
 </ul>
 </section>
 <section id="em-algorithm" class="level1">
@@ -456,15 +450,15 @@ a_k \text{ are points of the function}
 <p>The EM (Expectation-Maximization) algorithm is a popular method for estimating the parameters of statistical models with incomplete data by iteratively alternating between expectation and maximization steps until convergence to a stable solution.</p>
 <p>The algorithm is as follows:</p>
 <ul>
-<li>Initialize <span class="math inline">\(\theta^0 = \left \{ \begin{array}{cccc} \mu_1, \mu_2, \ldots, \mu_K \\ \sigma^2_1, \sigma^2_2, \ldots, \sigma^2_K\\ \pi_1, \pi_2, \ldots, \pi_K \end{array} \right \}\)</span> using Lloyd’s algorithm.</li>
-<li>Until convergence (<span class="math inline">\(||\theta^{t+1}-\theta^{t} || \le \epsilon\)</span> where <span class="math inline">\(\epsilon\)</span> is the tolerance parameter) do the following: <span class="math display">\[\begin{align*}
-\lambda^{t+1} &amp;= \underset{\lambda}{\arg \max} \text{ modified\_log}(\theta^t, \textcolor{red}{\lambda}) &amp;\rightarrow \text{ Expectation Step}\\
-\theta^{t+1} &amp;= \underset{\theta}{\arg \max} \text{ modified\_log}(\textcolor{red}{\theta}, \lambda^{t+1}) &amp;\rightarrow \text{ Maximization Step}\\
+<li>Initialize <span class="math inline">\(\boldsymbol{\theta}^0 = \left \{ \begin{array}{cccc} \boldsymbol{\mu}_1, \boldsymbol{\mu}_2, \ldots, \boldsymbol{\mu}_K \\ \boldsymbol{\sigma}^2_1, \boldsymbol{\sigma}^2_2, \ldots, \boldsymbol{\sigma}^2_K\\ \pi_1, \pi_2, \ldots, \pi_K \end{array} \right \}\)</span> using Lloyd’s algorithm.</li>
+<li>Until convergence (<span class="math inline">\(||\boldsymbol{\theta}^{t+1}-\boldsymbol{\theta}^{t} || \le \epsilon\)</span> where <span class="math inline">\(\epsilon\)</span> is the tolerance parameter) do the following: <span class="math display">\[\begin{align*}
+\lambda^{t+1} &amp;= \underset{\lambda}{\arg \max} \text{ modified\_log}(\boldsymbol{\theta}^t, \textcolor{red}{\lambda}) &amp;\rightarrow \text{ Expectation Step}\\
+\boldsymbol{\theta}^{t+1} &amp;= \underset{\boldsymbol{\theta}}{\arg \max} \text{ modified\_log}(\textcolor{red}{\boldsymbol{\theta}}, \lambda^{t+1}) &amp;\rightarrow \text{ Maximization Step}\\
 \end{align*}\]</span></li>
 </ul>
 <p>EM algorithm produces soft clustering. For hard clustering using EM, a further step is involved:</p>
 <ul>
-<li>For a point <span class="math inline">\(x_i\)</span>, assign it to a cluster using the following equation: <span class="math display">\[
+<li>For a point <span class="math inline">\(\mathbf{x}_i\)</span>, assign it to a cluster using the following equation: <span class="math display">\[
 z_i = \underset{k}{\arg\max} \lambda_k^i
 \]</span></li>
 </ul>
