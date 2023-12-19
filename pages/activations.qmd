@@ -1,5 +1,5 @@
 ---
-title: "Activation Functions in Neural Networks"
+title: "Weight Initializations"
 ---
 
 Activation functions play a crucial role in introducing non-linearity to neural networks, enabling them to model complex relationships and learn intricate patterns from the data. Here are common activation functions used in neural networks:

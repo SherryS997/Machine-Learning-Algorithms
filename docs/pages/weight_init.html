@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Machine Learning Algorithms - Linear Regression</title>
+<title>Machine Learning Algorithms - Importance of Proper Initialization of Model Weights</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../pages/klin_reg.html" rel="next">
-<link href="../pages/em.html" rel="prev">
+<link href="../about.html" rel="next">
+<link href="../pages/gradient.html" rel="prev">
 <link href="../icon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Supervised Learning</li><li class="breadcrumb-item"><a href="../pages/lin_reg.html">Regression</a></li><li class="breadcrumb-item"><a href="../pages/lin_reg.html">Least squares regression</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/notations_nn .html">Deep Learning</a></li><li class="breadcrumb-item"><a href="../pages/weight_init.html">Practical DL</a></li><li class="breadcrumb-item"><a href="../pages/weight_init.html">Weight Initializations</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -251,25 +251,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
  <span class="menu-text">Supervised Learning</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
  <span class="menu-text">Regression</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/lin_reg.html" class="sidebar-item-text sidebar-link active">
+  <a href="../pages/lin_reg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Least squares regression</span></a>
   </div>
 </li>
@@ -395,13 +395,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true">
  <span class="menu-text">Deep Learning</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/notations_nn .html" class="sidebar-item-text sidebar-link">
@@ -451,16 +451,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="true">
  <span class="menu-text">Practical DL</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/weight_init.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/weight_init.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Weight Initializations</span></a>
   </div>
 </li>
@@ -484,11 +484,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#optimizing-the-error-function" id="toc-optimizing-the-error-function" class="nav-link active" data-scroll-target="#optimizing-the-error-function">Optimizing the Error Function</a></li>
-  <li><a href="#gradient-descent" id="toc-gradient-descent" class="nav-link" data-scroll-target="#gradient-descent">Gradient Descent</a>
-  <ul class="collapse">
-  <li><a href="#stochastic-gradient-descent" id="toc-stochastic-gradient-descent" class="nav-link" data-scroll-target="#stochastic-gradient-descent">Stochastic Gradient Descent</a></li>
-  </ul></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#zero-initialization" id="toc-zero-initialization" class="nav-link" data-scroll-target="#zero-initialization">Zero Initialization</a></li>
+  <li><a href="#random-initialization" id="toc-random-initialization" class="nav-link" data-scroll-target="#random-initialization">Random Initialization</a></li>
+  <li><a href="#he-initialization" id="toc-he-initialization" class="nav-link" data-scroll-target="#he-initialization">He Initialization</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -497,7 +497,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Linear Regression</h1>
+<h1 class="title">Importance of Proper Initialization of Model Weights</h1>
 </div>
 
 
@@ -512,327 +512,148 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Linear regression is a supervised learning algorithm employed to predict a continuous output variable based on one or more input features, assuming a linear relationship between the input and output variables. The primary objective of linear regression is to determine the line of best fit that minimizes the sum of squared errors between the predicted and actual output values.</p>
-<p>Given a dataset <span class="math inline">\(\mathbf{x}_1, \ldots, \mathbf{x}_n\)</span> where each <span class="math inline">\(\mathbf{x}_i\)</span> belongs to <span class="math inline">\(\mathbb{R}^d\)</span>, and the corresponding labels <span class="math inline">\(\mathbf{y}_1, \ldots, \mathbf{y}_n\)</span> belong to <span class="math inline">\(\mathbb{R}\)</span>, the goal of linear regression is to find a mapping between the input and output variables, represented as follows:</p>
-<p><span class="math display">\[
-h: \mathbb{R}^d \rightarrow \mathbb{R}
-\]</span></p>
-<p>The error for this mapping function can be quantified as:</p>
-<p><span class="math display">\[
-\text{error}(h) = \sum_{i=1}^n (h(\mathbf{x}_i) - \mathbf{y}_i)^2
-\]</span></p>
-<p>Ideally, this error should be minimized, which occurs when <span class="math inline">\(h(\mathbf{x}_i) = \mathbf{y}_i\)</span> for all <span class="math inline">\(i\)</span>. However, achieving this may only result in memorizing the data and its outputs, which is not a desired outcome.</p>
-<p>To mitigate the memorization problem, introducing a structure to the mapping becomes necessary. The simplest and commonly used structure is linear, which we will adopt as the underlying structure for our data.</p>
-<p>Let <span class="math inline">\(\mathcal{H}_{\text{linear}}\)</span> denote the solution space for the mapping in the linear domain:</p>
-<p><span class="math display">\[
-\mathcal{H}_{\text{linear}} = \left\lbrace h_w: \mathbb{R}^d \rightarrow \mathbb{R} \ \text{s.t.} \ h_w(\mathbf{x}) = \mathbf{w}^T\mathbf{x} \ \forall \mathbf{w} \in \mathbb{R}^d \right\rbrace
-\]</span></p>
-<p>Thus, our objective is to minimize:</p>
-<p><span class="math display">\[\begin{align*}
-\min_{h \in \mathcal{H}_{\text{linear}}} \sum_{i=1}^n (h(\mathbf{x}_i) - \mathbf{y}_i)^2 \\
-\text{Equivalently,} \\
-\min_{\mathbf{w} \in \mathbb{R}^d} \sum_{i=1}^n (\mathbf{w}^T\mathbf{x}_i - \mathbf{y}_i)^2
-\end{align*}\]</span></p>
-<p>Optimizing the above objective is the main aim of the linear regression algorithm.</p>
-<section id="optimizing-the-error-function" class="level1">
-<h1>Optimizing the Error Function</h1>
-<p>The minimization equation can be expressed in vectorized form as:</p>
-<p><span class="math display">\[
-\min_{\mathbf{w} \in \mathbb{R}^d} \|\mathbf{X}^T\mathbf{w} - \mathbf{y}\|_2^2
-\]</span></p>
-<p>Defining a function <span class="math inline">\(f(\mathbf{w})\)</span> that captures this minimization problem, we have:</p>
-<p><span class="math display">\[\begin{align*}
-f(\mathbf{w}) &amp;= \min_{\mathbf{w} \in \mathbb{R}^d} \|\mathbf{X}^T\mathbf{w} - \mathbf{y}\|_2^2 \\
-f(\mathbf{w}) &amp;= (\mathbf{X}^T\mathbf{w} - \mathbf{y})^T(\mathbf{X}^T\mathbf{w} - \mathbf{y}) \\
-\therefore \nabla f(\mathbf{w}) &amp;= 2(\mathbf{X}\mathbf{X}^T)\mathbf{w} - 2(\mathbf{X}\mathbf{y})
-\end{align*}\]</span></p>
-<p>Setting the gradient equation to zero, we obtain:</p>
-<p><span class="math display">\[\begin{align*}
-(\mathbf{X}\mathbf{X}^T)\mathbf{w}^* &amp;= \mathbf{X}\mathbf{y} \\
-\therefore \mathbf{w}^* &amp;= (\mathbf{X}\mathbf{X}^T)^+\mathbf{X}\mathbf{y}
-\end{align*}\]</span></p>
-<p>Here, <span class="math inline">\((\mathbf{X}\mathbf{X}^T)^+\)</span> represents the pseudo-inverse of <span class="math inline">\(\mathbf{X}\mathbf{X}^T\)</span>.</p>
-<p>Further analysis reveals that <span class="math inline">\(\mathbf{X}^T\mathbf{w}\)</span> corresponds to the projection of the labels onto the subspace spanned by the features.</p>
-<section id="implementing-linear-regression-algorithm-closed-form-in-python" class="level4">
-<h4 class="anchored" data-anchor-id="implementing-linear-regression-algorithm-closed-form-in-python">Implementing Linear Regression Algorithm (Closed Form) in Python</h4>
-<p>We will be using the <code>FuelConsumption.csv</code> dataset.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"FuelConsumption.csv"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># take a look at the dataset</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Output
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<table class="table">
-<colgroup>
-<col style="width: 5%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 7%">
-<col style="width: 6%">
-<col style="width: 5%">
-<col style="width: 7%">
-<col style="width: 5%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 13%">
-<col style="width: 7%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>MODELYEAR</th>
-<th>MAKE</th>
-<th>MODEL</th>
-<th>VEHICLECLASS</th>
-<th>ENGINESIZE</th>
-<th>CYLINDERS</th>
-<th>TRANSMISSION</th>
-<th>FUELTYPE</th>
-<th>FUELCONSUMPTION_CITY</th>
-<th>FUELCONSUMPTION_HWY</th>
-<th>FUELCONSUMPTION_COMB</th>
-<th>FUELCONSUMPTION_COMB_MPG</th>
-<th>CO2EMISSIONS</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>2014</td>
-<td>ACURA</td>
-<td>ILX</td>
-<td>COMPACT</td>
-<td>2.0</td>
-<td>4</td>
-<td>AS5</td>
-<td>Z</td>
-<td>9.9</td>
-<td>6.7</td>
-<td>8.5</td>
-<td>33</td>
-<td>196</td>
-</tr>
-<tr class="even">
-<td>2014</td>
-<td>ACURA</td>
-<td>ILX</td>
-<td>COMPACT</td>
-<td>2.4</td>
-<td>4</td>
-<td>M6</td>
-<td>Z</td>
-<td>11.2</td>
-<td>7.7</td>
-<td>9.6</td>
-<td>29</td>
-<td>221</td>
-</tr>
-<tr class="odd">
-<td>2014</td>
-<td>ACURA</td>
-<td>ILX HYBRID</td>
-<td>COMPACT</td>
-<td>1.5</td>
-<td>4</td>
-<td>AV7</td>
-<td>Z</td>
-<td>6.0</td>
-<td>5.8</td>
-<td>5.9</td>
-<td>48</td>
-<td>136</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<p>Let’s select some features to explore more.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cdf <span class="op">=</span> df[[<span class="st">'ENGINESIZE'</span>,<span class="st">'CYLINDERS'</span>,<span class="st">'FUELCONSUMPTION_COMB'</span>,<span class="st">'CO2EMISSIONS'</span>]]</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>cdf.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Output
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<table class="table">
-<thead>
-<tr class="header">
-<th>ENGINESIZE</th>
-<th>CYLINDERS</th>
-<th>FUELCONSUMPTION_COMB</th>
-<th>CO2EMISSIONS</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>2.0</td>
-<td>4</td>
-<td>8.5</td>
-<td>196</td>
-</tr>
-<tr class="even">
-<td>2.4</td>
-<td>4</td>
-<td>9.6</td>
-<td>221</td>
-</tr>
-<tr class="odd">
-<td>1.5</td>
-<td>4</td>
-<td>5.9</td>
-<td>136</td>
-</tr>
-<tr class="even">
-<td>3.5</td>
-<td>6</td>
-<td>11.1</td>
-<td>255</td>
-</tr>
-<tr class="odd">
-<td>3.5</td>
-<td>6</td>
-<td>10.6</td>
-<td>244</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<p>Let’s split the dataset into features and labels and convert them into numpy arrays for computation.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.asanyarray(cdf[[<span class="st">'ENGINESIZE'</span>,<span class="st">'CYLINDERS'</span>,<span class="st">'FUELCONSUMPTION_COMB'</span>, <span class="st">'Ones'</span>]]).T</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.asanyarray(cdf[[<span class="st">'CO2EMISSIONS'</span>]])</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>X.shape, y.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>((4, 825), (825, 1))</p>
-</div>
-</div>
-</div>
-<p>Let compute the <span class="math inline">\(w\)</span> vector and print the coefficients and intercept.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> np.linalg.pinv(X<span class="op">@</span>X.T)<span class="op">@</span>X<span class="op">@</span>y</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="st">'Coefficients: '</span>, w.reshape((<span class="op">-</span><span class="dv">1</span>,))[:<span class="dv">3</span>])</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="st">'Intercept: '</span>, w.reshape((<span class="op">-</span><span class="dv">1</span>,))[<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Coefficients: [10.59881197, 7.4005805, 9.48207228]</p>
-<p>Intercept: 67.82612794918894</p>
-</div>
-</div>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Training your neural network hinges significantly on the initial values assigned to the weights. An adept choice in initialization methods plays a pivotal role in streamlining the learning process.</p>
+<p>In the realm of neural networks, weight initialization stands as a critical precursor to successful training. It acts as the bedrock upon which the network learns intricate patterns and correlations within data. Choosing the optimal initialization method can profoundly influence the network’s ability to converge efficiently and effectively.</p>
+<p>This exploration aims to delve into various initialization techniques, namely random, zeros, and He initialization. Each method introduces distinct characteristics to the neural network’s learning dynamics, impacting its convergence and eventual performance.</p>
+<p>An adeptly chosen initialization method brings forth several advantages:</p>
+<ul>
+<li>Accelerated convergence of gradient descent</li>
+<li>Enhanced likelihood of gradient descent converging towards a lower training and generalization error</li>
+</ul>
+<p>Let’s delve into these initialization techniques and witness their unique effects on the learning process. The following is the scatter plot of a datset with two classes:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/concen_circles.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">The scatter plot depicts a binary classification scenario featuring two concentric circles. The outer circle corresponds to one class labeled as ‘1,’ while the inner circle represents another class labeled as ‘0.’</figcaption>
+</figure>
 </div>
 </section>
+<section id="zero-initialization" class="level2">
+<h2 class="anchored" data-anchor-id="zero-initialization">Zero Initialization</h2>
+<p>One fundamental approach in initializing neural network parameters involves setting all weights and biases to zeros. This method, exemplified in the code snippet above, initializes both weight matrices <span class="math inline">\((W^{[1]}, W^{[2]}, ..., W^{[L]})\)</span> and bias vectors <span class="math inline">\((b^{[1]}, b^{[2]}, ..., b^{[L]})\)</span> to zeros.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> initialize_parameters_zeros(layers_dims):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    parameters <span class="op">=</span> {}</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> <span class="bu">len</span>(layers_dims)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> l <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, L):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        parameters[<span class="ss">f"W</span><span class="sc">{</span>l<span class="sc">}</span><span class="ss">"</span>] <span class="op">=</span> np.zeros((layers_dims[l], layers_dims[l<span class="op">-</span><span class="dv">1</span>]))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        parameters[<span class="ss">f"b</span><span class="sc">{</span>l<span class="sc">}</span><span class="ss">"</span>] <span class="op">=</span> np.zeros((layers_dims[l], <span class="dv">1</span>))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> parameters</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>While this method is simple and computationally efficient, initializing all parameters to zero can lead to symmetry between neurons in a layer. This symmetry perpetuates throughout the network during training, resulting in every neuron in a given layer learning the same features. Consequently, this hampers the network’s ability to learn diverse representations, thereby limiting its capacity to capture complex patterns within the data.</p>
+<p>Let’s look at how the network performs with this initialization method:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/conc_cir_zero.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">The plot exhibits a failed classification attempt, portraying uniform predictions of one class due to ineffective weight initialization.</figcaption>
+</figure>
+</div>
+<p>Let’s understand what’s happening:</p>
+<ul>
+<li><strong>Zero Initialization Resulted in Symmetry</strong>: Due to initializing all weights and biases to zero, the network encounters symmetry across neurons within each layer.</li>
+<li><strong>ReLU Activation Outputs Zero</strong>: The ReLU activation function yields zero when the input, calculated as the product of weights and input, is zero. Therefore, <span class="math inline">\(a = \text{ReLU}(z) = \max(0, z) = 0\)</span>.</li>
+<li><strong>Sigmoid Activation for Classification</strong>: At the output layer, using the sigmoid activation function, the prediction (<span class="math inline">\(y_{\text{pred}}\)</span>) becomes <span class="math inline">\(0.5\)</span> due to the output of <span class="math inline">\(a\)</span> being zero.</li>
+<li><strong>Ineffective Loss Differentiation</strong>: The resulting <span class="math inline">\(y_{\text{pred}} = 0.5\)</span> for every input provides no distinction in the loss function. For both <span class="math inline">\(y = 1\)</span> and <span class="math inline">\(y = 0\)</span>, the loss (<span class="math inline">\(\mathcal{L}\)</span>) equates to <span class="math inline">\(0.6931\)</span>. This lack of differentiation inhibits the adjustment of weights during training.</li>
+<li><strong>Stagnation in Learning</strong>: With identical loss values for both classes, there’s no gradient to prompt weight adjustments. Consequently, the model remains stuck with the initial zero weights, leading to uniform predictions of ‘0’ for all examples.</li>
+<li><strong>Failure to Break Symmetry Limits Learning</strong>: The failure to break symmetry inhibits diverse learning among neurons within each layer. Consequently, the network’s capability equates to that of a linear classifier, severely limiting its capacity to learn complex patterns.</li>
+</ul>
+<p>This initialization failure illustrates how initializing all weights to zero diminishes the network’s learning capacity, rendering it incapable of discerning intricate patterns within the data.</p>
 </section>
-<section id="gradient-descent" class="level1">
-<h1>Gradient Descent</h1>
-<p>The normal equation for linear regression, as shown above, involves calculating <span class="math inline">\((\mathbf{X}\mathbf{X}^T)^+\)</span>, which can be computationally expensive with a complexity of <span class="math inline">\(O(d^3)\)</span>.</p>
-<p>Since <span class="math inline">\(\mathbf{w}^*\)</span> represents the solution of an unconstrained optimization problem, it can be solved using gradient descent. The iterative formula for gradient descent is:</p>
-<p><span class="math display">\[\begin{align*}
-\mathbf{w}^{t+1} &amp;= \mathbf{w}^t - \eta^t \nabla f(\mathbf{w}^t) \\
-\therefore \mathbf{w}^{t+1} &amp;= \mathbf{w}^t - \eta^t \left [ 2(\mathbf{X}\mathbf{X}^T)\mathbf{w}^t - 2(\mathbf{X}\mathbf{y}) \right ]
-\end{align*}\]</span></p>
-<p>Here, <span class="math inline">\(\eta\)</span> is a scalar that controls the step-size of the descent, and <span class="math inline">\(t\)</span> represents the current iteration.</p>
-<section id="implementing-gradient-descent-in-python" class="level4">
-<h4 class="anchored" data-anchor-id="implementing-gradient-descent-in-python">Implementing Gradient Descent in Python</h4>
-<p>Let compute the <span class="math inline">\(w\)</span> vector using Gradient Descent and print the coefficients and intercept.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> np.ones((X.shape[<span class="dv">0</span>], <span class="dv">1</span>))</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>eta <span class="op">=</span> <span class="fl">1e-6</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="dv">100000</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(t):</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    grad <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>(X <span class="op">@</span> X.T <span class="op">@</span> w) <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>(X <span class="op">@</span> y)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    w <span class="op">=</span> w <span class="op">-</span> eta<span class="op">*</span>grad</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="st">'Coefficients: '</span>, w.reshape((<span class="op">-</span><span class="dv">1</span>,))[:<span class="dv">3</span>])</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="st">'Intercept: '</span>, w.reshape((<span class="op">-</span><span class="dv">1</span>,))[<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<section id="random-initialization" class="level2">
+<h2 class="anchored" data-anchor-id="random-initialization">Random Initialization</h2>
+<p>Introducing randomness in weight initialization breaks symmetrical behavior within the neural network. By initializing weights randomly, each neuron begins learning distinct functions from its inputs. This specific implementation initializes weights randomly to significantly large values. The resulting function utilizes the code snippet provided below:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> initialize_parameters_random(layers_dims):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    np.random.seed(<span class="dv">3</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    parameters <span class="op">=</span> {}</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> <span class="bu">len</span>(layers_dims)            <span class="co"># integer representing the number of layers</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> l <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, L):</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        parameters[<span class="ss">f"W</span><span class="sc">{</span>l<span class="sc">}</span><span class="ss">"</span>] <span class="op">=</span> np.random.randn(layers_dims[l], layers_dims[l<span class="op">-</span><span class="dv">1</span>]) <span class="op">*</span> <span class="dv">10</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        parameters[<span class="ss">f"b</span><span class="sc">{</span>l<span class="sc">}</span><span class="ss">"</span>] <span class="op">=</span> np.zeros((layers_dims[l], <span class="dv">1</span>))</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> parameters</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This initialization method sets a seed (in this case, seed 3) to ensure reproducibility and generates weights using a random normal distribution. These weights, scaled by a factor of 10, are initialized to encourage diverse learning among neurons in different layers of the neural network.</p>
+<p>Let’s look at how the network performs with this initialization method:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/conc_cir_rand.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">The plot showcases a dataset of two classes, visually divided by colors, although the delineation doesn’t perfectly align with the concentric circles defining the dataset.</figcaption>
+</figure>
 </div>
-<div class="callout-body-container">
-<p>Coefficients: [10.85347843, 7.51750331, 9.59591605]</p>
-<p>Intercept: 65.21825985969691</p>
-</div>
-</div>
-</div>
-<p>Even in the above equation, the calculation of <span class="math inline">\(\mathbf{X}\mathbf{X}^T\)</span> is required, which remains computationally expensive. Is there a way to further enhance this process?</p>
+<p><strong>Observations</strong>:</p>
+<ul>
+<li>The model’s initial prediction accuracy for all points is notable. However, this high starting cost is due to the utilization of large random-valued weights. This results in the last activation function (sigmoid) producing outputs close to 0 or 1 for certain examples. When misclassifications occur under these conditions, the incurred loss becomes exceedingly high, potentially reaching infinity when <span class="math inline">\(\log(a^{[3]}) = \log(0)\)</span>.</li>
+<li>Suboptimal initialization can lead to gradient vanishing or exploding, hindering the optimization process’s speed.</li>
+<li>While extended training might yield improved results, the initial phase with excessively large random weight values notably impedes the optimization process.</li>
+</ul>
+<p><strong>In summary</strong>:</p>
+<ul>
+<li>Initializing weights with notably large random values proves ineffective.</li>
+<li>Initializing with smaller random values is anticipated to yield better outcomes. The critical aspect to address is determining the appropriate magnitude for these random values, a pursuit we explore in the subsequent section.</li>
+</ul>
 </section>
-<section id="stochastic-gradient-descent" class="level2">
-<h2 class="anchored" data-anchor-id="stochastic-gradient-descent">Stochastic Gradient Descent</h2>
-<p>Stochastic gradient descent (SGD) is an optimization algorithm widely employed in machine learning to minimize the loss function of a model by determining the optimal parameters. Unlike traditional gradient descent, which updates the model parameters based on the entire dataset, SGD updates the parameters using a randomly selected subset of the data, known as a batch. This approach leads to faster training times and makes SGD particularly suitable for handling large datasets.</p>
-<p>Instead of updating <span class="math inline">\(\mathbf{w}\)</span> using the entire dataset at each step <span class="math inline">\(t\)</span>, SGD leverages a small randomly selected subset of <span class="math inline">\(k\)</span> data points to update <span class="math inline">\(\mathbf{w}\)</span>. Consequently, the new gradient becomes <span class="math inline">\(2(\tilde{\mathbf{X}}\tilde{\mathbf{X}}^T\mathbf{w}^t - \tilde{\mathbf{X}}\tilde{\mathbf{y}})\)</span>, where <span class="math inline">\(\tilde{\mathbf{X}}\)</span> and <span class="math inline">\(\tilde{\mathbf{y}}\)</span> represent small samples randomly chosen from the dataset. This strategy is feasible since <span class="math inline">\(\tilde{\mathbf{X}} \in \mathbb{R}^{d \times k}\)</span>, which is considerably smaller compared to <span class="math inline">\(\mathbf{X}\)</span>.</p>
-<p>After <span class="math inline">\(T\)</span> rounds of training, the final estimate is obtained as follows:</p>
-<p><span class="math display">\[
-\mathbf{w}_{\text{SGD}}^T = \frac{1}{T} \sum_{i=1}^T \mathbf{w}^i
-\]</span></p>
-<p>The stochastic nature of SGD contributes to optimal convergence to a certain extent.</p>
-<section id="implementing-stochastic-gradient-descent-in-python" class="level4">
-<h4 class="anchored" data-anchor-id="implementing-stochastic-gradient-descent-in-python">Implementing Stochastic Gradient Descent in Python</h4>
-<p>Let compute the <span class="math inline">\(w\)</span> vector using Stochastic Gradient Descent and print the coefficients and intercept.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> np.ones((X.shape[<span class="dv">0</span>], <span class="dv">1</span>))</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>eta <span class="op">=</span> <span class="fl">1e-4</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="dv">100000</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> X.shape[<span class="dv">1</span>]</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(t):</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># randomly select a batch of samples</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> np.random.choice(n, b, replace<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    X_b <span class="op">=</span> X[:, idx]</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    y_b <span class="op">=</span> y[idx]</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># compute the gradient for the batch</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    grad <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>(X_b <span class="op">@</span> X_b.T <span class="op">@</span> w) <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>(X_b <span class="op">@</span> y_b)</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># update the weights</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    w <span class="op">=</span> w <span class="op">-</span> eta<span class="op">*</span>grad</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="st">'Coefficients: '</span>, w.reshape((<span class="op">-</span><span class="dv">1</span>,))[:<span class="dv">3</span>])</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (<span class="st">'Intercept: '</span>, w.reshape((<span class="op">-</span><span class="dv">1</span>,))[<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<section id="he-initialization" class="level2">
+<h2 class="anchored" data-anchor-id="he-initialization">He Initialization</h2>
+<p>The He Initialization technique, pioneered by He et al.&nbsp;in 2015, offers an advanced method to initialize neural network parameters. Unlike simple zero initialization or Xavier initialization, He Initialization leverages a specific scaling factor (<code>sqrt(2./layers_dims[l-1])</code>) for the weights <span class="math inline">\((W^{[1]}, W^{[2]}, ..., W^{[L]})\)</span>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> initialize_parameters_he(layers_dims):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    np.random.seed(<span class="dv">3</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    parameters <span class="op">=</span> {}</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> <span class="bu">len</span>(layers_dims) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> l <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, L <span class="op">+</span> <span class="dv">1</span>):</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        parameters[<span class="ss">f"W</span><span class="sc">{</span>l<span class="sc">}</span><span class="ss">"</span>] <span class="op">=</span> np.random.randn(layers_dims[l], layers_dims[l<span class="op">-</span><span class="dv">1</span>]) <span class="op">*</span> np.sqrt(<span class="dv">2</span><span class="op">/</span>layers_dims[l<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        parameters[<span class="ss">f"b</span><span class="sc">{</span>l<span class="sc">}</span><span class="ss">"</span>] <span class="op">=</span> np.zeros((layers_dims[l], <span class="dv">1</span>))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> parameters</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Key Aspects of He Initialization:</strong></p>
+<ul>
+<li><strong>Scaling Factor:</strong> Employs a scaling factor of <code>sqrt(2./layers_dims[l-1])</code> for initializing the weights.</li>
+<li><strong>Random Initialization:</strong> Randomizes the weights using a Gaussian distribution with mean zero and variance adjusted by the scaling factor.</li>
+</ul>
+<p><strong>Impact:</strong></p>
+<ul>
+<li><strong>Mitigates Vanishing/Exploding Gradients:</strong> The strategic scaling of weights aids in preventing issues like vanishing or exploding gradients during training, facilitating more stable and efficient learning.</li>
+<li><strong>Promotes Non-Linearity:</strong> Enables the network to learn more diverse and intricate representations by fostering non-linear activations, thereby enhancing its capability to capture complex patterns within the data.</li>
+</ul>
+<p>Let’s look at how the network performs with this initialization method:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/conc_cir_he.svg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">The plot visually illustrates the model’s precise classification by distinctly coloring the dataset, showcasing perfect separation between classes: one represented by a circular cluster and the remainder of the plot showcasing the alternative class.</figcaption>
+</figure>
 </div>
-<div class="callout-body-container">
-<p>Coefficients: [10.72000912, 8.3366805, 9.13970723]</p>
-<p>Intercept: 65.2366350549217</p>
-</div>
-</div>
-</div>
+<p><strong>Observations:</strong></p>
+<ol type="1">
+<li><strong>Perfect Separation of Classes:</strong>
+<ul>
+<li><strong>Effective Classification:</strong> The model utilizing He Initialization demonstrates exceptional performance by precisely segregating the two classes (represented by blue and red dots) in the scatter plot.</li>
+<li><strong>Accurate Distribution Capture:</strong> Through the learned representations, the model accurately captures the distinctive distribution of the dataset.</li>
+</ul></li>
+<li><strong>Efficient Convergence:</strong>
+<ul>
+<li><strong>Rapid Learning:</strong> He Initialization facilitates swift convergence of the model, achieving optimal class separation in a notably small number of iterations.</li>
+</ul></li>
+</ol>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Different initialization methods significantly impact neural network performance:</p>
+<ul>
+<li><strong>Symmetry Breakage:</strong> Zero initialization fails to break symmetry, hindering the network’s ability to learn distinct representations.</li>
+<li><strong>Caution with Weights:</strong> Large random initialization leads to excessively large weights, impacting learning.</li>
+<li><strong>He Initialization Effectiveness:</strong> He initialization emerges as a recommended method, effectively enabling the network to achieve a remarkable 99% accuracy. It aptly suits networks employing ReLU activations, showcasing its suitability for diverse architectures.</li>
+</ul>
+<p>Key Takeaways:</p>
+<ul>
+<li><strong>Initialization Variance:</strong> Varied initializations yield divergent outcomes in network performance.</li>
+<li><strong>Symmetry Disruption:</strong> Random initialization mitigates symmetry issues, allowing different units to learn diverse features.</li>
+<li><strong>Weight Magnitude Control:</strong> Caution must be exercised to prevent excessively large weights.</li>
+<li><strong>He Initialization Suitability:</strong> Especially effective for networks employing ReLU activations, demonstrating superior performance and suitability for numerous architectures.</li>
+</ul>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1186,13 +1007,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../pages/em.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Expectation-maximization (EM) algorithm</span>
+      <a href="../pages/gradient.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Gradient Descent</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../pages/klin_reg.html" class="pagination-link">
-        <span class="nav-page-text">Kernel Least squares regression</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../about.html" class="pagination-link">
+        <span class="nav-page-text">About me</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

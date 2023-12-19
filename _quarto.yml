@@ -4,9 +4,12 @@ project:
 
 css:
   - https://lalten.github.io/lmweb/style/latinmodern-roman.css
+  - https://lalten.github.io/lmweb/style/latinmodern-mono.css
 mainfont: "Latin Modern Roman"
 fontsize: 14pt
 fontfamilyoptions: "oblique"
+monofont: "Latin Modern Mono"
+highlight-style: "tango"
 
 website:
   favicon: icon.png
@@ -105,6 +108,10 @@ website:
                 text: Backpropagation
               - href: pages/gradient.qmd
                 text: Gradient Descent
+          - section: "Practical DL"
+            contents: 
+              - href: pages/weight_init.qmd
+                text: Weight Initializations
       - href: about.qmd
         text: About me
 format:
