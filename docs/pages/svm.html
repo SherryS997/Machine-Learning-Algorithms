@@ -446,6 +446,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#dual-formulation-for-soft-margin-svm" id="toc-dual-formulation-for-soft-margin-svm" class="nav-link" data-scroll-target="#dual-formulation-for-soft-margin-svm">Dual Formulation for Soft-Margin SVM</a>
   <ul class="collapse">
   <li><a href="#dual-formulation" id="toc-dual-formulation" class="nav-link" data-scroll-target="#dual-formulation">Dual Formulation</a></li>
+  <li><a href="#complementary-slackness-in-soft-margin-support-vector-machines" id="toc-complementary-slackness-in-soft-margin-support-vector-machines" class="nav-link" data-scroll-target="#complementary-slackness-in-soft-margin-support-vector-machines">Complementary Slackness in Soft-Margin Support Vector Machines</a>
+  <ul class="collapse">
+  <li><a href="#scenarios-of-complementary-slackness" id="toc-scenarios-of-complementary-slackness" class="nav-link" data-scroll-target="#scenarios-of-complementary-slackness">Scenarios of Complementary Slackness</a></li>
+  <li><a href="#summary-of-scenarios" id="toc-summary-of-scenarios" class="nav-link" data-scroll-target="#summary-of-scenarios">Summary of Scenarios</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -687,9 +692,52 @@ C - \alpha_i -\beta_i = 0
 \max _{\alpha \ge 0; \beta \ge 0; C = \alpha_i + \beta_i}\left [\sum _{i=1} ^n \alpha_i - \frac{1}{2}\alpha_i^Tx_i^Ty_i^Ty_ix_i\alpha_i\right ]
 \]</span> <span class="math display">\[
 \therefore \max _{0 \le \alpha \le C}\left [\sum _{i=1} ^n \alpha_i - \frac{1}{2}\alpha_i^Tx_i^Ty_i^Ty_ix_i\alpha_i\right ]
-\]</span></p>
+\]</span> If <span class="math inline">\(C=0\)</span>, <span class="math inline">\(\alpha^*=0\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\displaystyle w^*=\sum _{i=1} ^n \alpha^*_i x_i y_i = 0\)</span>.</p>
+<p>if <span class="math inline">\(C=\infty\)</span>, the equation will be equal to that of Hard-Margin SVM.</p>
+</section>
+<section id="complementary-slackness-in-soft-margin-support-vector-machines" class="level2">
+<h2 class="anchored" data-anchor-id="complementary-slackness-in-soft-margin-support-vector-machines">Complementary Slackness in Soft-Margin Support Vector Machines</h2>
+<p>Complementary slackness can be expressed through a set of equations as follows:</p>
+<ol type="1">
+<li><p><span class="math inline">\(\forall i\)</span>, the following equation holds: <span class="math display">\[
+\alpha_i(1 - \mathbf{w}^{*T}\mathbf{x}_i y_i - \epsilon^*_i) = 0 \quad \ldots [1]
+\]</span></p></li>
+<li><p>Additionally, the following relation must hold: <span class="math display">\[
+\beta_i(\epsilon_i^*) = 0 \quad \ldots [2]
+\]</span></p></li>
+</ol>
+<p>Given these equations, various scenarios arise which elucidate the implications of complementary slackness in the context of Soft-Margin SVM.</p>
+<section id="scenarios-of-complementary-slackness" class="level3">
+<h3 class="anchored" data-anchor-id="scenarios-of-complementary-slackness">Scenarios of Complementary Slackness</h3>
+<ol type="1">
+<li><p>If <span class="math inline">\(\alpha_i^* = 0\)</span>:<br>
+In this case, <span class="math inline">\(\beta_i^* = C\)</span> due to <span class="math inline">\(\alpha_i^* + \beta_i^* = C\)</span>. From equation [2], we deduce that <span class="math inline">\(\epsilon_i^* = 0\)</span>. Consequently, it follows that the decision function <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i + \epsilon_i^* \ge 1\)</span> simplifies to <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i \ge 1\)</span>, indicating that the data point is correctly classified and lies outside the margin.</p></li>
+<li><p>If <span class="math inline">\(0 &lt; \alpha_i^* &lt; C\)</span>:<br>
+In this scenario, both <span class="math inline">\(\alpha_i^*\)</span> and <span class="math inline">\(\beta_i^*\)</span> assume positive values within the range <span class="math inline">\((0, C)\)</span>. Equation [2] implies <span class="math inline">\(\epsilon_i^* = 0\)</span>, while equation [1] gives <span class="math inline">\(1 - \mathbf{w}^{*T}\mathbf{x}_i y_i - \epsilon^*_i = 0\)</span>, leading to <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i = 1\)</span>. This signifies that the data point resides exactly on the margin boundary.</p></li>
+<li><p>If <span class="math inline">\(\alpha_i^* = C\)</span>:<br>
+When <span class="math inline">\(\alpha_i^*\)</span> takes on the maximum value <span class="math inline">\(C\)</span>, the dual variable <span class="math inline">\(\beta_i^*\)</span> becomes <span class="math inline">\(0\)</span>. Equation [2] establishes that <span class="math inline">\(\epsilon_i^*\ge0\)</span>. Equation [1] implies <span class="math inline">\(1 - \mathbf{w}^{*T}\mathbf{x}_i y_i - \epsilon^*_i = 0\)</span>, which further simplifies to <span class="math inline">\(1 - \mathbf{w}^{*T}\mathbf{x}_i y_i = \epsilon^*_i\)</span>. This results in <span class="math inline">\(1 - \mathbf{w}^{*T}\mathbf{x}_i y_i \ge 0\)</span>, indicating that the data point is misclassified or lies within the margin.</p></li>
+<li><p>If <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i &lt; 1\)</span>:<br>
+Given that <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i &lt; 1\)</span>, the inequality <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i + \epsilon_i^* \ge 1\)</span> holds. By manipulating this inequality, we deduce <span class="math inline">\(\epsilon_i^* &gt; 0\)</span>. From equation [2], it follows that <span class="math inline">\(\beta_i^* = 0\)</span>, and consequently, <span class="math inline">\(\alpha_i^* = C\)</span>.</p></li>
+<li><p>If <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i = 1\)</span>:<br>
+For data points that satisfy <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i = 1\)</span>, we once again consider the inequality <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i + \epsilon_i^* \ge 1\)</span>, leading to <span class="math inline">\(\epsilon_i^* \ge 0\)</span>. If <span class="math inline">\(\epsilon_i^* &gt; 0\)</span>, equation [2] indicates <span class="math inline">\(\beta_i^* = 0\)</span>, resulting in <span class="math inline">\(\alpha_i^* = C\)</span>. On the other hand, if <span class="math inline">\(\epsilon_i^* = 0\)</span>, equation [2] implies <span class="math inline">\(\beta_i^* \ge 0\)</span>, and as a consequence, <span class="math inline">\(\alpha_i^* \in [0, C]\)</span>.</p></li>
+<li><p>If <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i &gt; 1\)</span>:<br>
+When <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i &gt; 1\)</span>, the inequality <span class="math inline">\(1 - \mathbf{w}^{*T}\mathbf{x}_i y_i - \epsilon^*_i &lt; 0\)</span> holds. From equation [1], we conclude that <span class="math inline">\(\alpha_i^* = 0\)</span>, leading to <span class="math inline">\(\beta^*_i = C\)</span> as per the equation <span class="math inline">\(\alpha_i^* + \beta_i^* = C\)</span>. Furthermore, equation [2] reveals that <span class="math inline">\(\epsilon_i^* = 0\)</span>.</p></li>
+</ol>
+</section>
+<section id="summary-of-scenarios" class="level3">
+<h3 class="anchored" data-anchor-id="summary-of-scenarios">Summary of Scenarios</h3>
+<p>In summary, we have established the following relationships between the dual variable <span class="math inline">\(\alpha_i^*\)</span> and the decision boundary defined by <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i\)</span>:</p>
+<ul>
+<li><span class="math inline">\(\alpha_i^* = 0\)</span>: Data point is correctly classified and outside the margin.</li>
+<li><span class="math inline">\(0 &lt; \alpha_i^* &lt; C\)</span>: Data point lies exactly on the margin boundary.</li>
+<li><span class="math inline">\(\alpha_i^* = C\)</span>: Data point is misclassified or inside the margin.</li>
+<li><span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i &lt; 1\)</span>: Dual variable <span class="math inline">\(\alpha_i^* = C\)</span>.</li>
+<li><span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i = 1\)</span>: Dual variable <span class="math inline">\(\alpha_i^* \in [0, C]\)</span> if <span class="math inline">\(\epsilon_i^* = 0\)</span>, else <span class="math inline">\(\alpha_i^* = C\)</span>.</li>
+<li><span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i &gt; 1\)</span>: Dual variable <span class="math inline">\(\alpha_i^* = 0\)</span>.</li>
+</ul>
 
 
+</section>
 </section>
 </section>
 
