@@ -2,11 +2,16 @@ project:
   type: website
   output-dir: docs
 
+mainfont: "Latin Modern"
+fontsize: 14pt
+
 website:
   favicon: icon.png
   title: "Machine Learning Algorithms"
+  
   page-navigation: true
   sidebar:
+    collapse-level: 1
     tools:
     - icon: linkedin
       href: https://www.linkedin.com/in/sherry-thomassp/
@@ -63,32 +68,46 @@ website:
                 text: K-nearest neighbors (KNN)
               - href: pages/dec_trees.qmd
                 text: Decision tree
-          - section: "Generative models"
+              - section: "Generative models"
+                contents: 
+                  - href: pages/naive_bayes.qmd
+                    text: Naive Bayes
+              - section: "Discriminative models"
+                contents: 
+                  - href: pages/percp.qmd
+                    text: Perceptron
+                  - href: pages/log_reg.qmd
+                    text: Logistic regression
+                  - href: pages/svm.qmd
+                    text: Support vector machines (SVMs)
+              - section: "Ensemble methods"
+                contents: 
+                  - href: pages/bag.qmd
+                    text: Bagging
+                  - href: pages/boost.qmd
+                    text: Boosting
+      - section: "Deep Learning"
+        contents: 
+          - href: pages/notations_nn .qmd
+            text: Notations
+          - section: "Neural Networks"
             contents: 
-              - href: pages/naive_bayes.qmd
-                text: Naive Bayes
-          - section: "Discriminative models"
-            contents: 
-              - href: pages/percp.qmd
-                text: Perceptron
-              - href: pages/log_reg.qmd
-                text: Logistic regression
-              - href: pages/svm.qmd
-                text: Support vector machines (SVMs)
-          - section: "Ensemble methods"
-            contents: 
-              - href: pages/bag.qmd
-                text: Bagging
-              - href: pages/boost.qmd
-                text: Boosting
-          - href: pages/ann.qmd
-            text: Artificial neural networks (ANNs)
+              - href: pages/nn_basics.qmd
+                text: Introduction
+              - href: pages/activations.qmd
+                text: Activations
+              - href: pages/ffn.qmd
+                text: Forward Propagation
+              - href: pages/backprop.qmd
+                text: Backpropagation
+              - href: pages/gradient.qmd
+                text: Gradient Descent
       - href: about.qmd
         text: About me
 format:
   html:
     theme: 
-      light: lux
+      light: [zephyr, styles_light.scss]
       dark: [darkly, styles.scss]
     toc: true
 

@@ -1,0 +1,35 @@
+---
+title: "Common Notations Used in Neural Networks"
+---
+
+1. **Superscript and Subscript Indices:**
+   - $[i]$: Represents the index referring to a specific training example within the dataset.
+   - $[l]$: Denotes the layer indices. In a network with $L$ layers, $[l]$ ranges from $1$ to $L$.
+
+2. **Variables:**
+   - $x^{(i)}$: Input features for the $i$-th training example.
+   - $y^{(i)}$: Actual output or target for the $i$-th training example.
+   - $\hat{y}^{(i)}$, $a^{[l](i)}$: Predicted output or activation of layer $l$ for the $i$-th training example.
+   - $z^{[l](i)}$: Pre-activation value of layer $l$ for the $i$-th training example.
+
+3. **Weights and Biases:**
+   - $W^{[l]}$: Weight matrix associated with the connections between layer $l - 1$ and layer $l$.
+   - $b^{[l]}$: Bias vector added to the weighted sum in layer $l$.
+
+4. **Derivatives and Gradients:**
+   - $\frac{\partial \mathcal{J} }{ \partial z^{[l](i)} }$: Derivative of the cost function with respect to the pre-activation value of layer $l$ for the $i$-th training example.
+   - $\frac{\partial \mathcal{J} }{ \partial W^{[l]} }$: Gradient of the loss function with respect to the weights of layer $l$.
+   - $\frac{\partial \mathcal{J} }{ \partial b^{[l]} }$: Gradient of the loss function with respect to the bias of layer $l$.
+
+5. **Cost Function:**
+   - $J$: Overall cost function that measures the discrepancy between predicted and actual outputs across all training examples.
+   - $m$: Number of training examples in the dataset.
+
+6. **Activation Functions:**
+   - $\sigma()$: Activation function applied element-wise to the weighted sums in each layer.
+
+7. **Mathematical Operations:**
+   - $\log()$: Natural logarithm function used in the calculation of the cost function.
+   - $\odot$: Element-wise multiplication.
+
+These notations provide a general framework for understanding and representing variables, derivatives, weights, biases, and mathematical operations involved in the computations and optimizations of neural networks across different architectures and configurations.

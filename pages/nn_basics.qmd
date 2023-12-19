@@ -1,0 +1,34 @@
+---
+title: "Introduction to Neural Networks"
+---
+
+Neural networks, composed of interconnected layers of nodes, serve as powerful computational models inspired by the human brain's neural structure. Here's an overview of key components and concepts:
+
+**Architecture:**
+
+- A neural network typically comprises an input layer, one or more hidden layers, and an output layer. Each layer contains nodes (neurons) that perform computations.
+
+**Forward Propagation:**
+
+- During forward propagation, input data $X$ is passed through the network, undergoing computations and activations in each layer:
+    - $z^{[l] (i)} =  W^{[l]} a^{[l-1](i)} + b^{[l]}$: Compute the weighted sum and add bias for each layer $l$.
+    - $a^{[l] (i)} = g(z^{[l] (i)})$: Apply an activation function $g$ to produce the layer's output.
+
+**Activation Functions:**
+
+- Activation functions introduce non-linearity and are applied at each layer's output:
+    - Sigmoid ($\sigma$), Tanh, ReLU, Leaky ReLU, etc., each influencing the network's ability to learn complex patterns.
+
+**Backpropagation:**
+
+- Backpropagation involves computing gradients to update network parameters, facilitating learning:
+    - Derivatives of activation functions $\frac{\partial a}{\partial z}$ aid in error computation and parameter updates.
+    - Gradient Descent updates weights ($W$) and biases ($b$) using the learning rate ($\alpha$) and computed gradients.
+
+**Importance of Non-linear Activation:**
+
+- Non-linear activation functions are crucial. Without them, the network simplifies to a linear model, limiting its ability to learn intricate patterns in data.
+
+**Training and Optimization:**
+
+- Training involves iteratively adjusting parameters by minimizing a defined loss function (e.g., cross-entropy, mean squared error) using techniques like gradient descent.

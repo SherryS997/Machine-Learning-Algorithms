@@ -1,0 +1,60 @@
+---
+title: "Forward Propagation"
+---
+
+The forward pass in a neural network involves processing input data through the network's layers to generate predictions or outputs by sequentially applying weights, biases, and activation functions.
+
+**Mathematical Representation:**
+
+For one training example $x^{(i)}$:
+
+1. **Hidden Layer Computations:**
+    - **Weighted Sum Calculation:**
+        - $z^{[l] (i)} =  W^{[l]} a^{[l-1](i)} + b^{[l]}$
+            - Compute the weighted sum of inputs ($a^{[l-1](i)}$) by the weights ($W^{[l]}$) and add the bias ($b^{[l]}$) for layer $l$.
+    - **Activation Calculation:**
+        - $a^{[l] (i)} = g(z^{[l] (i)})$
+            - Apply an activation function $g$ (such as sigmoid, tanh, ReLU, etc.) to the computed weighted sum to get the activation of layer $l$.
+
+2. **Output Layer Computations:**
+    - **Weighted Sum Calculation:**
+        - $z^{[L] (i)} = W^{[L]} a^{[L-1] (i)} + b^{[L]}$
+            - Compute the weighted sum of inputs ($a^{[L-1] (i)}$) by the weights ($W^{[L]}$) and add the bias ($b^{[L]}$) for the output layer.
+    - **Activation Calculation:**
+        - $\hat{y}^{(i)} = a^{[L] (i)} = \sigma(z^{ [L] (i)})$
+            - Apply an appropriate activation function (e.g., softmax for multiclass classification, sigmoid for binary classification) to the computed weighted sum to obtain the predicted output ($\hat{y}^{(i)}$).
+
+3. **Cost Function:**
+    - $J = - \frac{1}{m} \sum\limits_{i = 0}^{m} \left(y^{(i)}\log\left(a^{[L] (i)}\right) + (1-y^{(i)})\log\left(1- a^{[L] (i)}\right)\right)$
+        - Compute the appropriate cost function (e.g., cross-entropy, mean squared error) to evaluate the difference between the predicted output ($a^{[L] (i)}$) and the actual output ($y^{(i)}$) for all training examples ($m$).
+
+::: {.callout-note collapse="true"}
+## Code
+```python
+import numpy as np
+
+def forward_propagation(X, parameters):
+    """
+    Argument:
+    X -- input data of size (n_x, m)
+    parameters -- python dictionary containing your parameters (output of initialization function)
+    
+    Returns:
+    A2 -- The sigmoid output of the second activation
+    cache -- a dictionary containing "Z1", "A1", "Z2" and "A2"
+    """
+    W1, b1, W2, b2 = parameters["W1"], parameters["b1"], parameters["W2"], parameters["b2"]
+    
+    Z1 = W1@X + b1
+    A1 = np.tanh(Z1)
+    Z2 = W2@A1 + b2
+    A2 = 1/(1+np.exp(-Z2))
+    
+    cache = {"Z1": Z1,
+             "A1": A1,
+             "Z2": Z2,
+             "A2": A2}
+    
+    return A2, cache
+```
+:::

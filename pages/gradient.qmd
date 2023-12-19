@@ -1,0 +1,129 @@
+---
+title: "Gradient Descent"
+---
+
+**Optimizing Model Parameters:**
+Gradient Descent is used to update the parameters (weights and biases) of a neural network in the direction that minimizes the loss function.
+
+**General Gradient Descent Rule:**
+The general update rule for a parameter $\theta$ using Gradient Descent is:
+$$\theta = \theta - \alpha \frac{\partial J }{ \partial \theta }$$
+where $\alpha$ is the learning rate and $\frac{\partial J }{ \partial \theta }$ denotes the partial derivative of the cost function $J$ with respect to the parameter $\theta$.
+
+**Parameter Update for Weights and Biases:**
+
+1. **Output Layer:**
+   - Update the weights and biases of the output layer using the gradients calculated during backpropagation:
+       - $W^{[L]} = W^{[L]} - \alpha \frac{\partial J }{ \partial W^{[L]} }$
+       - $b^{[L]} = b^{[L]} - \alpha \frac{\partial J }{ \partial b^{[L]} }$
+
+2. **Hidden Layers:**
+   - Update the weights and biases of the hidden layers using the gradients computed during backpropagation:
+       - For $l$th hidden layer:
+           - $W^{[l]} = W^{[l]} - \alpha \frac{\partial J }{ \partial W^{[l]} }$
+           - $b^{[l]} = b^{[l]} - \alpha \frac{\partial J }{ \partial b^{[l]} }$
+
+**Impact of Learning Rate ($\alpha$):**
+
+- The learning rate $\alpha$ determines the step size during parameter updates.
+- A larger $\alpha$ might lead to faster convergence but can overshoot the minimum.
+- A smaller $\alpha$ might converge slowly but can be more precise.
+
+**Iteration and Convergence:**
+
+- Iterate through multiple epochs (iterations) of forward propagation, backpropagation, and parameter updates until the model's performance converges or the predefined number of epochs is reached.
+- Monitor the decrease in the cost function to assess convergence.
+
+**Importance of Gradient Descent:**
+
+- Gradient Descent is crucial in adjusting model parameters to minimize the loss function, thereby enhancing the accuracy of predictions in a neural network.
+- It enables the network to learn from the data by iteratively updating weights and biases to improve the overall performance of the model.
+
+::: {.callout-note collapse="true"}
+```python
+import numpy as np
+
+def compute_cost(A2, Y):
+    """
+    Computes the cross-entropy cost given in equation (13)
+    
+    Arguments:
+    A2 -- The sigmoid output of the second activation, of shape (1, number of examples)
+    Y -- "true" labels vector of shape (1, number of examples)
+
+    Returns:
+    cost -- cross-entropy cost given equation (13)
+    
+    """
+    
+    m = Y.shape[1] # number of examples
+
+    logprobs = np.multiply(Y, np.log(A2)) + np.multiply((1-Y), np.log(1-A2))
+    cost = - np.sum(logprobs)/Y.shape[1]
+        
+    cost = float(np.squeeze(cost)) 
+
+    return cost
+
+def update_parameters(parameters, grads, learning_rate = 1.2):
+    """
+    Updates parameters using the gradient descent update rule given above
+    
+    Arguments:
+    parameters -- python dictionary containing your parameters 
+    grads -- python dictionary containing your gradients 
+    
+    Returns:
+    parameters -- python dictionary containing your updated parameters 
+    """
+    W1, b1, W2, b2 = copy.deepcopy(parameters["W1"]), copy.deepcopy(parameters["b1"]), copy.deepcopy(parameters["W2"]), copy.deepcopy(parameters["b2"])
+    
+    dW1, db1, dW2, db2 = grads["dW1"], grads["db1"], grads["dW2"], grads["db2"]
+    
+    W1 = W1 - learning_rate*dW1
+    b1 = b1 - learning_rate*db1
+    W2 = W2 - learning_rate*dW2
+    b2 = b2 - learning_rate*db2
+        
+    parameters = {"W1": W1,
+                  "b1": b1,
+                  "W2": W2,
+                  "b2": b2}
+    
+    return parameters
+
+def nn_model(X, Y, n_h, num_iterations = 10000, print_cost=False):
+    """
+    Arguments:
+    X -- dataset of shape (2, number of examples)
+    Y -- labels of shape (1, number of examples)
+    n_h -- size of the hidden layer
+    num_iterations -- Number of iterations in gradient descent loop
+    print_cost -- if True, print the cost every 1000 iterations
+    
+    Returns:
+    parameters -- parameters learnt by the model. They can then be used to predict.
+    """
+    
+    np.random.seed(3)
+    n_x = layer_sizes(X, Y)[0]
+    n_y = layer_sizes(X, Y)[2]
+        
+    parameters = initialize_parameters(n_x, n_h, n_y)
+        
+    # Loop (gradient descent)
+
+    for i in range(0, num_iterations):
+         
+        A2, cache = forward_propagation(X, parameters)
+        cost = compute_cost(A2, Y)
+        grads = backward_propagation(parameters, cache, X, Y)
+        parameters = update_parameters(parameters, grads)
+                
+        # Print the cost every 1000 iterations
+        if print_cost and i % 1000 == 0:
+            print ("Cost after iteration %i: %f" %(i, cost))
+
+    return parameters
+```
+:::
