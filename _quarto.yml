@@ -2,8 +2,11 @@ project:
   type: website
   output-dir: docs
 
-mainfont: "Latin Modern"
+css:
+  - https://lalten.github.io/lmweb/style/latinmodern-roman.css
+mainfont: "Latin Modern Roman"
 fontsize: 14pt
+fontfamilyoptions: "oblique"
 
 website:
   favicon: icon.png
