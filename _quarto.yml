@@ -112,6 +112,10 @@ website:
             contents: 
               - href: pages/weight_init.qmd
                 text: Weight Initializations
+      - section: "Reinforcement Learning"
+        contents: 
+          - href: pages/mutli-arm.ipynb
+            text: Multi-Armed Bandit
       - href: about.qmd
         text: About me
 format:

@@ -9,3 +9,5 @@ I have a diverse academic background that includes philosophy, programming, comp
 I believe in taking a holistic approach to data analysis and decision-making, considering the ethical and societal implications of technology and data. My goal is to use my knowledge and skills to make a positive impact in the field of data science.
 
 I'm constantly learning and growing, and I'm committed to expanding my knowledge base and contributing to the ever-evolving world of technology and data.
+
+Visit my Portfolio: [https://sherrys997.github.io/](https://sherrys997.github.io/){target="_blank"}

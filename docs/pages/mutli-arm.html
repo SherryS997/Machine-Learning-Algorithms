@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Machine Learning Algorithms - Kernel Least squares regression</title>
+<title>Machine Learning Algorithms - Multi-Armed Bandit (MAB)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../pages/bayes_lin_reg.html" rel="next">
-<link href="../pages/lin_reg.html" rel="prev">
+<link href="../about.html" rel="next">
+<link href="../pages/weight_init.html" rel="prev">
 <link href="../icon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -81,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Supervised Learning</li><li class="breadcrumb-item"><a href="../pages/lin_reg.html">Regression</a></li><li class="breadcrumb-item"><a href="../pages/klin_reg.html">Kernel Least squares regression</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/mutli-arm.html">Reinforcement Learning</a></li><li class="breadcrumb-item"><a href="../pages/mutli-arm.html">Multi-Armed Bandit</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -217,22 +251,22 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
  <span class="menu-text">Supervised Learning</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
  <span class="menu-text">Regression</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/lin_reg.html" class="sidebar-item-text sidebar-link">
@@ -241,7 +275,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/klin_reg.html" class="sidebar-item-text sidebar-link active">
+  <a href="../pages/klin_reg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kernel Least squares regression</span></a>
   </div>
 </li>
@@ -436,16 +470,16 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="true">
  <span class="menu-text">Reinforcement Learning</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/mutli-arm.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/mutli-arm.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Multi-Armed Bandit</span></a>
   </div>
 </li>
@@ -463,14 +497,35 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#epsilon-greedy-action-selection" id="toc-epsilon-greedy-action-selection" class="nav-link" data-scroll-target="#epsilon-greedy-action-selection"><span class="math inline">\(\epsilon\)</span>-Greedy Action Selection</a>
+  <ul class="collapse">
+  <li><a href="#mathematical-representation" id="toc-mathematical-representation" class="nav-link" data-scroll-target="#mathematical-representation">Mathematical Representation</a>
+  <ul class="collapse">
+  <li><a href="#expanding-on-the-algorithm" id="toc-expanding-on-the-algorithm" class="nav-link" data-scroll-target="#expanding-on-the-algorithm">Expanding on the Algorithm</a></li>
+  </ul></li>
+  <li><a href="#bandit-simulation" id="toc-bandit-simulation" class="nav-link" data-scroll-target="#bandit-simulation">Bandit Simulation</a></li>
+  </ul></li>
+  <li><a href="#softmax-action-selection" id="toc-softmax-action-selection" class="nav-link" data-scroll-target="#softmax-action-selection">Softmax Action Selection</a>
+  <ul class="collapse">
+  <li><a href="#softmax-action-selection-equation" id="toc-softmax-action-selection-equation" class="nav-link" data-scroll-target="#softmax-action-selection-equation">Softmax Action Selection Equation</a></li>
+  <li><a href="#implementation-in-multi-arm-bandit" id="toc-implementation-in-multi-arm-bandit" class="nav-link" data-scroll-target="#implementation-in-multi-arm-bandit">Implementation in Multi-Arm Bandit</a></li>
+  <li><a href="#simulation-with-softmax-action-selection" id="toc-simulation-with-softmax-action-selection" class="nav-link" data-scroll-target="#simulation-with-softmax-action-selection">Simulation with Softmax Action Selection</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Kernel Least squares regression</h1>
+<h1 class="title">Multi-Armed Bandit (MAB)</h1>
 </div>
 
 
@@ -485,25 +540,220 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>What if the data points reside in a non-linear subspace? Similar to dealing with non-linear data clustering, kernel functions are employed in this scenario as well.</p>
-<p>Let <span class="math inline">\(\mathbf{w}^* = \mathbf{X}\boldsymbol{\alpha}^*\)</span>, where <span class="math inline">\(\boldsymbol{\alpha}^* \in \mathbb{R}^n\)</span>. <span class="math display">\[\begin{align*}
-\mathbf{X}\boldsymbol{\alpha}^* &amp;= \mathbf{w}^* \\
-\therefore \mathbf{X}\boldsymbol{\alpha}^* &amp;= (\mathbf{X}\mathbf{X}^T)^+\mathbf{X}\mathbf{y} \\
-(\mathbf{X}\mathbf{X}^T)\mathbf{X}\boldsymbol{\alpha}^* &amp;= (\mathbf{X}\mathbf{X}^T)(\mathbf{X}\mathbf{X}^T)^+\mathbf{X}\mathbf{y} \\
-(\mathbf{X}\mathbf{X}^T)\mathbf{X}\boldsymbol{\alpha}^* &amp;= \mathbf{X}\mathbf{y} \\
-\mathbf{X}^T(\mathbf{X}\mathbf{X}^T)\mathbf{X}\boldsymbol{\alpha}^* &amp;= \mathbf{X}^T\mathbf{X}\mathbf{y} \\
-(\mathbf{X}^T\mathbf{X})^2\boldsymbol{\alpha}^* &amp;= \mathbf{X}^T\mathbf{X}\mathbf{y} \\
-\mathbf{K}^2\boldsymbol{\alpha}^* &amp;= \mathbf{K}\mathbf{y} \\
-\therefore \boldsymbol{\alpha}^* &amp;= \mathbf{K}^{-1}\mathbf{y}
-\end{align*}\]</span></p>
-<p>Here, <span class="math inline">\(\mathbf{K} \in \mathbb{R}^{n \times n}\)</span>, and it can be obtained using a kernel function such as the Polynomial Kernel or RBF Kernel.</p>
-<p>To predict using <span class="math inline">\(\boldsymbol{\alpha}\)</span> and the kernel function, let <span class="math inline">\(\mathbf{X}_{\text{test}} \in \mathbb{R}^{d \times m}\)</span> represent the test dataset. The prediction is made as follows:</p>
-<p><span class="math display">\[\begin{align*}
-\mathbf{w}^*\phi(\mathbf{X}_{\text{test}}) &amp;= \sum_{i=1}^n \alpha_i^* k(\mathbf{x}_i, \mathbf{x}_{\text{test}_i})
-\end{align*}\]</span></p>
-<p>Here, <span class="math inline">\(\alpha_i^*\)</span> denotes the importance of the <span class="math inline">\(i\)</span>-th data point in relation to <span class="math inline">\(\mathbf{w}^*\)</span>, and <span class="math inline">\(k(\mathbf{x}_i, \mathbf{x}_{\text{test}_i})\)</span> signifies the similarity between <span class="math inline">\(\mathbf{x}_{\text{test}_i}\)</span> and <span class="math inline">\(\mathbf{x}_i\)</span>.</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>The Multi-Arm Bandit (MAB) problem is a fundamental framework in reinforcement learning and decision theory, addressing the critical trade-off between exploration and exploitation. It provides insights into decision-making in uncertain environments, where an agent must strategically choose between multiple options (arms) with unknown reward distributions to maximize cumulative rewards over time.</p>
+</section>
+<section id="epsilon-greedy-action-selection" class="level1">
+<h1><span class="math inline">\(\epsilon\)</span>-Greedy Action Selection</h1>
+<p>The <span class="math inline">\(\epsilon\)</span>-Greedy strategy is a classic approach in multi-armed bandit problems, offering a balance between exploration and exploitation. Unlike softmax action selection, <span class="math inline">\(\epsilon\)</span>-Greedy simplifies the decision-making process. The agent, with probability <span class="math inline">\(1 - \epsilon\)</span>, chooses the action with the highest estimated value (exploitation), and with probability <span class="math inline">\(\epsilon\)</span>, explores a random action.</p>
+<section id="mathematical-representation" class="level2">
+<h2 class="anchored" data-anchor-id="mathematical-representation">Mathematical Representation</h2>
+<p>Let’s delve into the mathematical symbols that define the <span class="math inline">\(\epsilon\)</span>-Greedy MAB algorithm:</p>
+<ul>
+<li><strong><span class="math inline">\(k\)</span>:</strong> Number of arms in the bandit.</li>
+<li><strong><span class="math inline">\(Q(a):\)</span></strong> Estimated value (average reward) of arm <span class="math inline">\(a\)</span>.</li>
+<li><strong><span class="math inline">\(N(a):\)</span></strong> Number of times arm <span class="math inline">\(a\)</span> has been selected.</li>
+<li><strong><span class="math inline">\(\epsilon:\)</span></strong> Exploration-exploitation trade-off parameter, representing the probability of choosing a random action.</li>
+</ul>
+<p>The algorithm initializes estimates and counters for each arm:</p>
+<p><span class="math display">\[
+\begin{align*}
+Q(a) &amp;\leftarrow 0 \quad \text{(Initialize estimated values)} \\
+N(a) &amp;\leftarrow 0 \quad \text{(Initialize visit counts)}
+\end{align*}
+\]</span></p>
+<p>The main loop of the algorithm is executed indefinitely:</p>
+<ol type="1">
+<li><p><strong>Action Selection:</strong></p>
+<ul>
+<li><span class="math inline">\(A \leftarrow  \begin{cases}  \text{argmax}_a Q(a) &amp; \text{with probability } 1 - \epsilon \text{ (breaking ties randomly)} \\  \text{a random action} &amp; \text{with probability } \epsilon  \end{cases}\)</span></li>
+</ul>
+<p>Here, the agent selects an action based on estimated values with high probability but introduces randomness (exploration) with probability <span class="math inline">\(\epsilon\)</span>.</p></li>
+<li><p><strong>Reward Observation:</strong></p>
+<ul>
+<li><span class="math inline">\(R \leftarrow \text{bandit}(A)\)</span></li>
+</ul>
+<p>The agent receives a reward from the bandit by pulling the chosen arm.</p></li>
+<li><p><strong>Update Estimates:</strong></p>
+<ul>
+<li><span class="math inline">\(N(A) \leftarrow N(A) + 1\)</span></li>
+<li><span class="math inline">\(Q(A) \leftarrow Q(A) + \alpha [R - Q(A)]\)</span> where <span class="math inline">\(\alpha = \frac{1}{N(A) + 1}\)</span>.</li>
+</ul>
+<p>The estimates and visit counts for the chosen arm are updated based on the received reward.</p></li>
+</ol>
+<section id="expanding-on-the-algorithm" class="level3">
+<h3 class="anchored" data-anchor-id="expanding-on-the-algorithm">Expanding on the Algorithm</h3>
+<ul>
+<li><p><strong>Exploration-Exploitation Trade-off:</strong> The parameter <span class="math inline">\(\epsilon\)</span> controls the balance between exploration and exploitation. A higher <span class="math inline">\(\epsilon\)</span> encourages more exploration, while a lower value promotes exploitation.</p></li>
+<li><p><strong>Incremental Update Rule:</strong> The update rule <span class="math inline">\(Q(A) \leftarrow Q(A) + \alpha [R - Q(A)]\)</span>, where <span class="math inline">\(\alpha = \frac{1}{N(A) + 1}\)</span>, ensures adaptive learning by gradually replacing past estimates with new observations.</p></li>
+<li><p><strong>Random Tie-Breaking:</strong> Ties in selecting the action with the maximum estimated value are broken randomly, preventing bias towards a specific action in case of ties.</p></li>
+<li><p><strong>Convergence and Learning:</strong> Over time, as the algorithm continues to explore and exploit, the estimated values <span class="math inline">\(Q(a)\)</span> converge to the true values of the arms. This results in improved decision-making as the agent learns from experience.</p></li>
+</ul>
+</section>
+</section>
+<section id="bandit-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="bandit-simulation">Bandit Simulation</h2>
+<p>Let’s run a simulation of a 10-armed bandit using the described <span class="math inline">\(\epsilon\)</span>-Greedy algorithm:</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MultiArmBandit:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, k, epsilon):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.k <span class="op">=</span> k  <span class="co"># Number of arms</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.epsilon <span class="op">=</span> epsilon  <span class="co"># Exploration-exploitation trade-off parameter</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.q_values <span class="op">=</span> np.zeros(k)  <span class="co"># Estimated values for each arm</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.action_counts <span class="op">=</span> np.zeros(k)  <span class="co"># Number of times each arm has been selected</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> select_action(<span class="va">self</span>):</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> np.random.rand() <span class="op">&lt;</span> <span class="va">self</span>.epsilon:</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Exploration: Choose a random action</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            action <span class="op">=</span> np.random.choice(<span class="va">self</span>.k)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Exploitation: Choose the action with the highest estimated value</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            action <span class="op">=</span> np.argmax(<span class="va">self</span>.q_values)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> action</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> update_values(<span class="va">self</span>, action, reward):</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Incremental update rule with alpha = 1 / (N(A) + 1)</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        alpha <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (<span class="va">self</span>.action_counts[action] <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.action_counts[action] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.q_values[action] <span class="op">+=</span> alpha <span class="op">*</span> (reward <span class="op">-</span> <span class="va">self</span>.q_values[action])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulation parameters</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>num_arms <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>num_steps <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>true_reward_means <span class="op">=</span> np.random.normal(loc<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span><span class="dv">1</span>, size<span class="op">=</span>num_arms)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>epsilon_values <span class="op">=</span> [<span class="dv">0</span>, <span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>, <span class="fl">1.0</span>]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Run simulations for each epsilon value</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>reward_history <span class="op">=</span> {epsilon: [] <span class="cf">for</span> epsilon <span class="kw">in</span> epsilon_values}</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epsilon <span class="kw">in</span> epsilon_values:</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    bandit <span class="op">=</span> MultiArmBandit(num_arms, epsilon)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    step_rewards <span class="op">=</span> []</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(num_steps):</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        chosen_action <span class="op">=</span> bandit.select_action()</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        true_reward <span class="op">=</span> np.random.normal(loc<span class="op">=</span>true_reward_means[chosen_action], scale<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        bandit.update_values(chosen_action, true_reward)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        step_rewards.append(true_reward)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    reward_history[epsilon] <span class="op">=</span> step_rewards</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epsilon, rewards <span class="kw">in</span> reward_history.items():</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    plt.plot(np.arange(<span class="dv">1</span>, num_steps <span class="op">+</span> <span class="dv">1</span>), np.cumsum(rewards) <span class="op">/</span> np.arange(<span class="dv">1</span>, num_steps <span class="op">+</span> <span class="dv">1</span>), label<span class="op">=</span><span class="ss">f'Epsilon = </span><span class="sc">{</span>epsilon<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Reward vs Step for Different Epsilon Values'</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Step'</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Average Reward'</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="mutli-arm_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The generated plot illustrates the average reward evolution over time, showcasing the impact of various exploration-exploitation trade-off values (<span class="math inline">\(\epsilon\)</span>). Each line corresponds to a specific <span class="math inline">\(\epsilon\)</span> value, offering insights into the algorithm’s behavior under varying degrees of exploration and exploitation.</p>
+</section>
+</section>
+<section id="softmax-action-selection" class="level1">
+<h1>Softmax Action Selection</h1>
+<p>While the <span class="math inline">\(\epsilon\)</span>-Greedy strategy is effective, another widely used method in multi-armed bandit problems is softmax action selection. The softmax function introduces a temperature parameter (<span class="math inline">\(\tau\)</span>) that influences the level of exploration. A higher temperature encourages exploration, allowing the algorithm to consider a more diverse set of actions, while a lower temperature promotes exploitation, favoring actions with higher estimated values.</p>
+<section id="softmax-action-selection-equation" class="level2">
+<h2 class="anchored" data-anchor-id="softmax-action-selection-equation">Softmax Action Selection Equation</h2>
+<p>The softmax action selection equation is given by:</p>
+<p><span class="math display">\[
+\pi(a_i) = \frac{Q(a_i)/\tau}{\sum_{i=1}^k Q(a_i)/\tau}
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(\pi(a_i)\)</span> is the probability of selecting action <span class="math inline">\(a_i\)</span>.</li>
+<li><span class="math inline">\(Q(a_i)\)</span> is the estimated value of action <span class="math inline">\(a_i\)</span>.</li>
+<li><span class="math inline">\(\tau\)</span> is the softmax temperature parameter.</li>
+<li><span class="math inline">\(k\)</span> is the number of arms.</li>
+</ul>
+</section>
+<section id="implementation-in-multi-arm-bandit" class="level2">
+<h2 class="anchored" data-anchor-id="implementation-in-multi-arm-bandit">Implementation in Multi-Arm Bandit</h2>
+<p>Let’s modify the <code>MultiArmBandit</code> class to incorporate softmax action selection:</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MultiArmBandit:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, k, tau):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.k <span class="op">=</span> k  <span class="co"># Number of arms</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.tau <span class="op">=</span> tau  <span class="co"># Softmax temperature parameter</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.q_values <span class="op">=</span> np.zeros(k)  <span class="co"># Estimated values for each arm</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.action_counts <span class="op">=</span> np.zeros(k)  <span class="co"># Number of times each arm has been selected</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> select_action(<span class="va">self</span>):</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Softmax action selection</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        softmax_probs <span class="op">=</span> np.exp(<span class="va">self</span>.q_values <span class="op">/</span> <span class="va">self</span>.tau) <span class="op">/</span> np.<span class="bu">sum</span>(np.exp(<span class="va">self</span>.q_values <span class="op">/</span> <span class="va">self</span>.tau))</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        action <span class="op">=</span> np.random.choice(<span class="va">self</span>.k, p<span class="op">=</span>softmax_probs)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> action</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> update_values(<span class="va">self</span>, action, reward):</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Incremental update rule with alpha = 1 / (N(A) + 1)</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        alpha <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (<span class="va">self</span>.action_counts[action] <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.action_counts[action] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.q_values[action] <span class="op">+=</span> alpha <span class="op">*</span> (reward <span class="op">-</span> <span class="va">self</span>.q_values[action])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In this modification, the <code>select_action</code> method calculates softmax probabilities based on the estimated values and the softmax temperature. The action is then chosen probabilistically according to these softmax probabilities.</p>
+</section>
+<section id="simulation-with-softmax-action-selection" class="level2">
+<h2 class="anchored" data-anchor-id="simulation-with-softmax-action-selection">Simulation with Softmax Action Selection</h2>
+<p>Now, let’s run a simulation using the softmax-based <code>MultiArmBandit</code> class. Experiment with different values of the softmax temperature (<span class="math inline">\(\tau\)</span>) to observe its impact on the algorithm’s learning strategy and the trade-off between exploration and exploitation.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulation parameters</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>num_arms <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>num_steps <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>true_reward_means <span class="op">=</span> np.random.normal(loc<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span><span class="dv">1</span>, size<span class="op">=</span>num_arms)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>softmax_tau_values <span class="op">=</span> [<span class="fl">0.1</span>, <span class="fl">1.0</span>, <span class="fl">10.0</span>]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Run simulations for each softmax temperature value</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>softmax_reward_history <span class="op">=</span> {tau: [] <span class="cf">for</span> tau <span class="kw">in</span> softmax_tau_values}</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> tau <span class="kw">in</span> softmax_tau_values:</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    softmax_bandit <span class="op">=</span> MultiArmBandit(num_arms, tau)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    softmax_step_rewards <span class="op">=</span> []</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(num_steps):</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        chosen_action <span class="op">=</span> softmax_bandit.select_action()</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        true_reward <span class="op">=</span> np.random.normal(loc<span class="op">=</span>true_reward_means[chosen_action], scale<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        softmax_bandit.update_values(chosen_action, true_reward)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        softmax_step_rewards.append(true_reward)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    softmax_reward_history[tau] <span class="op">=</span> softmax_step_rewards</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting for Softmax Action Selection</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> tau, rewards <span class="kw">in</span> softmax_reward_history.items():</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    plt.plot(np.arange(<span class="dv">1</span>, num_steps <span class="op">+</span> <span class="dv">1</span>), np.cumsum(rewards) <span class="op">/</span> np.arange(<span class="dv">1</span>, num_steps <span class="op">+</span> <span class="dv">1</span>), label<span class="op">=</span><span class="ss">f'Tau = </span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Reward vs Step for Different Softmax Tau Values'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Step'</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Average Reward'</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="mutli-arm_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The generated plot for softmax action selection illustrates the average reward over time for different softmax temperature values (<span class="math inline">\(\tau\)</span>). This provides insights into how the algorithm adapts its learning strategy under varying levels of exploration and exploitation.</p>
+</section>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>In conclusion, the <span class="math inline">\(\epsilon\)</span>-Greedy and softmax action selection strategies offer distinct approaches to address the exploration-exploitation trade-off in multi-armed bandit problems. Depending on the specific requirements and characteristics of the environment, one strategy may outperform the other. Experimenting with different parameters and understanding their impact is crucial for effective decision-making in dynamic and uncertain scenarios.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -856,13 +1106,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../pages/lin_reg.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Least squares regression</span>
+      <a href="../pages/weight_init.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Weight Initializations</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../pages/bayes_lin_reg.html" class="pagination-link">
-        <span class="nav-page-text">Bayesian view of least squares regression</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../about.html" class="pagination-link">
+        <span class="nav-page-text">About me</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
