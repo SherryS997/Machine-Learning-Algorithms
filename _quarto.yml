@@ -116,6 +116,10 @@ website:
         contents: 
           - href: pages/mutli-arm.ipynb
             text: Multi-Armed Bandit
+      - section: "Others"
+        contents: 
+          - href: pages/fp-hfg.qmd
+            text: FastPitch HiFi-GAN Pipeline
       - href: about.qmd
         text: About me
 format:

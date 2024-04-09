@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.553">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Machine Learning Algorithms - Demystifying FastPitch HiFi-GAN: A Deep Dive into High-Fidelity Text-to-Speech Synthesis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../about.html" rel="next">
+<link href="../pages/mutli-arm.html" rel="prev">
+<link href="../icon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="https://lalten.github.io/lmweb/style/latinmodern-roman.css">
+<link rel="stylesheet" href="https://lalten.github.io/lmweb/style/latinmodern-mono.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/fp-hfg.html">Others</a></li><li class="breadcrumb-item"><a href="../pages/fp-hfg.html">FastPitch HiFi-GAN Pipeline</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Machine Learning Algorithms</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://www.linkedin.com/in/sherry-thomassp/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="https://github.com/SherryS997/Machine-Learning-Algorithms" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to MLA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Unsupervised Learning</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Representation learning</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/PCA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Principal component analysis (PCA)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/Kernel_PCA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kernel PCA</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Clustering</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/kmeans.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">K-means clustering</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/kkmeans.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kernel K-means clustering</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Estimation</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/mle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Maximum likelihood estimation (MLE)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/bayes_est.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bayesian estimation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/gmm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gaussian mixture model (GMM)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/em.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Expectation-maximization (EM) algorithm</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Supervised Learning</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Regression</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/lin_reg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Least squares regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/klin_reg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kernel Least squares regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/bayes_lin_reg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bayesian view of least squares regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/rid_lin_reg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ridge regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/lasso_lin_reg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">LASSO regression</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">Classification</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/knn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">K-nearest neighbors (KNN)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/dec_trees.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decision tree</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text">Generative models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/naive_bayes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Naive Bayes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+ <span class="menu-text">Discriminative models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/percp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Perceptron</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/log_reg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Logistic regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/svm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support vector machines (SVMs)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+ <span class="menu-text">Ensemble methods</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/bag.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bagging</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/boost.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Boosting</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+ <span class="menu-text">Deep Learning</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/notations_nn .html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+ <span class="menu-text">Neural Networks</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/nn_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/activations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Activations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/ffn.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Forward Propagation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/backprop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Backpropagation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/gradient.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Gradient Descent</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+ <span class="menu-text">Practical DL</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/weight_init.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Weight Initializations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
+ <span class="menu-text">Reinforcement Learning</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/mutli-arm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multi-Armed Bandit</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="true">
+ <span class="menu-text">Others</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/fp-hfg.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">FastPitch HiFi-GAN Pipeline</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About me</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#fastpitch" id="toc-fastpitch" class="nav-link active" data-scroll-target="#fastpitch">FastPitch</a>
+  <ul class="collapse">
+  <li><a href="#architecture" id="toc-architecture" class="nav-link" data-scroll-target="#architecture">Architecture</a>
+  <ul class="collapse">
+  <li><a href="#input-representation-a-foundation-of-lexical-units" id="toc-input-representation-a-foundation-of-lexical-units" class="nav-link" data-scroll-target="#input-representation-a-foundation-of-lexical-units">Input Representation: A Foundation of Lexical Units</a></li>
+  <li><a href="#embedding-layer-mapping-symbols-to-meaning" id="toc-embedding-layer-mapping-symbols-to-meaning" class="nav-link" data-scroll-target="#embedding-layer-mapping-symbols-to-meaning">Embedding Layer: Mapping Symbols to Meaning</a></li>
+  <li><a href="#first-fftr-stack-extracting-linguistic-context" id="toc-first-fftr-stack-extracting-linguistic-context" class="nav-link" data-scroll-target="#first-fftr-stack-extracting-linguistic-context">First FFTr Stack: Extracting Linguistic Context</a></li>
+  <li><a href="#duration-and-pitch-prediction-modeling-prosodic-features" id="toc-duration-and-pitch-prediction-modeling-prosodic-features" class="nav-link" data-scroll-target="#duration-and-pitch-prediction-modeling-prosodic-features">Duration and Pitch Prediction: Modeling Prosodic Features</a></li>
+  <li><a href="#pitch-conditioning-injecting-prosodic-information" id="toc-pitch-conditioning-injecting-prosodic-information" class="nav-link" data-scroll-target="#pitch-conditioning-injecting-prosodic-information">Pitch Conditioning: Injecting Prosodic Information</a></li>
+  <li><a href="#upsampling-aligning-temporal-resolutions" id="toc-upsampling-aligning-temporal-resolutions" class="nav-link" data-scroll-target="#upsampling-aligning-temporal-resolutions">Upsampling: Aligning Temporal Resolutions</a></li>
+  <li><a href="#second-fftr-stack-generating-mel-spectrograms" id="toc-second-fftr-stack-generating-mel-spectrograms" class="nav-link" data-scroll-target="#second-fftr-stack-generating-mel-spectrograms">Second FFTr Stack: Generating Mel-Spectrograms</a></li>
+  </ul></li>
+  <li><a href="#training" id="toc-training" class="nav-link" data-scroll-target="#training">Training</a>
+  <ul class="collapse">
+  <li><a href="#loss-functions-guiding-lights-in-the-optimization-landscape" id="toc-loss-functions-guiding-lights-in-the-optimization-landscape" class="nav-link" data-scroll-target="#loss-functions-guiding-lights-in-the-optimization-landscape">Loss Functions: Guiding Lights in the Optimization Landscape</a></li>
+  <li><a href="#composite-loss-a-harmonious-convergence" id="toc-composite-loss-a-harmonious-convergence" class="nav-link" data-scroll-target="#composite-loss-a-harmonious-convergence">Composite Loss: A Harmonious Convergence</a></li>
+  <li><a href="#optimization-algorithms-navigating-the-loss-landscape" id="toc-optimization-algorithms-navigating-the-loss-landscape" class="nav-link" data-scroll-target="#optimization-algorithms-navigating-the-loss-landscape">Optimization Algorithms: Navigating the Loss Landscape</a></li>
+  <li><a href="#training-data-the-foundation-of-knowledge" id="toc-training-data-the-foundation-of-knowledge" class="nav-link" data-scroll-target="#training-data-the-foundation-of-knowledge">Training Data: The Foundation of Knowledge</a></li>
+  </ul></li>
+  <li><a href="#hyperparameter-optimization" id="toc-hyperparameter-optimization" class="nav-link" data-scroll-target="#hyperparameter-optimization">Hyperparameter Optimization</a></li>
+  </ul></li>
+  <li><a href="#hifi-gan" id="toc-hifi-gan" class="nav-link" data-scroll-target="#hifi-gan">HiFi-GAN</a>
+  <ul class="collapse">
+  <li><a href="#architecture-1" id="toc-architecture-1" class="nav-link" data-scroll-target="#architecture-1">Architecture</a>
+  <ul class="collapse">
+  <li><a href="#generator-network-crafting-audio-from-mel-spectrograms" id="toc-generator-network-crafting-audio-from-mel-spectrograms" class="nav-link" data-scroll-target="#generator-network-crafting-audio-from-mel-spectrograms">Generator Network: Crafting Audio from Mel-Spectrograms</a></li>
+  <li><a href="#discriminator-networks-guardians-of-audio-authenticity" id="toc-discriminator-networks-guardians-of-audio-authenticity" class="nav-link" data-scroll-target="#discriminator-networks-guardians-of-audio-authenticity">Discriminator Networks: Guardians of Audio Authenticity</a></li>
+  <li><a href="#synergistic-collaboration-adversarial-training" id="toc-synergistic-collaboration-adversarial-training" class="nav-link" data-scroll-target="#synergistic-collaboration-adversarial-training">Synergistic Collaboration: Adversarial Training</a></li>
+  </ul></li>
+  <li><a href="#training-1" id="toc-training-1" class="nav-link" data-scroll-target="#training-1">Training</a>
+  <ul class="collapse">
+  <li><a href="#loss-functions-guiding-the-adversarial-dance" id="toc-loss-functions-guiding-the-adversarial-dance" class="nav-link" data-scroll-target="#loss-functions-guiding-the-adversarial-dance">Loss Functions: Guiding the Adversarial Dance</a></li>
+  <li><a href="#optimization-a-balancing-act" id="toc-optimization-a-balancing-act" class="nav-link" data-scroll-target="#optimization-a-balancing-act">Optimization: A Balancing Act</a></li>
+  <li><a href="#additional-considerations-fine-tuning-the-process" id="toc-additional-considerations-fine-tuning-the-process" class="nav-link" data-scroll-target="#additional-considerations-fine-tuning-the-process">Additional Considerations: Fine-tuning the Process</a></li>
+  </ul></li>
+  <li><a href="#hyperparameters" id="toc-hyperparameters" class="nav-link" data-scroll-target="#hyperparameters">Hyperparameters</a></li>
+  </ul></li>
+  <li><a href="#the-fastpitch-hifi-gan-pipeline" id="toc-the-fastpitch-hifi-gan-pipeline" class="nav-link" data-scroll-target="#the-fastpitch-hifi-gan-pipeline">The FastPitch HiFi-GAN Pipeline</a>
+  <ul class="collapse">
+  <li><a href="#stage-1-text-preprocessing-and-conditioning" id="toc-stage-1-text-preprocessing-and-conditioning" class="nav-link" data-scroll-target="#stage-1-text-preprocessing-and-conditioning">Stage 1: Text Preprocessing and Conditioning</a></li>
+  <li><a href="#stage-2-mel-spectrogram-generation-with-fastpitch" id="toc-stage-2-mel-spectrogram-generation-with-fastpitch" class="nav-link" data-scroll-target="#stage-2-mel-spectrogram-generation-with-fastpitch">Stage 2: Mel-Spectrogram Generation with FastPitch</a></li>
+  <li><a href="#stage-3-waveform-synthesis-with-hifi-gan" id="toc-stage-3-waveform-synthesis-with-hifi-gan" class="nav-link" data-scroll-target="#stage-3-waveform-synthesis-with-hifi-gan">Stage 3: Waveform Synthesis with HiFi-GAN</a></li>
+  <li><a href="#synergy-and-advantages" id="toc-synergy-and-advantages" class="nav-link" data-scroll-target="#synergy-and-advantages">Synergy and Advantages</a></li>
+  </ul></li>
+  <li><a href="#applications-the-voice-of-the-future" id="toc-applications-the-voice-of-the-future" class="nav-link" data-scroll-target="#applications-the-voice-of-the-future">Applications: The Voice of the Future</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#glossary" id="toc-glossary" class="nav-link" data-scroll-target="#glossary">Glossary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/fp-hfg.html">Others</a></li><li class="breadcrumb-item"><a href="../pages/fp-hfg.html">FastPitch HiFi-GAN Pipeline</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Demystifying FastPitch HiFi-GAN: A Deep Dive into High-Fidelity Text-to-Speech Synthesis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>The realm of speech synthesis has witnessed remarkable advancements in recent years, with the emergence of sophisticated deep learning models capable of generating human-quality speech from text. Among these, the FastPitch HiFi-GAN pipeline has gained considerable traction due to its exceptional efficiency and fidelity. This comprehensive guide will delve into the intricacies of this pipeline, unraveling its architecture, parameters, hyperparameters, and underlying principles, ultimately providing a thorough understanding of its workings.</p>
+<section id="fastpitch" class="level1">
+<h1>FastPitch</h1>
+<p>FastPitch, the first stage of our pipeline, is a feed-forward text-to-speech (TTS) model built upon the foundation of FastSpeech, with the key distinction of being conditioned on fundamental frequency contours, commonly referred to as pitch contours. By explicitly modeling these pitch contours, FastPitch empowers the generation of speech that is not only more expressive but also aligns better with the semantic nuances of the utterance, resulting in a more captivating listening experience.</p>
+<section id="architecture" class="level2">
+<h2 class="anchored" data-anchor-id="architecture">Architecture</h2>
+<p>The FastPitch architecture, the cornerstone of our text-to-speech pipeline, is a masterful composition of feed-forward Transformer (FFTr) stacks, meticulously designed to capture the intricate relationships between textual input and the corresponding acoustic features of speech. This section delves into the inner workings of this architecture, dissecting its components and their contributions to the generation of high-quality speech.</p>
+<section id="input-representation-a-foundation-of-lexical-units" class="level3">
+<h3 class="anchored" data-anchor-id="input-representation-a-foundation-of-lexical-units">Input Representation: A Foundation of Lexical Units</h3>
+<p>The journey of speech synthesis within FastPitch commences with the input text, which undergoes a meticulous transformation into a sequence of discrete lexical units. These units can assume the form of graphemes, representing individual characters; phonemes, embodying distinct units of sound; or even words, depending on the desired level of granularity. This sequence, denoted as <span class="math inline">\(x = (x_1, ..., x_n)\)</span>, serves as the foundation upon which the subsequent layers of the architecture will build their understanding of the linguistic content.</p>
+</section>
+<section id="embedding-layer-mapping-symbols-to-meaning" class="level3">
+<h3 class="anchored" data-anchor-id="embedding-layer-mapping-symbols-to-meaning">Embedding Layer: Mapping Symbols to Meaning</h3>
+<p>Each input symbol <span class="math inline">\(x_i\)</span> is then mapped to a high-dimensional vector representation through an embedding layer. This embedding process encodes the semantic and phonetic information associated with each symbol, allowing the model to capture the nuances of language and their implications for speech production. The embedding layer acts as a bridge between the discrete world of text and the continuous domain of acoustic features.</p>
+</section>
+<section id="first-fftr-stack-extracting-linguistic-context" class="level3">
+<h3 class="anchored" data-anchor-id="first-fftr-stack-extracting-linguistic-context">First FFTr Stack: Extracting Linguistic Context</h3>
+<p>The embedded sequence of symbols is subsequently passed through the first FFTr stack. This stack consists of a series of Transformer encoder layers, each meticulously crafted to extract contextual relationships between the input symbols. Each encoder layer comprises:</p>
+<ul>
+<li><strong>Self-Attention Mechanism</strong>: This mechanism allows the model to attend to different parts of the input sequence and learn long-range dependencies between symbols. By considering the interactions between symbols, the self-attention mechanism captures the syntactic and semantic structure of the input text.</li>
+<li><strong>Positional Encoding</strong>: As Transformers lack an inherent understanding of sequence order, positional encodings are injected to provide information about the relative positions of symbols within the sequence. This enables the model to distinguish between different word orders and their impact on meaning and pronunciation.</li>
+<li><strong>Feed-Forward Network</strong>: This network further refines the representations learned by the self-attention mechanism, extracting additional features relevant for speech generation.</li>
+</ul>
+<p>The output of the first FFTr stack is a contextualized representation of the input text, denoted as <span class="math inline">\(h = \text{FFTr}(x)\)</span>. This representation encapsulates the linguistic information necessary for generating speech that accurately reflects the meaning and structure of the input text.</p>
+</section>
+<section id="duration-and-pitch-prediction-modeling-prosodic-features" class="level3">
+<h3 class="anchored" data-anchor-id="duration-and-pitch-prediction-modeling-prosodic-features">Duration and Pitch Prediction: Modeling Prosodic Features</h3>
+<p>The contextualized representation, <span class="math inline">\(h\)</span>, is then utilized to predict two crucial prosodic features of speech: duration and pitch. These features play a pivotal role in conveying the rhythm, intonation, and expressiveness of speech.</p>
+<ul>
+<li><strong>Duration Predictor</strong>: A dedicated 1-D convolutional neural network (CNN) is employed to predict the duration of each input symbol. This network analyzes the contextualized representation and estimates the length of time each symbol should be pronounced during speech synthesis. The predicted durations, denoted as <span class="math inline">\(\hat{d} = \text{DurationPredictor}(h)\)</span>, where <span class="math inline">\(\hat{d} ∈ N^n\)</span>, ensure that the generated speech has a natural rhythm and flow.</li>
+<li><strong>Pitch Predictor</strong>: Another 1-D CNN is employed to predict the average pitch for each input symbol. This network examines the contextualized representation and estimates the fundamental frequency of the voice for each symbol. The predicted pitch values, denoted as <span class="math inline">\(\hat{p} = \text{PitchPredictor}(h)\)</span>, where <span class="math inline">\(\hat{p} ∈ R^n\)</span>, contribute to the intonation and expressiveness of the synthesized speech.</li>
+</ul>
+</section>
+<section id="pitch-conditioning-injecting-prosodic-information" class="level3">
+<h3 class="anchored" data-anchor-id="pitch-conditioning-injecting-prosodic-information">Pitch Conditioning: Injecting Prosodic Information</h3>
+<p>The predicted pitch values are not merely an output of the FastPitch architecture; they are also used to condition the model, influencing the generated speech’s prosody. This conditioning process involves:</p>
+<ol type="1">
+<li><strong>Pitch Embedding</strong>: The predicted pitch values are projected into a high-dimensional embedding space, allowing the model to capture the subtle nuances of pitch variations.</li>
+<li><strong>Addition</strong>: The pitch embedding is then added to the contextualized representation <span class="math inline">\(h\)</span>. This step injects pitch information directly into the model, ensuring that the generated speech reflects the desired intonation and expressiveness.</li>
+</ol>
+<p><span class="math display">\[g = h + \text{PitchEmbedding}(p)\]</span></p>
+</section>
+<section id="upsampling-aligning-temporal-resolutions" class="level3">
+<h3 class="anchored" data-anchor-id="upsampling-aligning-temporal-resolutions">Upsampling: Aligning Temporal Resolutions</h3>
+<p>The resulting sum, <span class="math inline">\(g\)</span>, containing both linguistic and prosodic information, is upsampled to match the temporal resolution of the output mel-spectrogram frames. This upsampling process ensures that the model has sufficient temporal information to generate speech with the appropriate rhythm and intonation.</p>
+</section>
+<section id="second-fftr-stack-generating-mel-spectrograms" class="level3">
+<h3 class="anchored" data-anchor-id="second-fftr-stack-generating-mel-spectrograms">Second FFTr Stack: Generating Mel-Spectrograms</h3>
+<p>The upsampled representation, <span class="math inline">\(g\)</span>, is then fed into the second FFTr stack. This stack, similar in structure to the first FFTr stack, consists of a series of Transformer decoder layers. Each decoder layer incorporates the self-attention mechanism, positional encoding, and feed-forward network, but with an additional attention mechanism:</p>
+<ul>
+<li><strong>Encoder-Decoder Attention</strong>: This mechanism allows the decoder to attend to relevant parts of the encoder’s output, enabling the model to align the linguistic and prosodic information with the corresponding acoustic features during mel-spectrogram generation.</li>
+</ul>
+<p>The output of the second FFTr stack is the predicted mel-spectrogram sequence, denoted as <span class="math display">\[\hat{y} = \text{FFTr}([g_1, ..., g_1, ..., g_n, ..., g_n])\]</span> This sequence represents the spectral characteristics of the synthesized speech, capturing the frequencies and their intensities over time.</p>
+</section>
+</section>
+<section id="training" class="level2">
+<h2 class="anchored" data-anchor-id="training">Training</h2>
+<p>The training of FastPitch, the initial stage within our text-to-speech (TTS) pipeline, constitutes a meticulously orchestrated optimization process designed to instill within the model the ability to generate mel-spectrograms imbued with both accurate spectral content and expressive prosody. This intricate learning journey leverages a synergy of loss functions, each targeting specific aspects of the model’s performance, ultimately guiding it towards the generation of high-quality speech representations.</p>
+<section id="loss-functions-guiding-lights-in-the-optimization-landscape" class="level3">
+<h3 class="anchored" data-anchor-id="loss-functions-guiding-lights-in-the-optimization-landscape">Loss Functions: Guiding Lights in the Optimization Landscape</h3>
+<p>FastPitch’s training regimen revolves around the minimization of a composite loss function, which encapsulates the model’s performance across multiple dimensions. Let’s dissect the individual loss components and their contributions to the overall training objective:</p>
+<section id="mean-squared-error-mse-loss-ensuring-spectral-fidelity" class="level4">
+<h4 class="anchored" data-anchor-id="mean-squared-error-mse-loss-ensuring-spectral-fidelity">1. Mean Squared Error (MSE) Loss: Ensuring Spectral Fidelity</h4>
+<p>The MSE loss serves as the cornerstone of FastPitch’s training, ensuring that the generated mel-spectrograms faithfully represent the spectral characteristics of the target speech. It quantifies the discrepancy between the predicted mel-spectrogram, denoted as <span class="math inline">\(ŷ\)</span>, and the ground-truth mel-spectrogram, <span class="math inline">\(y\)</span>, as follows:</p>
+<p><span class="math display">\[L_{\text{MSE}} = ||ŷ - y||^2_2\]</span></p>
+<p>By minimizing this loss, the model learns to capture the intricate spectral nuances of speech, encompassing the distribution of energy across different frequency bands, ultimately contributing to the naturalness and intelligibility of the synthesized speech.</p>
+</section>
+<section id="pitch-prediction-loss-sculpting-prosodic-contours" class="level4">
+<h4 class="anchored" data-anchor-id="pitch-prediction-loss-sculpting-prosodic-contours">2. Pitch Prediction Loss: Sculpting Prosodic Contours</h4>
+<p>The pitch prediction loss plays a pivotal role in shaping the prosodic contours of the generated speech, ensuring that the model accurately predicts the fundamental frequency (<span class="math inline">\(F_0\)</span>) contour for each input symbol. This loss is calculated as the MSE between the predicted pitch contour, <span class="math inline">\(p̂\)</span>, and the ground-truth pitch contour, <span class="math inline">\(p\)</span>:</p>
+<p><span class="math display">\[L_{\text{pitch}} = ||p̂ - p||^2_2\]</span></p>
+<p>Minimizing this loss enables the model to learn the intricate relationship between textual input and pitch variations, allowing it to generate speech with appropriate intonation and expressiveness.</p>
+</section>
+<section id="duration-prediction-loss-orchestrating-temporal-dynamics" class="level4">
+<h4 class="anchored" data-anchor-id="duration-prediction-loss-orchestrating-temporal-dynamics">3. Duration Prediction Loss: Orchestrating Temporal Dynamics</h4>
+<p>The duration prediction loss governs the temporal dynamics of the generated speech, ensuring that the model accurately predicts the duration of each input symbol. This loss is computed as the MSE between the predicted duration sequence, <span class="math inline">\(d̂\)</span>, and the ground-truth duration sequence, <span class="math inline">\(d\)</span>:</p>
+<p><span class="math display">\[L_{\text{duration}} = ||d̂ - d||^2_2\]</span></p>
+<p>By minimizing this loss, the model learns to control the timing of speech events, preventing unnatural pauses or rushed pronunciations, and contributing to the overall fluency and rhythm of the synthesized speech.</p>
+</section>
+</section>
+<section id="composite-loss-a-harmonious-convergence" class="level3">
+<h3 class="anchored" data-anchor-id="composite-loss-a-harmonious-convergence">Composite Loss: A Harmonious Convergence</h3>
+<p>The individual loss components discussed above are meticulously combined into a composite loss function that guides the model’s training. This composite loss, denoted as <span class="math inline">\(L_{\text{total}}\)</span>, is typically a weighted sum of the individual losses:</p>
+<p><span class="math display">\[L_{\text{total}} = \lambda_{\text{MSE}}L_{\text{MSE}} + \lambda_{\text{pitch}}L_{\text{pitch}} + \lambda_{\text{duration}}L_{\text{duration}}\]</span></p>
+<p>where <span class="math inline">\(\lambda_{\text{MSE}}\)</span>, <span class="math inline">\(\lambda_{\text{pitch}}\)</span>, and <span class="math inline">\(\lambda_{\text{duration}}\)</span> represent weighting factors that determine the relative importance of each loss component. These weights are carefully chosen to balance the model’s focus on spectral accuracy, prosodic expressiveness, and temporal dynamics, ultimately leading to the generation of high-quality speech.</p>
+</section>
+<section id="optimization-algorithms-navigating-the-loss-landscape" class="level3">
+<h3 class="anchored" data-anchor-id="optimization-algorithms-navigating-the-loss-landscape">Optimization Algorithms: Navigating the Loss Landscape</h3>
+<p>The minimization of the composite loss function is typically achieved through the application of gradient-based optimization algorithms, such as Adam or AdamW. These algorithms iteratively update the model’s parameters based on the gradients of the loss function, gradually steering the model towards a configuration that minimizes the overall loss. The choice of optimizer and its associated hyperparameters, such as learning rate and momentum, significantly influence the efficiency and effectiveness of the training process.</p>
+</section>
+<section id="training-data-the-foundation-of-knowledge" class="level3">
+<h3 class="anchored" data-anchor-id="training-data-the-foundation-of-knowledge">Training Data: The Foundation of Knowledge</h3>
+<p>The quality and diversity of the training data are paramount to the success of FastPitch’s training. Ideally, the training corpus should encompass a wide range of speakers, speaking styles, and acoustic conditions to equip the model with the ability to generalize to unseen scenarios and produce versatile speech outputs. Additionally, the training data should be meticulously preprocessed to ensure consistency and accuracy, which may involve steps such as text normalization, alignment of text with speech signals, and extraction of pitch contours.</p>
+</section>
+</section>
+<section id="hyperparameter-optimization" class="level2">
+<h2 class="anchored" data-anchor-id="hyperparameter-optimization">Hyperparameter Optimization</h2>
+<p>The performance of FastPitch, as with any deep learning model, is intricately intertwined with the selection of hyperparameters. These hyperparameters act as the sculptor’s tools, shaping the learning process and ultimately influencing the quality of the generated speech. This section delves into the key hyperparameters of FastPitch, exploring their impact on model performance and providing insights into their optimal configuration.</p>
+<section id="navigating-the-hyperparameter-space" class="level4">
+<h4 class="anchored" data-anchor-id="navigating-the-hyperparameter-space">Navigating the Hyperparameter Space</h4>
+<ol type="1">
+<li><p><strong>Number of FFTr Layers</strong>: The depth of the Transformer encoder and decoder stacks plays a crucial role in the model’s ability to learn complex representations and long-range dependencies within the input sequence. Increasing the number of layers can enhance the model’s capacity to capture intricate linguistic nuances and phonetic patterns, potentially leading to improved prosody and naturalness in the synthesized speech. However, this depth comes at the cost of increased computational complexity and training time, necessitating a careful balance between model expressiveness and efficiency.</p></li>
+<li><p><strong>Number of Attention Heads</strong>: Attention mechanisms lie at the core of Transformer models, enabling them to selectively focus on relevant parts of the input sequence during processing. Each attention head within a Transformer layer learns to attend to different aspects of the input, contributing to a multifaceted understanding of the context. Increasing the number of attention heads can improve the model’s ability to capture diverse linguistic features and relationships, potentially leading to more nuanced and expressive speech synthesis. However, similar to the number of layers, increasing attention heads can impact computational efficiency, requiring careful consideration of the trade-offs.</p></li>
+<li><p><strong>Dropout Rate</strong>: Overfitting is a persistent challenge in deep learning, where the model becomes excessively specialized to the training data and fails to generalize well to unseen examples. Dropout acts as a regularization technique, mitigating overfitting by randomly dropping out a portion of neurons during training. This process prevents the model from relying too heavily on specific neurons or features, encouraging it to learn more robust and generalizable representations. The dropout rate controls the probability of a neuron being dropped out, with higher rates leading to stronger regularization. Selecting an appropriate dropout rate is crucial for achieving a balance between model complexity and generalizability.</p></li>
+<li><p><strong>Learning Rate</strong>: The learning rate governs the magnitude of updates made to the model’s parameters during optimization. An excessively high learning rate can lead to instability and divergence, while an excessively low learning rate can result in slow convergence and suboptimal performance. Adaptive optimization algorithms, such as Adam, can dynamically adjust the learning rate during training, alleviating the need for manual tuning. However, it is still essential to select an appropriate initial learning rate and potentially employ learning rate scheduling techniques to ensure efficient and stable convergence.</p></li>
+<li><p><strong>Batch Size</strong>: The batch size determines the number of training examples processed before updating the model’s parameters. Larger batch sizes can improve computational efficiency and accelerate training, particularly when utilizing parallel computing resources. However, excessively large batch sizes can lead to reduced generalization performance and increased memory consumption. Finding an optimal batch size often involves a trade-off between training speed and model generalizability.</p></li>
+<li><p><strong>Warmup Steps</strong>: During the initial stages of training, it can be beneficial to gradually increase the learning rate from a small value to the target learning rate. This “warmup” period allows the model to stabilize before undergoing larger parameter updates, preventing potential instability and divergence. The number of warmup steps should be carefully chosen to ensure a smooth transition to the target learning rate.</p></li>
+</ol>
+</section>
+<section id="empirical-exploration-and-fine-tuning" class="level4">
+<h4 class="anchored" data-anchor-id="empirical-exploration-and-fine-tuning">Empirical Exploration and Fine-tuning</h4>
+<p>Determining the optimal configuration of hyperparameters often involves an empirical exploration of the hyperparameter space. Techniques such as grid search, random search, and Bayesian optimization can be employed to efficiently search for hyperparameter combinations that yield the best performance. Additionally, monitoring training progress and evaluating the model on a held-out validation set can provide valuable insights into the effectiveness of different hyperparameter choices.</p>
+</section>
+</section>
+</section>
+<section id="hifi-gan" class="level1">
+<h1>HiFi-GAN</h1>
+<p>HiFi-GAN, the second stage of our pipeline, is a generative adversarial network (GAN) specializing in the synthesis of high-fidelity audio waveforms from mel-spectrograms. By effectively modeling the periodic patterns inherent in audio signals, HiFi-GAN achieves remarkable sample quality, surpassing the capabilities of traditional autoregressive and flow-based models.</p>
+<section id="architecture-1" class="level2">
+<h2 class="anchored" data-anchor-id="architecture-1">Architecture</h2>
+<p>HiFi-GAN’s architecture is meticulously designed to capture the intricate details of audio signals and generate high-fidelity waveforms. It achieves this through a synergistic interplay between a generator network and a set of discriminators, each specializing in extracting specific features from the audio data.</p>
+<section id="generator-network-crafting-audio-from-mel-spectrograms" class="level3">
+<h3 class="anchored" data-anchor-id="generator-network-crafting-audio-from-mel-spectrograms">Generator Network: Crafting Audio from Mel-Spectrograms</h3>
+<p>The generator network is a fully convolutional neural network tasked with the intricate process of transforming an input mel-spectrogram into a raw audio waveform. Its architecture is thoughtfully constructed to achieve this upsampling task while preserving the spectral and temporal characteristics of the original audio.</p>
+<ul>
+<li><strong>Input Layer</strong>: The generator receives as input a mel-spectrogram, a time-frequency representation of the audio signal that captures its spectral envelope.</li>
+<li><strong>Upsampling Layers</strong>: A series of transposed convolutional layers progressively increase the temporal resolution of the mel-spectrogram, gradually approaching the target audio sampling rate. These layers effectively learn to reconstruct the fine-grained temporal details from the coarser mel-spectrogram representation.</li>
+<li><strong>Multi-Receptive Field Fusion (MRF) Modules</strong>: Following each upsampling layer, the generator incorporates MRF modules, which play a crucial role in capturing patterns of varying lengths within the audio signal. Each MRF module consists of multiple residual blocks with diverse kernel sizes and dilation rates. This allows the network to learn both local and global features, contributing to the generation of natural and realistic audio waveforms.</li>
+</ul>
+<p>The generator’s output is a raw audio waveform that closely resembles the original audio signal in terms of its spectral content and temporal structure.</p>
+</section>
+<section id="discriminator-networks-guardians-of-audio-authenticity" class="level3">
+<h3 class="anchored" data-anchor-id="discriminator-networks-guardians-of-audio-authenticity">Discriminator Networks: Guardians of Audio Authenticity</h3>
+<p>HiFi-GAN employs a combination of discriminator networks, each designed to scrutinize the generated audio from different perspectives, ensuring its authenticity and fidelity.</p>
+<section id="multi-scale-discriminator-msd-capturing-temporal-dependencies" class="level4">
+<h4 class="anchored" data-anchor-id="multi-scale-discriminator-msd-capturing-temporal-dependencies">Multi-Scale Discriminator (MSD): Capturing Temporal Dependencies</h4>
+<p>The MSD focuses on capturing temporal dependencies within the audio signal across multiple scales. This is achieved by analyzing the audio at different levels of temporal resolution.</p>
+<ul>
+<li><strong>Sub-discriminators</strong>: The MSD consists of multiple sub-discriminators, each operating on a different scale of the input audio. Typically, three scales are employed: the raw audio, a 2x downsampled version, and a 4x downsampled version.</li>
+<li><strong>Convolutional Layers</strong>: Each sub-discriminator comprises a stack of strided and grouped convolutional layers, allowing it to extract features at different temporal resolutions while maintaining computational efficiency. Leaky ReLU activation functions introduce non-linearity and enhance the network’s expressiveness.</li>
+<li><strong>Normalization</strong>: Spectral normalization is applied to the first sub-discriminator, which operates on the raw audio, to stabilize training and prevent unwanted artifacts. Weight normalization is used for the remaining sub-discriminators to accelerate convergence.</li>
+</ul>
+<p>By analyzing the audio at multiple scales, the MSD can effectively identify inconsistencies and artifacts that might be present in the generated samples, ensuring that the generator learns to produce audio with realistic temporal dynamics.</p>
+</section>
+<section id="multi-period-discriminator-mpd-unraveling-periodic-structures" class="level4">
+<h4 class="anchored" data-anchor-id="multi-period-discriminator-mpd-unraveling-periodic-structures">Multi-Period Discriminator (MPD): Unraveling Periodic Structures</h4>
+<p>The MPD focuses on capturing the periodic structures inherent in audio signals, which are essential for generating natural-sounding speech and music.</p>
+<ul>
+<li><strong>Sub-discriminators</strong>: The MPD consists of multiple sub-discriminators, each analyzing a specific periodic component of the input audio. This is achieved by dividing the audio signal into segments of equal length, where the length corresponds to the desired period.</li>
+<li><strong>2D Convolutional Layers</strong>: Each sub-discriminator utilizes 2D convolutions with a kernel size of 1 in the width axis to process the periodic samples independently. This design allows the network to extract features specific to each period, enhancing its ability to discern subtle periodic patterns.</li>
+<li><strong>Normalization</strong>: Weight normalization is applied to all layers within the MPD to stabilize training and improve convergence speed.</li>
+</ul>
+<p>By analyzing the periodic components of the audio signal, the MPD ensures that the generator learns to produce audio with realistic and natural-sounding periodicity, crucial for replicating the characteristics of human speech and musical instruments.</p>
+</section>
+</section>
+<section id="synergistic-collaboration-adversarial-training" class="level3">
+<h3 class="anchored" data-anchor-id="synergistic-collaboration-adversarial-training">Synergistic Collaboration: Adversarial Training</h3>
+<p>The generator and discriminators engage in an adversarial training process, where the generator strives to produce increasingly realistic audio samples, while the discriminators continuously improve their ability to distinguish between real and generated audio. This iterative process ultimately leads to a generator capable of synthesizing high-fidelity audio waveforms that are indistinguishable from real recordings.</p>
+</section>
+</section>
+<section id="training-1" class="level2">
+<h2 class="anchored" data-anchor-id="training-1">Training</h2>
+<p>The training of HiFi-GAN embodies an adversarial optimization process, where the generator and discriminator networks engage in a continuous refinement loop, driving each other towards improved performance. This intricate interplay between the two networks lies at the core of HiFi-GAN’s ability to generate high-fidelity audio waveforms. Let’s delve deeper into the specific loss functions and optimization strategies employed during this process.</p>
+<section id="loss-functions-guiding-the-adversarial-dance" class="level3">
+<h3 class="anchored" data-anchor-id="loss-functions-guiding-the-adversarial-dance">Loss Functions: Guiding the Adversarial Dance</h3>
+<p>HiFi-GAN’s training hinges on the optimization of a combination of loss functions, each playing a distinct role in shaping the model’s capabilities:</p>
+<ul>
+<li><p><strong>Adversarial Loss (L_Adv)</strong>: This loss function forms the cornerstone of the GAN framework, pitting the generator against the discriminators. The generator aims to minimize this loss by producing samples that are indistinguishable from real audio, effectively “fooling” the discriminators. Conversely, the discriminators strive to maximize this loss by correctly classifying real and generated samples, thereby enhancing their ability to detect the generator’s outputs. Mathematically, the adversarial loss can be expressed as: <span class="math display">\[L_{Adv}(D; G) = E_{x,s}[(D(x) - 1)^2 + (D(G(s)))^2]\]</span> <span class="math display">\[L_{Adv}(G; D) = E_s[(D(G(s)) - 1)^2]\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(D\)</span> represents the discriminator(s).</li>
+<li><span class="math inline">\(G\)</span> represents the generator.</li>
+<li><span class="math inline">\(x\)</span> denotes a real audio sample.</li>
+<li><span class="math inline">\(s\)</span> denotes the input mel-spectrogram.</li>
+</ul></li>
+<li><p><strong>Mel-Spectrogram Loss (L_Mel)</strong>: To ensure that the generated audio accurately reflects the desired spectral characteristics, HiFi-GAN incorporates a mel-spectrogram loss. This loss measures the L1 distance between the mel-spectrogram of the generated waveform and the target mel-spectrogram. By minimizing this loss, the generator learns to produce audio with the desired frequency content. <span class="math display">\[L_{Mel}(G) = E_{x,s}[||φ(x) - φ(G(s))||_1]\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(φ\)</span> denotes the function that transforms a waveform into its corresponding mel-spectrogram.</li>
+</ul></li>
+<li><p><strong>Feature Matching Loss (L_FM)</strong>: As an additional measure to guide the generator towards producing realistic audio, HiFi-GAN employs a feature matching loss. This loss calculates the L1 distance between features extracted from real and generated samples by the discriminators. By minimizing this loss, the generator learns to produce samples that exhibit similar characteristics to real audio in the feature space. <span class="math display">\[L_{FM}(G; D) = E_{x,s}[\sum_{i=1}^T \frac{1}{N_i} ||D_i(x) - D_i(G(s))||_1]\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(T\)</span> denotes the number of layers in the discriminator.</li>
+<li><span class="math inline">\(D_i\)</span> and <span class="math inline">\(N_i\)</span> represent the features and the number of features in the <span class="math inline">\(i\)</span>th layer of the discriminator, respectively.</li>
+</ul></li>
+</ul>
+</section>
+<section id="optimization-a-balancing-act" class="level3">
+<h3 class="anchored" data-anchor-id="optimization-a-balancing-act">Optimization: A Balancing Act</h3>
+<p>The training process involves optimizing the generator and discriminator networks alternately. This iterative procedure can be summarized as follows:</p>
+<ol type="1">
+<li><strong>Discriminator Update</strong>: The discriminator is presented with a batch of real audio samples and a batch of generated samples from the generator. The discriminator’s parameters are updated to minimize the adversarial loss and maximize its ability to differentiate between real and generated samples.</li>
+<li><strong>Generator Update</strong>: The generator is presented with a batch of mel-spectrograms and generates corresponding audio waveforms. The generator’s parameters are updated to minimize the combined loss function, which includes the adversarial loss, mel-spectrogram loss, and feature matching loss.</li>
+</ol>
+<p>This back-and-forth optimization process continues for numerous iterations, gradually improving the performance of both the generator and discriminator networks. The generator progressively learns to produce more realistic audio, while the discriminator becomes more adept at detecting subtle discrepancies between real and generated samples.</p>
+</section>
+<section id="additional-considerations-fine-tuning-the-process" class="level3">
+<h3 class="anchored" data-anchor-id="additional-considerations-fine-tuning-the-process">Additional Considerations: Fine-tuning the Process</h3>
+<p>Several additional considerations contribute to the effectiveness of HiFi-GAN’s training process:</p>
+<ul>
+<li><strong>Multi-discriminator Architecture</strong>: The use of both MSD and MPD provides complementary perspectives on the audio data, enhancing the discriminators’ ability to guide the generator towards producing high-fidelity audio.</li>
+<li><strong>Weight Normalization and Spectral Normalization</strong>: These techniques stabilize the training process by preventing excessive parameter updates and mitigating the risk of mode collapse.</li>
+<li><strong>Optimizer and Learning Rate Schedule</strong>: The choice of optimizer and learning rate schedule can significantly impact the convergence and stability of the training process. HiFi-GAN commonly employs the AdamW optimizer with a carefully designed learning rate decay schedule.</li>
+</ul>
+</section>
+</section>
+<section id="hyperparameters" class="level2">
+<h2 class="anchored" data-anchor-id="hyperparameters">Hyperparameters</h2>
+<p>HiFi-GAN’s ability to generate high-fidelity audio waveforms is contingent upon the judicious selection and optimization of its hyperparameters. These parameters exert a profound influence on the model’s architecture, training dynamics, and ultimately, the quality of the synthesized audio. This section delves into the intricacies of HiFi-GAN hyperparameter optimization, elucidating the role and impact of each parameter.</p>
+<section id="generator-hyperparameters-shaping-the-melodic-canvas" class="level4">
+<h4 class="anchored" data-anchor-id="generator-hyperparameters-shaping-the-melodic-canvas">Generator Hyperparameters: Shaping the Melodic Canvas</h4>
+<p>The generator, responsible for transforming mel-spectrograms into realistic audio waveforms, is governed by a set of hyperparameters that dictate its structure and functionality:</p>
+<ul>
+<li><p><strong>Hidden Dimension (hu)</strong>: This hyperparameter determines the dimensionality of the generator’s hidden layers, effectively controlling the model’s capacity and expressive power. A higher hidden dimension allows the generator to capture more intricate relationships within the data but may also increase the risk of overfitting and computational complexity.</p></li>
+<li><p><strong>Upsampling Factors (ku)</strong>: These hyperparameters define the upsampling factors employed by the transposed convolutional layers within the generator. The upsampling factors govern the rate at which the temporal resolution of the mel-spectrogram is increased to match that of the raw audio waveform. Careful selection of these factors is crucial to ensure the preservation of spectral details while achieving the desired temporal resolution.</p></li>
+<li><p><strong>MRF Kernel Sizes (kr)</strong>: The Multi-Receptive Field Fusion (MRF) modules within the generator are equipped with multiple residual blocks, each operating with a distinct kernel size. These kernel sizes determine the extent of the local context considered by each residual block during feature extraction. By incorporating residual blocks with varying kernel sizes, the MRF module effectively captures both short-term and long-term dependencies within the data.</p></li>
+<li><p><strong>MRF Dilation Rates (Dr)</strong>: In addition to kernel sizes, the residual blocks within the MRF modules utilize dilation rates to further expand their receptive fields. Dilation involves inserting spaces between the elements of the convolution kernel, enabling the network to capture patterns at different scales without increasing the number of parameters. The selection of dilation rates plays a crucial role in capturing long-range dependencies and modeling the temporal dynamics of audio signals.</p></li>
+</ul>
+</section>
+<section id="discriminator-hyperparameters-the-guardians-of-authenticity" class="level4">
+<h4 class="anchored" data-anchor-id="discriminator-hyperparameters-the-guardians-of-authenticity">Discriminator Hyperparameters: The Guardians of Authenticity</h4>
+<p>The discriminators, acting as discerning judges of audio authenticity, also rely on hyperparameters to guide their operation:</p>
+<ul>
+<li><p><strong>Multi-Scale Discriminator (MSD) Configuration</strong>: The MSD is composed of multiple sub-discriminators, each operating on a different scale of the input audio. Hyperparameters such as the number of sub-discriminators, their respective filter sizes, and the downsampling factors employed between scales influence the MSD’s ability to capture both local and global features of the audio signal.</p></li>
+<li><p><strong>Multi-Period Discriminator (MPD) Periods (p)</strong>: The MPD consists of multiple sub-discriminators, each analyzing equally spaced samples of the input audio. The spacing between these samples is determined by the periods, which are typically chosen to be prime numbers to minimize overlap and maximize the diversity of captured periodic patterns. The selection of periods plays a critical role in enabling the MPD to effectively identify and evaluate the periodic structures inherent in audio signals.</p></li>
+</ul>
+</section>
+<section id="training-hyperparameters-orchestrating-the-learning-process" class="level4">
+<h4 class="anchored" data-anchor-id="training-hyperparameters-orchestrating-the-learning-process">Training Hyperparameters: Orchestrating the Learning Process</h4>
+<p>The training of HiFi-GAN is orchestrated by a set of hyperparameters that govern the learning dynamics and convergence behavior:</p>
+<ul>
+<li><p><strong>Optimizer</strong>: The choice of optimizer, such as Adam or AdamW, influences the model’s parameter updates during training. The optimizer’s hyperparameters, including learning rate, momentum, and weight decay, further fine-tune the learning process.</p></li>
+<li><p><strong>Learning Rate Schedule</strong>: The learning rate schedule dictates how the learning rate evolves over the course of training. A well-designed learning rate schedule can accelerate convergence and prevent overfitting. Common schedules include step decay, exponential decay, and cyclical learning rates.</p></li>
+<li><p><strong>Batch Size</strong>: The batch size determines the number of training examples processed simultaneously during each iteration. A larger batch size can improve training efficiency but may also require more memory and potentially lead to suboptimal convergence.</p></li>
+<li><p><strong>Loss Weights</strong>: As HiFi-GAN employs multiple loss functions, such as adversarial loss, mel-spectrogram loss, and feature matching loss, the relative weighting of these losses can impact the model’s training trajectory and the emphasis placed on different aspects of the generated audio.</p></li>
+</ul>
+</section>
+<section id="hyperparameter-optimization-strategies-navigating-the-parameter-space" class="level4">
+<h4 class="anchored" data-anchor-id="hyperparameter-optimization-strategies-navigating-the-parameter-space">Hyperparameter Optimization Strategies: Navigating the Parameter Space</h4>
+<p>Optimizing HiFi-GAN’s hyperparameters is a meticulous process that often involves a combination of empirical observations, domain knowledge, and automated search techniques. Some common strategies include:</p>
+<ul>
+<li><p><strong>Grid Search</strong>: This method involves systematically exploring a predefined range of values for each hyperparameter, evaluating the model’s performance for each combination. While exhaustive, grid search can be computationally expensive and may not effectively explore the entire parameter space.</p></li>
+<li><p><strong>Random Search</strong>: This technique randomly samples hyperparameter combinations from a predefined distribution, offering a more efficient exploration of the parameter space compared to grid search.</p></li>
+<li><p><strong>Bayesian Optimization</strong>: This approach leverages a probabilistic model to guide the search for optimal hyperparameters, efficiently navigating the parameter space and converging towards promising regions.</p></li>
+<li><p><strong>Gradient-Based Optimization</strong>: Recent advancements in hyperparameter optimization have introduced gradient-based methods, allowing for the direct optimization of hyperparameters using gradient descent algorithms.</p></li>
+</ul>
+<p>The optimal hyperparameter configuration for HiFi-GAN is highly dependent on the specific dataset, training setup, and desired audio characteristics. A meticulous exploration of the hyperparameter space is essential to achieve optimal performance and unlock the full potential of HiFi-GAN for high-fidelity audio synthesis.</p>
+</section>
+</section>
+</section>
+<section id="the-fastpitch-hifi-gan-pipeline" class="level1">
+<h1>The FastPitch HiFi-GAN Pipeline</h1>
+<p>The FastPitch HiFi-GAN pipeline represents a sophisticated integration of two distinct neural network models, each specializing in a specific aspect of speech synthesis. This synergistic fusion leverages the strengths of both models to achieve state-of-the-art performance in generating high-fidelity speech with expressive prosody. This section delves into the intricacies of this pipeline, elucidating the interplay between FastPitch and HiFi-GAN.</p>
+<section id="stage-1-text-preprocessing-and-conditioning" class="level3">
+<h3 class="anchored" data-anchor-id="stage-1-text-preprocessing-and-conditioning">Stage 1: Text Preprocessing and Conditioning</h3>
+<ol type="1">
+<li><strong>Text Tokenization</strong>: The input text undergoes tokenization, wherein it is segmented into a sequence of discrete units. These units can be graphemes (individual characters), phonemes (fundamental units of sound), or even words, depending on the chosen granularity and linguistic considerations.</li>
+<li><strong>Duration Prediction</strong>: FastPitch utilizes a pre-trained Tacotron 2 model or a similar alignment model to extract duration information for each input token. This information specifies the temporal extent of each token within the synthesized speech, ensuring accurate timing and rhythm.</li>
+<li><strong>Pitch Extraction</strong>: The fundamental frequency (F0) contour, representing the pitch variations in the speech signal, is extracted from the training data using established pitch detection algorithms. These algorithms typically employ techniques such as autocorrelation or cepstral analysis to identify the periodicities in the speech waveform.</li>
+<li><strong>Pitch Averaging</strong>: The extracted F0 values are averaged over the duration of each input token, resulting in a sequence of pitch values corresponding to the input token sequence. This process captures the average pitch characteristics associated with each token.</li>
+</ol>
+</section>
+<section id="stage-2-mel-spectrogram-generation-with-fastpitch" class="level3">
+<h3 class="anchored" data-anchor-id="stage-2-mel-spectrogram-generation-with-fastpitch">Stage 2: Mel-Spectrogram Generation with FastPitch</h3>
+<ol type="1">
+<li><strong>Embedding</strong>: The tokenized text and averaged pitch values are transformed into dense vector representations through embedding layers. These embeddings capture the semantic and phonetic information of the text and the prosodic characteristics of the pitch contour.</li>
+<li><strong>Encoder</strong>: The embedded text sequence is processed by a stack of feed-forward Transformer (FFTr) encoder layers. These layers utilize self-attention mechanisms to capture long-range dependencies and contextual relationships within the input sequence, generating a rich hidden representation.</li>
+<li><strong>Pitch Conditioning</strong>: The embedded pitch information is injected into the hidden representation generated by the encoder. This step allows the model to integrate prosodic information into the representation, influencing the subsequent generation of the mel-spectrogram.</li>
+<li><strong>Duration Expansion</strong>: The hidden representation is expanded to match the temporal resolution of the output mel-spectrogram using the predicted duration information. This expansion ensures that the generated mel-spectrogram has the correct temporal alignment with the input text.</li>
+<li><strong>Decoder</strong>: The expanded hidden representation is processed by a stack of FFTr decoder layers, which generate the mel-spectrogram sequence. The decoder layers utilize self-attention and cross-attention mechanisms to attend to both the encoder outputs and previously generated mel-spectrogram frames, facilitating the generation of a coherent and contextually relevant mel-spectrogram.</li>
+</ol>
+</section>
+<section id="stage-3-waveform-synthesis-with-hifi-gan" class="level3">
+<h3 class="anchored" data-anchor-id="stage-3-waveform-synthesis-with-hifi-gan">Stage 3: Waveform Synthesis with HiFi-GAN</h3>
+<ol type="1">
+<li><strong>Mel-Spectrogram Input</strong>: The mel-spectrogram generated by FastPitch serves as the input to HiFi-GAN. This spectrogram encodes the spectral characteristics of the desired speech signal.</li>
+<li><strong>Generator Upsampling</strong>: HiFi-GAN’s generator, a fully convolutional neural network, upsamples the input mel-spectrogram to match the temporal resolution of the raw audio waveform. This upsampling process involves a series of transposed convolutions and MRF modules.</li>
+<li><strong>Multi-Scale and Multi-Period Discrimination</strong>: The generator output is evaluated by two types of discriminators:
+<ul>
+<li>The Multi-Scale Discriminator (MSD) analyzes the audio at multiple scales, capturing both short-term and long-term dependencies within the waveform.</li>
+<li>The Multi-Period Discriminator (MPD) focuses on the periodic patterns inherent in the audio signal by analyzing equally spaced samples of the waveform.</li>
+</ul></li>
+<li><strong>Adversarial Training</strong>: The generator and discriminators engage in an adversarial training process. The generator strives to produce audio samples that are indistinguishable from real speech, while the discriminators learn to differentiate between real and generated samples. This adversarial game drives the generator to improve its ability to synthesize realistic and high-fidelity audio.</li>
+<li><strong>Waveform Output</strong>: The final output of the HiFi-GAN generator is a high-quality audio waveform that accurately reflects the spectral and prosodic characteristics encoded in the input mel-spectrogram.</li>
+</ol>
+</section>
+<section id="synergy-and-advantages" class="level3">
+<h3 class="anchored" data-anchor-id="synergy-and-advantages">Synergy and Advantages</h3>
+<p>The FastPitch HiFi-GAN pipeline offers several advantages over traditional TTS approaches:</p>
+<ul>
+<li><strong>Parallelism</strong>: Both FastPitch and HiFi-GAN are non-autoregressive models, enabling parallel computation and significantly faster inference speeds compared to autoregressive models.</li>
+<li><strong>High Fidelity</strong>: HiFi-GAN’s ability to model periodic patterns results in the generation of high-fidelity audio waveforms that closely resemble natural human speech.</li>
+<li><strong>Expressive Prosody</strong>: FastPitch’s explicit modeling of pitch contours enables the generation of speech with expressive prosody, capturing the nuances and emotions conveyed by the input text.</li>
+<li><strong>Controllability</strong>: The pipeline allows for fine-grained control over various aspects of the synthesized speech, such as pitch, duration, and speaker identity.</li>
+</ul>
+</section>
+</section>
+<section id="applications-the-voice-of-the-future" class="level1">
+<h1>Applications: The Voice of the Future</h1>
+<p>The FastPitch HiFi-GAN pipeline has far-reaching applications across various domains, including:</p>
+<ul>
+<li><strong>Virtual Assistants</strong>: Creating more engaging and natural-sounding interactions with virtual assistants.</li>
+<li><strong>Audiobooks</strong>: Generating high-quality audiobooks with expressive narration.</li>
+<li><strong>Accessibility</strong>: Enabling individuals with speech impairments to communicate effectively.</li>
+<li><strong>Creative Content</strong>: Empowering content creators with a tool for generating realistic voiceovers and dialogue.</li>
+</ul>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>The FastPitch HiFi-GAN pipeline represents a significant stride in the evolution of TTS technology. By effectively modeling both spectral content and prosodic features, this pipeline unlocks the potential for generating human-quality speech that is both expressive and engaging. As research in speech synthesis continues to progress, we can anticipate even more sophisticated and versatile TTS systems in the future, transforming the way we interact with technology and each other.</p>
+</section>
+<section id="glossary" class="level1">
+<h1>Glossary</h1>
+<p><strong>Acoustic Features:</strong> Characteristics of a speech signal that relate to its physical properties, such as frequency, amplitude, and duration. These features are used to represent and analyze speech in various speech processing tasks.</p>
+<p><strong>Adam/AdamW:</strong> Optimization algorithms used in deep learning to efficiently update model parameters during training. AdamW is a variant of Adam with improved weight decay regularization.</p>
+<p><strong>Alignment Model:</strong> A model that aligns text input with corresponding speech data, typically used to predict the duration of each text unit in relation to the speech signal.</p>
+<p><strong>Autocorrelation:</strong> A mathematical function that measures the correlation of a signal with a delayed copy of itself. In speech processing, it is often used for pitch detection by identifying repeating patterns in the waveform.</p>
+<p><strong>Autoregressive Model:</strong> A type of model that predicts future values based on past values. In TTS, autoregressive models generate speech samples one sample at a time, conditioned on the previously generated samples.</p>
+<p><strong>Bayesian Optimization:</strong> A probabilistic approach to finding the optimal values for hyperparameters. It builds a model of the objective function and uses it to guide the search for the best hyperparameter configuration.</p>
+<p><strong>Cepstral Analysis:</strong> A technique used in speech processing to separate the spectral envelope (related to vocal tract shape) from the fine spectral details (related to pitch).</p>
+<p><strong>Composite Loss Function:</strong> A loss function that combines multiple individual loss functions, each measuring a different aspect of the model’s performance.</p>
+<p><strong>Convolutional Neural Network (CNN):</strong> A type of neural network that uses convolutional layers to extract features from data. CNNs are particularly effective in processing grid-like data, such as images or time-series data.</p>
+<p><strong>Decoder:</strong> A component of a neural network architecture that generates output sequences based on the encoded representation of the input.</p>
+<p><strong>Deep Learning:</strong> A subfield of machine learning that utilizes artificial neural networks with multiple layers to learn complex patterns and representations from data.</p>
+<p><strong>Dilation Rate:</strong> In convolutional neural networks, dilation refers to the spacing between elements in the convolution kernel. It allows the network to capture features at different scales without increasing the number of parameters.</p>
+<p><strong>Discriminator:</strong> In a Generative Adversarial Network (GAN), the discriminator is a neural network that tries to distinguish between real and generated data samples.</p>
+<p><strong>Dropout:</strong> A regularization technique in deep learning where randomly selected neurons are ignored during training. This helps prevent overfitting and encourages the model to learn more robust representations.</p>
+<p><strong>Embedding Layer:</strong> A layer in a neural network that maps discrete input units (such as words or characters) to dense vector representations.</p>
+<p><strong>Encoder:</strong> A component of a neural network architecture that transforms input sequences into a hidden representation, capturing the essential information from the input.</p>
+<p><strong>Feed-Forward Network:</strong> A type of neural network where information flows only in one direction, from input to output, without any recurrent connections.</p>
+<p><strong>Flow-Based Model:</strong> A type of generative model that learns a bijective mapping between a simple distribution (e.g., Gaussian) and the complex data distribution. In TTS, flow-based models can be used to generate speech samples by transforming samples from the simple distribution through the learned mapping.</p>
+<p><strong>Fundamental Frequency (F0):</strong> The lowest frequency of a periodic waveform, often used as a measure of pitch in speech processing.</p>
+<p><strong>Generative Adversarial Network (GAN):</strong> A type of neural network architecture that consists of a generator and a discriminator. The generator tries to produce realistic data samples, while the discriminator tries to distinguish between real and generated samples. This adversarial training process helps the generator learn to produce increasingly realistic data.</p>
+<p><strong>Grapheme:</strong> The smallest unit of a writing system, typically representing a single letter or character.</p>
+<p><strong>Grid Search:</strong> A hyperparameter optimization technique that systematically evaluates the model’s performance for all possible combinations of hyperparameters within a predefined range.</p>
+<p><strong>Hidden Dimension:</strong> The number of neurons in a hidden layer of a neural network. It determines the model’s capacity and its ability to learn complex relationships.</p>
+<p><strong>Hyperparameter:</strong> A parameter that controls the learning process or the architecture of a model, such as learning rate, batch size, or number of layers.</p>
+<p><strong>L1 Distance:</strong> A measure of the difference between two vectors, calculated as the sum of the absolute differences between their corresponding elements.</p>
+<p><strong>Leaky ReLU:</strong> A variant of the Rectified Linear Unit (ReLU) activation function that allows a small non-zero gradient for negative inputs, which can help prevent the “dying ReLU” problem.</p>
+<p><strong>Lexical Unit:</strong> A unit of meaning in a language, such as a word, morpheme, or grapheme.</p>
+<p><strong>Loss Function:</strong> A function that measures the difference between the model’s predictions and the ground truth targets. The goal of training is to minimize the loss function.</p>
+<p><strong>Mel-Spectrogram:</strong> A time-frequency representation of an audio signal, where the frequency axis is warped using a mel scale to better reflect human auditory perception.</p>
+<p><strong>Mode Collapse:</strong> A problem in GAN training where the generator produces limited diversity in its output samples, often repeating the same or similar samples.</p>
+<p><strong>Momentum:</strong> A technique in optimization algorithms that accelerates convergence by incorporating a portion of the previous update step into the current update step.</p>
+<p><strong>Multi-Receptive Field Fusion (MRF) Module:</strong> A module in a neural network that combines features extracted at different scales and with different receptive fields, allowing the network to capture both local and global information.</p>
+<p><strong>Overfitting:</strong> A phenomenon in machine learning where the model learns the training data too well and fails to generalize to unseen data.</p>
+<p><strong>Phoneme:</strong> The smallest unit of sound in a language that distinguishes one word from another.</p>
+<p><strong>Pitch Contour:</strong> The variation of pitch over time in a speech signal, often represented as a sequence of fundamental frequency (F0) values.</p>
+<p><strong>Positional Encoding:</strong> A technique used in Transformer models to inject information about the position of each element in a sequence, allowing the model to understand the order of elements.</p>
+<p><strong>Prosody:</strong> The rhythm, stress, and intonation of speech, which contribute to its expressiveness and naturalness.</p>
+<p><strong>Random Search:</strong> A hyperparameter optimization technique that randomly samples hyperparameter combinations from a predefined distribution, allowing for a more efficient exploration of the parameter space compared to grid search.</p>
+<p><strong>Rectified Linear Unit (ReLU):</strong> An activation function that outputs zero for negative inputs and the input value for positive inputs.</p>
+<p><strong>Residual Block:</strong> A building block in neural networks that adds the input of the block to its output, allowing for easier training of deeper networks.</p>
+<p><strong>Self-Attention Mechanism:</strong> A mechanism in Transformer models that allows each element in a sequence to attend to other elements in the same sequence, capturing long-range dependencies and contextual relationships.</p>
+<p><strong>Spectral Envelope:</strong> The overall shape of the spectrum of an audio signal, related to the resonance characteristics of the vocal tract.</p>
+<p><strong>Spectral Normalization:</strong> A technique that normalizes the weights of a neural network layer to stabilize training and prevent unwanted artifacts.</p>
+<p><strong>Tacotron 2:</strong> A sequence-to-sequence model with attention mechanism used for speech synthesis, often used as an alignment model in TTS pipelines.</p>
+<p><strong>Text Normalization:</strong> The process of converting text into a consistent format, such as lowercasing, removing punctuation, or expanding abbreviations.</p>
+<p><strong>Text Tokenization:</strong> The process of dividing text into smaller units, such as words, characters, or subword units.</p>
+<p><strong>Transformer:</strong> A type of neural network architecture that relies heavily on self-attention mechanisms to model relationships within sequences.</p>
+<p><strong>Transposed Convolution:</strong> A type of convolutional layer that increases the spatial resolution of its input, often used for upsampling tasks in image processing and audio generation.</p>
+<p><strong>Upsampling:</strong> The process of increasing the sampling rate of a signal, typically used to increase the temporal resolution of a signal in audio processing.</p>
+<p><strong>Weight Decay:</strong> A regularization technique that penalizes large weights in a neural network, helping to prevent overfitting.</p>
+<p><strong>Weight Normalization:</strong> A technique that normalizes the weights of a neural network layer to improve convergence speed and stability during training.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../pages/mutli-arm.html" class="pagination-link" aria-label="Multi-Armed Bandit">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Multi-Armed Bandit</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../about.html" class="pagination-link" aria-label="About me">
+        <span class="nav-page-text">About me</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
