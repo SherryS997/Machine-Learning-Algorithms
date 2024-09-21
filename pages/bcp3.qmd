@@ -1,0 +1,84 @@
+---
+title: "Understanding Research Designs"
+---
+
+## **Correlational Research Design**
+- **Definition**: A research design that investigates the relationships between two or more variables.
+- **Purpose**: To identify patterns and associations, allowing for predictions based on existing data.
+- **Characteristics**:
+  - Does not imply causation; it only shows that a relationship exists.
+  - Utilizes statistical methods to quantify the strength and direction of relationships (e.g., correlation coefficients).
+- **Comparison with Other Designs**:
+  - **Experimental Research**: Involves manipulation of variables to establish cause-and-effect relationships.
+  - **Descriptive Research**: Focuses on describing characteristics or phenomena without examining relationships.
+
+## **Naturalistic Research**
+- **Definition**: A form of descriptive research conducted in natural settings without manipulation.
+- **Purpose**: To observe and describe behaviors in real-world contexts as they naturally occur.
+- **Characteristics**:
+  - Data is collected through observation, interviews, or field notes.
+  - Aims for ecological validity, capturing genuine behaviors and interactions.
+- **Relation to Descriptive Research**: 
+  - Naturalistic research is a subset of descriptive research, emphasizing observational methods.
+
+## **Visual Search Task**
+- **Definition**: A cognitive task that requires individuals to locate a target stimulus among distractors.
+- **Primary Mental Process Investigated**: Attention
+- **Characteristics**:
+  - Involves selective focus and processing of visual information.
+  - Assesses how quickly and accurately individuals can identify targets amidst irrelevant stimuli.
+- **Cognitive Load**: 
+  - Involves various cognitive processes, including visual perception and attentional resources.
+
+## **Brain Areas Activated by Visual Stimuli**
+- **Parahippocampal Place Area (PPA)**:
+  - **Function**: Specializes in recognizing and processing scenes, particularly places and environments.
+  - **Activation**: Engaged by images representing indoor and outdoor scenes.
+- **Fusiform Face Area (FFA)**:
+  - **Function**: Primarily involved in facial recognition and processing of faces.
+- **Extrastriate Body Area (EBA)**:
+  - **Function**: Focused on the recognition of body parts.
+- **Importance of Context**: Different brain regions are activated based on the nature of the visual stimulus, highlighting specialized processing pathways in the brain.
+
+## **Attention**
+- **Definition**: The cognitive process of selectively concentrating on specific stimuli while ignoring others.
+- **Role in Cognitive Systems**: 
+  - Attention filters information to prioritize what is relevant, impacting perception and memory.
+- **Importance**: Essential for effective information processing, decision-making, and responding to environmental demands.
+- **Misconception**: Attention does not construct representations of the outside world; it helps manage and filter incoming information.
+
+## **Perception**
+- **Definition**: The process of interpreting sensory information to form a mental representation of the environment.
+- **Characteristics**:
+  - Involves the integration of sensory input from various modalities (e.g., visual, auditory).
+  - Subject to biases and can be influenced by prior knowledge, expectations, and context.
+- **Common Misconceptions**:
+  - Perception is not always accurate; it can be influenced by deceptive stimuli or erroneous interpretations.
+
+## **Psychophysics**
+- **Definition**: The study of the relationship between physical stimuli and the psychological experiences they evoke.
+- **Key Concepts**:
+  - **Absolute Threshold**: The minimum intensity of a stimulus that can be detected.
+  - **Difference Threshold**: The smallest detectable difference between two stimuli (just noticeable difference).
+- **Methods**: Often involves experimental methods to measure thresholds and sensory responses.
+- **Applications**: Used in various fields, including psychology, neuroscience, and sensory research.
+
+## **Threshold Determination**
+- **Absolute Threshold**: The lowest level of stimulus intensity that an individual can detect.
+- **Difference Threshold**: The minimum difference in intensity required to notice a change.
+- **Methods for Determination**:
+  - Participants adjust the stimulus until it becomes just noticeable, matching it to a standard, or until they detect it.
+- **Importance of Context**: Thresholds can vary based on individual differences, context, and previous exposure to stimuli.
+
+## **Sensory Process and Decision-Making**
+- **Sensory Processing**: Involves receiving, converting, and interpreting sensory information from the environment.
+- **Decision-Making**: The cognitive process where individuals evaluate options and make choices based on sensory input and prior knowledge.
+- **Interdependence**: Sensory processes provide crucial data to the decision-making system; they do not operate independently.
+
+## **Decision Policies**
+- **Conservative Decision Policy**:
+  - **Definition**: A strategy where the decision criterion is set higher, requiring stronger evidence to say "yes."
+  - **Implication**: Reduces the likelihood of false positives, leading to more cautious responses.
+- **Impact on Responses**: 
+  - A conservative policy means fewer affirmative responses, as the threshold for saying "yes" is elevated.
+- **Contextual Understanding**: Different decision policies can shape outcomes in research and real-world settings, affecting how data is interpreted and decisions are made.

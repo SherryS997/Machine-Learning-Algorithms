@@ -116,6 +116,24 @@ website:
         contents: 
           - href: pages/mutli-arm.ipynb
             text: Multi-Armed Bandit
+      - section: "Basic Cognitive Processes"
+        contents:
+          - href: pages/bcp1.qmd
+            text: "Foundations of Psychological Concepts and Theories-I"
+          - href: pages/bcp2.qmd
+            text: "Foundations of Psychological Concepts and Theories-II"
+          - href: pages/bcp3.qmd
+            text: "Understanding Research Designs"
+          - href: pages/bcp4.qmd
+            text: "Vision and Perception"
+          - href: pages/bcp5.qmd
+            text: "Perception Theories and Sensory Processing"
+          - href: pages/bcp6.qmd
+            text: "Attention and Memory Mechanisms"
+          - href: pages/bcp7.qmd
+            text: "Memory Systems and Processes"
+          - href: pages/bcp8.qmd
+            text: "Memory and Brain Function"
       - section: "Others"
         contents: 
           - href: pages/fp-hfg.qmd

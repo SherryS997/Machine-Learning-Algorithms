@@ -1,0 +1,76 @@
+---
+title: "Vision and Perception"
+---
+
+## Fovea
+- **Definition:** The fovea is a small, central pit in the retina that provides the clearest vision.
+- **Characteristics:**
+  - Contains a high density of cone cells, which are responsible for color vision and high acuity.
+  - Responsible for sharp central vision, essential for activities like reading and driving.
+- **Significance:** The fovea allows for acute vision, making it the region of the retina where visual resolution is the highest.
+
+## Retina
+- **Definition:** The retina is the layer of tissue at the back of the eye that contains photoreceptors.
+- **Function:** Converts electromagnetic light energy into neural electrochemical impulses.
+- **Components:**
+  - **Photoreceptors:** Include rods (for low-light vision) and cones (for color and detailed vision).
+  - **Bipolar and Ganglion Cells:** Process and transmit visual information from photoreceptors to the brain.
+- **Importance:** The retina serves as the initial site for visual processing, providing the brain with crucial sensory input.
+
+## 2.5D Sketch
+- **Definition:** A concept in David Marr’s theory representing a viewer-centered description of visual information.
+- **Characteristics:**
+  - Incorporates visual cues such as stereopsis (depth perception from binocular vision) and motion parallax (perception of depth from the movement of objects).
+  - Allows for recognition of depth and surface orientation without complete object reconstruction.
+- **Relevance:** Serves as an intermediate step in visual processing before forming a full 3D representation.
+
+## Mental Representation and Retinal Images
+- **Concept:** Mental representations are internal images or constructs that the brain uses to interpret the external world.
+- **Role of Retinal Images:**
+  - Serve as the basis for mental representations, providing the raw data needed for perception.
+  - The brain interprets these images to form a coherent understanding of the environment.
+
+## Gibson's Ecological Approach
+- **Definition:** A theory of perception proposed by J.J. Gibson emphasizing direct perception.
+- **Key Ideas:**
+  - Perception is an active process of picking up information from the environment.
+  - Environmental structures, rather than internal cognitive processes, shape our perceptual experiences.
+- **Importance:** This approach highlights the interaction between organisms and their environments in the perception process.
+
+## Ambient Optic Array
+- **Definition:** The structured pattern of light that reaches the eyes from the environment.
+- **Function:** Provides information about the spatial arrangement of surfaces, textures, and depth.
+- **Gibson's Contribution:** Suggested that the ambient optic array contains all the necessary cues for perception, eliminating the need for complex processing.
+
+## Marr's Theory of Vision
+- **Overview:** A computational approach to understanding visual perception developed by David Marr.
+- **Processing Types:**
+  - **Bottom-Up Processing:** Starts with sensory input and builds up to complex representations.
+  - **Stages of Processing:**
+    - **Primal Sketch:** The initial detection of edges, contours, and textures.
+    - **2.5D Sketch:** Incorporates depth and surface information based on cues.
+    - **3D Representation:** Object-centered descriptions that allow recognition of shapes and configurations.
+- **Significance:** Marr's theory provides a framework for understanding how visual information is processed from raw sensory data to complex perceptions.
+
+## Primal Sketch
+- **Definition:** The first stage in Marr's visual processing model, focusing on basic visual features.
+- **Characteristics:**
+  - Identifies edges and textures from raw visual input.
+  - Serves as the foundation for further processing in the 2.5D and 3D stages.
+- **Role:** Provides crucial information for recognizing shapes and objects.
+
+## Helmholtz's Theory of Unconscious Inference
+- **Concept:** Proposed that perception involves making unconscious assumptions based on sensory data.
+- **Key Ideas:**
+  - The brain uses past experiences and contextual information to interpret sensory input.
+  - This process allows for quick and efficient perception of the world.
+- **Significance:** Helmholtz's theory highlights the role of prior knowledge and experience in shaping perception.
+
+## Top-Down and Bottom-Up Processing
+- **Top-Down Processing:**
+  - Involves higher cognitive functions influencing perception based on expectations, context, and prior knowledge.
+  - Helps to fill in gaps and interpret ambiguous stimuli.
+- **Bottom-Up Processing:**
+  - Begins with raw sensory data, building perceptions from basic features to more complex forms.
+  - Essential for accurately interpreting new or unfamiliar stimuli.
+- **Combined Role:** Both processes work together in constructing a complete and coherent understanding of the external world, enhancing perceptual accuracy.

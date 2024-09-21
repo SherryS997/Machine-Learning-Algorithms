@@ -1,0 +1,68 @@
+---
+title: "Perception Theories and Sensory Processing"
+---
+
+## **Template Matching Theory**
+- **Definition**: The Template Matching Theory suggests that we store a set of specific templates (or patterns) in our memory. When we encounter a stimulus, we compare it to these stored templates to recognize it.
+- **Exact Matching**: Recognition occurs only when the input matches a stored template exactly. This makes the theory inflexible since even small differences between the stimulus and the template can prevent recognition.
+- **Demerit**: Inflexibility is a key issue. If the stimulus varies even slightly (e.g., different fonts or handwritten letters), the system may fail to recognize it, which limits its practical applicability.
+
+## **Feature-Analysis Theory**
+- **Definition**: Feature-analysis theory posits that we break down stimuli into their basic components or features, like shapes, lines, or edges, and then integrate these features to recognize the whole object.
+- **Psychological & Neuroscience Support**: This theory is well-supported by research in both psychology and neuroscience, as studies have shown that the brain processes individual features (like line orientation) before combining them into more complex perceptions.
+
+## **Optic Flow**
+- **Definition**: Optic flow refers to the pattern of apparent motion of objects in a visual scene caused by the relative motion between the observer and the scene.
+- **Components**: It includes information like speed, direction, and distance, helping us navigate our environment. It’s crucial for understanding how we move through space.
+- **Uses**: Our brain uses optic flow to guide movement and spatial awareness, making it important for activities like walking, driving, or catching objects.
+
+## **Gradient of Flow**
+- **Definition**: This refers to the gradual change in optic flow as one moves through space. Objects closer to you appear to move faster, while objects further away seem slower.
+- **Relationship to Optic Flow**: The gradient of flow is part of the broader optic flow system, providing cues about depth and distance.
+
+## **Focus of Expansion**
+- **Definition**: The Focus of Expansion (FOE) is the point in the visual field where there is no optic flow because it represents the direction in which you are moving. All motion flows outward from this point.
+- **Importance**: The FOE is key to understanding the trajectory and direction of movement, particularly when navigating.
+
+## **Ecological Approach**
+- **Definition**: Proposed by James Gibson, the ecological approach to perception focuses on how we directly perceive information in our environment without needing cognitive processing.
+- **Invariant Information**: Invariants are aspects of the environment that remain constant despite changes in the observer's position. For example, the horizon remains at a fixed height regardless of movement.
+- **Variant Information**: This contrasts with variant information, which changes depending on movement or perspective, but it’s the invariants that are particularly useful in navigation.
+
+## **Sound Waves, Frequency, and Pitch**
+- **Definition**: Sound waves are vibrations in the air or another medium that we perceive as sound. Their frequency (number of vibrations per second) determines their pitch.
+- **Longer Sound Waves**: Longer sound waves have a lower frequency, meaning they vibrate more slowly and produce a lower pitch (e.g., a bass note).
+- **Shorter Sound Waves**: Shorter sound waves have a higher frequency, vibrating faster and producing a higher pitch (e.g., a high note).
+
+## **Tympanic Membrane**
+- **Definition**: The tympanic membrane, also known as the eardrum, is a thin, sensitive membrane at the end of the ear canal.
+- **Function**: It vibrates when sound waves hit it, transmitting these vibrations to the small bones in the middle ear (malleus, incus, and stapes), which are then transferred to the inner ear for sound processing.
+
+## **Malleus, Incus, and Cochlea**
+- **Malleus**: A small hammer-shaped bone that receives vibrations from the tympanic membrane.
+- **Incus**: An anvil-shaped bone that transmits vibrations from the malleus to the stapes.
+- **Cochlea**: A spiral-shaped organ in the inner ear that converts vibrations into neural signals that the brain interprets as sound.
+
+## **McGurk Effect**
+- **Definition**: The McGurk effect is a phenomenon where visual and auditory information combine to alter the perception of speech. For example, if we see someone saying "ga" but hear "ba," we might perceive the sound as "da."
+- **Multi-modal Perception**: This effect highlights how our brain integrates information from multiple senses to create a cohesive perception, showing that perception is not solely dependent on one sense.
+
+## **Motor Theory of Speech Perception**
+- **Definition**: The Motor Theory suggests that we perceive speech sounds by simulating the motor processes required to produce those sounds. In other words, we "mentally" rehearse how we would say the sounds we hear.
+- **Relation to McGurk Effect**: The theory explains how mismatches between visual and auditory information (like in the McGurk effect) can occur because we rely on visual cues about how sounds are produced to interpret them.
+
+## **Feature-Integration Theory**
+- **Definition**: This theory, proposed by Anne Treisman, explains how we perceive objects by combining individual features like color, shape, and size. The process occurs in two stages.
+- **Parallel Processing**: In the first stage, features of an object (e.g., a red, round shape) are processed automatically and simultaneously.
+- **Serial Processing**: In the second stage, attention is required to bind these features together, especially in more complex tasks where multiple features need to be combined (e.g., finding a red circle among blue squares).
+
+## **Guided Search Theory**
+- **Definition**: This theory builds on the Feature-Integration Theory and proposes that searches occur in two stages: parallel and serial.
+- **Parallel Stage**: All potential targets are activated in parallel, meaning that we process the features of all items in the visual field simultaneously.
+- **Serial Stage**: Once the possible targets are identified, we sequentially evaluate each one to find the correct match.
+- **Efficiency**: This explains why feature searches (e.g., finding a red object) are easier than conjunction searches (e.g., finding a red circle among red squares and blue circles).
+
+## **Similarity Theory**
+- **Definition**: This theory proposes that the more similar a distractor is to the target, the more difficult it is to conduct a search. The higher the degree of similarity, the more time it takes to distinguish the target from the background.
+- **Limitations**: While it explains why searches with high similarity are harder, it doesn't fully explain why feature searches are faster than conjunction searches, unlike the Feature-Integration or Guided Search Theories.
+

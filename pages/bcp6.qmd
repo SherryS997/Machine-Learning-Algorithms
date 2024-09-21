@@ -1,0 +1,71 @@
+---
+title: "Attention and Memory Mechanisms"
+---
+
+## Cocktail Party Effect
+- **Definition**: The ability to focus on a single conversation in a noisy environment, like at a party.
+- **Researcher**: Colin Cherry, who studied how people can isolate one voice amidst many.
+- **Significance**: Highlights the selective nature of auditory attention and how we filter out irrelevant sounds.
+
+## Theories of Selective Attention
+- **Bottleneck Theory**
+  - **Explanation**: Suggests there is a point where information processing is limited, similar to a bottleneck in a physical passage. Only certain information can pass through for further processing.
+  - **Importance**: Helps in understanding how we manage to focus in environments filled with distractions.
+  
+- **Filter Theory**
+  - **Explanation**: Proposes that attention acts as a filter, allowing certain stimuli to be processed while ignoring others. This can occur at various stages of perception.
+  - **Relation to Bottleneck**: Bottleneck theory can be seen as a specific application of filter theory, focusing on the limitations in processing capacity.
+
+## Factors Influencing Attention
+- **Anxiety**
+  - **Impact**: High anxiety levels can hinder attention by causing distractions and impairing cognitive functions.
+  
+- **Arousal**
+  - **Explanation**: Refers to the state of being physiologically alert. Both low and high arousal can negatively affect attention, while moderate arousal tends to enhance focus.
+  
+- **Skill & Task Difficulty**
+  - **Role**: The complexity of a task and the individual's proficiency can significantly affect attention. Familiar tasks require less cognitive load, allowing for better focus.
+
+## Michael Posner's Attentional System
+- **Concept**: Posner suggests that attention is not confined to one specific area of the brain or the whole brain but involves multiple areas working together.
+- **Relevance**: This view supports a more dynamic understanding of attention, highlighting the interplay between different brain regions.
+
+## Bottom-Up vs. Top-Down Attention
+- **Bottom-Up Attention**
+  - **Definition**: Attention driven by external stimuli based on their physical characteristics (e.g., bright colors, loud sounds).
+  - **Example**: A sudden noise that captures your focus without conscious effort.
+
+- **Top-Down Attention**
+  - **Definition**: Attention guided by prior knowledge, expectations, or goals. This type is more deliberate.
+  - **Example**: Actively searching for a friend in a crowd based on your knowledge of their appearance.
+
+## Covert Attention
+- **Definition**: Focusing attention on a stimulus without any physical movement (like eye movements).
+- **Application**: Useful in scenarios where one wants to gather information discreetly or without drawing attention to oneself.
+
+## Modal Model of Memory
+- **Proposers**: Richard Atkinson and Richard Shiffrin.
+- **Overview**: A framework explaining how information flows through memory systems: sensory memory, short-term memory, and long-term memory.
+  - **Sensory Memory**: Briefly holds incoming sensory information.
+  - **Short-Term Memory (STM)**: Temporary storage of information, limited in duration and capacity.
+  - **Long-Term Memory (LTM)**: More permanent storage for information that can last from minutes to a lifetime.
+
+## Short-Term Memory (STM)
+- **Concept Originator**: Alan Baddeley.
+- **Description**: Refers to the capacity to hold a small amount of information for a brief period. Baddeley expanded the idea into "working memory," which includes the manipulation of stored information.
+- **Characteristics**:
+  - Limited capacity (commonly cited as 7 ± 2 items).
+  - Information is easily lost unless actively maintained through rehearsal.
+
+## Chunking
+- **Definition**: A technique used in memory to group together elements that are strongly associated with one another, making them easier to remember.
+- **Example**: Grouping the digits of a phone number into segments (e.g., 123-456-7890) instead of remembering each digit individually.
+- **Purpose**: Enhances the capacity of memory by reducing the number of items to be remembered.
+
+## Cues and Priming
+- **Cue**
+  - **Definition**: A stimulus that aids the retrieval of information from memory. Cues help trigger memories by providing context or association.
+  
+- **Prime**
+  - **Definition**: A stimulus presented before a target stimulus to prepare the brain for recognition. Priming can influence how we perceive and respond to subsequent stimuli.
+

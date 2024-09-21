@@ -1,0 +1,74 @@
+---
+title: "Memory Systems and Processes"
+---
+
+## Working Memory
+- **Definition**: A cognitive system with a limited capacity responsible for temporarily holding and manipulating information for complex tasks such as reasoning and learning.
+- **Characteristics**:
+  - Limited capacity: Can hold only a few items at a time.
+  - Active manipulation: Involves processing and transforming information.
+  - Distinct from long-term memory, which stores information permanently.
+
+## Long-Term Memory (LTM)
+- **Definition**: A system for storing information over extended periods, from minutes to a lifetime.
+- **Characteristics**:
+  - Capacity: Virtually unlimited in size.
+  - Duration: Information can remain for years or even decades.
+  - Types of LTM:
+    - **Explicit (Declarative) Memory**: Involves conscious recall, such as facts and events.
+      - **Semantic Memory**: General knowledge and facts.
+      - **Episodic Memory**: Personal experiences and specific events.
+    - **Implicit (Non-declarative) Memory**: Involves unconscious retrieval, such as skills and habits.
+
+## Word Length Effect
+- **Definition**: The phenomenon where short words are recalled more accurately than long words in memory tasks.
+- **Explanation**: This effect is attributed to the time it takes to rehearse longer words in the phonological loop, making them less likely to be remembered in short-term memory tasks.
+
+## Phonological Loop
+- **Definition**: A component of working memory responsible for storing verbal and auditory information.
+- **Function**:
+  - Maintains verbal information through rehearsal.
+  - Critical for language processing and comprehension.
+
+## Visuospatial Sketchpad
+- **Definition**: A component of working memory that holds visual and spatial information.
+- **Function**:
+  - Allows for manipulation and analysis of visual data.
+  - Essential for tasks requiring visual imagery, such as navigating spaces.
+
+## Implicit Memory
+- **Definition**: A type of memory that is used without conscious awareness, making its content difficult to verbalize.
+- **Examples**: Skills such as riding a bike or typing, which are performed automatically.
+- **Characteristics**: Less affected by age and neurological disorders compared to explicit memory.
+
+## Procedural Memory
+- **Definition**: A subtype of implicit memory that involves the acquisition of skills and procedures.
+- **Examples**:
+  - Cycling, swimming, and driving.
+  - Developed through practice and repetition, these memories allow for automatic execution without conscious thought.
+
+## Levels of Processing Theory
+- **Proposers**: Craik & Lockhart.
+- **Definition**: A theory that suggests the depth of processing affects memory retention.
+- **Types of Processing**:
+  - **Shallow Processing**: Focuses on surface features (e.g., phonetic or structural).
+  - **Deep Processing**: Involves semantic analysis and connection to prior knowledge, leading to better retention.
+
+## Elaborative Rehearsal
+- **Definition**: A method of transferring information into long-term memory by relating it to existing knowledge or thinking about its meaning.
+- **Advantages**:
+  - Enhances understanding and retention.
+  - Encourages deeper cognitive engagement with the material.
+
+## Encoding Specificity
+- **Definition**: The principle that memory retrieval is more effective when the conditions at the time of encoding match those at the time of retrieval.
+- **Explanation**: Contextual cues present during encoding can trigger recall when those cues are encountered again, facilitating memory retrieval.
+
+## Consolidation
+- **Definition**: The process that transforms newly formed, fragile memories into a more stable and permanent state.
+- **Mechanism**: Often occurs during sleep, allowing for the strengthening and integration of memories into long-term storage.
+- **Importance**: Essential for protecting memories from disruption or decay.
+
+## State Dependent Learning
+- **Definition**: The phenomenon where retrieval of information is more successful when an individual is in the same emotional or physiological state during encoding and retrieval.
+- **Example**: A person learning a task while happy may perform better when in a similar emotional state.

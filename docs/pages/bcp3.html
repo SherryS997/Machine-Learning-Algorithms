@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Support vector machines (SVMs) – Machine Learning Algorithms</title>
+<title>Understanding Research Designs – Machine Learning Algorithms</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../pages/bag.html" rel="next">
-<link href="../pages/log_reg.html" rel="prev">
+<link href="../pages/bcp4.html" rel="next">
+<link href="../pages/bcp2.html" rel="prev">
 <link href="../icon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -72,35 +72,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="https://lalten.github.io/lmweb/style/latinmodern-roman.css">
 <link rel="stylesheet" href="https://lalten.github.io/lmweb/style/latinmodern-mono.css">
@@ -115,7 +86,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Supervised Learning</li><li class="breadcrumb-item"><a href="../pages/knn.html">Classification</a></li><li class="breadcrumb-item"><a href="../pages/percp.html">Discriminative models</a></li><li class="breadcrumb-item"><a href="../pages/svm.html">Support vector machines (SVMs)</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/bcp1.html">Basic Cognitive Processes</a></li><li class="breadcrumb-item"><a href="../pages/bcp3.html">Understanding Research Designs</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -251,13 +222,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
  <span class="menu-text">Supervised Learning</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
@@ -301,13 +272,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
  <span class="menu-text">Classification</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/knn.html" class="sidebar-item-text sidebar-link">
@@ -339,13 +310,13 @@ window.Quarto = {
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
  <span class="menu-text">Discriminative models</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 show">  
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/percp.html" class="sidebar-item-text sidebar-link">
@@ -360,7 +331,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/svm.html" class="sidebar-item-text sidebar-link active">
+  <a href="../pages/svm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Support vector machines (SVMs)</span></a>
   </div>
 </li>
@@ -487,13 +458,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="true">
  <span class="menu-text">Basic Cognitive Processes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/bcp1.html" class="sidebar-item-text sidebar-link">
@@ -508,7 +479,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/bcp3.html" class="sidebar-item-text sidebar-link">
+  <a href="../pages/bcp3.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Understanding Research Designs</span></a>
   </div>
 </li>
@@ -577,35 +548,25 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#perceptron-and-margins" id="toc-perceptron-and-margins" class="nav-link active" data-scroll-target="#perceptron-and-margins">Perceptron and Margins</a>
-  <ul class="collapse">
-  <li><a href="#margin-maximization" id="toc-margin-maximization" class="nav-link" data-scroll-target="#margin-maximization">Margin Maximization</a></li>
-  </ul></li>
-  <li><a href="#constrained-optimization" id="toc-constrained-optimization" class="nav-link" data-scroll-target="#constrained-optimization">Constrained Optimization</a></li>
-  <li><a href="#formulating-the-dual-problem" id="toc-formulating-the-dual-problem" class="nav-link" data-scroll-target="#formulating-the-dual-problem">Formulating the Dual Problem</a></li>
-  <li><a href="#support-vector-machine" id="toc-support-vector-machine" class="nav-link" data-scroll-target="#support-vector-machine">Support Vector Machine</a>
-  <ul class="collapse">
-  <li><a href="#hard-margin-svm-algorithm" id="toc-hard-margin-svm-algorithm" class="nav-link" data-scroll-target="#hard-margin-svm-algorithm">Hard-Margin SVM Algorithm</a></li>
-  </ul></li>
-  <li><a href="#soft-margin-svm" id="toc-soft-margin-svm" class="nav-link" data-scroll-target="#soft-margin-svm">Soft-Margin SVM</a></li>
-  <li><a href="#dual-formulation-for-soft-margin-svm" id="toc-dual-formulation-for-soft-margin-svm" class="nav-link" data-scroll-target="#dual-formulation-for-soft-margin-svm">Dual Formulation for Soft-Margin SVM</a>
-  <ul class="collapse">
-  <li><a href="#dual-formulation" id="toc-dual-formulation" class="nav-link" data-scroll-target="#dual-formulation">Dual Formulation</a></li>
-  <li><a href="#complementary-slackness-in-soft-margin-support-vector-machines" id="toc-complementary-slackness-in-soft-margin-support-vector-machines" class="nav-link" data-scroll-target="#complementary-slackness-in-soft-margin-support-vector-machines">Complementary Slackness in Soft-Margin Support Vector Machines</a>
-  <ul class="collapse">
-  <li><a href="#scenarios-of-complementary-slackness" id="toc-scenarios-of-complementary-slackness" class="nav-link" data-scroll-target="#scenarios-of-complementary-slackness">Scenarios of Complementary Slackness</a></li>
-  <li><a href="#summary-of-scenarios" id="toc-summary-of-scenarios" class="nav-link" data-scroll-target="#summary-of-scenarios">Summary of Scenarios</a></li>
-  </ul></li>
-  </ul></li>
+  <li><a href="#correlational-research-design" id="toc-correlational-research-design" class="nav-link active" data-scroll-target="#correlational-research-design"><strong>Correlational Research Design</strong></a></li>
+  <li><a href="#naturalistic-research" id="toc-naturalistic-research" class="nav-link" data-scroll-target="#naturalistic-research"><strong>Naturalistic Research</strong></a></li>
+  <li><a href="#visual-search-task" id="toc-visual-search-task" class="nav-link" data-scroll-target="#visual-search-task"><strong>Visual Search Task</strong></a></li>
+  <li><a href="#brain-areas-activated-by-visual-stimuli" id="toc-brain-areas-activated-by-visual-stimuli" class="nav-link" data-scroll-target="#brain-areas-activated-by-visual-stimuli"><strong>Brain Areas Activated by Visual Stimuli</strong></a></li>
+  <li><a href="#attention" id="toc-attention" class="nav-link" data-scroll-target="#attention"><strong>Attention</strong></a></li>
+  <li><a href="#perception" id="toc-perception" class="nav-link" data-scroll-target="#perception"><strong>Perception</strong></a></li>
+  <li><a href="#psychophysics" id="toc-psychophysics" class="nav-link" data-scroll-target="#psychophysics"><strong>Psychophysics</strong></a></li>
+  <li><a href="#threshold-determination" id="toc-threshold-determination" class="nav-link" data-scroll-target="#threshold-determination"><strong>Threshold Determination</strong></a></li>
+  <li><a href="#sensory-process-and-decision-making" id="toc-sensory-process-and-decision-making" class="nav-link" data-scroll-target="#sensory-process-and-decision-making"><strong>Sensory Process and Decision-Making</strong></a></li>
+  <li><a href="#decision-policies" id="toc-decision-policies" class="nav-link" data-scroll-target="#decision-policies"><strong>Decision Policies</strong></a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Supervised Learning</li><li class="breadcrumb-item"><a href="../pages/knn.html">Classification</a></li><li class="breadcrumb-item"><a href="../pages/percp.html">Discriminative models</a></li><li class="breadcrumb-item"><a href="../pages/svm.html">Support vector machines (SVMs)</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../pages/bcp1.html">Basic Cognitive Processes</a></li><li class="breadcrumb-item"><a href="../pages/bcp3.html">Understanding Research Designs</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Support vector machines (SVMs)</h1>
+<h1 class="title">Understanding Research Designs</h1>
 </div>
 
 
@@ -622,270 +583,150 @@ window.Quarto = {
 </header>
 
 
-<section id="perceptron-and-margins" class="level1">
-<h1>Perceptron and Margins</h1>
-<p>Let dataset <span class="math inline">\(D=\{(x_1, y_1), \ldots, (x_n,y_n)\}\)</span> be linearly separable with <span class="math inline">\(\gamma\)</span>-margin where <span class="math inline">\(x_i \in \mathbb{R}^d\)</span> and <span class="math inline">\(y_i \in \{-1, 1\}\)</span>.</p>
-<p>Let <span class="math inline">\(w* \in \mathbb{R}^d\)</span> be the weight vector s.t. <span class="math inline">\((w^{*T}x_i)y_i\ge\gamma\)</span> <span class="math inline">\(\forall i\)</span>.</p>
-<p>Let some <span class="math inline">\(R&gt;0 \in \mathbb{R}\)</span>, s.t. <span class="math inline">\(\forall i\)</span> <span class="math inline">\(||x_i||\le R\)</span>.</p>
-<p>Therefore, the number of mistakes made by the algorithm is given by, <span class="math display">\[
-\text{\#mistakes} \le \frac{R^2}{\gamma^2}
-\]</span></p>
-<p><strong>Observations</strong></p>
-<p>Let <span class="math inline">\(w_{perc}\)</span> be any weight vector which can linearly separate the dataset.</p>
-<p>Therefore, we observe the following:</p>
-<ol type="1">
-<li>“Quality” of the solution depends on the margin.</li>
-<li>Number of mistakes depend on <span class="math inline">\(w^*\)</span>’s margin.</li>
-<li><span class="math inline">\(w_{perc}\)</span> need not necessarily be <span class="math inline">\(w^*\)</span>.</li>
-</ol>
-<p>Hence, our <strong>goal</strong> should be to <strong>find the solution that maximizes the margin</strong>.</p>
-<section id="margin-maximization" class="level2">
-<h2 class="anchored" data-anchor-id="margin-maximization">Margin Maximization</h2>
-<p>From the previous analysis, it is clear that a single dataset could have multiple linear classifiers with varying margins. The following diagram illustrates this phenomenon,</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/Multple possible classifiers.png" class="img-fluid figure-img"></p>
-<figcaption>Multiple Classifiers</figcaption>
-</figure>
-</div>
-<p>Therefore, for getting the best classifier, our goal can be written as, <span class="math display">\[
-\max_{w,\gamma} \gamma
-\]</span> <span class="math display">\[\begin{align*}
-s.t. (w^Tx_i)y_i &amp;\ge \gamma \hspace{1em} \forall i \\
-||w||^2 &amp;= 1\
-\end{align*}\]</span>\end{align*} The boundary of the margin is given by, <span class="math display">\[\begin{align*}
-\{x:(w^Tx_i)y_i &amp;= \gamma\}\\
-\{x:(\frac{w}{\gamma}^Tx_i)y_i &amp;= 1\}\\
-\end{align*}\]</span> From the above equation, we can see that <span class="math inline">\(\gamma\)</span> depends on the width of <span class="math inline">\(w\)</span>. Therefore, we reformulate our goal as, <span class="math display">\[
-\max_{w} \text{width}(w)
-\]</span> <span class="math display">\[\begin{align*}
-s.t. (w^Tx_i)y_i &amp;\ge 1 \hspace{1em} \forall i \\
-\end{align*}\]</span> Let the width be the distance between the two parallel margins, and let <span class="math inline">\(x\)</span> and <span class="math inline">\(z\)</span> be two points who are on the two lines exactly opposite to each other s.t. <span class="math inline">\(w^Tx=-1\)</span> and <span class="math inline">\(w^Tz=1\)</span> or vice versa.</p>
-<p>Let <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> be two points which lie on opposite side of the decision boundary as well as on the margins.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/Perceptron Distance.png" class="img-fluid figure-img"></p>
-<figcaption>Margin Width</figcaption>
-</figure>
-</div>
-<p>Therefore, the width is given by, <span class="math display">\[\begin{align*}
-||x_1^Tw - x_2^Tw||_2^2 &amp;= 2 \\
-||x_1-x_2||_2^2||w||^2_2 &amp;= 2\\
-\therefore ||x_1 - x_2||^2_2 &amp;= \frac{2}{||w||^2_2}
-\end{align*}\]</span></p>
-<p>Therefore, our objective function can be written as, <span class="math display">\[
-\max_{w}  \frac{2}{||w||^2_2} \hspace{1em} s.t. (w^Tx_i)y_i \ge 1 \hspace{1em} \forall i
-\]</span> Equivalently, <span class="math display">\[
-\min_{w}  \frac{1}{2}||w||^2_2 \hspace{1em} s.t. (w^Tx_i)y_i \ge 1 \hspace{1em} \forall i
-\]</span> Therefore ﬁnding the separating hyperplane with maximum margin is equivalent to ﬁnding the one with the smallest possible normal vector <span class="math inline">\(w\)</span>.</p>
-</section>
-</section>
-<section id="constrained-optimization" class="level1">
-<h1>Constrained Optimization</h1>
-<p>Let a constrained optimization problem be formulated as follows, <span class="math display">\[\begin{align*}
-\min_w f(w) \\
-s.t. g(w) \le 0 \\
-\end{align*}\]</span> We can solve this problem using <strong>Lagrange Multipliers</strong>.</p>
-<p>Lagrange multipliers are used in constrained optimization problems to find the optimal values of the objective function subject to a set of constraints. In Lagrange multipliers method, the constraints are incorporated into the objective function by introducing additional variables called Lagrange multipliers.</p>
-<p>The Lagrange function <span class="math inline">\(\mathcal{L}(x, \alpha)\)</span>, for our above function, is defined as follows: <span class="math display">\[
-\mathcal{L}(w, \alpha) = f(w) + \alpha g(w) \hspace{1em} \forall w
-\]</span> where <span class="math inline">\(\alpha \ge 0\)</span>.</p>
-<p>Therefore, maximizing the Lagrange function w.r.t. <span class="math inline">\(\alpha\)</span>, <span class="math display">\[\begin{align*}
-\max_{\alpha\ge0} \mathcal{L}(w, \alpha) &amp;= \max_{\alpha\ge0} f(w) + \alpha g(w) \\
-&amp;=
-\begin{cases}
-\infty \hspace{2em} \text{if} \hspace{1em} g(w) &gt; 0 \\
-f(w) \hspace{1em} \text{if} \hspace{1em} g(w) \le 0
-\end{cases}
-\end{align*}\]</span> As the Lagrange function is equal to <span class="math inline">\(f(w)\)</span> where <span class="math inline">\(g(w) \le 0\)</span>, we can rewrite our original function as, <span class="math display">\[\begin{align*}
-\min_w f(w) &amp;= \min_w \left [ \max_{\alpha\ge0} \mathcal{L}(w, \alpha) \right ] \\
-&amp;= \min_w \left [ \max_{\alpha\ge0} f(w) + \alpha g(w) \right ] \\
-\end{align*}\]</span> In general, we cannot swap the min and max functions unless all the functions involved are convex functions. Hence, as both <span class="math inline">\(f\)</span> and <span class="math inline">\(g\)</span> are convex functions in our example, we can rewrite them as follows, <span class="math display">\[
-\min_w \left [ \max_{\alpha\ge0} f(w) + \alpha g(w) \right ] \equiv \max_{\alpha\ge0} \left [ \min_w f(w) + \alpha g(w) \right ]
-\]</span> Let’s rewrite the above constrained optimization problem with <span class="math inline">\(m\)</span> constraints <span class="math inline">\(g_i(w) \le 0\)</span> where <span class="math inline">\(i \in [1, m]\)</span>. This can written as, <span class="math display">\[\begin{align*}
-\min_w f(w) &amp;\equiv \min_w \left [ \max_{\alpha\ge0} f(w) + \sum _{i=1} ^m \alpha _i g_i(w) \right ] \\
-&amp;\equiv \max_{\alpha\ge0} \left [ \min_w f(w) + \sum _{i=1} ^m \alpha _i g_i(w) \right ] \\
-\end{align*}\]</span></p>
-</section>
-<section id="formulating-the-dual-problem" class="level1">
-<h1>Formulating the Dual Problem</h1>
-<p>Our Objective function is as follows, <span class="math display">\[
-\min_{w}  \frac{1}{2}||w||^2_2 \quad s.t. (w^Tx_i)y_i \ge 1 \quad \forall i
-\]</span> The constraints can be written as follows, <span class="math display">\[\begin{align*}
-(w^Tx_i)y_i &amp;\ge 1 \quad \forall i \\
-1 - (w^Tx_i)y_i &amp;\le 0 \quad \forall i \\
-\end{align*}\]</span> Let <span class="math inline">\(\alpha \in \mathbb{R}^d\)</span> be the Lagrange multipliers, and let our Lagrange function be written as, <span class="math display">\[\begin{align*}
-\mathcal{L}(w, \alpha) &amp;= \frac{1}{2}||w||^2_2 + \sum _{i=1} ^n \alpha _i (1 - (w^Tx_i)y_i) \\
-\min_w \max_{\alpha\ge0} \left [ \frac{1}{2}||w||^2_2 + \sum _{i=1} ^n \alpha _i (1 - (w^Tx_i)y_i) \right ] &amp;\equiv \max_{\alpha\ge0} \min_w \left [ \frac{1}{2}||w||^2_2 + \sum _{i=1} ^n \alpha _i (1 - (w^Tx_i)y_i) \right ]
-\end{align*}\]</span> Solving for the inner function of the dual problem, we get, <span class="math display">\[\begin{align*}
-w_{\alpha}^* - \sum _{i=1} ^n \alpha _i x_i y_i = 0 \\
-\therefore w_{\alpha}^* = \sum _{i=1} ^n \alpha _i x_i y_i
-\end{align*}\]</span> Rewriting the above equation in vectorized form, we get, <span class="math display">\[
-w_{\alpha}^* = XY\alpha \quad \ldots[1]
-\]</span> where <span class="math inline">\(X \in \mathbb{R}^{d \times n}\)</span>, <span class="math inline">\(Y \in \mathbb{R}^{n \times n}\)</span>, and <span class="math inline">\(\alpha \in \mathbb{R}^{n}\)</span>. <span class="math inline">\(X\)</span> is the dataset, <span class="math inline">\(Y\)</span> is the label diagonal matrix, where the diagonals are the labels. Rewriting the outer dual function, we get, <span class="math display">\[\begin{align*}
-&amp;\max_{\alpha\ge0} \left[ \frac{1}{2}||w||^2_2 + \sum _{i=1} ^n \alpha _i (1 - (w^Tx_i)y_i) \right] \\
-&amp;= \max_{\alpha\ge0} \left[ \frac{1}{2}w^Tw + \sum _{i=1} ^n \alpha_i -  w^TXY\alpha \right] \\
-&amp;= \max_{\alpha\ge0} \left[ \frac{1}{2}(XY\alpha)^TXY\alpha + \sum _{i=1} ^n \alpha_i -  (XY\alpha)^TXY\alpha \right] \quad \ldots\text{from }[1] \\
-&amp;= \max_{\alpha\ge0} \left[ \frac{1}{2}\alpha^TY^TX^TXY\alpha + \sum _{i=1} ^n \alpha_i -  \alpha^TY^TX^TXY\alpha \right] \\
-&amp;= \max_{\alpha\ge0} \left[\sum _{i=1} ^n \alpha_i -  \frac{1}{2}\alpha^TY^TX^TXY\alpha \right] \\
-\end{align*}\]</span></p>
-<p><strong>Observations</strong>:</p>
-<ol type="1">
-<li>As the dual problem solves for <span class="math inline">\(\alpha \ge 0\)</span>, its variable dimension is in <span class="math inline">\(\mathbb{R}^n_+\)</span>, while as the primal problem solves for <span class="math inline">\(w\)</span>, its variable dimension is in <span class="math inline">\(\mathbb{R}^d\)</span>.</li>
-<li>Solving the dual problem is “easier”.</li>
-<li>As the dual problem depends on <span class="math inline">\(X^TX\)</span>, it can be kernalized.</li>
-</ol>
-<p>Some observations regarding the following equation, <span class="math display">\[
-w_{\alpha}^* = \sum _{i=1} ^n \alpha _i x_i y_i
-\]</span></p>
-<ol type="1">
-<li>The optimal <span class="math inline">\(w^*\)</span> is the linear combination of the datapoints where the importance of each datapoint is given by <span class="math inline">\(\alpha_i\)</span> for the <span class="math inline">\(i^{th}\)</span> point.</li>
-<li>Hence, there are points that are more important that others.</li>
-</ol>
-</section>
-<section id="support-vector-machine" class="level1">
-<h1>Support Vector Machine</h1>
-<p>Revisiting the Lagrangian function, <span class="math display">\[
-\min_w \left [ \max_{\alpha\ge0} f(w) + \alpha g(w) \right ] \equiv \max_{\alpha\ge0} \left [ \min_w f(w) + \alpha g(w) \right ]
-\]</span> The primal function is represented on the left-hand side of the equation, while the right-hand side represents the dual function. <span class="math inline">\(w^∗\)</span> and <span class="math inline">\(\alpha^*\)</span> are the solutions derived for the primal and dual functions, respectively. When these solutions are inserted into the equation, we obtain, <span class="math display">\[
-\max_{\alpha\ge0} f(w^*) + \alpha g(w^*) =  \min_w f(w) + \alpha^* g(w)
-\]</span> But as <span class="math inline">\(g(w^*) \le 0\)</span>, the left hand side equates to <span class="math inline">\(f(w^*)\)</span>. <span class="math display">\[
-f(w^*) =  \min_w f(w) + \alpha^* g(w)
-\]</span> Substituting <span class="math inline">\(w^*\)</span> for <span class="math inline">\(w\)</span> in the right-hand side of the equation would result in a new right-hand side that is greater than or equal to the current one. <span class="math display">\[
-f(w^*) \le f(w^*) + \alpha^* g(w^*)
-\]</span> <span class="math display">\[
-\therefore \alpha^* g(w^*) \ge 0 \quad \ldots [1]
-\]</span> But, according to our constraints, <span class="math inline">\(\alpha^* \ge 0\)</span> and <span class="math inline">\(g(w^*)\le0\)</span>. <span class="math display">\[
-\therefore \alpha^* g(w^*) \le 0 \quad \ldots [2]
-\]</span> From <span class="math inline">\([1]\)</span> and <span class="math inline">\([2]\)</span>, we get, <span class="math display">\[
-\alpha^* g(w^*) = 0
-\]</span> Rewriting the equation for multiple constraints, we get, <span class="math display">\[
-\alpha_i^* g(w^*_i) = 0 \quad \forall i
-\]</span> Therefore, if one of the two is greater than zero, the other equals zero. We know that <span class="math inline">\(g(w^*) = 1-(w^Tx_i)y_i\)</span>. <span class="math display">\[
-\alpha_i^* (1-(w^Tx_i)y_i) = 0 \quad \forall i
-\]</span> As the importance of the <span class="math inline">\(i^{th}\)</span> datapoint is given by <span class="math inline">\(\alpha_i\)</span>, if <span class="math inline">\(\alpha_i &gt; 0\)</span>, we get, <span class="math display">\[
-(w^Tx_i)y_i = 1
-\]</span> which means that the <span class="math inline">\(i^{th}\)</span> datapoint lies on the <strong>“Supporting”</strong> hyperplane and contributes to <span class="math inline">\(w^*\)</span>.</p>
-<p>Therefore, the datapoints whose <span class="math inline">\(\alpha_i &gt; 0\)</span> are known as <strong>Support Vectors</strong> and this algorithm is known as <strong>Support Vector Machine</strong>.</p>
-<p><strong>Support Vector Machines (SVMs)</strong> are a type of supervised learning algorithm used for classification and regression analysis. SVMs aim to find the optimal hyperplane that separates data points from different classes with the maximum margin. In the case of non-linearly separable data, SVMs use kernel functions to transform the data into a higher-dimensional space, where a linear decision boundary can be used to separate the data.</p>
-<p><strong>Insight</strong>: <span class="math inline">\(w^*\)</span> is a sparse linear combination of the data points.</p>
-<section id="hard-margin-svm-algorithm" class="level2">
-<h2 class="anchored" data-anchor-id="hard-margin-svm-algorithm">Hard-Margin SVM Algorithm</h2>
-<p>This algorithm only works if the dataset is linearly separable with a <span class="math inline">\(\gamma &gt; 0\)</span>.</p>
-<ol type="1">
-<li>Calculate <span class="math inline">\(Q=X^TX\)</span> directly or using a kernel as per the dataset.</li>
-<li>Use the gradient of the dual formula (<span class="math inline">\(\alpha^T1 -  \frac{1}{2}\alpha^TY^TQY\alpha\)</span>), in the gradient descent algorithm to find a satisfactory <span class="math inline">\(\alpha\)</span>. Let the intial <span class="math inline">\(\alpha\)</span> be a zero vector <span class="math inline">\(\in \mathbb{R}^n_+\)</span>.</li>
-<li>To predict:
+<section id="correlational-research-design" class="level2">
+<h2 class="anchored" data-anchor-id="correlational-research-design"><strong>Correlational Research Design</strong></h2>
 <ul>
-<li>For non-kernelized SVM: <span class="math inline">\(\text{label}(x_{test}) = w^Tx_{test} = \sum _{i=1} ^n \alpha _i y_i(x_i^Tx_{test})\)</span></li>
-<li>For kernelized SVM: <span class="math inline">\(\text{label}(x_{test}) = w^T\phi(x_{test}) = \sum _{i=1} ^n \alpha _i y_ik(x_i^Tx_{test})\)</span></li>
+<li><strong>Definition</strong>: A research design that investigates the relationships between two or more variables.</li>
+<li><strong>Purpose</strong>: To identify patterns and associations, allowing for predictions based on existing data.</li>
+<li><strong>Characteristics</strong>:
+<ul>
+<li>Does not imply causation; it only shows that a relationship exists.</li>
+<li>Utilizes statistical methods to quantify the strength and direction of relationships (e.g., correlation coefficients).</li>
 </ul></li>
-</ol>
-</section>
-</section>
-<section id="soft-margin-svm" class="level1">
-<h1>Soft-Margin SVM</h1>
-<p><strong>Soft-Margin SVM</strong> is an extension of the standard SVM algorithm that allows for some misclassifications in the training data. This is useful when the data is not linearly separable, as it allows the SVM to still find a decision boundary that separates the classes as best as possible while allowing for some errors. The degree to which misclassifications are allowed is controlled by a regularization parameter(<span class="math inline">\(C\)</span>), which is used to balance the trade-off between maximizing the margin and minimizing the number of misclassifications.</p>
-<p>The primal formulation for this is given by, <span class="math display">\[
-\min_{w, \epsilon}  \frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i \quad s.t. \quad (w^Tx_i)y_i + \epsilon_i \ge 1;\quad \epsilon_i \ge 0\quad \forall i
-\]</span> where <span class="math inline">\(C\)</span> is the hyperparameter that is used to balance the trade-off between maximizing the margin and minimizing the number of misclassifications, and <span class="math inline">\(\epsilon_i\)</span> is the additional value required to satisy the constraints.</p>
-</section>
-<section id="dual-formulation-for-soft-margin-svm" class="level1">
-<h1>Dual Formulation for Soft-Margin SVM</h1>
-<p>The primal formulation for Soft-Margin SVM is given by, <span class="math display">\[
-\min_{w, \epsilon}  \frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i \quad s.t. \quad (w^Tx_i)y_i + \epsilon_i \ge 1;\quad \epsilon_i \ge 0\quad \forall i
-\]</span> where <span class="math inline">\(C\)</span> is the hyperparameter that is used to balance the trade-off between maximizing the margin and minimizing the number of misclassifications, and <span class="math inline">\(\epsilon_i\)</span> is the additional value required to satisy the constraints.</p>
-<p>The Lagrangian function <span class="math inline">\(\mathcal{L}(w, \epsilon, \alpha, \beta)\)</span> for our above function is defined as follows: <span class="math display">\[
-\mathcal{L}(w, \epsilon, \alpha, \beta) = \frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i(1-(w^Tx_i)y_i - \epsilon_i) + \sum _{i=1} ^n \beta(-\epsilon_i)
-\]</span> where <span class="math inline">\(\alpha_i \ge 0\)</span> and <span class="math inline">\(\beta_i \ge 0\)</span> <span class="math inline">\(\forall i\)</span>.</p>
-<section id="dual-formulation" class="level2">
-<h2 class="anchored" data-anchor-id="dual-formulation">Dual Formulation</h2>
-<p>Maximizing the Lagrangian function w.r.t. <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, and minimizing it w.r.t. <span class="math inline">\(w\)</span> and <span class="math inline">\(\epsilon\)</span>, we get,</p>
-<p><span class="math display">\[
-\min _{w, \epsilon}\left [\max _{\alpha \ge 0; \beta \ge 0}\frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i(1-(w^Tx_i)y_i - \epsilon_i) + \sum _{i=1} ^n \beta(-\epsilon_i) \right ]
-\]</span></p>
-<p>The dual of this is given by,</p>
-<p><span class="math display">\[
-\max _{\alpha \ge 0; \beta \ge 0}\left [\min _{w, \epsilon}\frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i(1-(w^Tx_i)y_i - \epsilon_i) + \sum _{i=1} ^n \beta(-\epsilon_i) \right ]
-\]</span></p>
-<p><span class="math display">\[
-\max _{\alpha \ge 0; \beta \ge 0}\left [\min _{w, \epsilon}\mathcal{L}(w, \epsilon, \alpha, \beta) \right ] \quad \ldots[1]
-\]</span></p>
-<p>Differentiating the above function<span class="math inline">\([1]\)</span> w.r.t. <span class="math inline">\(w\)</span> while fixing <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, we get, <span class="math display">\[
-\frac{d\mathcal{L}}{dw}  = 0
-\]</span> <span class="math display">\[
-\frac{d}{dw} \frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i(1-(w^Tx_i)y_i - \epsilon_i) + \sum _{i=1} ^n \beta(-\epsilon_i) = 0\\
-\]</span> <span class="math display">\[
-w_{\alpha, \beta}^* - \alpha_ix_iy_i = 0
-\]</span> <span class="math display">\[
-\therefore w_{\alpha, \beta}^* = \alpha_ix_iy_i \quad \ldots [2]
-\]</span></p>
-<p>Differentiating the above function<span class="math inline">\([1]\)</span> w.r.t. <span class="math inline">\(\epsilon_i \forall i\)</span> while fixing <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, we get,</p>
-<p><span class="math display">\[
-\frac{\partial\mathcal{L}}{\partial\epsilon_i}  = 0
-\]</span> <span class="math display">\[
-\frac{\partial}{\partial\epsilon_i} \frac{1}{2}||w||^2_2 + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i(1-(w^Tx_i)y_i - \epsilon_i) + \sum _{i=1} ^n \beta(-\epsilon_i) = 0
-\]</span> <span class="math display">\[
-C - \alpha_i -\beta_i = 0
-\]</span> <span class="math display">\[
-\therefore C = \alpha_i + \beta_i \quad \ldots [3]
-\]</span></p>
-<p>Substituting the values of <span class="math inline">\(w\)</span> and <span class="math inline">\(\beta\)</span> from <span class="math inline">\([2]\)</span> and <span class="math inline">\([3]\)</span> in <span class="math inline">\([1]\)</span>, we get,</p>
-<p><span class="math display">\[
-\max _{\alpha \ge 0; \beta \ge 0; C = \alpha_i + \beta_i}\left [\frac{1}{2}||\alpha_ix_iy_i||^2_2 + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i(1-((\alpha_ix_iy_i)^Tx_i)y_i - \epsilon_i) + \sum _{i=1} ^n (C-\alpha_i)(-\epsilon_i) \right ]
-\]</span> <span class="math display">\[
-\max _{\alpha \ge 0; \beta \ge 0; C = \alpha_i + \beta_i}\left [\frac{1}{2}\alpha_i^Tx_i^Ty_i^Ty_ix_i\alpha_i + C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i-\alpha_i^Tx_i^Ty_i^Ty_ix_i\alpha_i - \sum _{i=1} ^n \alpha_i\epsilon_i - C\sum _{i=1} ^n\epsilon_i + \sum _{i=1} ^n \alpha_i\epsilon_i \right ]
-\]</span> <span class="math display">\[
-\max _{\alpha \ge 0; \beta \ge 0; C = \alpha_i + \beta_i}\left [\sum _{i=1} ^n \alpha_i - \frac{1}{2}\alpha_i^Tx_i^Ty_i^Ty_ix_i\alpha_i\right ]
-\]</span> <span class="math display">\[
-\therefore \max _{0 \le \alpha \le C}\left [\sum _{i=1} ^n \alpha_i - \frac{1}{2}\alpha_i^Tx_i^Ty_i^Ty_ix_i\alpha_i\right ]
-\]</span> If <span class="math inline">\(C=0\)</span>, <span class="math inline">\(\alpha^*=0\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(\displaystyle w^*=\sum _{i=1} ^n \alpha^*_i x_i y_i = 0\)</span>.</p>
-<p>if <span class="math inline">\(C=\infty\)</span>, the equation will be equal to that of Hard-Margin SVM.</p>
-</section>
-<section id="complementary-slackness-in-soft-margin-support-vector-machines" class="level2">
-<h2 class="anchored" data-anchor-id="complementary-slackness-in-soft-margin-support-vector-machines">Complementary Slackness in Soft-Margin Support Vector Machines</h2>
-<p>Complementary slackness can be expressed through a set of equations as follows:</p>
-<ol type="1">
-<li><p><span class="math inline">\(\forall i\)</span>, the following equation holds: <span class="math display">\[
-\alpha_i(1 - \mathbf{w}^{*T}\mathbf{x}_i y_i - \epsilon^*_i) = 0 \quad \ldots [1]
-\]</span></p></li>
-<li><p>Additionally, the following relation must hold: <span class="math display">\[
-\beta_i(\epsilon_i^*) = 0 \quad \ldots [2]
-\]</span></p></li>
-</ol>
-<p>Given these equations, various scenarios arise which elucidate the implications of complementary slackness in the context of Soft-Margin SVM.</p>
-<section id="scenarios-of-complementary-slackness" class="level3">
-<h3 class="anchored" data-anchor-id="scenarios-of-complementary-slackness">Scenarios of Complementary Slackness</h3>
-<ol type="1">
-<li><p>If <span class="math inline">\(\alpha_i^* = 0\)</span>:<br>
-In this case, <span class="math inline">\(\beta_i^* = C\)</span> due to <span class="math inline">\(\alpha_i^* + \beta_i^* = C\)</span>. From equation [2], we deduce that <span class="math inline">\(\epsilon_i^* = 0\)</span>. Consequently, it follows that the decision function <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i + \epsilon_i^* \ge 1\)</span> simplifies to <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i \ge 1\)</span>, indicating that the data point is correctly classified and lies outside the margin.</p></li>
-<li><p>If <span class="math inline">\(0 &lt; \alpha_i^* &lt; C\)</span>:<br>
-In this scenario, both <span class="math inline">\(\alpha_i^*\)</span> and <span class="math inline">\(\beta_i^*\)</span> assume positive values within the range <span class="math inline">\((0, C)\)</span>. Equation [2] implies <span class="math inline">\(\epsilon_i^* = 0\)</span>, while equation [1] gives <span class="math inline">\(1 - \mathbf{w}^{*T}\mathbf{x}_i y_i - \epsilon^*_i = 0\)</span>, leading to <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i = 1\)</span>. This signifies that the data point resides exactly on the margin boundary.</p></li>
-<li><p>If <span class="math inline">\(\alpha_i^* = C\)</span>:<br>
-When <span class="math inline">\(\alpha_i^*\)</span> takes on the maximum value <span class="math inline">\(C\)</span>, the dual variable <span class="math inline">\(\beta_i^*\)</span> becomes <span class="math inline">\(0\)</span>. Equation [2] establishes that <span class="math inline">\(\epsilon_i^*\ge0\)</span>. Equation [1] implies <span class="math inline">\(1 - \mathbf{w}^{*T}\mathbf{x}_i y_i - \epsilon^*_i = 0\)</span>, which further simplifies to <span class="math inline">\(1 - \mathbf{w}^{*T}\mathbf{x}_i y_i = \epsilon^*_i\)</span>. This results in <span class="math inline">\(1 - \mathbf{w}^{*T}\mathbf{x}_i y_i \ge 0\)</span>, indicating that the data point is misclassified or lies within the margin.</p></li>
-<li><p>If <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i &lt; 1\)</span>:<br>
-Given that <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i &lt; 1\)</span>, the inequality <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i + \epsilon_i^* \ge 1\)</span> holds. By manipulating this inequality, we deduce <span class="math inline">\(\epsilon_i^* &gt; 0\)</span>. From equation [2], it follows that <span class="math inline">\(\beta_i^* = 0\)</span>, and consequently, <span class="math inline">\(\alpha_i^* = C\)</span>.</p></li>
-<li><p>If <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i = 1\)</span>:<br>
-For data points that satisfy <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i = 1\)</span>, we once again consider the inequality <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i + \epsilon_i^* \ge 1\)</span>, leading to <span class="math inline">\(\epsilon_i^* \ge 0\)</span>. If <span class="math inline">\(\epsilon_i^* &gt; 0\)</span>, equation [2] indicates <span class="math inline">\(\beta_i^* = 0\)</span>, resulting in <span class="math inline">\(\alpha_i^* = C\)</span>. On the other hand, if <span class="math inline">\(\epsilon_i^* = 0\)</span>, equation [2] implies <span class="math inline">\(\beta_i^* \ge 0\)</span>, and as a consequence, <span class="math inline">\(\alpha_i^* \in [0, C]\)</span>.</p></li>
-<li><p>If <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i &gt; 1\)</span>:<br>
-When <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i &gt; 1\)</span>, the inequality <span class="math inline">\(1 - \mathbf{w}^{*T}\mathbf{x}_i y_i - \epsilon^*_i &lt; 0\)</span> holds. From equation [1], we conclude that <span class="math inline">\(\alpha_i^* = 0\)</span>, leading to <span class="math inline">\(\beta^*_i = C\)</span> as per the equation <span class="math inline">\(\alpha_i^* + \beta_i^* = C\)</span>. Furthermore, equation [2] reveals that <span class="math inline">\(\epsilon_i^* = 0\)</span>.</p></li>
-</ol>
-</section>
-<section id="summary-of-scenarios" class="level3">
-<h3 class="anchored" data-anchor-id="summary-of-scenarios">Summary of Scenarios</h3>
-<p>In summary, we have established the following relationships between the dual variable <span class="math inline">\(\alpha_i^*\)</span> and the decision boundary defined by <span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i\)</span>:</p>
+<li><strong>Comparison with Other Designs</strong>:
 <ul>
-<li><span class="math inline">\(\alpha_i^* = 0\)</span>: Data point is correctly classified and outside the margin.</li>
-<li><span class="math inline">\(0 &lt; \alpha_i^* &lt; C\)</span>: Data point lies exactly on the margin boundary.</li>
-<li><span class="math inline">\(\alpha_i^* = C\)</span>: Data point is misclassified or inside the margin.</li>
-<li><span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i &lt; 1\)</span>: Dual variable <span class="math inline">\(\alpha_i^* = C\)</span>.</li>
-<li><span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i = 1\)</span>: Dual variable <span class="math inline">\(\alpha_i^* \in [0, C]\)</span> if <span class="math inline">\(\epsilon_i^* = 0\)</span>, else <span class="math inline">\(\alpha_i^* = C\)</span>.</li>
-<li><span class="math inline">\((\mathbf{w}^{*T}\mathbf{x}_i)y_i &gt; 1\)</span>: Dual variable <span class="math inline">\(\alpha_i^* = 0\)</span>.</li>
+<li><strong>Experimental Research</strong>: Involves manipulation of variables to establish cause-and-effect relationships.</li>
+<li><strong>Descriptive Research</strong>: Focuses on describing characteristics or phenomena without examining relationships.</li>
+</ul></li>
+</ul>
+</section>
+<section id="naturalistic-research" class="level2">
+<h2 class="anchored" data-anchor-id="naturalistic-research"><strong>Naturalistic Research</strong></h2>
+<ul>
+<li><strong>Definition</strong>: A form of descriptive research conducted in natural settings without manipulation.</li>
+<li><strong>Purpose</strong>: To observe and describe behaviors in real-world contexts as they naturally occur.</li>
+<li><strong>Characteristics</strong>:
+<ul>
+<li>Data is collected through observation, interviews, or field notes.</li>
+<li>Aims for ecological validity, capturing genuine behaviors and interactions.</li>
+</ul></li>
+<li><strong>Relation to Descriptive Research</strong>:
+<ul>
+<li>Naturalistic research is a subset of descriptive research, emphasizing observational methods.</li>
+</ul></li>
+</ul>
+</section>
+<section id="visual-search-task" class="level2">
+<h2 class="anchored" data-anchor-id="visual-search-task"><strong>Visual Search Task</strong></h2>
+<ul>
+<li><strong>Definition</strong>: A cognitive task that requires individuals to locate a target stimulus among distractors.</li>
+<li><strong>Primary Mental Process Investigated</strong>: Attention</li>
+<li><strong>Characteristics</strong>:
+<ul>
+<li>Involves selective focus and processing of visual information.</li>
+<li>Assesses how quickly and accurately individuals can identify targets amidst irrelevant stimuli.</li>
+</ul></li>
+<li><strong>Cognitive Load</strong>:
+<ul>
+<li>Involves various cognitive processes, including visual perception and attentional resources.</li>
+</ul></li>
+</ul>
+</section>
+<section id="brain-areas-activated-by-visual-stimuli" class="level2">
+<h2 class="anchored" data-anchor-id="brain-areas-activated-by-visual-stimuli"><strong>Brain Areas Activated by Visual Stimuli</strong></h2>
+<ul>
+<li><strong>Parahippocampal Place Area (PPA)</strong>:
+<ul>
+<li><strong>Function</strong>: Specializes in recognizing and processing scenes, particularly places and environments.</li>
+<li><strong>Activation</strong>: Engaged by images representing indoor and outdoor scenes.</li>
+</ul></li>
+<li><strong>Fusiform Face Area (FFA)</strong>:
+<ul>
+<li><strong>Function</strong>: Primarily involved in facial recognition and processing of faces.</li>
+</ul></li>
+<li><strong>Extrastriate Body Area (EBA)</strong>:
+<ul>
+<li><strong>Function</strong>: Focused on the recognition of body parts.</li>
+</ul></li>
+<li><strong>Importance of Context</strong>: Different brain regions are activated based on the nature of the visual stimulus, highlighting specialized processing pathways in the brain.</li>
+</ul>
+</section>
+<section id="attention" class="level2">
+<h2 class="anchored" data-anchor-id="attention"><strong>Attention</strong></h2>
+<ul>
+<li><strong>Definition</strong>: The cognitive process of selectively concentrating on specific stimuli while ignoring others.</li>
+<li><strong>Role in Cognitive Systems</strong>:
+<ul>
+<li>Attention filters information to prioritize what is relevant, impacting perception and memory.</li>
+</ul></li>
+<li><strong>Importance</strong>: Essential for effective information processing, decision-making, and responding to environmental demands.</li>
+<li><strong>Misconception</strong>: Attention does not construct representations of the outside world; it helps manage and filter incoming information.</li>
+</ul>
+</section>
+<section id="perception" class="level2">
+<h2 class="anchored" data-anchor-id="perception"><strong>Perception</strong></h2>
+<ul>
+<li><strong>Definition</strong>: The process of interpreting sensory information to form a mental representation of the environment.</li>
+<li><strong>Characteristics</strong>:
+<ul>
+<li>Involves the integration of sensory input from various modalities (e.g., visual, auditory).</li>
+<li>Subject to biases and can be influenced by prior knowledge, expectations, and context.</li>
+</ul></li>
+<li><strong>Common Misconceptions</strong>:
+<ul>
+<li>Perception is not always accurate; it can be influenced by deceptive stimuli or erroneous interpretations.</li>
+</ul></li>
+</ul>
+</section>
+<section id="psychophysics" class="level2">
+<h2 class="anchored" data-anchor-id="psychophysics"><strong>Psychophysics</strong></h2>
+<ul>
+<li><strong>Definition</strong>: The study of the relationship between physical stimuli and the psychological experiences they evoke.</li>
+<li><strong>Key Concepts</strong>:
+<ul>
+<li><strong>Absolute Threshold</strong>: The minimum intensity of a stimulus that can be detected.</li>
+<li><strong>Difference Threshold</strong>: The smallest detectable difference between two stimuli (just noticeable difference).</li>
+</ul></li>
+<li><strong>Methods</strong>: Often involves experimental methods to measure thresholds and sensory responses.</li>
+<li><strong>Applications</strong>: Used in various fields, including psychology, neuroscience, and sensory research.</li>
+</ul>
+</section>
+<section id="threshold-determination" class="level2">
+<h2 class="anchored" data-anchor-id="threshold-determination"><strong>Threshold Determination</strong></h2>
+<ul>
+<li><strong>Absolute Threshold</strong>: The lowest level of stimulus intensity that an individual can detect.</li>
+<li><strong>Difference Threshold</strong>: The minimum difference in intensity required to notice a change.</li>
+<li><strong>Methods for Determination</strong>:
+<ul>
+<li>Participants adjust the stimulus until it becomes just noticeable, matching it to a standard, or until they detect it.</li>
+</ul></li>
+<li><strong>Importance of Context</strong>: Thresholds can vary based on individual differences, context, and previous exposure to stimuli.</li>
+</ul>
+</section>
+<section id="sensory-process-and-decision-making" class="level2">
+<h2 class="anchored" data-anchor-id="sensory-process-and-decision-making"><strong>Sensory Process and Decision-Making</strong></h2>
+<ul>
+<li><strong>Sensory Processing</strong>: Involves receiving, converting, and interpreting sensory information from the environment.</li>
+<li><strong>Decision-Making</strong>: The cognitive process where individuals evaluate options and make choices based on sensory input and prior knowledge.</li>
+<li><strong>Interdependence</strong>: Sensory processes provide crucial data to the decision-making system; they do not operate independently.</li>
+</ul>
+</section>
+<section id="decision-policies" class="level2">
+<h2 class="anchored" data-anchor-id="decision-policies"><strong>Decision Policies</strong></h2>
+<ul>
+<li><strong>Conservative Decision Policy</strong>:
+<ul>
+<li><strong>Definition</strong>: A strategy where the decision criterion is set higher, requiring stronger evidence to say “yes.”</li>
+<li><strong>Implication</strong>: Reduces the likelihood of false positives, leading to more cautious responses.</li>
+</ul></li>
+<li><strong>Impact on Responses</strong>:
+<ul>
+<li>A conservative policy means fewer affirmative responses, as the threshold for saying “yes” is elevated.</li>
+</ul></li>
+<li><strong>Contextual Understanding</strong>: Different decision policies can shape outcomes in research and real-world settings, affecting how data is interpreted and decisions are made.</li>
 </ul>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1455,13 +1296,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../pages/log_reg.html" class="pagination-link" aria-label="Logistic regression">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Logistic regression</span>
+      <a href="../pages/bcp2.html" class="pagination-link" aria-label="Foundations of Psychological Concepts and Theories-II">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Foundations of Psychological Concepts and Theories-II</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../pages/bag.html" class="pagination-link" aria-label="Bagging">
-        <span class="nav-page-text">Bagging</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../pages/bcp4.html" class="pagination-link" aria-label="Vision and Perception">
+        <span class="nav-page-text">Vision and Perception</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

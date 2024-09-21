@@ -1,10 +1,516 @@
 [
   {
+    "objectID": "pages/bcp7.html",
+    "href": "pages/bcp7.html",
+    "title": "Memory Systems and Processes",
+    "section": "",
+    "text": "Definition: A cognitive system with a limited capacity responsible for temporarily holding and manipulating information for complex tasks such as reasoning and learning.\nCharacteristics:\n\nLimited capacity: Can hold only a few items at a time.\nActive manipulation: Involves processing and transforming information.\nDistinct from long-term memory, which stores information permanently.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory Systems and Processes"
+    ]
+  },
+  {
+    "objectID": "pages/bcp7.html#working-memory",
+    "href": "pages/bcp7.html#working-memory",
+    "title": "Memory Systems and Processes",
+    "section": "",
+    "text": "Definition: A cognitive system with a limited capacity responsible for temporarily holding and manipulating information for complex tasks such as reasoning and learning.\nCharacteristics:\n\nLimited capacity: Can hold only a few items at a time.\nActive manipulation: Involves processing and transforming information.\nDistinct from long-term memory, which stores information permanently.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory Systems and Processes"
+    ]
+  },
+  {
+    "objectID": "pages/bcp7.html#long-term-memory-ltm",
+    "href": "pages/bcp7.html#long-term-memory-ltm",
+    "title": "Memory Systems and Processes",
+    "section": "Long-Term Memory (LTM)",
+    "text": "Long-Term Memory (LTM)\n\nDefinition: A system for storing information over extended periods, from minutes to a lifetime.\nCharacteristics:\n\nCapacity: Virtually unlimited in size.\nDuration: Information can remain for years or even decades.\nTypes of LTM:\n\nExplicit (Declarative) Memory: Involves conscious recall, such as facts and events.\n\nSemantic Memory: General knowledge and facts.\nEpisodic Memory: Personal experiences and specific events.\n\nImplicit (Non-declarative) Memory: Involves unconscious retrieval, such as skills and habits.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory Systems and Processes"
+    ]
+  },
+  {
+    "objectID": "pages/bcp7.html#word-length-effect",
+    "href": "pages/bcp7.html#word-length-effect",
+    "title": "Memory Systems and Processes",
+    "section": "Word Length Effect",
+    "text": "Word Length Effect\n\nDefinition: The phenomenon where short words are recalled more accurately than long words in memory tasks.\nExplanation: This effect is attributed to the time it takes to rehearse longer words in the phonological loop, making them less likely to be remembered in short-term memory tasks.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory Systems and Processes"
+    ]
+  },
+  {
+    "objectID": "pages/bcp7.html#phonological-loop",
+    "href": "pages/bcp7.html#phonological-loop",
+    "title": "Memory Systems and Processes",
+    "section": "Phonological Loop",
+    "text": "Phonological Loop\n\nDefinition: A component of working memory responsible for storing verbal and auditory information.\nFunction:\n\nMaintains verbal information through rehearsal.\nCritical for language processing and comprehension.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory Systems and Processes"
+    ]
+  },
+  {
+    "objectID": "pages/bcp7.html#visuospatial-sketchpad",
+    "href": "pages/bcp7.html#visuospatial-sketchpad",
+    "title": "Memory Systems and Processes",
+    "section": "Visuospatial Sketchpad",
+    "text": "Visuospatial Sketchpad\n\nDefinition: A component of working memory that holds visual and spatial information.\nFunction:\n\nAllows for manipulation and analysis of visual data.\nEssential for tasks requiring visual imagery, such as navigating spaces.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory Systems and Processes"
+    ]
+  },
+  {
+    "objectID": "pages/bcp7.html#implicit-memory",
+    "href": "pages/bcp7.html#implicit-memory",
+    "title": "Memory Systems and Processes",
+    "section": "Implicit Memory",
+    "text": "Implicit Memory\n\nDefinition: A type of memory that is used without conscious awareness, making its content difficult to verbalize.\nExamples: Skills such as riding a bike or typing, which are performed automatically.\nCharacteristics: Less affected by age and neurological disorders compared to explicit memory.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory Systems and Processes"
+    ]
+  },
+  {
+    "objectID": "pages/bcp7.html#procedural-memory",
+    "href": "pages/bcp7.html#procedural-memory",
+    "title": "Memory Systems and Processes",
+    "section": "Procedural Memory",
+    "text": "Procedural Memory\n\nDefinition: A subtype of implicit memory that involves the acquisition of skills and procedures.\nExamples:\n\nCycling, swimming, and driving.\nDeveloped through practice and repetition, these memories allow for automatic execution without conscious thought.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory Systems and Processes"
+    ]
+  },
+  {
+    "objectID": "pages/bcp7.html#levels-of-processing-theory",
+    "href": "pages/bcp7.html#levels-of-processing-theory",
+    "title": "Memory Systems and Processes",
+    "section": "Levels of Processing Theory",
+    "text": "Levels of Processing Theory\n\nProposers: Craik & Lockhart.\nDefinition: A theory that suggests the depth of processing affects memory retention.\nTypes of Processing:\n\nShallow Processing: Focuses on surface features (e.g., phonetic or structural).\nDeep Processing: Involves semantic analysis and connection to prior knowledge, leading to better retention.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory Systems and Processes"
+    ]
+  },
+  {
+    "objectID": "pages/bcp7.html#elaborative-rehearsal",
+    "href": "pages/bcp7.html#elaborative-rehearsal",
+    "title": "Memory Systems and Processes",
+    "section": "Elaborative Rehearsal",
+    "text": "Elaborative Rehearsal\n\nDefinition: A method of transferring information into long-term memory by relating it to existing knowledge or thinking about its meaning.\nAdvantages:\n\nEnhances understanding and retention.\nEncourages deeper cognitive engagement with the material.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory Systems and Processes"
+    ]
+  },
+  {
+    "objectID": "pages/bcp7.html#encoding-specificity",
+    "href": "pages/bcp7.html#encoding-specificity",
+    "title": "Memory Systems and Processes",
+    "section": "Encoding Specificity",
+    "text": "Encoding Specificity\n\nDefinition: The principle that memory retrieval is more effective when the conditions at the time of encoding match those at the time of retrieval.\nExplanation: Contextual cues present during encoding can trigger recall when those cues are encountered again, facilitating memory retrieval.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory Systems and Processes"
+    ]
+  },
+  {
+    "objectID": "pages/bcp7.html#consolidation",
+    "href": "pages/bcp7.html#consolidation",
+    "title": "Memory Systems and Processes",
+    "section": "Consolidation",
+    "text": "Consolidation\n\nDefinition: The process that transforms newly formed, fragile memories into a more stable and permanent state.\nMechanism: Often occurs during sleep, allowing for the strengthening and integration of memories into long-term storage.\nImportance: Essential for protecting memories from disruption or decay.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory Systems and Processes"
+    ]
+  },
+  {
+    "objectID": "pages/bcp7.html#state-dependent-learning",
+    "href": "pages/bcp7.html#state-dependent-learning",
+    "title": "Memory Systems and Processes",
+    "section": "State Dependent Learning",
+    "text": "State Dependent Learning\n\nDefinition: The phenomenon where retrieval of information is more successful when an individual is in the same emotional or physiological state during encoding and retrieval.\nExample: A person learning a task while happy may perform better when in a similar emotional state.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory Systems and Processes"
+    ]
+  },
+  {
+    "objectID": "pages/bcp6.html",
+    "href": "pages/bcp6.html",
+    "title": "Attention and Memory Mechanisms",
+    "section": "",
+    "text": "Definition: The ability to focus on a single conversation in a noisy environment, like at a party.\nResearcher: Colin Cherry, who studied how people can isolate one voice amidst many.\nSignificance: Highlights the selective nature of auditory attention and how we filter out irrelevant sounds.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Attention and Memory Mechanisms"
+    ]
+  },
+  {
+    "objectID": "pages/bcp6.html#cocktail-party-effect",
+    "href": "pages/bcp6.html#cocktail-party-effect",
+    "title": "Attention and Memory Mechanisms",
+    "section": "",
+    "text": "Definition: The ability to focus on a single conversation in a noisy environment, like at a party.\nResearcher: Colin Cherry, who studied how people can isolate one voice amidst many.\nSignificance: Highlights the selective nature of auditory attention and how we filter out irrelevant sounds.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Attention and Memory Mechanisms"
+    ]
+  },
+  {
+    "objectID": "pages/bcp6.html#theories-of-selective-attention",
+    "href": "pages/bcp6.html#theories-of-selective-attention",
+    "title": "Attention and Memory Mechanisms",
+    "section": "Theories of Selective Attention",
+    "text": "Theories of Selective Attention\n\nBottleneck Theory\n\nExplanation: Suggests there is a point where information processing is limited, similar to a bottleneck in a physical passage. Only certain information can pass through for further processing.\nImportance: Helps in understanding how we manage to focus in environments filled with distractions.\n\nFilter Theory\n\nExplanation: Proposes that attention acts as a filter, allowing certain stimuli to be processed while ignoring others. This can occur at various stages of perception.\nRelation to Bottleneck: Bottleneck theory can be seen as a specific application of filter theory, focusing on the limitations in processing capacity.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Attention and Memory Mechanisms"
+    ]
+  },
+  {
+    "objectID": "pages/bcp6.html#factors-influencing-attention",
+    "href": "pages/bcp6.html#factors-influencing-attention",
+    "title": "Attention and Memory Mechanisms",
+    "section": "Factors Influencing Attention",
+    "text": "Factors Influencing Attention\n\nAnxiety\n\nImpact: High anxiety levels can hinder attention by causing distractions and impairing cognitive functions.\n\nArousal\n\nExplanation: Refers to the state of being physiologically alert. Both low and high arousal can negatively affect attention, while moderate arousal tends to enhance focus.\n\nSkill & Task Difficulty\n\nRole: The complexity of a task and the individual’s proficiency can significantly affect attention. Familiar tasks require less cognitive load, allowing for better focus.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Attention and Memory Mechanisms"
+    ]
+  },
+  {
+    "objectID": "pages/bcp6.html#michael-posners-attentional-system",
+    "href": "pages/bcp6.html#michael-posners-attentional-system",
+    "title": "Attention and Memory Mechanisms",
+    "section": "Michael Posner’s Attentional System",
+    "text": "Michael Posner’s Attentional System\n\nConcept: Posner suggests that attention is not confined to one specific area of the brain or the whole brain but involves multiple areas working together.\nRelevance: This view supports a more dynamic understanding of attention, highlighting the interplay between different brain regions.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Attention and Memory Mechanisms"
+    ]
+  },
+  {
+    "objectID": "pages/bcp6.html#bottom-up-vs.-top-down-attention",
+    "href": "pages/bcp6.html#bottom-up-vs.-top-down-attention",
+    "title": "Attention and Memory Mechanisms",
+    "section": "Bottom-Up vs. Top-Down Attention",
+    "text": "Bottom-Up vs. Top-Down Attention\n\nBottom-Up Attention\n\nDefinition: Attention driven by external stimuli based on their physical characteristics (e.g., bright colors, loud sounds).\nExample: A sudden noise that captures your focus without conscious effort.\n\nTop-Down Attention\n\nDefinition: Attention guided by prior knowledge, expectations, or goals. This type is more deliberate.\nExample: Actively searching for a friend in a crowd based on your knowledge of their appearance.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Attention and Memory Mechanisms"
+    ]
+  },
+  {
+    "objectID": "pages/bcp6.html#covert-attention",
+    "href": "pages/bcp6.html#covert-attention",
+    "title": "Attention and Memory Mechanisms",
+    "section": "Covert Attention",
+    "text": "Covert Attention\n\nDefinition: Focusing attention on a stimulus without any physical movement (like eye movements).\nApplication: Useful in scenarios where one wants to gather information discreetly or without drawing attention to oneself.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Attention and Memory Mechanisms"
+    ]
+  },
+  {
+    "objectID": "pages/bcp6.html#modal-model-of-memory",
+    "href": "pages/bcp6.html#modal-model-of-memory",
+    "title": "Attention and Memory Mechanisms",
+    "section": "Modal Model of Memory",
+    "text": "Modal Model of Memory\n\nProposers: Richard Atkinson and Richard Shiffrin.\nOverview: A framework explaining how information flows through memory systems: sensory memory, short-term memory, and long-term memory.\n\nSensory Memory: Briefly holds incoming sensory information.\nShort-Term Memory (STM): Temporary storage of information, limited in duration and capacity.\nLong-Term Memory (LTM): More permanent storage for information that can last from minutes to a lifetime.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Attention and Memory Mechanisms"
+    ]
+  },
+  {
+    "objectID": "pages/bcp6.html#short-term-memory-stm",
+    "href": "pages/bcp6.html#short-term-memory-stm",
+    "title": "Attention and Memory Mechanisms",
+    "section": "Short-Term Memory (STM)",
+    "text": "Short-Term Memory (STM)\n\nConcept Originator: Alan Baddeley.\nDescription: Refers to the capacity to hold a small amount of information for a brief period. Baddeley expanded the idea into “working memory,” which includes the manipulation of stored information.\nCharacteristics:\n\nLimited capacity (commonly cited as 7 ± 2 items).\nInformation is easily lost unless actively maintained through rehearsal.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Attention and Memory Mechanisms"
+    ]
+  },
+  {
+    "objectID": "pages/bcp6.html#chunking",
+    "href": "pages/bcp6.html#chunking",
+    "title": "Attention and Memory Mechanisms",
+    "section": "Chunking",
+    "text": "Chunking\n\nDefinition: A technique used in memory to group together elements that are strongly associated with one another, making them easier to remember.\nExample: Grouping the digits of a phone number into segments (e.g., 123-456-7890) instead of remembering each digit individually.\nPurpose: Enhances the capacity of memory by reducing the number of items to be remembered.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Attention and Memory Mechanisms"
+    ]
+  },
+  {
+    "objectID": "pages/bcp6.html#cues-and-priming",
+    "href": "pages/bcp6.html#cues-and-priming",
+    "title": "Attention and Memory Mechanisms",
+    "section": "Cues and Priming",
+    "text": "Cues and Priming\n\nCue\n\nDefinition: A stimulus that aids the retrieval of information from memory. Cues help trigger memories by providing context or association.\n\nPrime\n\nDefinition: A stimulus presented before a target stimulus to prepare the brain for recognition. Priming can influence how we perceive and respond to subsequent stimuli.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Attention and Memory Mechanisms"
+    ]
+  },
+  {
+    "objectID": "pages/bcp4.html",
+    "href": "pages/bcp4.html",
+    "title": "Vision and Perception",
+    "section": "",
+    "text": "Definition: The fovea is a small, central pit in the retina that provides the clearest vision.\nCharacteristics:\n\nContains a high density of cone cells, which are responsible for color vision and high acuity.\nResponsible for sharp central vision, essential for activities like reading and driving.\n\nSignificance: The fovea allows for acute vision, making it the region of the retina where visual resolution is the highest.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Vision and Perception"
+    ]
+  },
+  {
+    "objectID": "pages/bcp4.html#fovea",
+    "href": "pages/bcp4.html#fovea",
+    "title": "Vision and Perception",
+    "section": "",
+    "text": "Definition: The fovea is a small, central pit in the retina that provides the clearest vision.\nCharacteristics:\n\nContains a high density of cone cells, which are responsible for color vision and high acuity.\nResponsible for sharp central vision, essential for activities like reading and driving.\n\nSignificance: The fovea allows for acute vision, making it the region of the retina where visual resolution is the highest.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Vision and Perception"
+    ]
+  },
+  {
+    "objectID": "pages/bcp4.html#retina",
+    "href": "pages/bcp4.html#retina",
+    "title": "Vision and Perception",
+    "section": "Retina",
+    "text": "Retina\n\nDefinition: The retina is the layer of tissue at the back of the eye that contains photoreceptors.\nFunction: Converts electromagnetic light energy into neural electrochemical impulses.\nComponents:\n\nPhotoreceptors: Include rods (for low-light vision) and cones (for color and detailed vision).\nBipolar and Ganglion Cells: Process and transmit visual information from photoreceptors to the brain.\n\nImportance: The retina serves as the initial site for visual processing, providing the brain with crucial sensory input.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Vision and Perception"
+    ]
+  },
+  {
+    "objectID": "pages/bcp4.html#d-sketch",
+    "href": "pages/bcp4.html#d-sketch",
+    "title": "Vision and Perception",
+    "section": "2.5D Sketch",
+    "text": "2.5D Sketch\n\nDefinition: A concept in David Marr’s theory representing a viewer-centered description of visual information.\nCharacteristics:\n\nIncorporates visual cues such as stereopsis (depth perception from binocular vision) and motion parallax (perception of depth from the movement of objects).\nAllows for recognition of depth and surface orientation without complete object reconstruction.\n\nRelevance: Serves as an intermediate step in visual processing before forming a full 3D representation.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Vision and Perception"
+    ]
+  },
+  {
+    "objectID": "pages/bcp4.html#mental-representation-and-retinal-images",
+    "href": "pages/bcp4.html#mental-representation-and-retinal-images",
+    "title": "Vision and Perception",
+    "section": "Mental Representation and Retinal Images",
+    "text": "Mental Representation and Retinal Images\n\nConcept: Mental representations are internal images or constructs that the brain uses to interpret the external world.\nRole of Retinal Images:\n\nServe as the basis for mental representations, providing the raw data needed for perception.\nThe brain interprets these images to form a coherent understanding of the environment.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Vision and Perception"
+    ]
+  },
+  {
+    "objectID": "pages/bcp4.html#gibsons-ecological-approach",
+    "href": "pages/bcp4.html#gibsons-ecological-approach",
+    "title": "Vision and Perception",
+    "section": "Gibson’s Ecological Approach",
+    "text": "Gibson’s Ecological Approach\n\nDefinition: A theory of perception proposed by J.J. Gibson emphasizing direct perception.\nKey Ideas:\n\nPerception is an active process of picking up information from the environment.\nEnvironmental structures, rather than internal cognitive processes, shape our perceptual experiences.\n\nImportance: This approach highlights the interaction between organisms and their environments in the perception process.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Vision and Perception"
+    ]
+  },
+  {
+    "objectID": "pages/bcp4.html#ambient-optic-array",
+    "href": "pages/bcp4.html#ambient-optic-array",
+    "title": "Vision and Perception",
+    "section": "Ambient Optic Array",
+    "text": "Ambient Optic Array\n\nDefinition: The structured pattern of light that reaches the eyes from the environment.\nFunction: Provides information about the spatial arrangement of surfaces, textures, and depth.\nGibson’s Contribution: Suggested that the ambient optic array contains all the necessary cues for perception, eliminating the need for complex processing.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Vision and Perception"
+    ]
+  },
+  {
+    "objectID": "pages/bcp4.html#marrs-theory-of-vision",
+    "href": "pages/bcp4.html#marrs-theory-of-vision",
+    "title": "Vision and Perception",
+    "section": "Marr’s Theory of Vision",
+    "text": "Marr’s Theory of Vision\n\nOverview: A computational approach to understanding visual perception developed by David Marr.\nProcessing Types:\n\nBottom-Up Processing: Starts with sensory input and builds up to complex representations.\nStages of Processing:\n\nPrimal Sketch: The initial detection of edges, contours, and textures.\n2.5D Sketch: Incorporates depth and surface information based on cues.\n3D Representation: Object-centered descriptions that allow recognition of shapes and configurations.\n\n\nSignificance: Marr’s theory provides a framework for understanding how visual information is processed from raw sensory data to complex perceptions.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Vision and Perception"
+    ]
+  },
+  {
+    "objectID": "pages/bcp4.html#primal-sketch",
+    "href": "pages/bcp4.html#primal-sketch",
+    "title": "Vision and Perception",
+    "section": "Primal Sketch",
+    "text": "Primal Sketch\n\nDefinition: The first stage in Marr’s visual processing model, focusing on basic visual features.\nCharacteristics:\n\nIdentifies edges and textures from raw visual input.\nServes as the foundation for further processing in the 2.5D and 3D stages.\n\nRole: Provides crucial information for recognizing shapes and objects.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Vision and Perception"
+    ]
+  },
+  {
+    "objectID": "pages/bcp4.html#helmholtzs-theory-of-unconscious-inference",
+    "href": "pages/bcp4.html#helmholtzs-theory-of-unconscious-inference",
+    "title": "Vision and Perception",
+    "section": "Helmholtz’s Theory of Unconscious Inference",
+    "text": "Helmholtz’s Theory of Unconscious Inference\n\nConcept: Proposed that perception involves making unconscious assumptions based on sensory data.\nKey Ideas:\n\nThe brain uses past experiences and contextual information to interpret sensory input.\nThis process allows for quick and efficient perception of the world.\n\nSignificance: Helmholtz’s theory highlights the role of prior knowledge and experience in shaping perception.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Vision and Perception"
+    ]
+  },
+  {
+    "objectID": "pages/bcp4.html#top-down-and-bottom-up-processing",
+    "href": "pages/bcp4.html#top-down-and-bottom-up-processing",
+    "title": "Vision and Perception",
+    "section": "Top-Down and Bottom-Up Processing",
+    "text": "Top-Down and Bottom-Up Processing\n\nTop-Down Processing:\n\nInvolves higher cognitive functions influencing perception based on expectations, context, and prior knowledge.\nHelps to fill in gaps and interpret ambiguous stimuli.\n\nBottom-Up Processing:\n\nBegins with raw sensory data, building perceptions from basic features to more complex forms.\nEssential for accurately interpreting new or unfamiliar stimuli.\n\nCombined Role: Both processes work together in constructing a complete and coherent understanding of the external world, enhancing perceptual accuracy.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Vision and Perception"
+    ]
+  },
+  {
+    "objectID": "pages/bcp2.html",
+    "href": "pages/bcp2.html",
+    "title": "Foundations of Psychological Concepts and Theories-II",
+    "section": "",
+    "text": "Definition: Focuses on what the cognitive system does and why it does it. It addresses the goals and purposes of the cognitive functions.\nImportance: Understanding the objectives of a cognitive system helps define its functionality and the problems it aims to solve.\n\n\n\n\n\nDefinition: Concerned with how the cognitive system achieves its tasks. It describes the specific methods and processes used to perform cognitive functions.\nRelevance: This level explores the algorithms and processes involved, including the logical steps taken by the system.\n\n\n\n\n\nDefinition: Involves the physical realization of the cognitive system, including the biological substrates (like the brain) that support cognitive processes.\nSignificance: This level is critical for understanding the mechanics and physiology that enable cognition.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-II"
+    ]
+  },
+  {
+    "objectID": "pages/bcp2.html#marrs-levels-of-explanation",
+    "href": "pages/bcp2.html#marrs-levels-of-explanation",
+    "title": "Foundations of Psychological Concepts and Theories-II",
+    "section": "",
+    "text": "Definition: Focuses on what the cognitive system does and why it does it. It addresses the goals and purposes of the cognitive functions.\nImportance: Understanding the objectives of a cognitive system helps define its functionality and the problems it aims to solve.\n\n\n\n\n\nDefinition: Concerned with how the cognitive system achieves its tasks. It describes the specific methods and processes used to perform cognitive functions.\nRelevance: This level explores the algorithms and processes involved, including the logical steps taken by the system.\n\n\n\n\n\nDefinition: Involves the physical realization of the cognitive system, including the biological substrates (like the brain) that support cognitive processes.\nSignificance: This level is critical for understanding the mechanics and physiology that enable cognition.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-II"
+    ]
+  },
+  {
+    "objectID": "pages/bcp2.html#mental-representations-and-processes",
+    "href": "pages/bcp2.html#mental-representations-and-processes",
+    "title": "Foundations of Psychological Concepts and Theories-II",
+    "section": "Mental Representations and Processes",
+    "text": "Mental Representations and Processes\n\nMental Representations\n\nDefinition: Internal structures that stand for external reality, such as images, symbols, or concepts.\nRole in Cognition: They help individuals understand, interpret, and respond to the world around them.\n\n\n\nMental Processes\n\nDefinition: The operations that manipulate mental representations, such as perception, memory, and reasoning.\nInteraction with Representations: Mental processes utilize representations to make decisions, solve problems, and perform tasks.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-II"
+    ]
+  },
+  {
+    "objectID": "pages/bcp2.html#modularity-hypothesis",
+    "href": "pages/bcp2.html#modularity-hypothesis",
+    "title": "Foundations of Psychological Concepts and Theories-II",
+    "section": "Modularity Hypothesis",
+    "text": "Modularity Hypothesis\n\nOverview\n\nDefinition: Suggests that the mind is composed of distinct, specialized modules that handle specific types of information processing.\nProponent: Jerry Fodor is a key figure associated with this hypothesis.\n\n\n\nCharacteristics of Modules\n\nDomain-Specific: Each module is designed for a particular type of cognitive task, such as language processing or visual recognition.\nDiscrete Processes: Modules operate independently but can interact with one another when necessary.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-II"
+    ]
+  },
+  {
+    "objectID": "pages/bcp2.html#fodors-modules",
+    "href": "pages/bcp2.html#fodors-modules",
+    "title": "Foundations of Psychological Concepts and Theories-II",
+    "section": "Fodor’s Modules",
+    "text": "Fodor’s Modules\n\nDomain-Specific Nature\n\nExplanation: Fodor’s modules are specialized for specific functions, which allows for efficient processing of information within those domains.\nExamples: Modules for language acquisition, visual processing, and numerical reasoning.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-II"
+    ]
+  },
+  {
+    "objectID": "pages/bcp2.html#neurobiology-of-nerve-impulses",
+    "href": "pages/bcp2.html#neurobiology-of-nerve-impulses",
+    "title": "Foundations of Psychological Concepts and Theories-II",
+    "section": "Neurobiology of Nerve Impulses",
+    "text": "Neurobiology of Nerve Impulses\n\nSoma and Axon\n\nSoma (Cell Body): The part of the neuron where the cell’s nucleus is located. It is crucial for initiating the nerve impulse.\nAxon: The long, thin extension of a neuron that transmits impulses away from the soma to other neurons or muscles.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-II"
+    ]
+  },
+  {
+    "objectID": "pages/bcp2.html#multiple-sclerosis",
+    "href": "pages/bcp2.html#multiple-sclerosis",
+    "title": "Foundations of Psychological Concepts and Theories-II",
+    "section": "Multiple Sclerosis",
+    "text": "Multiple Sclerosis\n\nOverview\n\nDefinition: A chronic autoimmune disease that affects the central nervous system, leading to the destruction of myelin, the protective covering of nerve fibers.\nSymptoms: Can include fatigue, mobility issues, and problems with coordination and balance.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-II"
+    ]
+  },
+  {
+    "objectID": "pages/bcp2.html#thalamus-as-a-sensory-relay-station",
+    "href": "pages/bcp2.html#thalamus-as-a-sensory-relay-station",
+    "title": "Foundations of Psychological Concepts and Theories-II",
+    "section": "Thalamus as a Sensory Relay Station",
+    "text": "Thalamus as a Sensory Relay Station\n\nFunction of the Thalamus\n\nRole: Acts as a hub for sensory information, processing and relaying signals from the senses (except olfactory) to the appropriate cortical areas for further interpretation.\nImportance: Essential for integrating sensory input and maintaining a coherent perception of the environment.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-II"
+    ]
+  },
+  {
+    "objectID": "pages/bcp2.html#agnosia",
+    "href": "pages/bcp2.html#agnosia",
+    "title": "Foundations of Psychological Concepts and Theories-II",
+    "section": "Agnosia",
+    "text": "Agnosia\n\nFacial Agnosia (Prosopagnosia)\n\nDefinition: A form of agnosia characterized by the inability to recognize familiar faces, even though the ability to see and process faces remains intact.\nImpact: Individuals may recognize other objects and people but struggle specifically with familiar faces.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-II"
+    ]
+  },
+  {
+    "objectID": "pages/bcp2.html#homunculus-map",
+    "href": "pages/bcp2.html#homunculus-map",
+    "title": "Foundations of Psychological Concepts and Theories-II",
+    "section": "Homunculus Map",
+    "text": "Homunculus Map\n\nConcept of the Homunculus\n\nDefinition: A visual representation of the human body, emphasizing areas that require finer motor control or sensory perception.\nCharacteristics: Body parts are represented based on their dexterity, not their physical size, leading to a distorted appearance where hands and lips are disproportionately large.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-II"
+    ]
+  },
+  {
+    "objectID": "pages/bcp2.html#wernickes-area-and-wernickes-aphasia",
+    "href": "pages/bcp2.html#wernickes-area-and-wernickes-aphasia",
+    "title": "Foundations of Psychological Concepts and Theories-II",
+    "section": "Wernicke’s Area and Wernicke’s Aphasia",
+    "text": "Wernicke’s Area and Wernicke’s Aphasia\n\nWernicke’s Area\n\nLocation: Situated in the left temporal lobe, associated with language comprehension.\nFunction: Critical for understanding spoken and written language.\n\n\n\nWernicke’s Aphasia\n\nDefinition: A language disorder that results from damage to Wernicke’s area, characterized by fluent but nonsensical speech and difficulty in comprehending language.\nCause: Damage may not be limited to Wernicke’s area alone; surrounding areas also contribute to the aphasia.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-II"
+    ]
+  },
+  {
     "objectID": "pages/fp-hfg.html",
     "href": "pages/fp-hfg.html",
     "title": "Demystifying FastPitch HiFi-GAN: A Deep Dive into High-Fidelity Text-to-Speech Synthesis",
     "section": "",
-    "text": "The realm of speech synthesis has witnessed remarkable advancements in recent years, with the emergence of sophisticated deep learning models capable of generating human-quality speech from text. Among these, the FastPitch HiFi-GAN pipeline has gained considerable traction due to its exceptional efficiency and fidelity. This comprehensive guide will delve into the intricacies of this pipeline, unraveling its architecture, parameters, hyperparameters, and underlying principles, ultimately providing a thorough understanding of its workings.",
+    "text": "The article is generated by Google’s Gemini 1.5 Pro based on the two papers on FastPitch and HiFi-GAN. Please read the papers themselves for further understanding.\n!\nThe realm of speech synthesis has witnessed remarkable advancements in recent years, with the emergence of sophisticated deep learning models capable of generating human-quality speech from text. Among these, the FastPitch HiFi-GAN pipeline has gained considerable traction due to its exceptional efficiency and fidelity. This comprehensive guide will delve into the intricacies of this pipeline, unraveling its architecture, parameters, hyperparameters, and underlying principles, ultimately providing a thorough understanding of its workings.",
     "crumbs": [
       "Others",
       "FastPitch HiFi-GAN Pipeline"
@@ -917,6 +1423,666 @@
     "crumbs": [
       "Reinforcement Learning",
       "Multi-Armed Bandit"
+    ]
+  },
+  {
+    "objectID": "pages/bcp1.html",
+    "href": "pages/bcp1.html",
+    "title": "Foundations of Psychological Concepts and Theories-I",
+    "section": "",
+    "text": "Definition: Oversimplified and generalized beliefs about groups of people.\nSignificance: Often arise from common sense reasoning but can lead to misjudgments and reinforce biases.\n\n\n\n\n\nDefinition: The tendency to favor information that confirms existing beliefs while ignoring contradictory evidence.\nSignificance: A common error in reasoning that can distort perception and hinder objective analysis.\n\n\n\n\n\nDefinition: A mental shortcut where individuals judge the likelihood of events based on how easily examples come to mind.\nSignificance: This heuristic can lead to skewed perceptions of reality, often overemphasizing recent or vivid experiences.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-I"
+    ]
+  },
+  {
+    "objectID": "pages/bcp1.html#common-sense-psychology",
+    "href": "pages/bcp1.html#common-sense-psychology",
+    "title": "Foundations of Psychological Concepts and Theories-I",
+    "section": "",
+    "text": "Definition: Oversimplified and generalized beliefs about groups of people.\nSignificance: Often arise from common sense reasoning but can lead to misjudgments and reinforce biases.\n\n\n\n\n\nDefinition: The tendency to favor information that confirms existing beliefs while ignoring contradictory evidence.\nSignificance: A common error in reasoning that can distort perception and hinder objective analysis.\n\n\n\n\n\nDefinition: A mental shortcut where individuals judge the likelihood of events based on how easily examples come to mind.\nSignificance: This heuristic can lead to skewed perceptions of reality, often overemphasizing recent or vivid experiences.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-I"
+    ]
+  },
+  {
+    "objectID": "pages/bcp1.html#cognitive-functions-of-the-mind",
+    "href": "pages/bcp1.html#cognitive-functions-of-the-mind",
+    "title": "Foundations of Psychological Concepts and Theories-I",
+    "section": "Cognitive Functions of the Mind",
+    "text": "Cognitive Functions of the Mind\n\nPerception\n\nDefinition: The process of organizing and interpreting sensory information to understand the environment.\nFunction: Essential for interaction with the world, enabling recognition of objects, sounds, and other stimuli.\n\n\n\nAttention\n\nDefinition: The cognitive process of selectively focusing on specific information while ignoring other stimuli.\nFunction: Crucial for learning and memory, attention determines what information enters our awareness.\n\n\n\nMemory\n\nDefinition: The faculty of the mind that allows for the encoding, storage, and retrieval of information.\nFunction: Enables the retention of experiences and knowledge over time, forming the basis of learning.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-I"
+    ]
+  },
+  {
+    "objectID": "pages/bcp1.html#early-thinkers-in-psychology",
+    "href": "pages/bcp1.html#early-thinkers-in-psychology",
+    "title": "Foundations of Psychological Concepts and Theories-I",
+    "section": "Early Thinkers in Psychology",
+    "text": "Early Thinkers in Psychology\n\nAristotle\n\nView: Proposed that mind and body are not entirely separate; he believed in the unity of soul and body.\nContribution: Emphasized empirical observation and the study of nature, laying the groundwork for future scientific inquiry.\n\n\n\nPlato\n\nView: Advocated for dualism, asserting that the mind and body are different entities that interact.\nContribution: His ideas influenced philosophical and psychological thought, particularly concerning the nature of knowledge and reality.\n\n\n\nHippocrates\n\nView: Suggested that mental illnesses have physical causes, contrasting with supernatural explanations.\nContribution: Pioneered the understanding of health and illness in a more scientific manner, emphasizing the biological basis of behavior.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-I"
+    ]
+  },
+  {
+    "objectID": "pages/bcp1.html#modern-philosophical-perspectives",
+    "href": "pages/bcp1.html#modern-philosophical-perspectives",
+    "title": "Foundations of Psychological Concepts and Theories-I",
+    "section": "Modern Philosophical Perspectives",
+    "text": "Modern Philosophical Perspectives\n\nImmanuel Kant\n\nView: Proposed that humans possess innate faculties—sense, understanding, and reasoning—that work together.\nContribution: His work emphasized the importance of these faculties in linking the mind and body, influencing both philosophy and psychology.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-I"
+    ]
+  },
+  {
+    "objectID": "pages/bcp1.html#major-psychological-theories-and-figures",
+    "href": "pages/bcp1.html#major-psychological-theories-and-figures",
+    "title": "Foundations of Psychological Concepts and Theories-I",
+    "section": "Major Psychological Theories and Figures",
+    "text": "Major Psychological Theories and Figures\n\nJ.B. Watson\n\nRole: Founder of behaviorism, focusing solely on observable behavior.\nContribution: Advocated for the study of behavior without reference to mental processes, emphasizing the role of the environment.\n\n\n\nIvan Pavlov\n\nRole: Discovered classical conditioning through his experiments with dogs.\nContribution: Demonstrated how learning can occur through associations, influencing behavioral psychology.\n\n\n\nB.F. Skinner\n\nRole: Developed the concept of operant conditioning, building on Watson’s work.\nContribution: Highlighted the effects of reinforcement and punishment on behavior, shaping modern behavioral therapy.\n\n\n\nGestalt Psychology\n\nView: Focuses on perception as an organized and structured whole, rather than isolated parts.\nContribution: Emphasized the holistic nature of human perception and cognition, influencing fields like cognitive psychology.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-I"
+    ]
+  },
+  {
+    "objectID": "pages/bcp1.html#language-acquisition",
+    "href": "pages/bcp1.html#language-acquisition",
+    "title": "Foundations of Psychological Concepts and Theories-I",
+    "section": "Language Acquisition",
+    "text": "Language Acquisition\n\nNoam Chomsky\n\nView: Argued for the biological basis of language, proposing that humans are born with innate linguistic capabilities.\nContribution: Introduced the concept of Universal Grammar, asserting that all human languages share a common structural basis.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-I"
+    ]
+  },
+  {
+    "objectID": "pages/bcp1.html#key-psychological-laws",
+    "href": "pages/bcp1.html#key-psychological-laws",
+    "title": "Foundations of Psychological Concepts and Theories-I",
+    "section": "Key Psychological Laws",
+    "text": "Key Psychological Laws\n\nEdward L. Thorndike\n\nLaw of Effect: States that behaviors followed by satisfying outcomes are likely to be repeated, while those followed by unpleasant outcomes are less likely to recur.\nContribution: Laid the foundation for future learning theories, particularly in operant conditioning.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-I"
+    ]
+  },
+  {
+    "objectID": "pages/bcp1.html#psychological-approaches",
+    "href": "pages/bcp1.html#psychological-approaches",
+    "title": "Foundations of Psychological Concepts and Theories-I",
+    "section": "Psychological Approaches",
+    "text": "Psychological Approaches\n\nBehaviorism\n\nView: Rejects introspection and focuses on observable behavior as the primary subject of psychology.\nImplication: Emphasizes environmental influences on behavior, minimizing the role of free will and internal mental states.\n\n\n\nStructuralism\n\nDefinition: Aimed to analyze the structure of the mind through introspection and subjective reports.\nLimitations: Often criticized for its reliance on subjective experience, making it less scientific.\n\n\n\nFunctionalism\n\nDefinition: Focuses on the purpose of mental processes and behavior in adapting to the environment.\nImplication: Emphasizes the role of mental processes in facilitating adaptation and survival.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-I"
+    ]
+  },
+  {
+    "objectID": "pages/bcp1.html#evaluating-scientific-theories",
+    "href": "pages/bcp1.html#evaluating-scientific-theories",
+    "title": "Foundations of Psychological Concepts and Theories-I",
+    "section": "Evaluating Scientific Theories",
+    "text": "Evaluating Scientific Theories\n\nKarl Popper’s Philosophy\n\nFalsifiability: Asserts that for a theory to be scientific, it must be testable and refutable.\nTesting: Each genuine test is an attempt to falsify a theory rather than confirm it, ensuring scientific rigor.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-I"
+    ]
+  },
+  {
+    "objectID": "pages/bcp1.html#identity-theories-in-philosophy-of-mind",
+    "href": "pages/bcp1.html#identity-theories-in-philosophy-of-mind",
+    "title": "Foundations of Psychological Concepts and Theories-I",
+    "section": "Identity Theories in Philosophy of Mind",
+    "text": "Identity Theories in Philosophy of Mind\n\nToken Identity Theory\n\nDefinition: Proposes that specific mental events correspond to specific neurological events.\nImplication: Each instance of a mental state is tied to a particular brain state, offering a bridge between psychology and neuroscience.\n\n\n\nType Identity Theory\n\nDefinition: Asserts that types of mental states are identical to types of brain states.\nContrast with Token Identity: Token identity focuses on individual instances, while type identity looks at broader categories of mental events.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Foundations of Psychological Concepts and Theories-I"
+    ]
+  },
+  {
+    "objectID": "pages/bcp3.html",
+    "href": "pages/bcp3.html",
+    "title": "Understanding Research Designs",
+    "section": "",
+    "text": "Definition: A research design that investigates the relationships between two or more variables.\nPurpose: To identify patterns and associations, allowing for predictions based on existing data.\nCharacteristics:\n\nDoes not imply causation; it only shows that a relationship exists.\nUtilizes statistical methods to quantify the strength and direction of relationships (e.g., correlation coefficients).\n\nComparison with Other Designs:\n\nExperimental Research: Involves manipulation of variables to establish cause-and-effect relationships.\nDescriptive Research: Focuses on describing characteristics or phenomena without examining relationships.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Understanding Research Designs"
+    ]
+  },
+  {
+    "objectID": "pages/bcp3.html#correlational-research-design",
+    "href": "pages/bcp3.html#correlational-research-design",
+    "title": "Understanding Research Designs",
+    "section": "",
+    "text": "Definition: A research design that investigates the relationships between two or more variables.\nPurpose: To identify patterns and associations, allowing for predictions based on existing data.\nCharacteristics:\n\nDoes not imply causation; it only shows that a relationship exists.\nUtilizes statistical methods to quantify the strength and direction of relationships (e.g., correlation coefficients).\n\nComparison with Other Designs:\n\nExperimental Research: Involves manipulation of variables to establish cause-and-effect relationships.\nDescriptive Research: Focuses on describing characteristics or phenomena without examining relationships.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Understanding Research Designs"
+    ]
+  },
+  {
+    "objectID": "pages/bcp3.html#naturalistic-research",
+    "href": "pages/bcp3.html#naturalistic-research",
+    "title": "Understanding Research Designs",
+    "section": "Naturalistic Research",
+    "text": "Naturalistic Research\n\nDefinition: A form of descriptive research conducted in natural settings without manipulation.\nPurpose: To observe and describe behaviors in real-world contexts as they naturally occur.\nCharacteristics:\n\nData is collected through observation, interviews, or field notes.\nAims for ecological validity, capturing genuine behaviors and interactions.\n\nRelation to Descriptive Research:\n\nNaturalistic research is a subset of descriptive research, emphasizing observational methods.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Understanding Research Designs"
+    ]
+  },
+  {
+    "objectID": "pages/bcp3.html#visual-search-task",
+    "href": "pages/bcp3.html#visual-search-task",
+    "title": "Understanding Research Designs",
+    "section": "Visual Search Task",
+    "text": "Visual Search Task\n\nDefinition: A cognitive task that requires individuals to locate a target stimulus among distractors.\nPrimary Mental Process Investigated: Attention\nCharacteristics:\n\nInvolves selective focus and processing of visual information.\nAssesses how quickly and accurately individuals can identify targets amidst irrelevant stimuli.\n\nCognitive Load:\n\nInvolves various cognitive processes, including visual perception and attentional resources.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Understanding Research Designs"
+    ]
+  },
+  {
+    "objectID": "pages/bcp3.html#brain-areas-activated-by-visual-stimuli",
+    "href": "pages/bcp3.html#brain-areas-activated-by-visual-stimuli",
+    "title": "Understanding Research Designs",
+    "section": "Brain Areas Activated by Visual Stimuli",
+    "text": "Brain Areas Activated by Visual Stimuli\n\nParahippocampal Place Area (PPA):\n\nFunction: Specializes in recognizing and processing scenes, particularly places and environments.\nActivation: Engaged by images representing indoor and outdoor scenes.\n\nFusiform Face Area (FFA):\n\nFunction: Primarily involved in facial recognition and processing of faces.\n\nExtrastriate Body Area (EBA):\n\nFunction: Focused on the recognition of body parts.\n\nImportance of Context: Different brain regions are activated based on the nature of the visual stimulus, highlighting specialized processing pathways in the brain.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Understanding Research Designs"
+    ]
+  },
+  {
+    "objectID": "pages/bcp3.html#attention",
+    "href": "pages/bcp3.html#attention",
+    "title": "Understanding Research Designs",
+    "section": "Attention",
+    "text": "Attention\n\nDefinition: The cognitive process of selectively concentrating on specific stimuli while ignoring others.\nRole in Cognitive Systems:\n\nAttention filters information to prioritize what is relevant, impacting perception and memory.\n\nImportance: Essential for effective information processing, decision-making, and responding to environmental demands.\nMisconception: Attention does not construct representations of the outside world; it helps manage and filter incoming information.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Understanding Research Designs"
+    ]
+  },
+  {
+    "objectID": "pages/bcp3.html#perception",
+    "href": "pages/bcp3.html#perception",
+    "title": "Understanding Research Designs",
+    "section": "Perception",
+    "text": "Perception\n\nDefinition: The process of interpreting sensory information to form a mental representation of the environment.\nCharacteristics:\n\nInvolves the integration of sensory input from various modalities (e.g., visual, auditory).\nSubject to biases and can be influenced by prior knowledge, expectations, and context.\n\nCommon Misconceptions:\n\nPerception is not always accurate; it can be influenced by deceptive stimuli or erroneous interpretations.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Understanding Research Designs"
+    ]
+  },
+  {
+    "objectID": "pages/bcp3.html#psychophysics",
+    "href": "pages/bcp3.html#psychophysics",
+    "title": "Understanding Research Designs",
+    "section": "Psychophysics",
+    "text": "Psychophysics\n\nDefinition: The study of the relationship between physical stimuli and the psychological experiences they evoke.\nKey Concepts:\n\nAbsolute Threshold: The minimum intensity of a stimulus that can be detected.\nDifference Threshold: The smallest detectable difference between two stimuli (just noticeable difference).\n\nMethods: Often involves experimental methods to measure thresholds and sensory responses.\nApplications: Used in various fields, including psychology, neuroscience, and sensory research.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Understanding Research Designs"
+    ]
+  },
+  {
+    "objectID": "pages/bcp3.html#threshold-determination",
+    "href": "pages/bcp3.html#threshold-determination",
+    "title": "Understanding Research Designs",
+    "section": "Threshold Determination",
+    "text": "Threshold Determination\n\nAbsolute Threshold: The lowest level of stimulus intensity that an individual can detect.\nDifference Threshold: The minimum difference in intensity required to notice a change.\nMethods for Determination:\n\nParticipants adjust the stimulus until it becomes just noticeable, matching it to a standard, or until they detect it.\n\nImportance of Context: Thresholds can vary based on individual differences, context, and previous exposure to stimuli.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Understanding Research Designs"
+    ]
+  },
+  {
+    "objectID": "pages/bcp3.html#sensory-process-and-decision-making",
+    "href": "pages/bcp3.html#sensory-process-and-decision-making",
+    "title": "Understanding Research Designs",
+    "section": "Sensory Process and Decision-Making",
+    "text": "Sensory Process and Decision-Making\n\nSensory Processing: Involves receiving, converting, and interpreting sensory information from the environment.\nDecision-Making: The cognitive process where individuals evaluate options and make choices based on sensory input and prior knowledge.\nInterdependence: Sensory processes provide crucial data to the decision-making system; they do not operate independently.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Understanding Research Designs"
+    ]
+  },
+  {
+    "objectID": "pages/bcp3.html#decision-policies",
+    "href": "pages/bcp3.html#decision-policies",
+    "title": "Understanding Research Designs",
+    "section": "Decision Policies",
+    "text": "Decision Policies\n\nConservative Decision Policy:\n\nDefinition: A strategy where the decision criterion is set higher, requiring stronger evidence to say “yes.”\nImplication: Reduces the likelihood of false positives, leading to more cautious responses.\n\nImpact on Responses:\n\nA conservative policy means fewer affirmative responses, as the threshold for saying “yes” is elevated.\n\nContextual Understanding: Different decision policies can shape outcomes in research and real-world settings, affecting how data is interpreted and decisions are made.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Understanding Research Designs"
+    ]
+  },
+  {
+    "objectID": "pages/bcp5.html",
+    "href": "pages/bcp5.html",
+    "title": "Perception Theories and Sensory Processing",
+    "section": "",
+    "text": "Definition: The Template Matching Theory suggests that we store a set of specific templates (or patterns) in our memory. When we encounter a stimulus, we compare it to these stored templates to recognize it.\nExact Matching: Recognition occurs only when the input matches a stored template exactly. This makes the theory inflexible since even small differences between the stimulus and the template can prevent recognition.\nDemerit: Inflexibility is a key issue. If the stimulus varies even slightly (e.g., different fonts or handwritten letters), the system may fail to recognize it, which limits its practical applicability.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Perception Theories and Sensory Processing"
+    ]
+  },
+  {
+    "objectID": "pages/bcp5.html#template-matching-theory",
+    "href": "pages/bcp5.html#template-matching-theory",
+    "title": "Perception Theories and Sensory Processing",
+    "section": "",
+    "text": "Definition: The Template Matching Theory suggests that we store a set of specific templates (or patterns) in our memory. When we encounter a stimulus, we compare it to these stored templates to recognize it.\nExact Matching: Recognition occurs only when the input matches a stored template exactly. This makes the theory inflexible since even small differences between the stimulus and the template can prevent recognition.\nDemerit: Inflexibility is a key issue. If the stimulus varies even slightly (e.g., different fonts or handwritten letters), the system may fail to recognize it, which limits its practical applicability.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Perception Theories and Sensory Processing"
+    ]
+  },
+  {
+    "objectID": "pages/bcp5.html#feature-analysis-theory",
+    "href": "pages/bcp5.html#feature-analysis-theory",
+    "title": "Perception Theories and Sensory Processing",
+    "section": "Feature-Analysis Theory",
+    "text": "Feature-Analysis Theory\n\nDefinition: Feature-analysis theory posits that we break down stimuli into their basic components or features, like shapes, lines, or edges, and then integrate these features to recognize the whole object.\nPsychological & Neuroscience Support: This theory is well-supported by research in both psychology and neuroscience, as studies have shown that the brain processes individual features (like line orientation) before combining them into more complex perceptions.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Perception Theories and Sensory Processing"
+    ]
+  },
+  {
+    "objectID": "pages/bcp5.html#optic-flow",
+    "href": "pages/bcp5.html#optic-flow",
+    "title": "Perception Theories and Sensory Processing",
+    "section": "Optic Flow",
+    "text": "Optic Flow\n\nDefinition: Optic flow refers to the pattern of apparent motion of objects in a visual scene caused by the relative motion between the observer and the scene.\nComponents: It includes information like speed, direction, and distance, helping us navigate our environment. It’s crucial for understanding how we move through space.\nUses: Our brain uses optic flow to guide movement and spatial awareness, making it important for activities like walking, driving, or catching objects.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Perception Theories and Sensory Processing"
+    ]
+  },
+  {
+    "objectID": "pages/bcp5.html#gradient-of-flow",
+    "href": "pages/bcp5.html#gradient-of-flow",
+    "title": "Perception Theories and Sensory Processing",
+    "section": "Gradient of Flow",
+    "text": "Gradient of Flow\n\nDefinition: This refers to the gradual change in optic flow as one moves through space. Objects closer to you appear to move faster, while objects further away seem slower.\nRelationship to Optic Flow: The gradient of flow is part of the broader optic flow system, providing cues about depth and distance.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Perception Theories and Sensory Processing"
+    ]
+  },
+  {
+    "objectID": "pages/bcp5.html#focus-of-expansion",
+    "href": "pages/bcp5.html#focus-of-expansion",
+    "title": "Perception Theories and Sensory Processing",
+    "section": "Focus of Expansion",
+    "text": "Focus of Expansion\n\nDefinition: The Focus of Expansion (FOE) is the point in the visual field where there is no optic flow because it represents the direction in which you are moving. All motion flows outward from this point.\nImportance: The FOE is key to understanding the trajectory and direction of movement, particularly when navigating.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Perception Theories and Sensory Processing"
+    ]
+  },
+  {
+    "objectID": "pages/bcp5.html#ecological-approach",
+    "href": "pages/bcp5.html#ecological-approach",
+    "title": "Perception Theories and Sensory Processing",
+    "section": "Ecological Approach",
+    "text": "Ecological Approach\n\nDefinition: Proposed by James Gibson, the ecological approach to perception focuses on how we directly perceive information in our environment without needing cognitive processing.\nInvariant Information: Invariants are aspects of the environment that remain constant despite changes in the observer’s position. For example, the horizon remains at a fixed height regardless of movement.\nVariant Information: This contrasts with variant information, which changes depending on movement or perspective, but it’s the invariants that are particularly useful in navigation.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Perception Theories and Sensory Processing"
+    ]
+  },
+  {
+    "objectID": "pages/bcp5.html#sound-waves-frequency-and-pitch",
+    "href": "pages/bcp5.html#sound-waves-frequency-and-pitch",
+    "title": "Perception Theories and Sensory Processing",
+    "section": "Sound Waves, Frequency, and Pitch",
+    "text": "Sound Waves, Frequency, and Pitch\n\nDefinition: Sound waves are vibrations in the air or another medium that we perceive as sound. Their frequency (number of vibrations per second) determines their pitch.\nLonger Sound Waves: Longer sound waves have a lower frequency, meaning they vibrate more slowly and produce a lower pitch (e.g., a bass note).\nShorter Sound Waves: Shorter sound waves have a higher frequency, vibrating faster and producing a higher pitch (e.g., a high note).",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Perception Theories and Sensory Processing"
+    ]
+  },
+  {
+    "objectID": "pages/bcp5.html#tympanic-membrane",
+    "href": "pages/bcp5.html#tympanic-membrane",
+    "title": "Perception Theories and Sensory Processing",
+    "section": "Tympanic Membrane",
+    "text": "Tympanic Membrane\n\nDefinition: The tympanic membrane, also known as the eardrum, is a thin, sensitive membrane at the end of the ear canal.\nFunction: It vibrates when sound waves hit it, transmitting these vibrations to the small bones in the middle ear (malleus, incus, and stapes), which are then transferred to the inner ear for sound processing.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Perception Theories and Sensory Processing"
+    ]
+  },
+  {
+    "objectID": "pages/bcp5.html#malleus-incus-and-cochlea",
+    "href": "pages/bcp5.html#malleus-incus-and-cochlea",
+    "title": "Perception Theories and Sensory Processing",
+    "section": "Malleus, Incus, and Cochlea",
+    "text": "Malleus, Incus, and Cochlea\n\nMalleus: A small hammer-shaped bone that receives vibrations from the tympanic membrane.\nIncus: An anvil-shaped bone that transmits vibrations from the malleus to the stapes.\nCochlea: A spiral-shaped organ in the inner ear that converts vibrations into neural signals that the brain interprets as sound.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Perception Theories and Sensory Processing"
+    ]
+  },
+  {
+    "objectID": "pages/bcp5.html#mcgurk-effect",
+    "href": "pages/bcp5.html#mcgurk-effect",
+    "title": "Perception Theories and Sensory Processing",
+    "section": "McGurk Effect",
+    "text": "McGurk Effect\n\nDefinition: The McGurk effect is a phenomenon where visual and auditory information combine to alter the perception of speech. For example, if we see someone saying “ga” but hear “ba,” we might perceive the sound as “da.”\nMulti-modal Perception: This effect highlights how our brain integrates information from multiple senses to create a cohesive perception, showing that perception is not solely dependent on one sense.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Perception Theories and Sensory Processing"
+    ]
+  },
+  {
+    "objectID": "pages/bcp5.html#motor-theory-of-speech-perception",
+    "href": "pages/bcp5.html#motor-theory-of-speech-perception",
+    "title": "Perception Theories and Sensory Processing",
+    "section": "Motor Theory of Speech Perception",
+    "text": "Motor Theory of Speech Perception\n\nDefinition: The Motor Theory suggests that we perceive speech sounds by simulating the motor processes required to produce those sounds. In other words, we “mentally” rehearse how we would say the sounds we hear.\nRelation to McGurk Effect: The theory explains how mismatches between visual and auditory information (like in the McGurk effect) can occur because we rely on visual cues about how sounds are produced to interpret them.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Perception Theories and Sensory Processing"
+    ]
+  },
+  {
+    "objectID": "pages/bcp5.html#feature-integration-theory",
+    "href": "pages/bcp5.html#feature-integration-theory",
+    "title": "Perception Theories and Sensory Processing",
+    "section": "Feature-Integration Theory",
+    "text": "Feature-Integration Theory\n\nDefinition: This theory, proposed by Anne Treisman, explains how we perceive objects by combining individual features like color, shape, and size. The process occurs in two stages.\nParallel Processing: In the first stage, features of an object (e.g., a red, round shape) are processed automatically and simultaneously.\nSerial Processing: In the second stage, attention is required to bind these features together, especially in more complex tasks where multiple features need to be combined (e.g., finding a red circle among blue squares).",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Perception Theories and Sensory Processing"
+    ]
+  },
+  {
+    "objectID": "pages/bcp5.html#guided-search-theory",
+    "href": "pages/bcp5.html#guided-search-theory",
+    "title": "Perception Theories and Sensory Processing",
+    "section": "Guided Search Theory",
+    "text": "Guided Search Theory\n\nDefinition: This theory builds on the Feature-Integration Theory and proposes that searches occur in two stages: parallel and serial.\nParallel Stage: All potential targets are activated in parallel, meaning that we process the features of all items in the visual field simultaneously.\nSerial Stage: Once the possible targets are identified, we sequentially evaluate each one to find the correct match.\nEfficiency: This explains why feature searches (e.g., finding a red object) are easier than conjunction searches (e.g., finding a red circle among red squares and blue circles).",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Perception Theories and Sensory Processing"
+    ]
+  },
+  {
+    "objectID": "pages/bcp5.html#similarity-theory",
+    "href": "pages/bcp5.html#similarity-theory",
+    "title": "Perception Theories and Sensory Processing",
+    "section": "Similarity Theory",
+    "text": "Similarity Theory\n\nDefinition: This theory proposes that the more similar a distractor is to the target, the more difficult it is to conduct a search. The higher the degree of similarity, the more time it takes to distinguish the target from the background.\nLimitations: While it explains why searches with high similarity are harder, it doesn’t fully explain why feature searches are faster than conjunction searches, unlike the Feature-Integration or Guided Search Theories.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Perception Theories and Sensory Processing"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html",
+    "href": "pages/bcp8.html",
+    "title": "Memory and Brain Function",
+    "section": "",
+    "text": "Function: The amygdala is a small, almond-shaped structure in the brain that plays a crucial role in processing emotions, particularly fear and pleasure.\nEmotional Memories: It is specifically involved in forming and storing emotional memories, making it integral to how we react to emotionally charged events.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#amygdala",
+    "href": "pages/bcp8.html#amygdala",
+    "title": "Memory and Brain Function",
+    "section": "",
+    "text": "Function: The amygdala is a small, almond-shaped structure in the brain that plays a crucial role in processing emotions, particularly fear and pleasure.\nEmotional Memories: It is specifically involved in forming and storing emotional memories, making it integral to how we react to emotionally charged events.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#hypothalamus",
+    "href": "pages/bcp8.html#hypothalamus",
+    "title": "Memory and Brain Function",
+    "section": "Hypothalamus",
+    "text": "Hypothalamus\n\nFunction: The hypothalamus regulates essential bodily functions, including temperature control, hunger, thirst, and circadian rhythms.\nRole in Memory: While it interacts with other brain structures involved in memory, it is not primarily responsible for holding memories.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#hippocampus",
+    "href": "pages/bcp8.html#hippocampus",
+    "title": "Memory and Brain Function",
+    "section": "Hippocampus",
+    "text": "Hippocampus\n\nFunction: The hippocampus is key for forming new memories and is involved in learning and spatial navigation.\nTypes of Memory: It plays a significant role in declarative memory (facts and events) but is not specifically linked to emotional memory.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#limbic-system",
+    "href": "pages/bcp8.html#limbic-system",
+    "title": "Memory and Brain Function",
+    "section": "Limbic System",
+    "text": "Limbic System\n\nComponents: The limbic system includes the amygdala, hippocampus, and other structures like the thalamus and hypothalamus.\nRole in Emotion and Memory: It is involved in emotional responses and memory formation but is a broader term encompassing various functions.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#flashbulb-memory",
+    "href": "pages/bcp8.html#flashbulb-memory",
+    "title": "Memory and Brain Function",
+    "section": "Flashbulb Memory",
+    "text": "Flashbulb Memory\n\nDefinition: Flashbulb memories are vivid, detailed memories of significant events, often associated with strong emotional reactions.\nCharacteristics: These memories feel particularly clear and accurate, even though they may not always be reliable.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#semantic-memory",
+    "href": "pages/bcp8.html#semantic-memory",
+    "title": "Memory and Brain Function",
+    "section": "Semantic Memory",
+    "text": "Semantic Memory\n\nDefinition: Semantic memory involves the storage of general knowledge about the world, concepts, and facts.\nExamples: Information like the capital of a country or the meaning of a word falls under semantic memory.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#procedural-memory",
+    "href": "pages/bcp8.html#procedural-memory",
+    "title": "Memory and Brain Function",
+    "section": "Procedural Memory",
+    "text": "Procedural Memory\n\nDefinition: Procedural memory is a type of long-term memory responsible for knowing how to perform tasks and skills.\nExamples: Riding a bike, playing a musical instrument, or typing on a keyboard are skills retained through procedural memory.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#autobiographical-memory",
+    "href": "pages/bcp8.html#autobiographical-memory",
+    "title": "Memory and Brain Function",
+    "section": "Autobiographical Memory",
+    "text": "Autobiographical Memory\n\nDefinition: Autobiographical memory encompasses memories of one’s life experiences, combining both episodic (specific events) and semantic (general knowledge) aspects.\nImportance: It provides context for personal identity and self-awareness.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#synaesthesia",
+    "href": "pages/bcp8.html#synaesthesia",
+    "title": "Memory and Brain Function",
+    "section": "Synaesthesia",
+    "text": "Synaesthesia\n\nDefinition: Synaesthesia is a neurological condition where stimulation of one sensory pathway leads to automatic experiences in another sensory modality.\nExamples: Some people may perceive colors when they hear music or associate certain tastes with specific words.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#form-agnosia",
+    "href": "pages/bcp8.html#form-agnosia",
+    "title": "Memory and Brain Function",
+    "section": "Form Agnosia",
+    "text": "Form Agnosia\n\nDefinition: Form agnosia is a condition where individuals are unable to recognize objects based on their shapes.\nImpact: Patients may see objects but fail to identify or interpret them accurately.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#integrative-agnosia",
+    "href": "pages/bcp8.html#integrative-agnosia",
+    "title": "Memory and Brain Function",
+    "section": "Integrative Agnosia",
+    "text": "Integrative Agnosia\n\nDefinition: This condition involves difficulty in integrating multiple visual features into a coherent perception of an object.\nSymptoms: Patients can perceive elements but struggle to combine them into recognizable forms.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#appreciative-agnosia",
+    "href": "pages/bcp8.html#appreciative-agnosia",
+    "title": "Memory and Brain Function",
+    "section": "Appreciative Agnosia",
+    "text": "Appreciative Agnosia\n\nDefinition: Appreciative agnosia refers to a deficit in recognizing and appreciating visual objects, despite having intact visual processing abilities.\nExamples: Individuals may see an object but not understand what it represents or its function.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#hemi-attention",
+    "href": "pages/bcp8.html#hemi-attention",
+    "title": "Memory and Brain Function",
+    "section": "Hemi-Attention",
+    "text": "Hemi-Attention\n\nDefinition: Hemi-attention refers to a reduced awareness of one side of the visual field, often due to brain injury.\nSymptoms: Individuals may neglect objects or events on one side, even if their vision is intact.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#contralateral-neglect",
+    "href": "pages/bcp8.html#contralateral-neglect",
+    "title": "Memory and Brain Function",
+    "section": "Contralateral Neglect",
+    "text": "Contralateral Neglect\n\nDefinition: This term describes a condition where individuals ignore stimuli on one side of their body or environment due to brain damage, typically on the opposite side of the injury.\nCharacteristics: Patients may fail to eat food on one side of their plate or may not acknowledge people standing on the neglected side.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#spatial-neglect",
+    "href": "pages/bcp8.html#spatial-neglect",
+    "title": "Memory and Brain Function",
+    "section": "Spatial Neglect",
+    "text": "Spatial Neglect\n\nDefinition: Spatial neglect is similar to contralateral neglect, where individuals do not attend to one side of space, affecting their perception and interaction with their environment.\nDiagnosis: Often diagnosed through tests where patients are asked to draw or bisect lines.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#organic-amnesia",
+    "href": "pages/bcp8.html#organic-amnesia",
+    "title": "Memory and Brain Function",
+    "section": "Organic Amnesia",
+    "text": "Organic Amnesia\n\nDefinition: Organic amnesia refers to memory loss caused by physical damage to the brain, often due to injury, infection, or degenerative diseases.\nExamples: Conditions like Alzheimer’s disease, strokes, and traumatic brain injuries can lead to organic amnesia.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#psychogenic-amnesia",
+    "href": "pages/bcp8.html#psychogenic-amnesia",
+    "title": "Memory and Brain Function",
+    "section": "Psychogenic Amnesia",
+    "text": "Psychogenic Amnesia\n\nDefinition: Psychogenic amnesia is memory loss caused by psychological factors rather than physical brain damage.\nCauses: It can occur in response to trauma or extreme stress, often resulting in the suppression of painful memories.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#retrograde-amnesia",
+    "href": "pages/bcp8.html#retrograde-amnesia",
+    "title": "Memory and Brain Function",
+    "section": "Retrograde Amnesia",
+    "text": "Retrograde Amnesia\n\nDefinition: Retrograde amnesia involves the loss of memories that were formed before the onset of amnesia.\nCharacteristics: Individuals may have difficulty recalling past events, personal history, or learned information.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#anterograde-amnesia",
+    "href": "pages/bcp8.html#anterograde-amnesia",
+    "title": "Memory and Brain Function",
+    "section": "Anterograde Amnesia",
+    "text": "Anterograde Amnesia\n\nDefinition: Anterograde amnesia is characterized by the inability to form new memories following the onset of amnesia.\nImpact: Individuals can remember past events but struggle to create new memories or learn new information.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#standard-model-of-consolidation",
+    "href": "pages/bcp8.html#standard-model-of-consolidation",
+    "title": "Memory and Brain Function",
+    "section": "Standard Model of Consolidation",
+    "text": "Standard Model of Consolidation\n\nDefinition: This model suggests that memory consolidation, the process by which new memories stabilize, can take years and becomes increasingly resilient over time.\nMechanism: It emphasizes the role of the hippocampus in the early stages of memory formation, transitioning to more distributed neural networks for long-term storage.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#korsakoff-syndrome",
+    "href": "pages/bcp8.html#korsakoff-syndrome",
+    "title": "Memory and Brain Function",
+    "section": "Korsakoff Syndrome",
+    "text": "Korsakoff Syndrome\n\nDefinition: Korsakoff syndrome is a chronic neurocognitive disorder caused primarily by thiamine deficiency, often associated with prolonged alcohol misuse.\nSymptoms: It results in significant memory impairments, particularly in forming new memories and recalling past information.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
+    ]
+  },
+  {
+    "objectID": "pages/bcp8.html#electroconvulsive-therapy-ect",
+    "href": "pages/bcp8.html#electroconvulsive-therapy-ect",
+    "title": "Memory and Brain Function",
+    "section": "Electroconvulsive Therapy (ECT)",
+    "text": "Electroconvulsive Therapy (ECT)\n\nDefinition: ECT is a medical treatment that involves inducing seizures through electrical stimulation of the brain to alleviate severe depression.\nSide Effects: While effective for some patients, ECT can lead to temporary amnesia or memory loss, especially for events surrounding the treatment sessions.",
+    "crumbs": [
+      "Basic Cognitive Processes",
+      "Memory and Brain Function"
     ]
   }
 ]

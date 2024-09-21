@@ -1,0 +1,91 @@
+---
+title: "Memory and Brain Function"
+---
+
+## Amygdala
+- **Function**: The amygdala is a small, almond-shaped structure in the brain that plays a crucial role in processing emotions, particularly fear and pleasure.
+- **Emotional Memories**: It is specifically involved in forming and storing emotional memories, making it integral to how we react to emotionally charged events.
+
+## Hypothalamus
+- **Function**: The hypothalamus regulates essential bodily functions, including temperature control, hunger, thirst, and circadian rhythms.
+- **Role in Memory**: While it interacts with other brain structures involved in memory, it is not primarily responsible for holding memories.
+
+## Hippocampus
+- **Function**: The hippocampus is key for forming new memories and is involved in learning and spatial navigation.
+- **Types of Memory**: It plays a significant role in declarative memory (facts and events) but is not specifically linked to emotional memory.
+
+## Limbic System
+- **Components**: The limbic system includes the amygdala, hippocampus, and other structures like the thalamus and hypothalamus.
+- **Role in Emotion and Memory**: It is involved in emotional responses and memory formation but is a broader term encompassing various functions.
+
+## Flashbulb Memory
+- **Definition**: Flashbulb memories are vivid, detailed memories of significant events, often associated with strong emotional reactions.
+- **Characteristics**: These memories feel particularly clear and accurate, even though they may not always be reliable.
+
+## Semantic Memory
+- **Definition**: Semantic memory involves the storage of general knowledge about the world, concepts, and facts.
+- **Examples**: Information like the capital of a country or the meaning of a word falls under semantic memory.
+
+## Procedural Memory
+- **Definition**: Procedural memory is a type of long-term memory responsible for knowing how to perform tasks and skills.
+- **Examples**: Riding a bike, playing a musical instrument, or typing on a keyboard are skills retained through procedural memory.
+
+## Autobiographical Memory
+- **Definition**: Autobiographical memory encompasses memories of one's life experiences, combining both episodic (specific events) and semantic (general knowledge) aspects.
+- **Importance**: It provides context for personal identity and self-awareness.
+
+## Synaesthesia
+- **Definition**: Synaesthesia is a neurological condition where stimulation of one sensory pathway leads to automatic experiences in another sensory modality.
+- **Examples**: Some people may perceive colors when they hear music or associate certain tastes with specific words.
+
+## Form Agnosia
+- **Definition**: Form agnosia is a condition where individuals are unable to recognize objects based on their shapes.
+- **Impact**: Patients may see objects but fail to identify or interpret them accurately.
+
+## Integrative Agnosia
+- **Definition**: This condition involves difficulty in integrating multiple visual features into a coherent perception of an object.
+- **Symptoms**: Patients can perceive elements but struggle to combine them into recognizable forms.
+
+## Appreciative Agnosia
+- **Definition**: Appreciative agnosia refers to a deficit in recognizing and appreciating visual objects, despite having intact visual processing abilities.
+- **Examples**: Individuals may see an object but not understand what it represents or its function.
+
+## Hemi-Attention
+- **Definition**: Hemi-attention refers to a reduced awareness of one side of the visual field, often due to brain injury.
+- **Symptoms**: Individuals may neglect objects or events on one side, even if their vision is intact.
+
+## Contralateral Neglect
+- **Definition**: This term describes a condition where individuals ignore stimuli on one side of their body or environment due to brain damage, typically on the opposite side of the injury.
+- **Characteristics**: Patients may fail to eat food on one side of their plate or may not acknowledge people standing on the neglected side.
+
+## Spatial Neglect
+- **Definition**: Spatial neglect is similar to contralateral neglect, where individuals do not attend to one side of space, affecting their perception and interaction with their environment.
+- **Diagnosis**: Often diagnosed through tests where patients are asked to draw or bisect lines.
+
+## Organic Amnesia
+- **Definition**: Organic amnesia refers to memory loss caused by physical damage to the brain, often due to injury, infection, or degenerative diseases.
+- **Examples**: Conditions like Alzheimer's disease, strokes, and traumatic brain injuries can lead to organic amnesia.
+
+## Psychogenic Amnesia
+- **Definition**: Psychogenic amnesia is memory loss caused by psychological factors rather than physical brain damage.
+- **Causes**: It can occur in response to trauma or extreme stress, often resulting in the suppression of painful memories.
+
+## Retrograde Amnesia
+- **Definition**: Retrograde amnesia involves the loss of memories that were formed before the onset of amnesia.
+- **Characteristics**: Individuals may have difficulty recalling past events, personal history, or learned information.
+
+## Anterograde Amnesia
+- **Definition**: Anterograde amnesia is characterized by the inability to form new memories following the onset of amnesia.
+- **Impact**: Individuals can remember past events but struggle to create new memories or learn new information.
+
+## Standard Model of Consolidation
+- **Definition**: This model suggests that memory consolidation, the process by which new memories stabilize, can take years and becomes increasingly resilient over time.
+- **Mechanism**: It emphasizes the role of the hippocampus in the early stages of memory formation, transitioning to more distributed neural networks for long-term storage.
+
+## Korsakoff Syndrome
+- **Definition**: Korsakoff syndrome is a chronic neurocognitive disorder caused primarily by thiamine deficiency, often associated with prolonged alcohol misuse.
+- **Symptoms**: It results in significant memory impairments, particularly in forming new memories and recalling past information.
+
+## Electroconvulsive Therapy (ECT)
+- **Definition**: ECT is a medical treatment that involves inducing seizures through electrical stimulation of the brain to alleviate severe depression.
+- **Side Effects**: While effective for some patients, ECT can lead to temporary amnesia or memory loss, especially for events surrounding the treatment sessions. 
